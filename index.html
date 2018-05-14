@@ -340,8 +340,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-05-10T23:56:13+08:00">
-                2018-05-10
+              <time title="Post modified" itemprop="dateModified" datetime="2018-05-14T23:16:39+08:00">
+                2018-05-14
               </time>
             
           </span>
@@ -398,16 +398,23 @@
       
         
           
-            <h1 id="Leetcode"><a href="#Leetcode" class="headerlink" title="Leetcode"></a>Leetcode</h1><blockquote>
+            <p></p><h1 style="text-align:center">Leetcode</h1> <p></p>
+<blockquote>
 <p>This is a temporary post to record the experience of doing leetcode and will be rewrite and rearrange the layout (Typesetting) ASAP.<br>In the future I will sum up all the algs I know to a new post, hope I can do it well<br>2018.5.6</p>
 </blockquote>
 <hr>
 <blockquote>
 <p>Updated 2018-5-9, the following days will be tough and I have to rearrange the quantity of leetcode problems. The next 2 weeks’ focus is on GRADUATTION PROJECT &amp; Side Project preparation.<br>Fight.</p>
 </blockquote>
-<h1 id="2018-5-10"><a href="#2018-5-10" class="headerlink" title="2018-5-10"></a>2018-5-10</h1><ol start="343">
-<li>Integer Break<br>很难受，没有想出DP的解决方法！！争取明天弄一下DP的方法！</li>
-</ol>
+<h1 id="2018-5-14"><a href="#2018-5-14" class="headerlink" title="2018-5-14"></a>2018-5-14</h1><p>98.Validate Binary Search Tree<br>My first thought is using a stack to store the BST in preorder and compare the new-to-stack element’s value <strong>a</strong> with stack.peek() = <strong>b</strong> , if a &gt; b then it is false;<br>When I check the Discussion Section and I find a more concise way to solve it.</p>
+<blockquote>
+<p>we can use localmin and localmax to restrict the range of local element’s value, but if we want to cover the whole range of Integer we have to set the original value of localmin to <strong><em>Long.MIN_VALUE</em></strong> and localmax to <strong><em>Long.MAX_VALUE</em></strong> which is not recommanded. So we can add two more boolean variable <strong><em>hasMin</em></strong> and <strong><em>hasMax</em></strong> to indicate whether we need check the upperbound or lowerbound.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">isValidBST</span><span class="params">(TreeNode node, <span class="keyword">int</span> localMin, <span class="keyword">int</span> localMax, <span class="keyword">boolean</span> hasMin, <span class="keyword">boolean</span> hasMax)</span></span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>111.Minimum Depth of Binary Tree<br>recursive:<br>compute the minimum depth of every node (left and right), especially when it comes to a situation that left or right is 0, we need to return the other side’s length, and we have a <strong>tricky</strong> code:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> (left == <span class="number">0</span> || right == <span class="number">0</span> ) ? left + right + <span class="number">1</span> : Math.min(left, right) + <span class="number">1</span>;</span><br></pre></td></tr></table></figure></p>
+<p>110.Balanced Binary Tree<br>use the same idea of No.111 problem :<br>compute the length of left and right subtree and compare them and return the boolean value.</p>
+<p>257.Binary Tree Paths<br>like a backtracking problem.<br>Have learned the new API of StringBuilder class:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">sb.delete(<span class="keyword">int</span> start, <span class="keyword">int</span> end); <span class="comment">// delete the element from start to end - 1.</span></span><br><span class="line">sb.setLength(<span class="keyword">int</span> length); <span class="comment">// set the length of StringBuilder, I think this one is more convenient than the former one when it comes to deletion.</span></span><br></pre></td></tr></table></figure></p>
+<p>695.Max Area of Island<br>With a “DFS” tag but it seems like a BFS problem.use a 2d array to record whether a position has been visited.</p>
+<h1 id="2018-5-10"><a href="#2018-5-10" class="headerlink" title="2018-5-10"></a>2018-5-10</h1><p>343.Integer Break<br>很难受，没有想出DP的解决方法！！争取明天弄一下DP的方法！</p>
 <h1 id="2018-5-9"><a href="#2018-5-9" class="headerlink" title="2018-5-9"></a>2018-5-9</h1><p>今天看到了一个很nice的关于DP的总结，也算是弄清楚了一点点DC,DP和greedy的关系图了。<br>1、DP算法起源于DC，一个问题的解，可以分解为求解一系列子问题的解。同时包含有重叠子问题。这就得到了DP的第一个黄金准则：某个问题有独立的，重叠的子问题。也就是说，如果子问题不独立，没有办法分治。独立但是不重叠，直接遍历即可，也就是分治的实现。如果有重叠，那就是DP的用武之地了。<br>2、DP算法的黄金准则2,：最优子问题。很明显，DP的本质在于不重复计算子问题，因为把其计算结果存储起来了。也就是之前说过的state。</p>
 <ol start="714">
 <li><p>Best Time to Buy and Sell Stock with Transaction Fee</p>
@@ -436,7 +443,9 @@
 <p>Max Consecutive Ones<br>都说了是Consecutive ones还在考虑连续的0，不知道题目到底看没。</p>
 <p>Toeplitz Matrix<br>关键是对角，不一定要分组的。</p>
 <p>Move Zeroes<br>又是低级错误。。。。数组数值被下标代替。。。。</p>
-<p>week 5<br>In in = new In(args[0]);<br>&amp;&amp;语句前后顺序很重要！<br>if( x.lb != null &amp;&amp; rect.intersects(x.lb.rect) )<br>等同于<br>if( x.lb != null ){<br>    if(rect.intersects(x.lb.rect)<br>}<br>所以一旦反过来变成这样就会出问题，因为x.lb可能为Null<br>rect.intersects(x.lb.rect)  &amp;&amp; x.lb != null</p>
+<p>week 5<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">In in = new In(args[0]);</span><br></pre></td></tr></table></figure></p>
+<p>&amp;&amp;语句前后顺序很重要！<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if( x.lb != null &amp;&amp; rect.intersects(x.lb.rect) )  </span><br><span class="line">// the upper and the lower act the same</span><br><span class="line">if( x.lb != null )&#123;</span><br><span class="line">    if(rect.intersects(x.lb.rect)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>所以一旦反过来变成这样就会出问题，因为x.lb可能为Null<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rect.intersects(x.lb.rect)  &amp;&amp; x.lb != null</span><br></pre></td></tr></table></figure></p>
 <p>nearest 是x.lb或者x.rt的rect的判断而不是对x.rect的判断</p>
 <h1 id="2018-4-11"><a href="#2018-4-11" class="headerlink" title="2018-4-11"></a>2018-4-11</h1><p>今天看了两个算法:<br>BFS ： Breadth-First-Search<br>DFS： Deapth-First-Search</p>
 <p>BFS: 采用FIFO结构</p>
@@ -470,13 +479,15 @@
 <p>⑦ 697. Degree of an Array<br>思路:<br>go through array, 统计value（degree），first_index，last_index<br>然后计算degree，和minimum_length<br>时间复杂度<br>go through – O(n)<br>    统计，链表的话就是O(n), hashmap/hashtable 是 O(1)<br>计算degree， go through O(n)</p>
 <p>引出hashmap和hashtable的区别问题。</p>
 <hr>
+<blockquote>
 <p>重新规划，先刷1-300.</p>
+</blockquote>
 <ol>
 <li><p>Two Sum<br>失去了sorted这个条件就只会brute解决了，看了大神的解答发现可以用HashMap，可以尝试一下用HashMap解决。</p>
 </li>
 <li><p>Add Two Numbers<br>easy,设置res和carry两个数分别记录加后%10的值和进位，然后判断l1,l2是否为同时为null为结束循环条件。<br>但是忽略了同时为null时也有可能carry = 1，导致错误。<br>同时计算res加了c，计算c的时候却没有，同样导致错误。多加小心。</p>
 </li>
-<li><p>Longest Substring Without Repeating Characters<br>两个index，一个头一个尾，hashmap存储，一旦tail发现重复，回溯到重复点，重新查找，并且保存当前maxlen<br>思路正确，但是很遗憾，代码编写错误还是很多。<br>值得注意的是<br>1、s.length() 和 a.length String的length是带括号的，而数组不带。<br>2、找s中对应下标的char是s.charAt(index),而数组直接a[index]即可<br>3、<br>原始类型   封装类<br>boolean      Boolean<br>char           Character<br>byte           Byte<br>short          Short<br>int              Integer<br>long           Long<br>float           Float<br>double      Double<br>4、遇见if-else一定要多加注意，看有没有可能一直if或者一直else导致某些特定语句没有执行到。。。。</p>
+<li><p>Longest Substring Without Repeating Characters<br>两个index，一个头一个尾，hashmap存储，一旦tail发现重复，回溯到重复点，重新查找，并且保存当前maxlen<br>思路正确，但是很遗憾，代码编写错误还是很多。<br>值得注意的是<br>1、s.length() 和 a.length String的length是带括号的，而数组不带。<br>2、找s中对应下标的char是s.charAt(index),而数组直接a[index]即可<br>3、<br>|原始类型|封装类|<br>|:—|:—-|<br>|boolean|     Boolean|<br>|char       |    Character|<br>|byte      |     Byte|<br>|short       |   Short|<br>|int         |     Integer|<br>|long       |    Long|<br>|float     |      Float|<br>|double   |   Double|<br>4、<strong>遇见if-else一定要多加注意，看有没有可能一直if或者一直else导致某些特定语句没有执行到。。。。</strong></p>
 </li>
 </ol>
 <h1 id="2018-4-20"><a href="#2018-4-20" class="headerlink" title="2018-4-20"></a>2018-4-20</h1><ol start="7">
@@ -552,12 +563,13 @@
 </li>
 <li><p>Single Number II<br>这个就很难受了，弄了一个晚上。感受到了自己的菜鸡。<br>利用状态转移，设置不同状态表示接收到了不同的bit个数，因为某一个，数字的固定位置比特肯定是只出现一次的。<br>所以只要弄一个只有固定比特为1的状态，其余以方便优先选择。</p>
 </li>
-<li><p>Single Number III<br>位运算，求反，本来和原来的数完全相对，相与变成0，但是加1之后，能够找到最右不同的比特，也可以说从低到高第一个不同的bit<br>解释如下：<br>   s1 a1 b1 c1<br>   s2 a2 b2 c2<br>^      —————</p>
-<p>   s   a   b   c<br>取反 s_ a_  b_ c_</p>
-<p>   —————<br>   ①c = 1,说明c1 c2 不同<br>   ②c = 0,说明c1，c2相同，则c_ = 1，<br>   ③+1之后，将进位，也就等同于+1到b，继续①②两步<br>after find the rightest bit, then we diff &amp; -diff, we can make the bits lower than the rightest bit to zero, the rightest will be ‘1’ and those bits higher than the rightest will be ‘0’ because of ~ operation</p>
+<li><p>Single Number III<br>位运算，求反，本来和原来的数完全相对，相与变成0，但是加1之后，能够找到最右不同的比特，也可以说从低到高第一个不同的bit<br>解释如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">        s1 a1 b1 c1</span><br><span class="line">        s2 a2 b2 c2</span><br><span class="line">^      —————</span><br><span class="line"></span><br><span class="line">        s   a   b   c</span><br><span class="line">// NOT  s_  a_  b_  c_</span><br><span class="line"></span><br><span class="line">        —————</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>Integer to Roman<br>easy</p>
-</li>
+</ol>
+<p>①c = 1,说明c1 c2 不同<br>②c = 0,说明c1，c2相同，则c_ = 1，<br>③+1之后，将进位，也就等同于+1到b，继续①②两步<br> after find the rightest bit, then we diff &amp; -diff, we can make the bits lower than the rightest bit to zero, the rightest will be ‘1’ and those bits higher than the rightest will be ‘0’ because of ~ operation</p>
+<ol start="12">
+<li>Integer to Roman<br>easy</li>
 </ol>
 <ol start="273">
 <li>Integer to English Words<br>easy</li>
@@ -659,28 +671,31 @@
 </li>
 <li><p>Factorial Trailing Zeroes<br>自己总是陷入brute force的思路，很难受。。。<br>但是自己想到了5，没有仔细的深挖，或者说自己境界不够吧，居然在想着怎么凑2和5来算10的个数。。。其实只要看5就行了。</p>
 </li>
-<li><p>Rotate Array<br>for those elements in the range of [n-k, n-1], they need to move to (i+k) % n, and when i+k is in the range of [n, 2n), we have (i+k) % n = i+k-n;<br>for those elements in the range [0, n-k-1], they need just move to (i+k)<br>like below:<br>0      n-k-1 n-k        n-1<br>[                |                  ]    a1<br>range1     range2<br>Thus, when we first reverse the whole array, we have the ist element in the new array which equals n-i-1, and now we have<br>0          k-1 k        n-1<br>[                |                  ]    a2<br>range2     range1<br>so when we reverse the first part of the new array a2(range2), the ist element in the new array part will be k-1-(n-i-1) = k+i-n and this is exactly what we need, the same as the second part after the reversion.</p>
-</li>
-<li><p>House Robber<br>easy DP solution but used O(N) space; it seems like there is a O(1) Space solution</p>
+<li><p>Rotate Array<br>for those elements in the range of [n-k, n-1], they need to move to (i+k) % n, and when i+k is in the range of [n, 2n), we have (i+k) % n = i+k-n;<br>for those elements in the range [0, n-k-1], they need just move to (i+k)<br>like below:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">0      n-k-1 n-k        n-1</span><br><span class="line">[                |                  ]    a1</span><br><span class="line">    range1              range2</span><br><span class="line">Thus, when we first reverse the whole array, we have the ist element in the new array which equals n-i-1, and now we have</span><br><span class="line">0          k-1 k        n-1</span><br><span class="line">[                |                  ]    a2</span><br><span class="line">    range2              range1</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
+<p>so when we reverse the first part of the new array a2(range2), the ist element in the new array part will be k-1-(n-i-1) = k+i-n and this is exactly what we need, the same as the second part after the reversion.</p>
+<ol start="198">
+<li>House Robber<br>easy DP solution but used O(N) space; it seems like there is a O(1) Space solution</li>
+</ol>
 <h1 id="2018-5-6"><a href="#2018-5-6" class="headerlink" title="2018-5-6"></a>2018-5-6</h1><ol start="11">
-<li><p>Container With Most Water<br>while(left &lt; right){<br>if nums_left &lt; nums_right left++;<br>else right–<br>update max<br>}<br>return max;</p>
+<li><p>Container With Most Water</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">while(left &lt; right)&#123;</span><br><span class="line">    if nums_left &lt; nums_right left++;</span><br><span class="line">    else right--</span><br><span class="line">    update max</span><br><span class="line">&#125;</span><br><span class="line">return max;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Remove Duplicates from Sorted Array II<br>if-else problem happens again, when it comes to if-else branches, YOU NEED TO CHECK IF THE CORNER CASE THAT ONLY IF OR ELSE BRANCH IS APPROACHED.</p>
 </li>
 <li><p>K-diff Pairs in an Array<br>I do it by simple search like brute solution.<br>However, there are some more efficient solutions like Two Pointers or HashMap, the latter is more understandable but the former is a little hard to understand fully</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findPairs</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(k &lt; <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">1</span>; j &lt; nums.length;  )&#123;</span><br><span class="line">            <span class="keyword">if</span>(i &gt;= j || nums[i] + k &gt; nums[j]) j++;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>( i &gt; <span class="number">0</span> &amp;&amp; nums[i] == nums[i - <span class="number">1</span>] || nums[i] + k &lt; nums[j]) i++;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                cnt++; i++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cnt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>class Solution {<br>    public int findPairs(int[] nums, int k) {<br>        if(k &lt; 0) return 0;<br>        int ans = 0;<br>        Arrays.sort(nums);<br>        for(int i = 0, j = 1; j &lt; nums.length;  ){<br>            if(i &gt;= j || nums[i] + k &gt; nums[j]) j++;<br>            else if( i &gt; 0 &amp;&amp; nums[i] == nums[i - 1] || nums[i] + k &lt; nums[j]) i++;<br>            else{<br>                ans++; i++;<br>            }<br>        }<br>        return ans;<br>    }<br>}<br>Figure it out but don’t know how to come up with the idea.</p>
+<p>Figure it out but don’t know how to come up with the idea.</p>
 <ol start="209">
-<li><p>Minimum Size Subarray Sum<br>two pointer i and j, sum to store the sum of subarray<br>for i,j = 0; j &lt;= nums.length;<br>if ( sum &gt;= s ) {<br>update minlen;<br>sum -= nums[i]; i++;<br>}<br>else{<br>if( j == nums.length ) break; // j comes to the end and the increment of i will never enlarge the sum. so break;<br>sum += nums[j];<br>j++;<br>}</p>
+<li><p>Minimum Size Subarray Sum<br>two pointer i and j, sum to store the sum of subarray</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i,j = <span class="number">0</span>; j &lt;= nums.length;</span><br><span class="line"><span class="keyword">if</span> ( sum &gt;= s ) &#123;</span><br><span class="line">    update minlen;</span><br><span class="line">    sum -= nums[i]; i++; </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>( j == nums.length ) <span class="keyword">break</span>; <span class="comment">// j comes to the end and the increment of i will never enlarge the sum. so break;</span></span><br><span class="line">    sum += nums[j];</span><br><span class="line">    j++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>Sort Colors<br>someone posted four different solution…omg…<br>What a huge<br>My idea:<br>sort 0 then sort 1. two pass.<br>don’t know the one pass solution…<br>① Insertion solution<br>Explanation: restore the last index of 0, 1, 2 and when it comes a new num, we insert it and increment the corresponding index, eg insert 0, increase index of 0,1,2 but if insert 2 we only need to increase the index of 2.<br>n0,n1,n2<br>for( i from 0 to nums.length){<br>if nums[i] = 0</p>
-<pre><code>nums[++n2] = 2;
-nums[++n1] = 1;
-nums[++n0] = 0
-</code></pre><p>else if<br>else<br>}</p>
+<li><p>Sort Colors<br>someone posted four different solution…omg…<br>What a huge<br>My idea:<br>sort 0 then sort 1. two pass.<br>don’t know the one pass solution…<br>① Insertion solution<br>Explanation: restore the last index of 0, 1, 2 and when it comes a new num, we insert it and increment the corresponding index, eg insert 0, increase index of 0,1,2 but if insert 2 we only need to increase the index of 2.<br>n0,n1,n2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">for( i from 0 to nums.length)&#123;</span><br><span class="line">    if nums[i] = 0</span><br><span class="line">        nums[++n2] = 2;</span><br><span class="line">        nums[++n1] = 1;</span><br><span class="line">        nums[++n0] = 0</span><br><span class="line">    else if</span><br><span class="line">    else </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 
