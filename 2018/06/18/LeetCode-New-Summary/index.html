@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="Leetcode   #2018-6-18   Car FleetN cars are going to the same destination along a one lane road.  The destination is target miles away. Each car i has a constant speed speed[i] (in miles per hour), an">
+<meta name="description" content="Leetcode   2018-6-19854. K-Similar Strings Strings A and B are K-similar (for some non-negative integer K) if we can swap the positions of two letters in A exactly K times so that the resulting string">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode New Summary">
 <meta property="og:url" content="http://yoursite.com/2018/06/18/LeetCode-New-Summary/index.html">
 <meta property="og:site_name" content="Hanzhi&#39;s BLOG">
-<meta property="og:description" content="Leetcode   #2018-6-18   Car FleetN cars are going to the same destination along a one lane road.  The destination is target miles away. Each car i has a constant speed speed[i] (in miles per hour), an">
+<meta property="og:description" content="Leetcode   2018-6-19854. K-Similar Strings Strings A and B are K-similar (for some non-negative integer K) if we can swap the positions of two letters in A exactly K times so that the resulting string">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-18T15:38:23.655Z">
+<meta property="og:updated_time" content="2018-06-19T07:46:49.464Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode New Summary">
-<meta name="twitter:description" content="Leetcode   #2018-6-18   Car FleetN cars are going to the same destination along a one lane road.  The destination is target miles away. Each car i has a constant speed speed[i] (in miles per hour), an">
+<meta name="twitter:description" content="Leetcode   2018-6-19854. K-Similar Strings Strings A and B are K-similar (for some non-negative integer K) if we can swap the positions of two letters in A exactly K times so that the resulting string">
 
 
 
@@ -341,8 +341,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-06-18T23:38:23+08:00">
-                2018-06-18
+              <time title="Post modified" itemprop="dateModified" datetime="2018-06-19T15:46:49+08:00">
+                2018-06-19
               </time>
             
           </span>
@@ -377,14 +377,42 @@
       
         <h1 style="text-align:center">Leetcode</h1> 
 
-<p>#2018-6-18</p>
+<h1 id="2018-6-19"><a href="#2018-6-19" class="headerlink" title="2018-6-19"></a>2018-6-19</h1><h2 id="854-K-Similar-Strings"><a href="#854-K-Similar-Strings" class="headerlink" title="854. K-Similar Strings"></a>854. K-Similar Strings</h2><blockquote>
+<p>Strings A and B are K-similar (for some non-negative integer K) if we can swap the positions of two letters in A exactly K times so that the resulting string equals B.  </p>
+<p>Given two anagrams A and B, return the smallest K for which A and B are K-similar.</p>
+</blockquote>
+<p><strong>Example 1:</strong></p>
 <blockquote>
-<ol start="853">
-<li>Car Fleet<br>N cars are going to the same destination along a one lane road.  The destination is target miles away. Each car i has a constant speed speed[i] (in miles per hour), and initial position position[i] miles towards the target along the road.<br>A car can never pass another car ahead of it, but it can catch up to it, and drive bumper to bumper at the same speed.<br>The distance between these two cars is ignored - they are assumed to have the same position.<br>A car fleet is some non-empty set of cars driving at the same position and same speed.  Note that a single car is also a car fleet.<br>If a car catches up to a car fleet right at the destination point, it will still be considered as one car fleet.</li>
+<p>Input: A = “ab”, B = “ba”<br>Output: 1  </p>
+</blockquote>
+<p><strong>Example 2:</strong>  </p>
+<blockquote>
+<p>Input: A = “abc”, B = “bca”<br>Output: 2  </p>
+</blockquote>
+<p><strong>Example 3:</strong> </p>
+<blockquote>
+<p>Input: A = “abac”, B = “baca”<br>Output: 2  </p>
+</blockquote>
+<p><strong>Example 4:</strong> </p>
+<blockquote>
+<p>Input: A = “aabc”, B = “abca”<br>Output: 2  </p>
+</blockquote>
+<p><strong>Note:</strong></p>
+<blockquote>
+<ol>
+<li>&lt;= A.length == B.length &lt;= 20</li>
+<li>A and B contain only lowercase letters from the set {‘a’, ‘b’, ‘c’, ‘d’, ‘e’, ‘f’}</li>
 </ol>
 </blockquote>
+<p><strong><em>IDEA</em></strong>:<br>When it comes to the shortest distance or shortest of something, we need to consider BFS first. After all, it is the most common algs to solve this problem.<br>In this problem, we use BFS to guarantee the result is shortest, then we swap every pair in A to reach B and <em>offer (because in java queue, the func is offer())</em> all the results to queue then use BFS to solve it.</p>
+<h1 id="2018-6-18"><a href="#2018-6-18" class="headerlink" title="2018-6-18"></a>2018-6-18</h1><h2 id="853-Car-Fleet"><a href="#853-Car-Fleet" class="headerlink" title="853. Car Fleet"></a>853. Car Fleet</h2><blockquote>
+<p>N cars are going to the same destination along a one lane road.  The destination is target miles away. Each car i has a constant speed speed[i] (in miles per hour), and initial position position[i] miles towards the target along the road.<br>A car can never pass another car ahead of it, but it can catch up to it, and drive bumper to bumper at the same speed.The distance between these two cars is ignored - they are assumed to have the same position.<br>A car fleet is some non-empty set of cars driving at the same position and same speed.  Note that a single car is also a car fleet.<br>If a car catches up to a car fleet right at the destination point,it will still be considered as one car fleet.    </p>
 <p>How many car fleets will arrive at the destination?</p>
-<p><strong>Example 1:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: target = 12, position = [10,8,0,5,3], speed = [2,4,1,1,3]</span><br><span class="line">Output: 3</span><br><span class="line">Explanation:</span><br><span class="line">The cars starting at 10 and 8 become a fleet, meeting each other at 12.</span><br><span class="line">The car starting at 0 doesn&apos;t catch up to any other car, so it is a fleet by itself.</span><br><span class="line">The cars starting at 5 and 3 become a fleet, meeting each other at 6.</span><br><span class="line">Note that no other cars meet these fleets before the destination, so the answer is 3.</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p><strong>Example 1:</strong></p>
+<blockquote>
+<p><strong>Input</strong>: target = 12, position = [10,8,0,5,3], speed = [2,4,1,1,3]<br><strong>Output:</strong> 3<br><strong>Explanation:</strong><br>The cars starting at 10 and 8 become a fleet, meeting each other at 12.<br>The car starting at 0 doesn’t catch up to any other car, so it is a fleet by itself.<br>The cars starting at 5 and 3 become a fleet, meeting each other at 6.<br>Note that no other cars meet these fleets before the destination, so the answer is 3.</p>
+</blockquote>
 <p><strong>Note:</strong>  </p>
 <ol>
 <li>0 &lt;= N &lt;= 10 ^ 4</li>
@@ -393,7 +421,7 @@
 <li>0 &lt;= position[i] &lt; target</li>
 <li>All initial positions are different.</li>
 </ol>
-<p><strong><em>Solution:</em></strong><br>We need to find the fleets, so we need to know if one car will catch another one. To simplify the process, we sort the original position array, let’s say in ascending sequence, then we have a new array, let’s name it <em>pos</em>. Then the end of <em>pos</em> is closest to the target and the head of <em>pos</em> is farest to the target.<br>Now from the end of the array, we calculate the time that every car need to take to reach the target, if one car <strong><em>A</em></strong> firstly is ahead of car <strong><em>B</em></strong> but the time of car <strong><em>A</em></strong> need to take to reach the target is larger than <strong><em>B</em></strong>‘s time, it means that car <strong><em>B</em></strong> catches car <strong><em>A</em></strong> in no doubt, which means they are views as one car fleet.<br>So the key of this solution is:</p>
+<p><strong><em>IDEA:</em></strong><br>We need to find the fleets, so we need to know if one car will catch another one. To simplify the process, we sort the original position array, let’s say in ascending sequence, then we have a new array, let’s name it <em>pos</em>. Then the end of <em>pos</em> is closest to the target and the head of <em>pos</em> is farest to the target.<br>Now from the end of the array, we calculate the time that every car need to take to reach the target, if one car <strong><em>A</em></strong> firstly is ahead of car <strong><em>B</em></strong> but the time of car <strong><em>A</em></strong> need to take to reach the target is larger than <strong><em>B</em></strong>‘s time, it means that car <strong><em>B</em></strong> catches car <strong><em>A</em></strong> in no doubt, which means they are views as one car fleet.<br>So the key of this solution is:</p>
 <ol>
 <li>sort position</li>
 <li>calculate the time consumption</li>
@@ -583,7 +611,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Leetcode</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Leetcode</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2018-6-19"><span class="nav-number">2.</span> <span class="nav-text">2018-6-19</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#854-K-Similar-Strings"><span class="nav-number">2.1.</span> <span class="nav-text">854. K-Similar Strings</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2018-6-18"><span class="nav-number">3.</span> <span class="nav-text">2018-6-18</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#853-Car-Fleet"><span class="nav-number">3.1.</span> <span class="nav-text">853. Car Fleet</span></a></li></ol></li></ol></div>
             
 
           </div>
