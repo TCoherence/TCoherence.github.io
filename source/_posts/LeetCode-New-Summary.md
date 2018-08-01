@@ -30,11 +30,41 @@ Output: 3
 Explanation: It could be decoded as "BZ" (2 26), "VF" (22 6), or "BBF" (2 2 6).  
 
 **IDEA:**  
+DP solution:  
+Apparently, for every digit we need to see if it is valid([1 ~ 9]), then the digit comes after need to do the check too([10 ~ 26]), so we have 2 choices for every digit except for some corner cases.  
+Let's consider buttom-up solution, which is from right to left in this problem. For i-th digit, if it is valid, then #the i-th total decode ways += total (i+1)-th decode ways. If (i_i+1) two digits are valid, then #the i-th total decode ways += (i+2)-th decode ways. This is showed as follows:  
+DP[i] = DP[i + 1] + DP[i + 2]  
 
 
 
 # 100+
+## 104. Maximum Depth of Binary Tree
+Given a binary tree, find its maximum depth.
 
+The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
+
+**Note:** A leaf is a node with no children.
+
+**IDEA:**  
+dfs, recursive solution
+
+## 136. Single Number [E]
+Given a non-empty array of integers, every element appears twice except for one. Find that single one.
+
+Note:
+Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
+
+**Example 1:**  
+>Input: [2,2,1]  
+>Output: 1
+
+**Example 2:**
+>Input: [4,1,2,1,2]  
+>Output: 4
+
+**IDEA:**  
+linear time -> two loop, one loop to calculate the freq and one loop to find the single number.
+If require no extra memory, we can use ^ oprator, because a ^ a ^ b = b.
 
 # 200+
 ## 274. H-Index
@@ -59,16 +89,60 @@ So one loop for original array to update bucket array and one loop for bucket ar
 Time Performance: O(N)
 Space Performance: O(N)
 
+## 292. Nim Game
+You are playing the following Nim Game with your friend: There is a heap of stones on the table, each time one of you take turns to remove 1 to 3 stones. The one who removes the last stone will be the winner. You will take the first turn to remove the stones.
 
+Both of you are very clever and have optimal strategies for the game. Write a function to determine whether you can win the game given the number of stones in the heap.
+
+**IDEA:**  
+it is important to find that it is relative to those multiples of 4.
 
 
 # 300+
+## 337. House Robber III 
+The thief has found himself a new place for his thievery again. There is only one entrance to this area, called the "root." Besides the root, each house has one and only one parent house. After a tour, the smart thief realized that "all houses in this place forms a binary tree". It will automatically contact the police if two directly-linked houses were broken into on the same night.
+
+Determine the maximum amount of money the thief can rob tonight without alerting the police.
+
+**IDEA:**  
+naive recursive solution -> pruning solution(using HashMap) -> DP solution(return results under 2 different conditions)
+
+## 344. Reverse String [E]
+Write a function that takes a string as input and returns the string reversed.
+
+**Example:**  
+Given s = "hello", return "olleh".
+
+**IDEA:**  
+easy swap
 
 
 # 400+
+## 461. Hamming Distance [Easy]
+The Hamming distance between two integers is the number of positions at which the corresponding bits are different.
+Given two integers x and y, calculate the Hamming distance.
 
+**IDEA:**  
+Integer.bitCount()
+
+## 463. Island Perimeter
+You are given a map in form of a two-dimensional integer grid where 1 represents land and 0 represents water. Grid cells are connected horizontally/vertically (not diagonally). The grid is completely surrounded by water, and there is exactly one island (i.e., one or more connected land cells). The island doesn't have "lakes" (water inside that isn't connected to the water around the island). One cell is a square with side length 1. The grid is rectangular, width and height don't exceed 100. Determine the perimeter of the island.
+
+**IDEA:**  
+THIS IS ONLY ONE ISLAND. So go throught the whole 2D-array, for every '1', we check its surrounding value and calculate its perimeter, and update the how perimeter.
 
 # 500+
+## 513. Find Bottom Left Tree Value [Medium]
+Given a binary tree, find the leftmost value in the last row of the tree.
+
+**IDEA:**
+Easy BFS and push node in left to right order. Then store the val from the first out node.
+
+## 561. Array Partition I
+Given an array of 2n integers, your task is to group these integers into n pairs of integer, say (a1, b1), (a2, b2), ..., (an, bn) which makes sum of min(ai, bi) for all i from 1 to n as large as possible.
+
+**IDEA:**  
+greedy: sort then sum one out of every 2 numbers.
 
 # 600+
 ## 605. Can Place Flowers  
@@ -92,19 +166,135 @@ Note:
 **IDEA**:  
 TWO corner cases: the first and the end of the array.
 
+## 637. Average of Levels in Binary Tree
+Given a non-empty binary tree, return the average value of the nodes on each level in the form of an array.
+
+**IDEA:**  
+BFS and calculate average, be careful about the result date type, int is not eligible
+
+
 ## 646. Maximum Length of Pair Chain
 
 **Idea:**  
 The tag of this problem is DP but it seems like a greedy problem and I cannot figure out how to use dp to solve it?
 
+## 657. Judge Route Circle [Easy]
+Initially, there is a Robot at position (0, 0). Given a sequence of its moves, judge if this robot makes a circle, which means it moves back to the original place.
+
+The move sequence is represented by a string. And each move is represent by a character. The valid robot moves are R (Right), L (Left), U (Up) and D (down). The output should be true or false representing whether the robot makes a circle.
+
+**IDEA:**  
+Easy, no 
+
+## 693. Binary Number with Alternating Bits
+Given a positive integer, check whether it has alternating bits: namely, if two adjacent bits will always have different values.
+
+**Example 1:**
+>Input: 5  
+Output: True  
+Explanation:  
+The binary representation of 5 is: 101
+
+**Example 2:**
+>Input: 7  
+Output: False  
+Explanation:  
+The binary representation of 7 is: 111.
+
+**Example 3:**
+>Input: 11  
+Output: False  
+Explanation:  
+The binary representation of 11 is: 1011.
+
+**Example 4:**
+>Input: 10  
+Output: True  
+Explanation:  
+The binary representation of 10 is: 1010.
+
+**IDEA:**  
+1. O(32) solution, check every bit
+2. n -> 32-bit '1' -> n&(n + 1) == 0 ?
+
+## 698. Partition to K Equal Sum Subsets
+Given an array of integers nums and a positive integer k, find whether it's possible to divide this array into k non-empty subsets whose sums are all equal.
+
+**Example 1:**
+>Input: nums = [4, 3, 2, 3, 5, 2, 1], k = 4
+>Output: True
+>Explanation: It's possible to divide it into 4 subsets (5), (1, 4), (2,3), (2,3) with equal sums.
+
+Note:  
+* 1 <= k <= len(nums) <= 16.
+* 0 < nums[i] < 10000.
+
+**IDEA:**  
+ONE OF THE MOST DISGUSTING PROBLEM:
+Hints : buckets. 
 
 # 700+
-## 
+## 766. Toeplitz Matrix
+A matrix is Toeplitz if every diagonal from top-left to bottom-right has the same element.
+
+Now given an M x N matrix, return True if and only if the matrix is Toeplitz.
+
+**IDEA:**  
+brute force. We have to check every elements.
 
 
 
 
 # 800+
+
+## 811. Subdomain Visit Count [Easy]
+A website domain like "discuss.leetcode.com" consists of various subdomains. At the top level, we have "com", at the next level, we have "leetcode.com", and at the lowest level, "discuss.leetcode.com". When we visit a domain like "discuss.leetcode.com", we will also visit the parent domains "leetcode.com" and "com" implicitly.
+
+Now, call a "count-paired domain" to be a count (representing the number of visits this domain received), followed by a space, followed by the address. An example of a count-paired domain might be "9001 discuss.leetcode.com".
+
+We are given a list cpdomains of count-paired domains. We would like a list of count-paired domains, (in the same format as the input, and in any order), that explicitly counts the number of visits to each subdomain.
+
+**Example 1:**  
+>Input: 
+>["9001 discuss.leetcode.com"]  
+>Output:    
+>["9001 discuss.leetcode.com", "9001 leetcode.com", "9001 com"]
+>Explanation:   
+>We only have one website domain: "discuss.leetcode.com". As discussed above, the subdomain "leetcode.com" and "com" will also be visited. So they will all be visited 9001 times.
+
+**Example 2:**
+>Input:  
+>["900 google.mail.com", "50 yahoo.com", "1 intel.mail.com", "5 wiki.org"]  
+>Output:   
+>["901 mail.com","50 yahoo.com","900 google.mail.com","5 wiki.org","5 org","1 intel.mail.com","951 com"]  
+>Explanation:   
+>We will visit "google.mail.com" 900 times, "yahoo.com" 50 times, "intel.mail.com" once and "wiki.org" 5 times. For the subdomains, we
+
+**IDEA:** 
+Easy HashMap
+
+## 852. Peak Index in a Mountain Array
+Let's call an array A a mountain if the following properties hold:
+
+A.length >= 3
+There exists some 0 < i < A.length - 1 such that A[0] < A[1] < ... A[i-1] < A[i] > A[i+1] > ... > A[A.length - 1]
+Given an array that is definitely a mountain, return any i such that A[0] < A[1] < ... A[i-1] < A[i] > A[i+1] > ... > A[A.length - 1].
+
+**Example 1:**
+>Input: [0,1,0]  
+>Output: 1
+
+**Example 2:**
+>Input: [0,2,1,0]  
+>Output: 1
+
+Note:
+* 3 <= A.length <= 10000
+* 0 <= A[i] <= 10^6
+* A is a mountain, as defined above.
+
+**IDEA:**  
+Because it is definitely a mountain, we can binary search the topest value in this array and return its index.
 
 ## 853. Car Fleet  
 N cars are going to the same destination along a one lane road.  The destination is target miles away. Each car i has a constant speed speed[i] (in miles per hour), and initial position position[i] miles towards the target along the road.  
