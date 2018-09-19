@@ -4,11 +4,81 @@ date: 2018-06-18 21:18:39
 tags: LeetCode
 categories: leetcode
 ---
+# LeetCode New Summary
+
 [TOC]  
 
->This is a review of every lc problems I have done.
+**This is a review of every lc problems I have done.**
 
-# 100-
+# 0 - 100
+
+## 1. Two Sum
+Given an array of integers, return indices of the two numbers such that they add up to a specific target.
+
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+>Example:  
+>Given nums = [2, 7, 11, 15], target = 9,  
+>Because nums[0] + nums[1] = 2 + 7 = 9,
+>return [0, 1].
+
+**IDEA**:  
+a. sorted -> binary search -> O(N) to search first num and O(logN) which leads to O(NlogN) in total and O(1) space cost.  
+b. use HashMap, O(N) time cost and O(N) space cose.
+
+## 2. Add Two Numbers
+You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.
+
+You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+
+Example:  
+>Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)  
+>Output: 7 -> 0 -> 8  
+>Explanation: 342 + 465 = 807.
+
+**IDEA:**  
+a. one temp var to record carry bit.
+
+## 3. Longest Substring Without Repeating Characters
+Given a string, find the length of the longest substring without repeating characters.
+
+>Example 1:  
+>Input: "abcabcbb"
+>Output: 3 
+>Explanation: The answer is "abc", with the length of 3. 
+>Example 2:
+>Input: "bbbbb"
+>Output: 1
+>Explanation: The answer is "b", with the length of 1.
+>Example 3:
+>Input: "pwwkew"
+>Output: 3
+>Explanation: The answer is "wke", with the length of 3. 
+             Note that the answer must be a substring, "pwke" is a subsequence and not a substring.  
+
+**IDEA:**
+record every char's index, once repeat, update globalMaxLength and localMaxLength;
+
+## 4. Median of Two Sorted Arrays
+There are two sorted arrays nums1 and nums2 of size m and n respectively.
+Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).
+You may assume nums1 and nums2 cannot be both empty.
+
+>Example 1:
+>nums1 = [1, 3]
+>nums2 = [2]
+>The median is 2.0
+>Example 2:
+>nums1 = [1, 2]
+>nums2 = [3, 4]
+>The median is (2 + 3)/2 = 2.5
+
+**IDEA:**
+**need to be write in detail**
+The median of an array is a number that divide the array into 2 subarray, every num in the left array is smaller than the median and every num in the right array is larger than the median.
+
+
+
 ## 91. Decode Ways
 A message containing letters from A-Z is being encoded to numbers using the following mapping:
 
@@ -37,7 +107,7 @@ DP[i] = DP[i + 1] + DP[i + 2]
 
 
 
-# 100+
+# 100 - 200
 ## 104. Maximum Depth of Binary Tree
 Given a binary tree, find its maximum depth.
 
@@ -66,7 +136,7 @@ Your algorithm should have a linear runtime complexity. Could you implement it w
 linear time -> two loop, one loop to calculate the freq and one loop to find the single number.
 If require no extra memory, we can use ^ oprator, because a ^ a ^ b = b.
 
-# 200+
+# 200 - 300
 ## 274. H-Index
 Given an array of citations (each citation is a non-negative integer) of a researcher, write a function to compute the researcher's h-index.  
 According to the definition of h-index on Wikipedia: "A scientist has index h if h of his/her N papers have at least h citations each, and the other N − h papers have no more than h citations each."
@@ -98,7 +168,7 @@ Both of you are very clever and have optimal strategies for the game. Write a fu
 it is important to find that it is relative to those multiples of 4.
 
 
-# 300+
+# 300 - 400
 ## 337. House Robber III 
 The thief has found himself a new place for his thievery again. There is only one entrance to this area, called the "root." Besides the root, each house has one and only one parent house. After a tour, the smart thief realized that "all houses in this place forms a binary tree". It will automatically contact the police if two directly-linked houses were broken into on the same night.
 
@@ -117,7 +187,7 @@ Given s = "hello", return "olleh".
 easy swap
 
 
-# 400+
+# 400 - 500 
 ## 461. Hamming Distance [Easy]
 The Hamming distance between two integers is the number of positions at which the corresponding bits are different.
 Given two integers x and y, calculate the Hamming distance.
@@ -131,7 +201,7 @@ You are given a map in form of a two-dimensional integer grid where 1 represents
 **IDEA:**  
 THIS IS ONLY ONE ISLAND. So go throught the whole 2D-array, for every '1', we check its surrounding value and calculate its perimeter, and update the how perimeter.
 
-# 500+
+# 500 - 600
 ## 513. Find Bottom Left Tree Value [Medium]
 Given a binary tree, find the leftmost value in the last row of the tree.
 
@@ -144,7 +214,7 @@ Given an array of 2n integers, your task is to group these integers into n pairs
 **IDEA:**  
 greedy: sort then sum one out of every 2 numbers.
 
-# 600+
+# 600 - 700 
 ## 605. Can Place Flowers  
 
 Suppose you have a long flowerbed in which some of the plots are planted and some are not. However, flowers cannot be planted in adjacent plots - they would compete for water and both would die.  
@@ -233,7 +303,7 @@ Note:
 ONE OF THE MOST DISGUSTING PROBLEM:
 Hints : buckets. 
 
-# 700+
+# 700 - 800
 ## 766. Toeplitz Matrix
 A matrix is Toeplitz if every diagonal from top-left to bottom-right has the same element.
 
@@ -245,7 +315,7 @@ brute force. We have to check every elements.
 
 
 
-# 800+
+# 800 - 900
 
 ## 811. Subdomain Visit Count [Easy]
 A website domain like "discuss.leetcode.com" consists of various subdomains. At the top level, we have "com", at the next level, we have "leetcode.com", and at the lowest level, "discuss.leetcode.com". When we visit a domain like "discuss.leetcode.com", we will also visit the parent domains "leetcode.com" and "com" implicitly.
