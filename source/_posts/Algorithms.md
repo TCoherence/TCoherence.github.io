@@ -7,6 +7,11 @@ categories: summary
 
 # ALGORITHM
 
+>This is how I learn algorithm.
+
+<!--more-->
+
+
 ## 1. Backtracking
 
 ## 2. DP ( learning ) 

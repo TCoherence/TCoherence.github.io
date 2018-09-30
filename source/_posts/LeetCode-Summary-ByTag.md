@@ -8,8 +8,24 @@ categories: summary
 # LeetCode Summary By Tag
 > To make it easier to review the leetcode, classify different into groups according to its tags.
 
-[TOC]
+<!-- TOC -->
 
+- [LeetCode Summary By Tag](#leetcode-summary-by-tag)
+    - [1. Array](#1-array)
+        - [1. Two Sum](#1-two-sum)
+        - [11. Container With Most Water](#11-container-with-most-water)
+        - [15. 3Sum](#15-3sum)
+        - [16. 3Sum Closest](#16-3sum-closest)
+        - [18. 4Sum](#18-4sum)
+        - [26. Remove Duplicates from Sorted Array](#26-remove-duplicates-from-sorted-array)
+        - [27. Remove Element](#27-remove-element)
+        - [41. First Missing Positive](#41-first-missing-positive)
+        - [42. Trapping Rain Water](#42-trapping-rain-water)
+    - [2. Number](#2-number)
+    - [3. List](#3-list)
+
+<!-- /TOC -->
+<!--more-->
 ## 1. Array
 
 ### 1. Two Sum
@@ -36,7 +52,7 @@ Discription: [Click Here](https://leetcode.com/problems/3sum-closest/description
 **Idea:**
 Same idea with #15
 
-### 18. 4Sum
+### 18. 4Sum
 Discription: [Click Here](https://leetcode.com/problems/4sum/description/)
 **Idea:**
 Same idea with #15, but need 4 pointers and cost $O(N^3)$ time.
