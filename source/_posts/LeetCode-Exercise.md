@@ -14,6 +14,7 @@ categories: leetcode
 > Updated 2018-5-9, the following days will be tough and I have to rearrange the quantity of leetcode problems. The next 2 weeks' focus is on GRADUATTION PROJECT & Side Project preparation.
 > Fight.
 
+<!--more-->
 # 2018-5-14
 98.Validate Binary Search Tree
 My first thought is using a stack to store the BST in preorder and compare the new-to-stack element's value **a** with stack.peek() = **b** , if a > b then it is false;

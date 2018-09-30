@@ -6,10 +6,51 @@ categories: leetcode
 ---
 # LeetCode New Summary
 
-[TOC]  
+<!-- TOC -->
+
+- [LeetCode New Summary](#leetcode-new-summary)
+- [0 - 100](#0---100)
+    - [1. Two Sum](#1-two-sum)
+    - [2. Add Two Numbers](#2-add-two-numbers)
+    - [3. Longest Substring Without Repeating Characters](#3-longest-substring-without-repeating-characters)
+    - [4. Median of Two Sorted Arrays](#4-median-of-two-sorted-arrays)
+    - [91. Decode Ways](#91-decode-ways)
+- [100 - 200](#100---200)
+    - [104. Maximum Depth of Binary Tree](#104-maximum-depth-of-binary-tree)
+    - [136. Single Number [E]](#136-single-number-e)
+- [200 - 300](#200---300)
+    - [274. H-Index](#274-h-index)
+    - [292. Nim Game](#292-nim-game)
+- [300 - 400](#300---400)
+    - [337. House Robber III](#337-house-robber-iii)
+    - [344. Reverse String [E]](#344-reverse-string-e)
+- [400 - 500](#400---500)
+    - [461. Hamming Distance [Easy]](#461-hamming-distance-easy)
+    - [463. Island Perimeter](#463-island-perimeter)
+- [500 - 600](#500---600)
+    - [513. Find Bottom Left Tree Value [Medium]](#513-find-bottom-left-tree-value-medium)
+    - [561. Array Partition I](#561-array-partition-i)
+- [600 - 700](#600---700)
+    - [605. Can Place Flowers](#605-can-place-flowers)
+    - [637. Average of Levels in Binary Tree](#637-average-of-levels-in-binary-tree)
+    - [646. Maximum Length of Pair Chain](#646-maximum-length-of-pair-chain)
+    - [657. Judge Route Circle [Easy]](#657-judge-route-circle-easy)
+    - [693. Binary Number with Alternating Bits](#693-binary-number-with-alternating-bits)
+    - [698. Partition to K Equal Sum Subsets](#698-partition-to-k-equal-sum-subsets)
+- [700 - 800](#700---800)
+    - [766. Toeplitz Matrix](#766-toeplitz-matrix)
+- [800 - 900](#800---900)
+    - [811. Subdomain Visit Count [Easy]](#811-subdomain-visit-count-easy)
+    - [852. Peak Index in a Mountain Array](#852-peak-index-in-a-mountain-array)
+    - [853. Car Fleet](#853-car-fleet)
+    - [854. K-Similar Strings](#854-k-similar-strings)
+    - [855. Exam Room](#855-exam-room)
+
+<!-- /TOC -->
 
 **This is a review of every lc problems I have done.**
 
+<!--more-->
 # 0 - 100
 
 ## 1. Two Sum
