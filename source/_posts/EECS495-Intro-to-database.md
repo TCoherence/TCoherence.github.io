@@ -2,14 +2,14 @@
 title: EECS495_Intro_to_database
 date: 2018-12-17 18:08:04
 tags:
-categories: Northwestern Unversity
+categories: Northwestern University
 ---
 # Intro to Database
 
 > this is a brief summary of this course, since quarter is at the end, no excuse not to write a summary :-)
 > I will summary every chapter of this course and then make a whole summary.
 
-## 1. DB fundamentals
+## DB fundamentals
 Database like txt file or another file storage type. It stores data, but why we design a new model to store the data not just use what we have now? Because of efficiency, database can retrieve data more quick than normal type file storage. Moreover, it can normalize the data to make them more conpact to reduce space usage which is also important for large scale system.
 ***Database*** is a large collection of organized data.
 ***Database Management System(DBMS)*** is a tool designed to manage and utilize databases.
@@ -37,7 +37,7 @@ GROUP BY department
 
 
 
-## 2. ERD
+## ERD
 A direct diagram to illustrate the relationship between different entities, but what is entity? Entity is a box, containg all the information in a table. You can see it as a pictural discriptor of table. It contains attributes, and relationships with other entities.
 - Entity: a rectangle
 - Attribute: an oval
@@ -54,9 +54,11 @@ Generalization Hierarchy:
 Weak Entity:
 Occurs in 1-M relationships, for example, in 2 different teams, both has a teammate called No.2, then we have to combine team name and their number to locate the person accurately.[This entity will be represented by a double rectangle]
 
-Here is two examples, one for normal ERD and one for weak entity:
+Here is a example, including both normal ERD and weak entity:
 
-## 3. Relational Model
+![example](https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS495-Intro-to-database/Screen%20Shot%202018-12-18%20at%2010.52.16%20PM.png)
+
+## Relational Model
 When we get ERD, how we change it into a relational model, which is also known as schema? Here are some solutions for different kinds of problems.
 - 1-M  
   - Add the key of "1" entity, as a *foreign key* to the table of "M" entity
@@ -75,7 +77,7 @@ When we get ERD, how we change it into a relational model, which is also known a
   - ER style: Create a model for each entity, and subclass only contains parent's primary key(s)
     - This is useful for queries involving the the common attributes of the superclass.
 
-## 4. Relational Algebra
+## Relational Algebra
 When we have Relational Model, how we retrieve the data we want? Sometimes we can get the data just from one model, but most of the time we have to retrieve data from the combination of different models(schemas). Relational Algebra is used to do this stuff. It helps us to be more clear about the procedure to retrieve the required data.
 - Union
   - $R1 \bigcup R2$
@@ -97,31 +99,42 @@ When we have Relational Model, how we retrieve the data we want? Sometimes we ca
   - $R1 = \rho_{R1(A1, ..., An)}(R2)$
 
 We commonly use expression tree or relational algebra to express the data we want to retrieve. Here is 2 examples respectively.
+
+QUERY : The names of all the bars that are either on Maple
+St. or sell Bud for less than $3.
 ![expression tree](https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS495-Intro-to-database/Screen%20Shot%202018-12-18%20at%2010.47.03%20PM.png)
-## 5. SQL Part I
 
-## 6. SQL Part II
+QUERY : patient IDs that have seen a pediatrician
+we have scheme as follows:  
+hospital(hosp_id, h_name, h_addr)  
+doctor(doctor_id, d_name, d_specialty, hosp_id)  
+patient(patient_id, p_name, p_dob, doctor_id)
+$\pi_{patient}(patients \bowtie_{doctor\_id}\sigma_{specialty='pediatrician'}(doctors))$
 
-## 7. Advanced SQL
+## SQL Part I
 
-## 8. Programming in SQL
+## SQL Part II
 
-## 9. PL/SQL and Functional Dependency
+## Advanced SQL
 
-## 10. Normalization
+## Programming in SQL
 
-## 11. Transaction
+## PL/SQL and Functional Dependency
 
-## 12. Deadlock & Isolation Level
+## Normalization
 
-## 13. Disk Storage & Management
+## Transaction
 
-## 14. Indexing
+## Deadlock & Isolation Level
 
-## 15. Hashed Indexing & Query Cost
+## Disk Storage & Management
 
-## 16. Join & Multidim Modeling
+## Indexing
 
-## 17. MDX Queries
+## Hashed Indexing & Query Cost
 
-## 18. Graph Database
+## Join & Multidim Modeling
+
+## MDX Queries
+
+## Graph Database
