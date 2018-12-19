@@ -23,7 +23,7 @@ In database, there is one important concept: **Table**, it contains several comp
 
 Here is a illustration picture:
 
-
+![illustration picture](https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS495-Intro-to-database/Screen%20Shot%202018-12-17%20at%206.37.56%20PM.png)
 
 Query Language is a specialized laguage for retrieving and manipulating data used with a DBMS, but a Query is just a command written in Query Language to DBMS.
 
@@ -34,9 +34,6 @@ FROM employees e
 WHERE e.age > 18
 GROUP BY department
 ```  
-
-
-
 
 
 
@@ -100,7 +97,7 @@ When we have Relational Model, how we retrieve the data we want? Sometimes we ca
   - $R1 = \rho_{R1(A1, ..., An)}(R2)$
 
 We commonly use expression tree or relational algebra to express the data we want to retrieve. Here is 2 examples respectively.
-
+![expression tree](https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS495-Intro-to-database/Screen%20Shot%202018-12-18%20at%2010.47.03%20PM.png)
 ## 5. SQL Part I
 
 ## 6. SQL Part II
