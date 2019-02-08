@@ -8,7 +8,7 @@ categories: Northwestern University
 
 > this is a brief summary of this course, since quarter is at the end, no excuse not to write a summary :-)
 > I will summary every chapter of this course and then make a whole summary.
-
+<!--more-->
 ## DB fundamentals
 Database like txt file or another file storage type. It stores data, but why we design a new model to store the data not just use what we have now? Because of efficiency, database can retrieve data more quick than normal type file storage. Moreover, it can normalize the data to make them more conpact to reduce space usage which is also important for large scale system.
 ***Database*** is a large collection of organized data.
@@ -97,6 +97,8 @@ When we have Relational Model, how we retrieve the data we want? Sometimes we ca
   - connect 2 relations by common attributes and same field.
 - Rename
   - $R1 = \rho_{R1(A1, ..., An)}(R2)$
+- Division
+  - $R = R1 / R2$
 
 We commonly use expression tree or relational algebra to express the data we want to retrieve. Here is 2 examples respectively.
 
@@ -112,7 +114,19 @@ patient(patient_id, p_name, p_dob, doctor_id)
 $\pi_{patient}(patients \bowtie_{doctor\_id}\sigma_{specialty='pediatrician'}(doctors))$
 
 ## SQL Part I
-
+Now we know about the relationships between entities and how to retrieve the data in logical way. Now we need to create real entity which now is called **Table**.  
+Here is an example of creating a table in sql:  
+```sql
+CREATE TABLE movie (
+  movie_id NUMBER PRIMARY KEY,
+  name CHAR(20) NOT NULL,
+  city VARCHAR(20) NOT NULL,
+  state CHAR(2) NOT NULL,
+  release_date DATE,
+  CONSTRAINT release_date_contraint CHECK (release_date between '01-Jan-1980' and '31-Dec-1989')
+)
+```
+In the above code, we notice that there are some UPPERCASE WORDS like PRIMARY KEY, NOT NULL, CONSTRAINT. Those are called **Integrity Constraints**(IC). NUMBER, CHAR, VARCHAR and DATE are **Date Type**
 ## SQL Part II
 
 ## Advanced SQL

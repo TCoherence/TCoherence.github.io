@@ -11,6 +11,7 @@ categories: Northwestern University
 > I know ML is the frontier of computer science but it hurts me when I find this phnomenon. I am really interested in ML. I hope I can be another kinds of people who really understand the concept of ML.
 > I know I am just talking, but I hope I can do what I said.
 
+<!--more-->
 1. Linear regression
 2. logicla regression
 3. classification
