@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="final summary,database,">
 
 
 
@@ -80,6 +80,7 @@
 
 
 <meta name="description" content="Intro to Database this is a brief summary of this course, since quarter is at the end, no excuse not to write a summary :-)I will summary every chapter of this course and then make a whole summary.">
+<meta name="keywords" content="final summary,database">
 <meta property="og:type" content="article">
 <meta property="og:title" content="EECS495_Intro_to_database">
 <meta property="og:url" content="https://tcoherence.github.io/2018/12/17/EECS495-Intro-to-database/index.html">
@@ -87,7 +88,9 @@
 <meta property="og:description" content="Intro to Database this is a brief summary of this course, since quarter is at the end, no excuse not to write a summary :-)I will summary every chapter of this course and then make a whole summary.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS495-Intro-to-database/Screen%20Shot%202018-12-17%20at%206.37.56%20PM.png">
-<meta property="og:updated_time" content="2018-12-24T23:56:47.580Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS495-Intro-to-database/Screen%20Shot%202018-12-18%20at%2010.52.16%20PM.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS495-Intro-to-database/Screen%20Shot%202018-12-18%20at%2010.47.03%20PM.png">
+<meta property="og:updated_time" content="2019-03-15T20:02:46.661Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EECS495_Intro_to_database">
 <meta name="twitter:description" content="Intro to Database this is a brief summary of this course, since quarter is at the end, no excuse not to write a summary :-)I will summary every chapter of this course and then make a whole summary.">
@@ -101,7 +104,7 @@
     root: '/',
     scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -341,8 +344,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-12-24T17:56:47-06:00">
-                2018-12-24
+              <time title="Post modified" itemprop="dateModified" datetime="2019-03-15T15:02:46-05:00">
+                2019-03-15
               </time>
             
           </span>
@@ -398,8 +401,9 @@
 
       
         <h1 id="Intro-to-Database"><a href="#Intro-to-Database" class="headerlink" title="Intro to Database"></a>Intro to Database</h1><blockquote>
-<p>this is a brief summary of this course, since quarter is at the end, no excuse not to write a summary :-)<br>I will summary every chapter of this course and then make a whole summary.<br><a id="more"></a></p>
+<p>this is a brief summary of this course, since quarter is at the end, no excuse not to write a summary :-)<br>I will summary every chapter of this course and then make a whole summary. </p>
 </blockquote>
+<a id="more"></a>
 <h2 id="DB-fundamentals"><a href="#DB-fundamentals" class="headerlink" title="DB fundamentals"></a>DB fundamentals</h2><p>Database like txt file or another file storage type. It stores data, but why we design a new model to store the data not just use what we have now? Because of efficiency, database can retrieve data more quick than normal type file storage. Moreover, it can normalize the data to make them more conpact to reduce space usage which is also important for large scale system.<br><strong><em>Database</em></strong> is a large collection of organized data.<br><strong><em>Database Management System(DBMS)</em></strong> is a tool designed to manage and utilize databases.</p>
 <p>In database, there is one important concept: <strong>Table</strong>, it contains several components: </p>
 <ol>
@@ -411,7 +415,111 @@
 <p>Here is a illustration picture:</p>
 <p><img src="https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS495-Intro-to-database/Screen%20Shot%202018-12-17%20at%206.37.56%20PM.png" alt="illustration picture"></p>
 <p>Query Language is a specialized laguage for retrieving and manipulating data used with a DBMS, but a Query is just a command written in Query Language to DBMS.</p>
-<p>Here is an example query language(MySQL):<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> department, <span class="keyword">COUNT</span>(*)</span><br><span class="line"><span class="keyword">FROM</span> employees e</span><br><span class="line"><span class="keyword">WHERE</span> e.age &gt; <span class="number">18</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> department</span><br><span class="line"><span class="string">``</span><span class="string">`  </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">## ERD</span></span><br><span class="line"><span class="string">A direct diagram to illustrate the relationship between different entities, but what is entity? Entity is a box, containg all the information in a table. You can see it as a pictural discriptor of table. It contains attributes, and relationships with other entities.</span></span><br><span class="line"><span class="string">- Entity: a rectangle</span></span><br><span class="line"><span class="string">- Attribute: an oval</span></span><br><span class="line"><span class="string">  - (Primary Key should be **highlighted** with a *underline*)  </span></span><br><span class="line"><span class="string">- Relationship: a line with some notation</span></span><br><span class="line"><span class="string">  - (To indicate 1-1, 1-M, M-M relationship)</span></span><br><span class="line"><span class="string">  - (It can contains Attrs too)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Generalization Hierarchy:</span></span><br><span class="line"><span class="string">- Disjoint: can be only one of them</span></span><br><span class="line"><span class="string">- Overlapping: can be any of them.</span></span><br><span class="line"><span class="string">- isa hierarchy: will be introduce in the future</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Weak Entity:</span></span><br><span class="line"><span class="string">Occurs in 1-M relationships, for example, in 2 different teams, both has a teammate called No.2, then we have to combine team name and their number to locate the person accurately.[This entity will be represented by a double rectangle]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Here is a example, including both normal ERD and weak entity:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">![example](https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS495-Intro-to-database/Screen%20Shot%202018-12-18%20at%2010.52.16%20PM.png)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">## Relational Model</span></span><br><span class="line"><span class="string">When we get ERD, how we change it into a relational model, which is also known as schema? Here are some solutions for different kinds of problems.</span></span><br><span class="line"><span class="string">- 1-M  </span></span><br><span class="line"><span class="string">  - Add the key of "1" entity, as a *foreign key* to the table of "M" entity</span></span><br><span class="line"><span class="string">  - Add the attributes of the relationship type</span></span><br><span class="line"><span class="string">- M-M</span></span><br><span class="line"><span class="string">  - We add the key of both entities to relationship model.</span></span><br><span class="line"><span class="string">- 1-1</span></span><br><span class="line"><span class="string">  - This is a special case for 1-M, so it is the same.</span></span><br><span class="line"><span class="string">- Weak Entity</span></span><br><span class="line"><span class="string">  - This is also a special case for 1-M, so we add primary key of Strong entity as a ***foreign key*** to the weak entity.</span></span><br><span class="line"><span class="string">- Subclass</span></span><br><span class="line"><span class="string">  - Objected-oriented: create a model for each entity, but subclasses will contains every attributes of parent's entity.</span></span><br><span class="line"><span class="string">    - This is useful for queries involving both common and special attributes.</span></span><br><span class="line"><span class="string">  - Use nulls: create only one parent entity and add all subclass's attributes to parent's model.</span></span><br><span class="line"><span class="string">    - This is useful for queries like special member number almost equals to number of members in superclass.   </span></span><br><span class="line"><span class="string">  - ER style: Create a model for each entity, and subclass only contains parent's primary key(s)</span></span><br><span class="line"><span class="string">    - This is useful for queries involving the the common attributes of the superclass.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">## Relational Algebra</span></span><br><span class="line"><span class="string">When we have Relational Model, how we retrieve the data we want? Sometimes we can get the data just from one model, but most of the time we have to retrieve data from the combination of different models(schemas). Relational Algebra is used to do this stuff. It helps us to be more clear about the procedure to retrieve the required data.</span></span><br><span class="line"><span class="string">- Union</span></span><br><span class="line"><span class="string">  - $R1 \bigcup R2$</span></span><br><span class="line"><span class="string">- Intersection</span></span><br><span class="line"><span class="string">  - $R1 \bigcap R2$</span></span><br><span class="line"><span class="string">- Difference</span></span><br><span class="line"><span class="string">  - $R1 - R2$</span></span><br><span class="line"><span class="string">- Projection</span></span><br><span class="line"><span class="string">  - $\pi_&#123;A1,A2, ...&#125;(R)$, we project corresponding columns out of relation R</span></span><br><span class="line"><span class="string">- Selection</span></span><br><span class="line"><span class="string">  - $\sigma_&#123;length \geq 100&#125;(Movies)$, we select rows in Movies those length is greater or equals to 100.</span></span><br><span class="line"><span class="string">- Cartesian(Cross) Product</span></span><br><span class="line"><span class="string">  - $R1 \times R2$</span></span><br><span class="line"><span class="string">- Theta(Conditional) Join</span></span><br><span class="line"><span class="string">  - $R1 \bowtie_&#123;C&#125; R2$</span></span><br><span class="line"><span class="string">- Natural join</span></span><br><span class="line"><span class="string">  - connect 2 relations by common attributes and same field.</span></span><br><span class="line"><span class="string">- Rename</span></span><br><span class="line"><span class="string">  - $R1 = \rho_&#123;R1(A1, ..., An)&#125;(R2)$</span></span><br><span class="line"><span class="string">- Division</span></span><br><span class="line"><span class="string">  - $R = R1 / R2$</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">We commonly use expression tree or relational algebra to express the data we want to retrieve. Here is 2 examples respectively.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">QUERY : The names of all the bars that are either on Maple</span></span><br><span class="line"><span class="string">St. or sell Bud for less than $3.</span></span><br><span class="line"><span class="string">![expression tree](https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS495-Intro-to-database/Screen%20Shot%202018-12-18%20at%2010.47.03%20PM.png)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">QUERY : patient IDs that have seen a pediatrician</span></span><br><span class="line"><span class="string">we have scheme as follows:  </span></span><br><span class="line"><span class="string">hospital(hosp_id, h_name, h_addr)  </span></span><br><span class="line"><span class="string">doctor(doctor_id, d_name, d_specialty, hosp_id)  </span></span><br><span class="line"><span class="string">patient(patient_id, p_name, p_dob, doctor_id)</span></span><br><span class="line"><span class="string">$\pi_&#123;patient&#125;(patients \bowtie_&#123;doctor\_id&#125;\sigma_&#123;specialty='pediatrician'&#125;(doctors))$</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">## SQL Part I</span></span><br><span class="line"><span class="string">Now we know about the relationships between entities and how to retrieve the data in logical way. Now we need to create real entity which now is called **Table**.  </span></span><br><span class="line"><span class="string">Here is an example of creating a table in sql:  </span></span><br><span class="line"><span class="string">`</span><span class="string">``</span><span class="keyword">sql</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> movie (</span><br><span class="line">  movie_id <span class="built_in">NUMBER</span> PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">  <span class="keyword">name</span> <span class="built_in">CHAR</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  city <span class="built_in">VARCHAR</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  state <span class="built_in">CHAR</span>(<span class="number">2</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  release_date <span class="built_in">DATE</span>,</span><br><span class="line">  <span class="keyword">CONSTRAINT</span> release_date_contraint <span class="keyword">CHECK</span> (release_date <span class="keyword">between</span> <span class="string">'01-Jan-1980'</span> <span class="keyword">and</span> <span class="string">'31-Dec-1989'</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+<p>Here is an example query language(MySQL):<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> department, <span class="keyword">COUNT</span>(*)</span><br><span class="line"><span class="keyword">FROM</span> employees e</span><br><span class="line"><span class="keyword">WHERE</span> e.age &gt; <span class="number">18</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> department</span><br></pre></td></tr></table></figure></p>
+<h2 id="ERD"><a href="#ERD" class="headerlink" title="ERD"></a>ERD</h2><p>A direct diagram to illustrate the relationship between different entities, but what is entity? Entity is a box, containg all the information in a table. You can see it as a pictural discriptor of table. It contains attributes, and relationships with other entities.</p>
+<ul>
+<li>Entity: a rectangle</li>
+<li>Attribute: an oval<ul>
+<li>(Primary Key should be <strong>highlighted</strong> with a <em>underline</em>)  </li>
+</ul>
+</li>
+<li>Relationship: a line with some notation<ul>
+<li>(To indicate 1-1, 1-M, M-M relationship)</li>
+<li>(It can contains Attrs too)</li>
+</ul>
+</li>
+</ul>
+<p>Generalization Hierarchy:</p>
+<ul>
+<li>Disjoint: can be only one of them</li>
+<li>Overlapping: can be any of them.</li>
+<li>isa hierarchy: will be introduce in the future</li>
+</ul>
+<p>Weak Entity:<br>Occurs in 1-M relationships, for example, in 2 different teams, both has a teammate called No.2, then we have to combine team name and their number to locate the person accurately.[This entity will be represented by a double rectangle]</p>
+<p>Here is a example, including both normal ERD and weak entity:</p>
+<p><img src="https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS495-Intro-to-database/Screen%20Shot%202018-12-18%20at%2010.52.16%20PM.png" alt="example"></p>
+<h2 id="Relational-Model"><a href="#Relational-Model" class="headerlink" title="Relational Model"></a>Relational Model</h2><p>When we get ERD, how we change it into a relational model, which is also known as schema? Here are some solutions for different kinds of problems.</p>
+<ul>
+<li>1-M  <ul>
+<li>Add the key of “1” entity, as a <em>foreign key</em> to the table of “M” entity</li>
+<li>Add the attributes of the relationship type</li>
+</ul>
+</li>
+<li>M-M<ul>
+<li>We add the key of both entities to relationship model.</li>
+</ul>
+</li>
+<li>1-1<ul>
+<li>This is a special case for 1-M, so it is the same.</li>
+</ul>
+</li>
+<li>Weak Entity<ul>
+<li>This is also a special case for 1-M, so we add primary key of Strong entity as a <strong><em>foreign key</em></strong> to the weak entity.</li>
+</ul>
+</li>
+<li>Subclass<ul>
+<li>Objected-oriented: create a model for each entity, but subclasses will contains every attributes of parent’s entity.<ul>
+<li>This is useful for queries involving both common and special attributes.</li>
+</ul>
+</li>
+<li>Use nulls: create only one parent entity and add all subclass’s attributes to parent’s model.<ul>
+<li>This is useful for queries like special member number almost equals to number of members in superclass.   </li>
+</ul>
+</li>
+<li>ER style: Create a model for each entity, and subclass only contains parent’s primary key(s)<ul>
+<li>This is useful for queries involving the the common attributes of the superclass.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Relational-Algebra"><a href="#Relational-Algebra" class="headerlink" title="Relational Algebra"></a>Relational Algebra</h2><p>When we have Relational Model, how we retrieve the data we want? Sometimes we can get the data just from one model, but most of the time we have to retrieve data from the combination of different models(schemas). Relational Algebra is used to do this stuff. It helps us to be more clear about the procedure to retrieve the required data.</p>
+<ul>
+<li>Union<ul>
+<li>$R1 \bigcup R2$</li>
+</ul>
+</li>
+<li>Intersection<ul>
+<li>$R1 \bigcap R2$</li>
+</ul>
+</li>
+<li>Difference<ul>
+<li>$R1 - R2$</li>
+</ul>
+</li>
+<li>Projection<ul>
+<li>$\pi_{A1,A2, …}(R)$, we project corresponding columns out of relation R</li>
+</ul>
+</li>
+<li>Selection<ul>
+<li>$\sigma_{length \geq 100}(Movies)$, we select rows in Movies those length is greater or equals to 100.</li>
+</ul>
+</li>
+<li>Cartesian(Cross) Product<ul>
+<li>$R1 \times R2$</li>
+</ul>
+</li>
+<li>Theta(Conditional) Join<ul>
+<li>$R1 \bowtie_{C} R2$</li>
+</ul>
+</li>
+<li>Natural join<ul>
+<li>connect 2 relations by common attributes and same field.</li>
+</ul>
+</li>
+<li>Rename<ul>
+<li>$R1 = \rho_{R1(A1, …, An)}(R2)$</li>
+</ul>
+</li>
+<li>Division<ul>
+<li>$R = R1 / R2$</li>
+</ul>
+</li>
+</ul>
+<p>We commonly use expression tree or relational algebra to express the data we want to retrieve. Here is 2 examples respectively.</p>
+<p>QUERY : The names of all the bars that are either on Maple<br>St. or sell Bud for less than $3.<br><img src="https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS495-Intro-to-database/Screen%20Shot%202018-12-18%20at%2010.47.03%20PM.png" alt="expression tree"></p>
+<p>QUERY : patient IDs that have seen a pediatrician<br>we have scheme as follows:<br>hospital(hosp_id, h_name, h_addr)<br>doctor(doctor_id, d_name, d_specialty, hosp_id)<br>patient(patient_id, p_name, p_dob, doctor_id)<br>$\pi_{patient}(patients \bowtie_{doctor_id}\sigma_{specialty=’pediatrician’}(doctors))$</p>
+<h2 id="SQL-Part-I"><a href="#SQL-Part-I" class="headerlink" title="SQL Part I"></a>SQL Part I</h2><p>Now we know about the relationships between entities and how to retrieve the data in logical way. Now we need to create real entity which now is called <strong>Table</strong>.<br>Here is an example of creating a table in sql:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> movie (</span><br><span class="line">  movie_id <span class="built_in">NUMBER</span> PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">  <span class="keyword">name</span> <span class="built_in">CHAR</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  city <span class="built_in">VARCHAR</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  state <span class="built_in">CHAR</span>(<span class="number">2</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  release_date <span class="built_in">DATE</span>,</span><br><span class="line">  <span class="keyword">CONSTRAINT</span> release_date_contraint <span class="keyword">CHECK</span> (release_date <span class="keyword">between</span> <span class="string">'01-Jan-1980'</span> <span class="keyword">and</span> <span class="string">'31-Dec-1989'</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
 <p>In the above code, we notice that there are some UPPERCASE WORDS like PRIMARY KEY, NOT NULL, CONSTRAINT. Those are called <strong>Integrity Constraints</strong>(IC). NUMBER, CHAR, VARCHAR and DATE are <strong>Date Type</strong></p>
 <h2 id="SQL-Part-II"><a href="#SQL-Part-II" class="headerlink" title="SQL Part II"></a>SQL Part II</h2><h2 id="Advanced-SQL"><a href="#Advanced-SQL" class="headerlink" title="Advanced SQL"></a>Advanced SQL</h2><h2 id="Programming-in-SQL"><a href="#Programming-in-SQL" class="headerlink" title="Programming in SQL"></a>Programming in SQL</h2><h2 id="PL-SQL-and-Functional-Dependency"><a href="#PL-SQL-and-Functional-Dependency" class="headerlink" title="PL/SQL and Functional Dependency"></a>PL/SQL and Functional Dependency</h2><h2 id="Normalization"><a href="#Normalization" class="headerlink" title="Normalization"></a>Normalization</h2><h2 id="Transaction"><a href="#Transaction" class="headerlink" title="Transaction"></a>Transaction</h2><h2 id="Deadlock-amp-Isolation-Level"><a href="#Deadlock-amp-Isolation-Level" class="headerlink" title="Deadlock &amp; Isolation Level"></a>Deadlock &amp; Isolation Level</h2><h2 id="Disk-Storage-amp-Management"><a href="#Disk-Storage-amp-Management" class="headerlink" title="Disk Storage &amp; Management"></a>Disk Storage &amp; Management</h2><h2 id="Indexing"><a href="#Indexing" class="headerlink" title="Indexing"></a>Indexing</h2><h2 id="Hashed-Indexing-amp-Query-Cost"><a href="#Hashed-Indexing-amp-Query-Cost" class="headerlink" title="Hashed Indexing &amp; Query Cost"></a>Hashed Indexing &amp; Query Cost</h2><h2 id="Join-amp-Multidim-Modeling"><a href="#Join-amp-Multidim-Modeling" class="headerlink" title="Join &amp; Multidim Modeling"></a>Join &amp; Multidim Modeling</h2><h2 id="MDX-Queries"><a href="#MDX-Queries" class="headerlink" title="MDX Queries"></a>MDX Queries</h2><h2 id="Graph-Database"><a href="#Graph-Database" class="headerlink" title="Graph Database"></a>Graph Database</h2>
       
@@ -445,6 +553,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/final-summary/" rel="tag"># final summary</a>
+          
+            <a href="/tags/database/" rel="tag"># database</a>
+          
+        </div>
       
 
       
@@ -546,7 +662,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -568,7 +684,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -629,7 +745,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Intro-to-Database"><span class="nav-number">1.</span> <span class="nav-text">Intro to Database</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DB-fundamentals"><span class="nav-number">1.1.</span> <span class="nav-text">DB fundamentals</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-Part-II"><span class="nav-number">1.2.</span> <span class="nav-text">SQL Part II</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Advanced-SQL"><span class="nav-number">1.3.</span> <span class="nav-text">Advanced SQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Programming-in-SQL"><span class="nav-number">1.4.</span> <span class="nav-text">Programming in SQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PL-SQL-and-Functional-Dependency"><span class="nav-number">1.5.</span> <span class="nav-text">PL/SQL and Functional Dependency</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Normalization"><span class="nav-number">1.6.</span> <span class="nav-text">Normalization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transaction"><span class="nav-number">1.7.</span> <span class="nav-text">Transaction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deadlock-amp-Isolation-Level"><span class="nav-number">1.8.</span> <span class="nav-text">Deadlock &amp; Isolation Level</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Disk-Storage-amp-Management"><span class="nav-number">1.9.</span> <span class="nav-text">Disk Storage &amp; Management</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Indexing"><span class="nav-number">1.10.</span> <span class="nav-text">Indexing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hashed-Indexing-amp-Query-Cost"><span class="nav-number">1.11.</span> <span class="nav-text">Hashed Indexing &amp; Query Cost</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Join-amp-Multidim-Modeling"><span class="nav-number">1.12.</span> <span class="nav-text">Join &amp; Multidim Modeling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MDX-Queries"><span class="nav-number">1.13.</span> <span class="nav-text">MDX Queries</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Graph-Database"><span class="nav-number">1.14.</span> <span class="nav-text">Graph Database</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Intro-to-Database"><span class="nav-text">Intro to Database</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DB-fundamentals"><span class="nav-text">DB fundamentals</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ERD"><span class="nav-text">ERD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Relational-Model"><span class="nav-text">Relational Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Relational-Algebra"><span class="nav-text">Relational Algebra</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-Part-I"><span class="nav-text">SQL Part I</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-Part-II"><span class="nav-text">SQL Part II</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Advanced-SQL"><span class="nav-text">Advanced SQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Programming-in-SQL"><span class="nav-text">Programming in SQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PL-SQL-and-Functional-Dependency"><span class="nav-text">PL/SQL and Functional Dependency</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Normalization"><span class="nav-text">Normalization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transaction"><span class="nav-text">Transaction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deadlock-amp-Isolation-Level"><span class="nav-text">Deadlock &amp; Isolation Level</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Disk-Storage-amp-Management"><span class="nav-text">Disk Storage &amp; Management</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Indexing"><span class="nav-text">Indexing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hashed-Indexing-amp-Query-Cost"><span class="nav-text">Hashed Indexing &amp; Query Cost</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Join-amp-Multidim-Modeling"><span class="nav-text">Join &amp; Multidim Modeling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MDX-Queries"><span class="nav-text">MDX Queries</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Graph-Database"><span class="nav-text">Graph Database</span></a></li></ol></li></ol></div>
             
 
           </div>

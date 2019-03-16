@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="final summary,Computer network,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Computer Network(Top-to-down) this is a brief summary of my 2019spring course, computer network. During this course, we talk about 4 main layers in current network architecture. They are Application l">
+<meta name="keywords" content="final summary,Computer network">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EECS_340_ComputerNetwork">
+<meta property="og:url" content="https://tcoherence.github.io/2019/03/15/EECS-340-ComputerNetwork/index.html">
+<meta property="og:site_name" content="Hanzhi&#39;s BLOG">
+<meta property="og:description" content="Computer Network(Top-to-down) this is a brief summary of my 2019spring course, computer network. During this course, we talk about 4 main layers in current network architecture. They are Application l">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS-340-ComputerNetwork/Review001.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS-340-ComputerNetwork/AS_Routing.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS-340-ComputerNetwork/ARP_format_includingEthernet.png">
+<meta property="og:updated_time" content="2019-03-16T16:02:38.931Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="EECS_340_ComputerNetwork">
+<meta name="twitter:description" content="Computer Network(Top-to-down) this is a brief summary of my 2019spring course, computer network. During this course, we talk about 4 main layers in current network architecture. They are Application l">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS-340-ComputerNetwork/Review001.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://tcoherence.github.io/2019/03/15/EECS-340-ComputerNetwork/">
+
+
+
+
+
+  <title>EECS_340_ComputerNetwork | Hanzhi's BLOG</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hanzhi's BLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tcoherence.github.io/2019/03/15/EECS-340-ComputerNetwork/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hanzhi Yang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hanzhi's BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">EECS_340_ComputerNetwork</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-15T14:56:19-05:00">
+                2019-03-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-03-16T11:02:38-05:00">
+                2019-03-16
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Northwestern-University/" itemprop="url" rel="index">
+                    <span itemprop="name">Northwestern University</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Computer-Network-Top-to-down"><a href="#Computer-Network-Top-to-down" class="headerlink" title="Computer Network(Top-to-down)"></a>Computer Network(Top-to-down)</h1><blockquote>
+<p>this is a brief summary of my 2019spring course, computer network. During this course, we talk about 4 main layers in current network architecture. They are Application layer, Transport layer, Network layer and Data Link layer. We also have 3 projects for Application layer. Transport layer, and network layer.</p>
+<p>This course is offered by Prof. <a href="https://www.mccormick.northwestern.edu/research-faculty/directory/profiles/chen-yan.html" target="_blank" rel="noopener">Yan Chen</a></p>
+</blockquote>
+<p>[TOC]</p>
+<a id="more"></a>
+<h2 id="0-Instruction"><a href="#0-Instruction" class="headerlink" title="0 Instruction"></a>0 Instruction</h2><p>The most important thing in this class is to understand what we really want to do and how we do it. Currently, we all can connect to the Internet, we can use browser to see many different webpages, we can use laptop to play games, we can ssh, we can download, we can do almost anything we want. But how we do this?</p>
+<p>Let’s say all these things are called application data, which is really familiar to CS student or related-to-CS majors students. We cannot just pass this original application data to others, right? Why? Because we don’t know what to do, you just give me the data, where should I go? Like you want to deliver a package but you NEED address to locate the destination! That’s why we ENCAPSULATE the original data into a packet(usually TCP or UDP), which will indicates some information about this application data and how to deal with it. But in reality, we all know that in order to deliver a package, the address is not the only thing necessary, we also need ZIP, need car or trunk, and even receivers’ phone number. This all of them will help us to deliver a package correctly.  </p>
+<p>Yes, transport layer, network layer and data link layer are doing the stuff. More accurately, we can say transport layer just a car, network layer and data link layer indicate the address of a packet. We will encapsulate them one by one, and break them down one by one.</p>
+<p>Here is a brief illustration of this process.</p>
+<p><img src="https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS-340-ComputerNetwork/Review001.jpg" alt="Review001"></p>
+<h2 id="1-Application-Layer"><a href="#1-Application-Layer" class="headerlink" title="1 Application Layer"></a>1 Application Layer</h2><p>The communication between different application is in fact process communicating. Usually we use sockets.</p>
+<h3 id="1-1-Web-and-HTTP"><a href="#1-1-Web-and-HTTP" class="headerlink" title="1.1 Web and HTTP"></a>1.1 Web and HTTP</h3><h3 id="1-2-Electronic-Mail"><a href="#1-2-Electronic-Mail" class="headerlink" title="1.2 Electronic Mail"></a>1.2 Electronic Mail</h3><h3 id="1-3-DNS"><a href="#1-3-DNS" class="headerlink" title="1.3 DNS"></a>1.3 DNS</h3><h2 id="2-Transport-Layer"><a href="#2-Transport-Layer" class="headerlink" title="2 Transport Layer"></a>2 Transport Layer</h2><h3 id="2-1-UDP"><a href="#2-1-UDP" class="headerlink" title="2.1 UDP"></a>2.1 UDP</h3><h4 id="2-1-1-checksum"><a href="#2-1-1-checksum" class="headerlink" title="2.1.1 checksum"></a>2.1.1 checksum</h4><h3 id="2-2-reliable-transfer-protocol"><a href="#2-2-reliable-transfer-protocol" class="headerlink" title="2.2 reliable transfer protocol"></a>2.2 reliable transfer protocol</h3><h4 id="2-2-1-rdt1-0-amp-rdt-2-0"><a href="#2-2-1-rdt1-0-amp-rdt-2-0" class="headerlink" title="2.2.1 rdt1.0 &amp; rdt 2.0"></a>2.2.1 rdt1.0 &amp; rdt 2.0</h4><h4 id="2-2-2-rdt2-1-amp-rdt-2-2"><a href="#2-2-2-rdt2-1-amp-rdt-2-2" class="headerlink" title="2.2.2 rdt2.1 &amp; rdt 2.2"></a>2.2.2 rdt2.1 &amp; rdt 2.2</h4><h4 id="2-2-3-rdt3-0-stop-and-wait"><a href="#2-2-3-rdt3-0-stop-and-wait" class="headerlink" title="2.2.3 rdt3.0 (stop-and-wait)"></a>2.2.3 rdt3.0 (stop-and-wait)</h4><h4 id="2-2-4-Go-Back-N-amp-selective-repeat"><a href="#2-2-4-Go-Back-N-amp-selective-repeat" class="headerlink" title="2.2.4 Go-Back-N &amp; selective repeat"></a>2.2.4 Go-Back-N &amp; selective repeat</h4><h3 id="2-3-TCP"><a href="#2-3-TCP" class="headerlink" title="2.3 TCP"></a>2.3 TCP</h3><h4 id="2-3-1-seq-amp-acks"><a href="#2-3-1-seq-amp-acks" class="headerlink" title="2.3.1 seq # &amp; acks"></a>2.3.1 seq # &amp; acks</h4><h4 id="2-3-2-Fast-Retransmit"><a href="#2-3-2-Fast-Retransmit" class="headerlink" title="2.3.2 Fast Retransmit"></a>2.3.2 Fast Retransmit</h4><h4 id="2-3-3-Flow-Control-amp-Congestion-Control"><a href="#2-3-3-Flow-Control-amp-Congestion-Control" class="headerlink" title="2.3.3 Flow Control &amp; Congestion Control"></a>2.3.3 Flow Control &amp; Congestion Control</h4><h2 id="3-Network-Layer"><a href="#3-Network-Layer" class="headerlink" title="3 Network Layer"></a>3 Network Layer</h2><h3 id="3-1-Forwarding-Table"><a href="#3-1-Forwarding-Table" class="headerlink" title="3.1 Forwarding Table"></a>3.1 Forwarding Table</h3><h3 id="3-2-IP-datagram-format"><a href="#3-2-IP-datagram-format" class="headerlink" title="3.2 IP datagram format"></a>3.2 IP datagram format</h3><h3 id="3-3-NAT"><a href="#3-3-NAT" class="headerlink" title="3.3 NAT"></a>3.3 NAT</h3><p>It will alter the source IP to routers IP and other <strong>port #</strong>, so it also have a mapping table  between port # of router and the host.</p>
+<h3 id="3-4-Routering-Algorithms"><a href="#3-4-Routering-Algorithms" class="headerlink" title="3.4 Routering Algorithms"></a>3.4 Routering Algorithms</h3><p>Link-state(LS): Dijkstra</p>
+<p>Distance Vector(DV): Bellman-Ford</p>
+<h3 id="3-5-Hierarchy-Routing"><a href="#3-5-Hierarchy-Routing" class="headerlink" title="3.5 Hierarchy Routing"></a>3.5 Hierarchy Routing</h3><p>We can’t store all dest’s in routing tables. Routing table exchange would swamp links! So we aggregate routers into regions, called “Autonomous systems”(AS). When we have hierarchy, we need to consider the routing between AS and inside AS, also called inter-AS and intra-AS.</p>
+<p>Intra-AS usually uses OSPF and RIP to router. The former is used in upper-tier ISPs and RIP is used in ISPs and enterprise networks.[Note: OSPF uses LS while RIP uses DV]</p>
+<p>Inter-AS usually uses BGP, and BGP is split into iBGP(internal BGP) and eBGP(external BGP). BGP uses DV.</p>
+<p>Routing policy:</p>
+<p>We classify 4 types router information, provider, customer, peer and ISP. For an AS, it will receive and store all incoming router information but for different people, they provide different message. Here is the illustration. (From Prof. Yan Chen slides)</p>
+<p><img src="https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS-340-ComputerNetwork/AS_Routing.png" alt="AS_Routing"></p>
+<h2 id="4-Data-Link-Layer"><a href="#4-Data-Link-Layer" class="headerlink" title="4 Data Link Layer"></a>4 Data Link Layer</h2><h3 id="4-1-MAC-address"><a href="#4-1-MAC-address" class="headerlink" title="4.1 MAC address"></a>4.1 MAC address</h3><p>Because IP is fixed in a given area like ZIP code, so how we identify a unique user under the same IP? This is why we need another address to locate a user and this address is called MAC address.</p>
+<p>MAC address is 48bits in such format:<code>xx-xx-xx-xx-xx-xx</code>.</p>
+<h3 id="4-2-Error-detection-and-correction"><a href="#4-2-Error-detection-and-correction" class="headerlink" title="4.2 Error detection and correction"></a>4.2 Error detection and correction</h3><p>We use CRC error detection in this layer and add CRC at the end of frame. Also, we talk about parity bit and 2-dimension parity bit.</p>
+<h3 id="4-3-Hub-and-Switch"><a href="#4-3-Hub-and-Switch" class="headerlink" title="4.3 Hub and Switch"></a>4.3 Hub and Switch</h3><p>Hub is a dumb device, just knows repeating one’s information to other(broadcast). But switch is smarter than hub, it will selectively to forward frame to different interface. This help switch to isolate collision domains. In reality, it seems another way to isolation collision domain called VLAN. But it is not the scope of this class.</p>
+<p>In reality, many devices share the media, that causes collision among them. So we can use Channel Partition(TDMA or FDMA) or Random Access(Aloha or CSMA) to solve this problem.</p>
+<h3 id="4-4-ARP"><a href="#4-4-ARP" class="headerlink" title="4.4 ARP"></a>4.4 ARP</h3><p>We use this to get the MAC address of other host. It is very important that the source and destination MAC in ARP is different with those in the head of Ethernet head, which is used to addressing. Here is an ARP message format(from <a href="http://www.cs.virginia.edu/~cs458/slides/module06-arpV2.pdf" target="_blank" rel="noopener">http://www.cs.virginia.edu/~cs458/slides/module06-arpV2.pdf</a>)</p>
+<p><img src="https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS-340-ComputerNetwork/ARP_format_includingEthernet.png" alt="ARP_format_includingEthernet"></p>
+<p>The one thing I don’t understand is that ARP is used to obtain MAC, and MAC is only used to addressing under the same subnet. WHY do we consider a scenario that one host A want to get another host B’s MAC address in a different subnet?</p>
+<p>Host A won’t send ARP to host B because they are not in the same subnet, host A will just send ARP to request gateway’s MAC address.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    Hanzhi Yang
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://tcoherence.github.io/2019/03/15/EECS-340-ComputerNetwork/" title="EECS_340_ComputerNetwork">https://tcoherence.github.io/2019/03/15/EECS-340-ComputerNetwork/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/final-summary/" rel="tag"># final summary</a>
+          
+            <a href="/tags/Computer-network/" rel="tag"># Computer network</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/15/EECS-336-algs/" rel="next" title="EECS_336_algs">
+                <i class="fa fa-chevron-left"></i> EECS_336_algs
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/15/EECS-368-CUDA/" rel="prev" title="EECS_368_CUDA">
+                EECS_368_CUDA <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpeg" alt="Hanzhi Yang">
+            
+              <p class="site-author-name" itemprop="name">Hanzhi Yang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/TCoherence" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:hanzhiyang2019@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/yang_hanzhi" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/profile.php?id=100025563873836" target="_blank" title="FB Page">
+                      
+                        <i class="fa fa-fw fa-facebook"></i></a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Computer-Network-Top-to-down"><span class="nav-text">Computer Network(Top-to-down)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-Instruction"><span class="nav-text">0 Instruction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Application-Layer"><span class="nav-text">1 Application Layer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Web-and-HTTP"><span class="nav-text">1.1 Web and HTTP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Electronic-Mail"><span class="nav-text">1.2 Electronic Mail</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-DNS"><span class="nav-text">1.3 DNS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Transport-Layer"><span class="nav-text">2 Transport Layer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-UDP"><span class="nav-text">2.1 UDP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-1-checksum"><span class="nav-text">2.1.1 checksum</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-reliable-transfer-protocol"><span class="nav-text">2.2 reliable transfer protocol</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-1-rdt1-0-amp-rdt-2-0"><span class="nav-text">2.2.1 rdt1.0 &amp; rdt 2.0</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-2-rdt2-1-amp-rdt-2-2"><span class="nav-text">2.2.2 rdt2.1 &amp; rdt 2.2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-3-rdt3-0-stop-and-wait"><span class="nav-text">2.2.3 rdt3.0 (stop-and-wait)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-4-Go-Back-N-amp-selective-repeat"><span class="nav-text">2.2.4 Go-Back-N &amp; selective repeat</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-TCP"><span class="nav-text">2.3 TCP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-1-seq-amp-acks"><span class="nav-text">2.3.1 seq # &amp; acks</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-2-Fast-Retransmit"><span class="nav-text">2.3.2 Fast Retransmit</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-3-Flow-Control-amp-Congestion-Control"><span class="nav-text">2.3.3 Flow Control &amp; Congestion Control</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Network-Layer"><span class="nav-text">3 Network Layer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Forwarding-Table"><span class="nav-text">3.1 Forwarding Table</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-IP-datagram-format"><span class="nav-text">3.2 IP datagram format</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-NAT"><span class="nav-text">3.3 NAT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-Routering-Algorithms"><span class="nav-text">3.4 Routering Algorithms</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-Hierarchy-Routing"><span class="nav-text">3.5 Hierarchy Routing</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Data-Link-Layer"><span class="nav-text">4 Data Link Layer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-MAC-address"><span class="nav-text">4.1 MAC address</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-Error-detection-and-correction"><span class="nav-text">4.2 Error detection and correction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-Hub-and-Switch"><span class="nav-text">4.3 Hub and Switch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-ARP"><span class="nav-text">4.4 ARP</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hanzhi Yang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('2');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
