@@ -1,13 +1,14 @@
 ---
 title: EECS495_Intro_to_database
 date: 2018-12-17 18:08:04
-tags:
+tags: [database, final summary]
 categories: Northwestern University
 ---
 # Intro to Database
 
 > this is a brief summary of this course, since quarter is at the end, no excuse not to write a summary :-)
-> I will summary every chapter of this course and then make a whole summary.
+> I will summary every chapter of this course and then make a whole summary. 
+
 <!--more-->
 ## DB fundamentals
 Database like txt file or another file storage type. It stores data, but why we design a new model to store the data not just use what we have now? Because of efficiency, database can retrieve data more quick than normal type file storage. Moreover, it can normalize the data to make them more conpact to reduce space usage which is also important for large scale system.
@@ -33,7 +34,7 @@ SELECT department, COUNT(*)
 FROM employees e
 WHERE e.age > 18
 GROUP BY department
-```  
+```
 
 
 

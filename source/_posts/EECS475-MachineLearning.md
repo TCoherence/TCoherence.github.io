@@ -1,7 +1,7 @@
 ---
 title: EECS475_MachineLearning
 date: 2018-12-17 18:08:42
-tags:
+tags: [Machine Learning, final summary]
 categories: Northwestern University
 ---
 
