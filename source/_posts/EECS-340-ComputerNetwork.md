@@ -25,7 +25,7 @@ Yes, transport layer, network layer and data link layer are doing the stuff. Mor
 
 Here is a brief illustration of this process.
 
-![Review001](/Users/yanghanzhi/Public/Hexo/blog_github/TCoherence.github.io/source/_posts/EECS-340-ComputerNetwork/Review001.jpg)
+![Review001](https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS-340-ComputerNetwork/Review001.jpg)
 
 ## 1 Application Layer
 
@@ -79,7 +79,7 @@ Routing policy:
 
 We classify 4 types router information, provider, customer, peer and ISP. For an AS, it will receive and store all incoming router information but for different people, they provide different message. Here is the illustration. (From Prof. Yan Chen slides)
 
-![AS_Routing](/Users/yanghanzhi/Public/Hexo/blog_github/TCoherence.github.io/source/_posts/EECS-340-ComputerNetwork/AS_Routing.png)
+![AS_Routing](https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS-340-ComputerNetwork/AS_Routing.png)
 
 ## 4 Data Link Layer
 
@@ -103,7 +103,7 @@ In reality, many devices share the media, that causes collision among them. So w
 
 We use this to get the MAC address of other host. It is very important that the source and destination MAC in ARP is different with those in the head of Ethernet head, which is used to addressing. Here is an ARP message format(from http://www.cs.virginia.edu/~cs458/slides/module06-arpV2.pdf)
 
-![ARP_format_includingEthernet](/Users/yanghanzhi/Public/Hexo/blog_github/TCoherence.github.io/source/_posts/EECS-340-ComputerNetwork/ARP_format_includingEthernet.png)
+![ARP_format_includingEthernet](https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS-340-ComputerNetwork/ARP_format_includingEthernet.png)
 
 The one thing I don't understand is that ARP is used to obtain MAC, and MAC is only used to addressing under the same subnet. WHY do we consider a scenario that one host A want to get another host B's MAC address in a different subnet?
 
