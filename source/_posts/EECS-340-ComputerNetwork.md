@@ -13,6 +13,10 @@ categories: Northwestern University
 
 [TOC]
 
+@[toc]
+
+<!-- toc -->
+
 <!--more-->
 
 ## 0 Instruction
