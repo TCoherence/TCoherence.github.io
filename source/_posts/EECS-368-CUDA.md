@@ -11,7 +11,11 @@ categories: Northwestern University
 
 <!--more-->
 
-# 1 Basic Idea
+@[toc]
+
+
+
+## 1 Basic Idea
 
 A thread is the unit to process code.
 
@@ -23,9 +27,9 @@ In CUDA, grid and block can be multi-dimension.
 
 In memory access, one thread can have their own memory(in face assigned global memory), block have their own shared memory which can be accessed by all threads in the same block. Then comes to global memory, everyone in CUDA can access it, but it cost like 400 cycle time.
 
-# 2 Things to be considered
+## 2 Things to be considered
 
-## 2.1 coalesce
+### 2.1 coalesce
 
 For paralleling programming, one thing we need to pay attention to is how to retrieve data without 1)efficiently and 2)conflict. This part I want to talk about efficiency. When we talk about retrieving data, we know that every thread will try to access the memory. However, it is only possible for one thread to access the memory if using the naive memory access. We want to retrieve data as much as possible. Is there one way that we can retrieve all the data out from the memory with single memory read?
 
@@ -33,7 +37,7 @@ The answer is yes, we can coalesce data needed by those threads in a continuous 
 
 This is why we most use CUDA to process **array** data not something like objects.
 
-## 2.2 bank conflict
+### 2.2 bank conflict
 
 In CUDA, the SM(stream process) will load a warp of threads to execute the code. The size of one warp is usually 32. As we have talked in the previous part, one time memory access may retrieve 32*data_size data. How we load this data, we load them from *bank*. Bank is not a data structure, but a way or a clarification how we load data from **shared memory**.
 
@@ -49,20 +53,20 @@ Bank conflict usually because of even times stride like 2, 4, and so on. Sometim
 
 
 
-## 2.3 Tiling
+### 2.3 Tiling
 
 Even we can load very large data into CUDA device, the memory of CUDA is limited. So if the source data size is too large we have to tile the original data into small pieces, and load them one by one to CUDA device, and integrate them at last.
 
 Besides, those need repeating operation data also need to be tiled into shared memory to be speeded up.
 
-# 3 Lab in this course
+## 3 Lab in this course
 
-## 3.1 Matrix Multiplication
+### 3.1 Matrix Multiplication
 
-## 3.2 Tiled Matrix Multiplication
+### 3.2 Tiled Matrix Multiplication
 
-## 3.3 Optimizing Histograms
+### 3.3 Optimizing Histograms
 
-## 3.4  Parallel Prefix Scans
+### 3.4  Parallel Prefix Scans
 
 This is the most interesting lab, I haven't realized we can use recursive calling in CUDA, though I should have realized this….
