@@ -11,13 +11,12 @@ categories: Northwestern University
 >
 > This course is offered by Prof. [Yan Chen](https://www.mccormick.northwestern.edu/research-faculty/directory/profiles/chen-yan.html)
 
-[TOC]
+
+<!--more-->
 
 @[toc]
 
-<!-- toc -->
 
-<!--more-->
 
 ## 0 Instruction
 
