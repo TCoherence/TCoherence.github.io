@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Hanzhi&#39;s BLOG">
 <meta property="og:description" content="This is the first course note because OS is too important. I don’t want to return my knowledge to my professor, I need to keep the knowledge around me. lol.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-16T19:39:59.299Z">
+<meta property="og:updated_time" content="2019-04-17T13:54:39.865Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EECS_343_Operating_System">
 <meta name="twitter:description" content="This is the first course note because OS is too important. I don’t want to return my knowledge to my professor, I need to keep the knowledge around me. lol.">
@@ -340,8 +340,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-04-16T14:39:59-05:00">
-                2019-04-16
+              <time title="Post modified" itemprop="dateModified" datetime="2019-04-17T08:54:39-05:00">
+                2019-04-17
               </time>
             
           </span>
@@ -401,10 +401,16 @@
 </blockquote>
 <a id="more"></a>
 <p>@[toc]</p>
+<p>[TOC]</p>
 <h1 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h1><p>blah blah blah</p>
 <h1 id="2-Processes-amp-System-calls"><a href="#2-Processes-amp-System-calls" class="headerlink" title="2. Processes &amp; System calls"></a>2. Processes &amp; System calls</h1><h1 id="3-Process-creation-and-memory-layout"><a href="#3-Process-creation-and-memory-layout" class="headerlink" title="3. Process creation and memory layout"></a>3. Process creation and memory layout</h1><h1 id="4-Scheduling"><a href="#4-Scheduling" class="headerlink" title="4. Scheduling"></a>4. Scheduling</h1><h2 id="4-x-Mechanism-and-policy"><a href="#4-x-Mechanism-and-policy" class="headerlink" title="4.x Mechanism and policy"></a>4.x Mechanism and policy</h2><p>The policies what is to be done while the mechanism specifies how it is to be done. For instance, the timer construct for ensuring CPU protection is mechanism. On the other hand, the decision of how long the timer is set for a particular user is a policy decision.</p>
 <p>The policy indicates what we need to do and the mechanism tells us how exactly we will implement this policy. Like we have several scheduling policies like FIFO, SJF, STCF, RR and MLFQ. But how to implement this, we have different ways.</p>
-<h1 id="5-Virtual-Memory-amp-Paging"><a href="#5-Virtual-Memory-amp-Paging" class="headerlink" title="5.Virtual Memory &amp; Paging"></a>5.Virtual Memory &amp; Paging</h1>
+<h1 id="5-Virtual-Memory-amp-Paging"><a href="#5-Virtual-Memory-amp-Paging" class="headerlink" title="5.Virtual Memory &amp; Paging"></a>5.Virtual Memory &amp; Paging</h1><h1 id="x-Project"><a href="#x-Project" class="headerlink" title="x. Project"></a>x. Project</h1><h2 id="Issues"><a href="#Issues" class="headerlink" title="Issues:"></a>Issues:</h2><h3 id="Download-the-source-code"><a href="#Download-the-source-code" class="headerlink" title="Download the source code"></a>Download the source code</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://USERNAME@github.com/starzia-teaching/project-1-GROUPNAME.git</span><br></pre></td></tr></table></figure>
+<p>Notice that I added my github username to the user above, before “@github.com”.  If you get an error related to <code>gnome-ssh-askpass</code> then try running </p>
+<p><code>unsetenv SSH_ASKPASS</code> </p>
+<p>first (or log in with X11 forwarding).</p>
+<p>Be careful that on Internet we will see <code>unset SSH_ASKPASS</code> which may not works. But <code>unsetenv</code> works for me.</p>
+
       
     </div>
     
@@ -622,7 +628,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Introduction"><span class="nav-text">1. Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Processes-amp-System-calls"><span class="nav-text">2. Processes &amp; System calls</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Process-creation-and-memory-layout"><span class="nav-text">3. Process creation and memory layout</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-Scheduling"><span class="nav-text">4. Scheduling</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-x-Mechanism-and-policy"><span class="nav-text">4.x Mechanism and policy</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-Virtual-Memory-amp-Paging"><span class="nav-text">5.Virtual Memory &amp; Paging</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Introduction"><span class="nav-text">1. Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Processes-amp-System-calls"><span class="nav-text">2. Processes &amp; System calls</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Process-creation-and-memory-layout"><span class="nav-text">3. Process creation and memory layout</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-Scheduling"><span class="nav-text">4. Scheduling</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-x-Mechanism-and-policy"><span class="nav-text">4.x Mechanism and policy</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-Virtual-Memory-amp-Paging"><span class="nav-text">5.Virtual Memory &amp; Paging</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#x-Project"><span class="nav-text">x. Project</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Issues"><span class="nav-text">Issues:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Download-the-source-code"><span class="nav-text">Download the source code</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

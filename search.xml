@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[EECS_343_Operating_System]]></title>
     <url>%2F2019%2F04%2F16%2FEECS-343-Operating-System%2F</url>
-    <content type="text"><![CDATA[This is the first course note because OS is too important. I don’t want to return my knowledge to my professor, I need to keep the knowledge around me. lol. @[toc] 1. Introductionblah blah blah 2. Processes &amp; System calls3. Process creation and memory layout4. Scheduling4.x Mechanism and policyThe policies what is to be done while the mechanism specifies how it is to be done. For instance, the timer construct for ensuring CPU protection is mechanism. On the other hand, the decision of how long the timer is set for a particular user is a policy decision. The policy indicates what we need to do and the mechanism tells us how exactly we will implement this policy. Like we have several scheduling policies like FIFO, SJF, STCF, RR and MLFQ. But how to implement this, we have different ways. 5.Virtual Memory &amp; Paging]]></content>
+    <content type="text"><![CDATA[This is the first course note because OS is too important. I don’t want to return my knowledge to my professor, I need to keep the knowledge around me. lol. @[toc] [TOC] 1. Introductionblah blah blah 2. Processes &amp; System calls3. Process creation and memory layout4. Scheduling4.x Mechanism and policyThe policies what is to be done while the mechanism specifies how it is to be done. For instance, the timer construct for ensuring CPU protection is mechanism. On the other hand, the decision of how long the timer is set for a particular user is a policy decision. The policy indicates what we need to do and the mechanism tells us how exactly we will implement this policy. Like we have several scheduling policies like FIFO, SJF, STCF, RR and MLFQ. But how to implement this, we have different ways. 5.Virtual Memory &amp; Pagingx. ProjectIssues:Download the source code1$ git clone https://USERNAME@github.com/starzia-teaching/project-1-GROUPNAME.git Notice that I added my github username to the user above, before “@github.com”. If you get an error related to gnome-ssh-askpass then try running unsetenv SSH_ASKPASS first (or log in with X11 forwarding). Be careful that on Internet we will see unset SSH_ASKPASS which may not works. But unsetenv works for me.]]></content>
       <categories>
         <category>Northwestern University</category>
       </categories>
@@ -45,8 +45,8 @@
         <category>Northwestern University</category>
       </categories>
       <tags>
-        <tag>Computer network</tag>
         <tag>final summary</tag>
+        <tag>Computer network</tag>
       </tags>
   </entry>
   <entry>
@@ -57,8 +57,8 @@
         <category>Northwestern University</category>
       </categories>
       <tags>
-        <tag>final summary</tag>
         <tag>algs</tag>
+        <tag>final summary</tag>
       </tags>
   </entry>
   <entry>
