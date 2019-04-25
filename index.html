@@ -291,6 +291,347 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tcoherence.github.io/2019/04/25/Tips/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hanzhi Yang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hanzhi's BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/25/Tips/" itemprop="url">Tips</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-25T14:05:56-05:00">
+                2019-04-25
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-04-25T14:12:29-05:00">
+                2019-04-25
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tips/" itemprop="url" rel="index">
+                    <span itemprop="name">Tips</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="SSH-beautify"><a href="#SSH-beautify" class="headerlink" title="SSH beautify"></a>SSH beautify</h1><p>After ssh to our school’s server murphy, the appearance is go gross that I cannot bear anymore. So I am ready to make it like my own terminal.</p>
+<p>I copied my .oh-my-zsh directory and .zshrc configuration file into my remote server. Then when I change me shell to zsh, it stuck. </p>
+<p>My friend told me it is because git will scan all the file in the server(I really don’t know why git will do this and don’t know if it is true that git really will do this). So </p>
+<ul>
+<li>I deleted all git-related plugin in my .oh-my-zsh directory(<code>rm -rf git*</code>) </li>
+<li>I disabled all git related thing in my theme file(You can find it in .oh-my-zsh/themes/$ZSH_THEMES_zsh.theme). </li>
+<li>I comment all git-related plugin in my user configuration file(.zshrc) which is git, auto jump.</li>
+</ul>
+<p>Then when I run zsh in my remote server, the feeling of coming home is there. </p>
+<p>:-)</p>
+<p>2019-4-25</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tcoherence.github.io/2019/04/19/xv6-the-first-process/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hanzhi Yang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hanzhi's BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/19/xv6-the-first-process/" itemprop="url">xv6 the first process</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-19T16:06:56-05:00">
+                2019-04-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-04-19T22:50:06-05:00">
+                2019-04-19
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Northwestern-University/" itemprop="url" rel="index">
+                    <span itemprop="name">Northwestern University</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>This is the summary after I read doc of xv6, source code of xv6 and other reference. At the end of the article I will present all reference I read.</p>
+</blockquote>
+<h1 id="0-Introduction"><a href="#0-Introduction" class="headerlink" title="0. Introduction"></a>0. Introduction</h1><p>It is so <strong>IMPORTANT</strong> for us to know how actually a system is loaded from the start and how the first process is executed. We all know about system calls from the user process, but what operations are executed by OS, we still don’t know. So here I want to walk through roughly procedures from how a system is loaded to what it is like when the first process is executed.</p>
+<h1 id="1-BIOS-amp-Bootloader"><a href="#1-BIOS-amp-Bootloader" class="headerlink" title="1. BIOS &amp; Bootloader"></a>1. BIOS &amp; Bootloader</h1><h2 id="1-1-BIOS"><a href="#1-1-BIOS" class="headerlink" title="1.1 BIOS"></a>1.1 BIOS</h2><p>It is necessary to know that when we plug in the power, our computer will load BIOS and start self checking. Because at first we are in <em>real mode</em>, so we only have 20-bit addressable memory to access which is 1MB. Now CS:IP = 0xf000:0xfff0. The first instruction of BIOS is to load MBR(512KB) to 0x7c00. Then BIOS will change CS:IP to 0x0000:0x7c00. From now on, our OS is ready to take over this computer and do his work! (But the real world is more complicate, no worry, we don’t care now.)</p>
+<h2 id="1-2-Bootloader"><a href="#1-2-Bootloader" class="headerlink" title="1.2 Bootloader"></a>1.2 Bootloader</h2><p>Now we have our bootloader loaded, what we gonna do now? Let’s take a look about the source code.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">start:												# WE WILL SEE THIS IN THE END</span><br><span class="line">  cli                         # BIOS enabled interrupts; disable</span><br><span class="line"></span><br><span class="line">  # Zero data segment registers DS, ES, and SS.</span><br><span class="line">  xorw    %ax,%ax             # Set %ax to zero</span><br><span class="line">  movw    %ax,%ds             # -&gt; Data Segment</span><br><span class="line">  movw    %ax,%es             # -&gt; Extra Segment</span><br><span class="line">  movw    %ax,%ss             # -&gt; Stack Segment</span><br><span class="line">	# Physical address line A20 is tied to zero so that the first PCs </span><br><span class="line">  # with 2 MB would run software that assumed 1 MB.  Undo that.</span><br><span class="line">seta20.1:</span><br><span class="line">  inb     $0x64,%al               # Wait for not busy</span><br><span class="line">  testb   $0x2,%al</span><br><span class="line">  jnz     seta20.1</span><br><span class="line"></span><br><span class="line">  movb    $0xd1,%al               # 0xd1 -&gt; port 0x64</span><br><span class="line">  outb    %al,$0x64</span><br><span class="line"></span><br><span class="line">seta20.2:</span><br><span class="line">  inb     $0x64,%al               # Wait for not busy</span><br><span class="line">  testb   $0x2,%al</span><br><span class="line">  jnz     seta20.2</span><br><span class="line"></span><br><span class="line">  movb    $0xdf,%al               # 0xdf -&gt; port 0x60</span><br><span class="line">  outb    %al,$0x60</span><br></pre></td></tr></table></figure>
+<p>We first disable interrupt and zero previous data segment registers and other related registers. Then we ENABLE A20. Why we do this? Because now we are in real mode, the ability of addressing is 20-bit address, we need to break this! let’s see the world of 32-bit addressing! So we send 2 binary code to the computer to enable A20. </p>
+<p>From now on, we are going to see the world of 32-bit addressing. But here is a problem, in real mode, CS and IP is combined to find the physical address, which we call this is segment address. But now in 32-bit addressing world, or even 64-bit address world, it is so hard for CS and IP to do this. So we come up with another way to do that, let’s call CS register a segment selector and let the value lies in CS register to tell me where to find linear address(Why not physical address? Because there is still another obstacle to overcome to get the real address, that’s virtual memory part, we don’t talk about that.). Here is a typical 16-bit CS register format:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">+---------------------------------------------+</span><br><span class="line">|	index(13 bits)			|		T1(1 bit) |	RPL(2)	|</span><br><span class="line">+---------------------------------------------+</span><br></pre></td></tr></table></figure>
+<p>Index is the offset of where-to-find-linear-address table. And the so-called <em>where-to-find-linear-address</em> is actually stored in GDTR, or LDTR. That’s why we need T1 to help us to know which one we need to go. As for RPL, it is about priority, we don’t care for now.</p>
+<p>So we need to build GDT, that’s what we do next. Here is the code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">	# Switch from real to protected mode.  Use a bootstrap GDT that makes</span><br><span class="line">  # virtual addresses map directly to physical addresses so that the</span><br><span class="line">  # effective memory map doesn&apos;t change during the transition.</span><br><span class="line">  lgdt    gdtdesc</span><br><span class="line">  movl    %cr0, %eax</span><br><span class="line">  orl     $CR0_PE, %eax</span><br><span class="line">  movl    %eax, %cr0</span><br><span class="line">  </span><br><span class="line">	....</span><br><span class="line">	....</span><br><span class="line">	</span><br><span class="line"># Bootstrap GDT</span><br><span class="line">.p2align 2                                # force 4 byte alignment</span><br><span class="line">gdt:</span><br><span class="line">  SEG_NULLASM                             # null seg</span><br><span class="line">  SEG_ASM(STA_X|STA_R, 0x0, 0xffffffff)   # code seg</span><br><span class="line">  SEG_ASM(STA_W, 0x0, 0xffffffff)         # data seg</span><br><span class="line"></span><br><span class="line">gdtdesc:</span><br><span class="line">  .word   (gdtdesc - gdt - 1)             # sizeof(gdt) - 1</span><br><span class="line">  .long   gdt                             # address gdt</span><br></pre></td></tr></table></figure>
+<p>It is just a temporary GDT used for bootloader. Then let’s go to the 32-bit world.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"> ljmp    $(SEG_KCODE&lt;&lt;3), $start32</span><br><span class="line"></span><br><span class="line">.code32  # Tell assembler to generate 32-bit code now.</span><br><span class="line">start32:</span><br><span class="line">  # Set up the protected-mode data segment registers</span><br><span class="line">  movw    $(SEG_KDATA&lt;&lt;3), %ax    # Our data segment selector</span><br><span class="line">  movw    %ax, %ds                # -&gt; DS: Data Segment</span><br><span class="line">  movw    %ax, %es                # -&gt; ES: Extra Segment</span><br><span class="line">  movw    %ax, %ss                # -&gt; SS: Stack Segment</span><br><span class="line">  movw    $0, %ax                 # Zero segments not ready for use</span><br><span class="line">  movw    %ax, %fs                # -&gt; FS</span><br><span class="line">  movw    %ax, %gs                # -&gt; GS</span><br><span class="line"></span><br><span class="line">  # Set up the stack pointer and call into C.</span><br><span class="line">  # we set esp as $start so code and stack won&apos;t interact with each other</span><br><span class="line">  movl    $start, %esp</span><br><span class="line">  call    bootmain</span><br></pre></td></tr></table></figure>
+<p>After set several registers, we set %esp points to the address of $start, as I comment at the end of <em>start:</em>, we will see that at the end. Because we need to have our stack, then there is some spare space before start code, we use them as stack. Also, code goes up and stack goes down. They will never interact with each other, which is good.</p>
+<p>Alright, now let’s follow the code to see bootmain.c:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span></span><br><span class="line">bootmain(<span class="keyword">void</span>)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">elfhdr</span> *<span class="title">elf</span>;</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">proghdr</span> *<span class="title">ph</span>, *<span class="title">eph</span>;</span></span><br><span class="line">  <span class="keyword">void</span> (*entry)(<span class="keyword">void</span>);</span><br><span class="line">  uchar* pa;</span><br><span class="line"></span><br><span class="line">  elf = (struct elfhdr*)<span class="number">0x10000</span>;  <span class="comment">// scratch space</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// Read 1st page off disk</span></span><br><span class="line">  readseg((uchar*)elf, <span class="number">4096</span>, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Is this an ELF executable?</span></span><br><span class="line">  <span class="keyword">if</span>(elf-&gt;magic != ELF_MAGIC)</span><br><span class="line">    <span class="keyword">return</span>;  <span class="comment">// let bootasm.S handle error</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// Load each program segment (ignores ph flags).</span></span><br><span class="line">  ph = (struct proghdr*)((uchar*)elf + elf-&gt;phoff);</span><br><span class="line">  eph = ph + elf-&gt;phnum;</span><br><span class="line">  <span class="keyword">for</span>(; ph &lt; eph; ph++)&#123;</span><br><span class="line">    pa = (uchar*)ph-&gt;paddr;</span><br><span class="line">    readseg(pa, ph-&gt;filesz, ph-&gt;off);</span><br><span class="line">    <span class="keyword">if</span>(ph-&gt;memsz &gt; ph-&gt;filesz)</span><br><span class="line">      stosb(pa + ph-&gt;filesz, <span class="number">0</span>, ph-&gt;memsz - ph-&gt;filesz);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Call the entry point from the ELF header.</span></span><br><span class="line">  <span class="comment">// Does not return! (see entry.S file)</span></span><br><span class="line">  entry = (<span class="keyword">void</span>(*)(<span class="keyword">void</span>))(elf-&gt;entry);</span><br><span class="line">  entry();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>It is so hard to understand what the code does, but we know it load elf file header(which is located at 0x10000 ) to help them to load real kernel to the RAM. Let’s go to <em>entry</em>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">entry:</span><br><span class="line">  # Turn on page size extension for 4Mbyte pages</span><br><span class="line">  movl    %cr4, %eax</span><br><span class="line">  orl     $(CR4_PSE), %eax</span><br><span class="line">  movl    %eax, %cr4</span><br><span class="line">  # Set page directory</span><br><span class="line">  movl    $(V2P_WO(entrypgdir)), %eax</span><br><span class="line">  movl    %eax, %cr3</span><br><span class="line">  # Turn on paging.</span><br><span class="line">  movl    %cr0, %eax</span><br><span class="line">  orl     $(CR0_PG|CR0_WP), %eax</span><br><span class="line">  movl    %eax, %cr0</span><br><span class="line"></span><br><span class="line">  # Set up the stack pointer.</span><br><span class="line">  movl $(stack + KSTACKSIZE), %esp</span><br><span class="line"></span><br><span class="line">  # Jump to main(), and switch to executing at</span><br><span class="line">  # high addresses. The indirect call is needed because</span><br><span class="line">  # the assembler produces a PC-relative instruction</span><br><span class="line">  # for a direct jump.</span><br><span class="line">  mov $main, %eax</span><br><span class="line">  jmp *%eax</span><br><span class="line"></span><br><span class="line">.comm stack, KSTACKSIZE</span><br></pre></td></tr></table></figure>
+<p>Oh, it sets the control registers again. then go to main()! Yeah, finally we see something familiar. Let’s take a look.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Bootstrap processor starts running C code here.</span></span><br><span class="line"><span class="comment">// Allocate a real stack and switch to it, first</span></span><br><span class="line"><span class="comment">// doing some setup required for memory allocator to work.</span></span><br><span class="line"><span class="keyword">int</span></span><br><span class="line">main(<span class="keyword">void</span>)</span><br><span class="line">&#123;</span><br><span class="line">  kinit1(end, P2V(<span class="number">4</span>*<span class="number">1024</span>*<span class="number">1024</span>)); <span class="comment">// phys page allocator</span></span><br><span class="line">  kvmalloc();      <span class="comment">// kernel page table</span></span><br><span class="line">  mpinit();        <span class="comment">// detect other processors</span></span><br><span class="line">  lapicinit();     <span class="comment">// interrupt controller</span></span><br><span class="line">  seginit();       <span class="comment">// segment descriptors</span></span><br><span class="line">  picinit();       <span class="comment">// disable pic</span></span><br><span class="line">  ioapicinit();    <span class="comment">// another interrupt controller</span></span><br><span class="line">  consoleinit();   <span class="comment">// console hardware</span></span><br><span class="line">  uartinit();      <span class="comment">// serial port</span></span><br><span class="line">  pinit();         <span class="comment">// process table</span></span><br><span class="line">  tvinit();        <span class="comment">// trap vectors</span></span><br><span class="line">  binit();         <span class="comment">// buffer cache</span></span><br><span class="line">  fileinit();      <span class="comment">// file table</span></span><br><span class="line">  ideinit();       <span class="comment">// disk </span></span><br><span class="line">  startothers();   <span class="comment">// start other processors</span></span><br><span class="line">  kinit2(P2V(<span class="number">4</span>*<span class="number">1024</span>*<span class="number">1024</span>), P2V(PHYSTOP)); <span class="comment">// must come after startothers()</span></span><br><span class="line">  userinit();      <span class="comment">// first user process  &lt;======== This is our FOCUS</span></span><br><span class="line">  mpmain();        <span class="comment">// finish this processor's setup</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="The-first-process-initcode-S"><a href="#The-first-process-initcode-S" class="headerlink" title="The first process - initcode.S"></a>The first process - initcode.S</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p>[1]. <a href="http://linbo.github.io/2018/04/14/xv6-first_process_1" target="_blank" rel="noopener">http://linbo.github.io/2018/04/14/xv6-first_process_1</a>.</p>
+<p>[2]. <a href="http://ybin.cc/os/xv6-init-process/" target="_blank" rel="noopener">http://ybin.cc/os/xv6-init-process/</a>.</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://tcoherence.github.io/2019/04/16/EECS-343-Operating-System/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -338,8 +679,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-04-17T08:54:39-05:00">
-                2019-04-17
+              <time title="Post modified" itemprop="dateModified" datetime="2019-04-19T16:05:26-05:00">
+                2019-04-19
               </time>
             
           </span>
@@ -1525,312 +1866,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tcoherence.github.io/2018/12/17/EECS495-Intro-to-database/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Hanzhi Yang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hanzhi's BLOG">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/17/EECS495-Intro-to-database/" itemprop="url">EECS495_Intro_to_database</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-17T18:08:04-06:00">
-                2018-12-17
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2019-03-15T15:02:46-05:00">
-                2019-03-15
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Northwestern-University/" itemprop="url" rel="index">
-                    <span itemprop="name">Northwestern University</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Intro-to-Database"><a href="#Intro-to-Database" class="headerlink" title="Intro to Database"></a>Intro to Database</h1><blockquote>
-<p>this is a brief summary of this course, since quarter is at the end, no excuse not to write a summary :-)<br>I will summary every chapter of this course and then make a whole summary. </p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/12/17/EECS495-Intro-to-database/" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tcoherence.github.io/2018/12/17/HexoConfig/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Hanzhi Yang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hanzhi's BLOG">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/17/HexoConfig/" itemprop="url">HexoConfig</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-17T16:53:51-06:00">
-                2018-12-17
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2018-12-17T17:58:32-06:00">
-                2018-12-17
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Hexo-Configs-amp-Frequent-Problems"><a href="#Hexo-Configs-amp-Frequent-Problems" class="headerlink" title="Hexo Configs &amp; Frequent Problems"></a>Hexo Configs &amp; Frequent Problems</h1><blockquote>
-<p>Here are some useful configurations for hexo.</p>
-</blockquote>
-<ol>
-<li><p>beautify the article with shadow</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* path:themes/next/source/css/_custom/custom.styl */</span></span><br><span class="line"><span class="selector-class">.post</span> &#123;</span><br><span class="line">  <span class="attribute">margin-top</span>: <span class="number">60px</span>;</span><br><span class="line">  <span class="attribute">margin-bottom</span>: <span class="number">60px</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">25px</span>;</span><br><span class="line">  <span class="attribute">-webkit-box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">5px</span> <span class="built_in">rgba</span>(202, 203, 203, .5);</span><br><span class="line">  <span class="attribute">-moz-box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">5px</span> <span class="built_in">rgba</span>(202, 203, 204, .5);</span><br><span class="line"> &#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Get from: https://www.jianshu.com/p/d34e9531cfce</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Avatar rotation</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* path:themes/next/source/css/_custom/custom.styl */</span></span><br><span class="line"><span class="selector-class">.site-author-image</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">  <span class="attribute">padding</span>: $site-author-image-padding;</span><br><span class="line">  <span class="attribute">max-width</span>: $site-author-image-width;</span><br><span class="line">  <span class="attribute">height</span>: $site-author-image-height;</span><br><span class="line">  <span class="attribute">border</span>: site-author-image-border-color;</span><br><span class="line">  <span class="comment">/* start*/</span></span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">50%</span></span><br><span class="line">  webkit-transition: <span class="number">1.4s</span> all;</span><br><span class="line">  <span class="attribute">moz-transition</span>: <span class="number">1.4s</span> all;</span><br><span class="line">  <span class="attribute">ms-transition</span>: <span class="number">1.4s</span> all;</span><br><span class="line">  <span class="attribute">transition</span>: <span class="number">1.4s</span> all;</span><br><span class="line">  <span class="comment">/* end */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* start */</span></span><br><span class="line"><span class="selector-class">.site-author-image</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#55DAE1</span>;</span><br><span class="line">  <span class="attribute">webkit-transform</span>: <span class="built_in">rotate</span>(360deg) <span class="built_in">scale</span>(0.9);</span><br><span class="line">  <span class="attribute">moz-transform</span>: <span class="built_in">rotate</span>(360deg) <span class="built_in">scale</span>(0.9);</span><br><span class="line">  <span class="attribute">ms-transform</span>: <span class="built_in">rotate</span>(360deg) <span class="built_in">scale</span>(0.9);</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">rotate</span>(360deg) <span class="built_in">scale</span>(0.9);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* end */</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Get from: https://www.jianshu.com/p/d34e9531cfce</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Social icons don’t appear</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">social:</span></span><br><span class="line"><span class="attr">  GitHub:</span> <span class="attr">https://github.com/TCoherence</span> <span class="string">||</span> <span class="string">github</span></span><br><span class="line"><span class="attr">  E-Mail:</span> <span class="attr">mailto:hanzhiyang2019@gmail.com</span> <span class="string">||</span> <span class="string">envelope</span></span><br><span class="line">  <span class="comment">#Google: https://plus.google.com/yourname || google</span></span><br><span class="line"><span class="attr">  Twitter:</span> <span class="attr">https://twitter.com/yang_hanzhi</span> <span class="string">||</span> <span class="string">twitter</span></span><br><span class="line">  <span class="string">FB</span> <span class="attr">Page:</span> <span class="attr">https://www.facebook.com/profile.php?id=100025563873836</span> <span class="string">||</span> <span class="string">facebook</span></span><br><span class="line">  <span class="comment">#VK Group: https://vk.com/yourname || vk</span></span><br><span class="line">  <span class="comment">#StackOverflow: https://stackoverflow.com/yourname || stack-overflow</span></span><br><span class="line">  <span class="comment">#YouTube: https://youtube.com/yourname || youtube</span></span><br><span class="line">  <span class="comment">#Instagram: https://instagram.com/yourname || instagram</span></span><br><span class="line">  <span class="comment">#Skype: skype:yourname?call|chat || skype</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>The final code should be something like this. ‘social’ cannot be commented out.</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1883,7 +1918,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1894,7 +1929,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -1905,7 +1940,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
