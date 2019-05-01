@@ -24,3 +24,28 @@ Then when I run zsh in my remote server, the feeling of coming home is there.
 :-)
 
 2019-4-25
+
+
+
+# Github issues
+
+## 1. 'invalid username or password'
+
+When I try to help Michael to git push the local repo to the remote server, the terminal prompts out the error message:
+
+```
+error: invalid username or password
+fatal error: Autentication failed to ...
+```
+
+I search out all information about `fatal error` but seems nothing helps, then I notice that I have not 2FV but Mike has. So I try to cancel this property of Mike but then I realize that it is a personal settings.
+
+So I search something about it and then find this url: https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line.
+
+Issue solved.
+
+: -]
+
+2019-5-1
+
+AND I FINALLY RECEIVE MY NEW AIRPODS!!!
