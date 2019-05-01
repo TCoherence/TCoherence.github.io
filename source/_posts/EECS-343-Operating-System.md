@@ -68,9 +68,9 @@ The policy indicates what we need to do and the mechanism tells us how exactly w
 - Because alignment, the addresses stored in page directory table only use higher bits to store the part of real physical address(because lower part bits are zero, no need to store them), the lower bits are used as flags to indicate if the entry can be used or not.
 - Here is an classic one-level and two-level paging example.(from Prof. Stephen Tarzia slides.)
 
-![1levelpaging](/Users/yanghanzhi/Public/Hexo/blog_github/TCoherence.github.io/source/_posts/EECS-343-Operating-System/1levelpaging.png)
+![1levelpaging](https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS-343-Operating-System/1levelpaging.png)
 
-![2levelpaging](/Users/yanghanzhi/Public/Hexo/blog_github/TCoherence.github.io/source/_posts/EECS-343-Operating-System/2levelpaging.png)
+![2levelpaging](https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS-343-Operating-System/2levelpaging.png)
 
 
 
