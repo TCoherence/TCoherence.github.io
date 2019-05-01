@@ -7,6 +7,10 @@ categories: Northwestern University
 
 > This is the summary after I read doc of xv6, source code of xv6 and other reference. At the end of the article I will present all reference I read.
 
+<!--more-->
+
+[TOC]
+
 # 0. Introduction
 
 It is so **IMPORTANT** for us to know how actually a system is loaded from the start and how the first process is executed. We all know about system calls from the user process, but what operations are executed by OS, we still don't know. So here I want to walk through roughly procedures from how a system is loaded to what it is like when the first process is executed.
@@ -202,7 +206,9 @@ main(void)
   ideinit();       // disk 
   startothers();   // start other processors
   kinit2(P2V(4*1024*1024), P2V(PHYSTOP)); // must come after startothers()
+  																				 /
   userinit();      // first user process  <======== This is our FOCUS
+  																				 \
   mpmain();        // finish this processor's setup
 }
 ```

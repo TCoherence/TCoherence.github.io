@@ -10,6 +10,11 @@ categories: Northwestern University
 > I will summary every chapter of this course and then make a whole summary. 
 
 <!--more-->
+
+[TOC]
+
+
+
 ## DB fundamentals
 Database like txt file or another file storage type. It stores data, but why we design a new model to store the data not just use what we have now? Because of efficiency, database can retrieve data more quick than normal type file storage. Moreover, it can normalize the data to make them more conpact to reduce space usage which is also important for large scale system.
 ***Database*** is a large collection of organized data.
@@ -153,3 +158,4 @@ In the above code, we notice that there are some UPPERCASE WORDS like PRIMARY KE
 ## MDX Queries
 
 ## Graph Database
+

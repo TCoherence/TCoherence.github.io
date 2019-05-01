@@ -6,10 +6,10 @@ categories: Northwestern University
 ---
 
 > This is the first course note because OS is too important. I don't want to return my knowledge to my professor, I need to keep the knowledge around me. lol.
+>
+> This course is offered by Prof. [Stephen Tarzia](https://www.mccormick.northwestern.edu/research-faculty/directory/profiles/tarzia-stephen.html).
 
 <!--more-->
-
-@[toc]
 
 [TOC]
 
