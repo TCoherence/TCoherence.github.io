@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Hanzhi&#39;s BLOG">
 <meta property="og:description" content="This is the first course note because OS is too important. I don’t want to return my knowledge to my professor, I need to keep the knowledge around me. lol.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-19T21:05:26.919Z">
+<meta property="og:updated_time" content="2019-05-01T01:25:53.205Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EECS_343_Operating_System">
 <meta name="twitter:description" content="This is the first course note because OS is too important. I don’t want to return my knowledge to my professor, I need to keep the knowledge around me. lol.">
@@ -340,8 +340,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-04-19T16:05:26-05:00">
-                2019-04-19
+              <time title="Post modified" itemprop="dateModified" datetime="2019-04-30T20:25:53-05:00">
+                2019-04-30
               </time>
             
           </span>
@@ -403,9 +403,38 @@
 <p>@[toc]</p>
 <p>[TOC]</p>
 <h1 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h1><p>blah blah blah</p>
-<h1 id="2-Processes-amp-System-calls"><a href="#2-Processes-amp-System-calls" class="headerlink" title="2. Processes &amp; System calls"></a>2. Processes &amp; System calls</h1><h1 id="3-Process-creation-and-memory-layout"><a href="#3-Process-creation-and-memory-layout" class="headerlink" title="3. Process creation and memory layout"></a>3. Process creation and memory layout</h1><h1 id="4-Scheduling"><a href="#4-Scheduling" class="headerlink" title="4. Scheduling"></a>4. Scheduling</h1><h2 id="4-x-Mechanism-and-policy"><a href="#4-x-Mechanism-and-policy" class="headerlink" title="4.x Mechanism and policy"></a>4.x Mechanism and policy</h2><p>The policies what is to be done while the mechanism specifies how it is to be done. For instance, the timer construct for ensuring CPU protection is mechanism. On the other hand, the decision of how long the timer is set for a particular user is a policy decision.</p>
+<h1 id="2-Processes-amp-System-calls"><a href="#2-Processes-amp-System-calls" class="headerlink" title="2. Processes &amp; System calls"></a>2. Processes &amp; System calls</h1><ul>
+<li><strong>Process</strong> is the execution unit of a CPU.</li>
+<li><strong>Limited direct execution</strong> is a strategy to let many processes to share a single CPU as if they are all has full use of the CPU and memory(In the view of user, because you cannot tell the difference between 100ms and 100ns, lol)</li>
+<li>OS will divide execution part into user mode part and kernel mode part. It will prevent user processes from doing harmful operations. If user want to do something, it needs to use <strong><em>system call</em></strong>.</li>
+<li>System calls are software interrupts(Yes, we have hardware interrupts also, like I/O interrupts, NIC interrupts and etc.)</li>
+<li>Because Interrupts is the only reason to cause the kernel to run, so we need set a <em>Timer Interrupt</em> to ensure that the kernel will run eventually.</li>
+</ul>
+<h1 id="3-Process-creation-and-memory-layout"><a href="#3-Process-creation-and-memory-layout" class="headerlink" title="3. Process creation and memory layout"></a>3. Process creation and memory layout</h1><ul>
+<li>we use fork+exec to create a process and load a program code so that a program can be run in a process.</li>
+<li><em>Nondeterminism</em> means that a programs’ output is unpredictable.</li>
+<li>To easily switch from one process to another, we need to store some registers value in user’s address space.</li>
+</ul>
+<h1 id="4-Scheduling"><a href="#4-Scheduling" class="headerlink" title="4. Scheduling"></a>4. Scheduling</h1><p>So if we have multiple processes, we need to set up a policy to share the CPU(If we only have one CPU, sad…).</p>
+<ul>
+<li>Two metrics: turnaround time &amp; response time.<ul>
+<li>turnaround time: $T_{turnaround} = T_{finish} - T_{arrival}$. Optimized by Shortest Time-toComplete First (STCF).</li>
+<li>response time: $T_{response} = T_{start} - T_{arrival}$. Optimized by Round Robin (RR).</li>
+</ul>
+</li>
+<li>Context switch overhead is because of CPU cache missing.</li>
+<li>Multi-Level Feedback Queue.<ul>
+<li>A process goes to the highest priority queue when coming in.</li>
+<li>A processes with higher priority executes first. </li>
+<li>Same priority processes executes in RR. (context switch overhead).</li>
+<li>A process can use limited time of one priority queue, if use up, it should be moved to the next lower priority queue.</li>
+<li>All processes will to go highest priority queue in a fixed period of time.</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-1-Mechanism-and-policy-Still-not-clear"><a href="#4-1-Mechanism-and-policy-Still-not-clear" class="headerlink" title="4.1 Mechanism and policy[Still not clear]"></a>4.1 Mechanism and policy[Still not clear]</h2><p>The policies what is to be done while the mechanism specifies how it is to be done. For instance, the timer construct for ensuring CPU protection is mechanism. On the other hand, the decision of how long the timer is set for a particular user is a policy decision.</p>
 <p>The policy indicates what we need to do and the mechanism tells us how exactly we will implement this policy. Like we have several scheduling policies like FIFO, SJF, STCF, RR and MLFQ. But how to implement this, we have different ways.</p>
-<h1 id="5-Virtual-Memory-amp-Paging"><a href="#5-Virtual-Memory-amp-Paging" class="headerlink" title="5.Virtual Memory &amp; Paging"></a>5.Virtual Memory &amp; Paging</h1><h1 id="x-Project"><a href="#x-Project" class="headerlink" title="x. Project"></a>x. Project</h1><h2 id="Issues"><a href="#Issues" class="headerlink" title="Issues:"></a>Issues:</h2><h3 id="Download-the-source-code"><a href="#Download-the-source-code" class="headerlink" title="Download the source code"></a>Download the source code</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://USERNAME@github.com/starzia-teaching/project-1-GROUPNAME.git</span><br></pre></td></tr></table></figure>
+<h1 id="5-Virtual-Memory-amp-Paging-🌟"><a href="#5-Virtual-Memory-amp-Paging-🌟" class="headerlink" title="5. Virtual Memory &amp; Paging[🌟]"></a>5. Virtual Memory &amp; Paging[🌟]</h1><h1 id="6-Memory-management-optimization"><a href="#6-Memory-management-optimization" class="headerlink" title="6. Memory management optimization"></a>6. Memory management optimization</h1><h1 id="x-Project"><a href="#x-Project" class="headerlink" title="x. Project"></a>x. Project</h1><h2 id="Issues"><a href="#Issues" class="headerlink" title="Issues:"></a>Issues:</h2><h3 id="Download-the-source-code"><a href="#Download-the-source-code" class="headerlink" title="Download the source code"></a>Download the source code</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://USERNAME@github.com/starzia-teaching/project-1-GROUPNAME.git</span><br></pre></td></tr></table></figure>
 <p>Notice that I added my github username to the user above, before “@github.com”.  If you get an error related to <code>gnome-ssh-askpass</code> then try running </p>
 <p><code>unsetenv SSH_ASKPASS</code> </p>
 <p>first (or log in with X11 forwarding).</p>
@@ -634,7 +663,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Introduction"><span class="nav-text">1. Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Processes-amp-System-calls"><span class="nav-text">2. Processes &amp; System calls</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Process-creation-and-memory-layout"><span class="nav-text">3. Process creation and memory layout</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-Scheduling"><span class="nav-text">4. Scheduling</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-x-Mechanism-and-policy"><span class="nav-text">4.x Mechanism and policy</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-Virtual-Memory-amp-Paging"><span class="nav-text">5.Virtual Memory &amp; Paging</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#x-Project"><span class="nav-text">x. Project</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Issues"><span class="nav-text">Issues:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Download-the-source-code"><span class="nav-text">Download the source code</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Introduction"><span class="nav-text">1. Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Processes-amp-System-calls"><span class="nav-text">2. Processes &amp; System calls</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Process-creation-and-memory-layout"><span class="nav-text">3. Process creation and memory layout</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-Scheduling"><span class="nav-text">4. Scheduling</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-Mechanism-and-policy-Still-not-clear"><span class="nav-text">4.1 Mechanism and policy[Still not clear]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-Virtual-Memory-amp-Paging-🌟"><span class="nav-text">5. Virtual Memory &amp; Paging[🌟]</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-Memory-management-optimization"><span class="nav-text">6. Memory management optimization</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#x-Project"><span class="nav-text">x. Project</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Issues"><span class="nav-text">Issues:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Download-the-source-code"><span class="nav-text">Download the source code</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
