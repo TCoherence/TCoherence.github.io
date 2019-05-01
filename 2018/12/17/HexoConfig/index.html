@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="Hexo Configs &amp;amp; Frequent Problems  Here are some useful configurations for hexo.   beautify the article with shadow  1234567891011/* path:themes/next/source/css/_custom/custom.styl */.post &amp;#123;">
+<meta name="description" content="Hexo Configs &amp;amp; Frequent Problems Here are some useful configurations for hexo.   beautify the article with shadow 1234567891011/* path:themes/next/source/css/_custom/custom.styl */.post &amp;#123;  ma">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HexoConfig">
 <meta property="og:url" content="https://tcoherence.github.io/2018/12/17/HexoConfig/index.html">
 <meta property="og:site_name" content="Hanzhi&#39;s BLOG">
-<meta property="og:description" content="Hexo Configs &amp;amp; Frequent Problems  Here are some useful configurations for hexo.   beautify the article with shadow  1234567891011/* path:themes/next/source/css/_custom/custom.styl */.post &amp;#123;">
+<meta property="og:description" content="Hexo Configs &amp;amp; Frequent Problems Here are some useful configurations for hexo.   beautify the article with shadow 1234567891011/* path:themes/next/source/css/_custom/custom.styl */.post &amp;#123;  ma">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2018-12-17T23:58:32.840Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HexoConfig">
-<meta name="twitter:description" content="Hexo Configs &amp;amp; Frequent Problems  Here are some useful configurations for hexo.   beautify the article with shadow  1234567891011/* path:themes/next/source/css/_custom/custom.styl */.post &amp;#123;">
+<meta name="twitter:description" content="Hexo Configs &amp;amp; Frequent Problems Here are some useful configurations for hexo.   beautify the article with shadow 1234567891011/* path:themes/next/source/css/_custom/custom.styl */.post &amp;#123;  ma">
 
 
 
@@ -373,22 +373,20 @@
       
 
       
-        <h1 id="hexo-configs-frequent-problems"><a class="markdownIt-Anchor" href="#hexo-configs-frequent-problems"></a> Hexo Configs &amp; Frequent Problems</h1>
-<blockquote>
+        <h1 id="Hexo-Configs-amp-Frequent-Problems"><a href="#Hexo-Configs-amp-Frequent-Problems" class="headerlink" title="Hexo Configs &amp; Frequent Problems"></a>Hexo Configs &amp; Frequent Problems</h1><blockquote>
 <p>Here are some useful configurations for hexo.</p>
 </blockquote>
 <ol>
-<li>beautify the article with shadow</li>
-</ol>
+<li><p>beautify the article with shadow</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* path:themes/next/source/css/_custom/custom.styl */</span></span><br><span class="line"><span class="selector-class">.post</span> &#123;</span><br><span class="line">  <span class="attribute">margin-top</span>: <span class="number">60px</span>;</span><br><span class="line">  <span class="attribute">margin-bottom</span>: <span class="number">60px</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">25px</span>;</span><br><span class="line">  <span class="attribute">-webkit-box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">5px</span> <span class="built_in">rgba</span>(202, 203, 203, .5);</span><br><span class="line">  <span class="attribute">-moz-box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">5px</span> <span class="built_in">rgba</span>(202, 203, 204, .5);</span><br><span class="line"> &#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Get from: https://www.jianshu.com/p/d34e9531cfce</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>Avatar rotation</li>
-</ol>
+</li>
+<li><p>Avatar rotation</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* path:themes/next/source/css/_custom/custom.styl */</span></span><br><span class="line"><span class="selector-class">.site-author-image</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">  <span class="attribute">padding</span>: $site-author-image-padding;</span><br><span class="line">  <span class="attribute">max-width</span>: $site-author-image-width;</span><br><span class="line">  <span class="attribute">height</span>: $site-author-image-height;</span><br><span class="line">  <span class="attribute">border</span>: site-author-image-border-color;</span><br><span class="line">  <span class="comment">/* start*/</span></span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">50%</span></span><br><span class="line">  webkit-transition: <span class="number">1.4s</span> all;</span><br><span class="line">  <span class="attribute">moz-transition</span>: <span class="number">1.4s</span> all;</span><br><span class="line">  <span class="attribute">ms-transition</span>: <span class="number">1.4s</span> all;</span><br><span class="line">  <span class="attribute">transition</span>: <span class="number">1.4s</span> all;</span><br><span class="line">  <span class="comment">/* end */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* start */</span></span><br><span class="line"><span class="selector-class">.site-author-image</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#55DAE1</span>;</span><br><span class="line">  <span class="attribute">webkit-transform</span>: <span class="built_in">rotate</span>(360deg) <span class="built_in">scale</span>(0.9);</span><br><span class="line">  <span class="attribute">moz-transform</span>: <span class="built_in">rotate</span>(360deg) <span class="built_in">scale</span>(0.9);</span><br><span class="line">  <span class="attribute">ms-transform</span>: <span class="built_in">rotate</span>(360deg) <span class="built_in">scale</span>(0.9);</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">rotate</span>(360deg) <span class="built_in">scale</span>(0.9);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* end */</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Get from: https://www.jianshu.com/p/d34e9531cfce</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>Social icons don’t appear</li>
-</ol>
+</li>
+<li><p>Social icons don’t appear</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">social:</span></span><br><span class="line"><span class="attr">  GitHub:</span> <span class="attr">https://github.com/TCoherence</span> <span class="string">||</span> <span class="string">github</span></span><br><span class="line"><span class="attr">  E-Mail:</span> <span class="attr">mailto:hanzhiyang2019@gmail.com</span> <span class="string">||</span> <span class="string">envelope</span></span><br><span class="line">  <span class="comment">#Google: https://plus.google.com/yourname || google</span></span><br><span class="line"><span class="attr">  Twitter:</span> <span class="attr">https://twitter.com/yang_hanzhi</span> <span class="string">||</span> <span class="string">twitter</span></span><br><span class="line">  <span class="string">FB</span> <span class="attr">Page:</span> <span class="attr">https://www.facebook.com/profile.php?id=100025563873836</span> <span class="string">||</span> <span class="string">facebook</span></span><br><span class="line">  <span class="comment">#VK Group: https://vk.com/yourname || vk</span></span><br><span class="line">  <span class="comment">#StackOverflow: https://stackoverflow.com/yourname || stack-overflow</span></span><br><span class="line">  <span class="comment">#YouTube: https://youtube.com/yourname || youtube</span></span><br><span class="line">  <span class="comment">#Instagram: https://instagram.com/yourname || instagram</span></span><br><span class="line">  <span class="comment">#Skype: skype:yourname?call|chat || skype</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <p>The final code should be something like this. ‘social’ cannot be commented out.</p>
 
       
@@ -606,7 +604,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo-configs-frequent-problems"><span class="nav-text"> Hexo Configs &amp; Frequent Problems</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo-Configs-amp-Frequent-Problems"><span class="nav-text">Hexo Configs &amp; Frequent Problems</span></a></li></ol></div>
             
 
           </div>
