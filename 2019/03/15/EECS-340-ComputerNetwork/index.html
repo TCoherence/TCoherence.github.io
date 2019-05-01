@@ -90,7 +90,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS-340-ComputerNetwork/Review001.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS-340-ComputerNetwork/AS_Routing.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS-340-ComputerNetwork/ARP_format_includingEthernet.png">
-<meta property="og:updated_time" content="2019-03-19T00:06:35.060Z">
+<meta property="og:updated_time" content="2019-05-01T02:14:12.239Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EECS_340_ComputerNetwork">
 <meta name="twitter:description" content="Computer Network(Top-to-down) this is a brief summary of my 2019spring course, computer network. During this course, we talk about 4 main layers in current network architecture. They are Application l">
@@ -104,7 +104,7 @@
     root: '/',
     scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -344,8 +344,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-03-18T19:06:35-05:00">
-                2019-03-18
+              <time title="Post modified" itemprop="dateModified" datetime="2019-04-30T21:14:12-05:00">
+                2019-04-30
               </time>
             
           </span>
@@ -405,7 +405,7 @@
 <p>This course is offered by Prof. <a href="https://www.mccormick.northwestern.edu/research-faculty/directory/profiles/chen-yan.html" target="_blank" rel="noopener">Yan Chen</a></p>
 </blockquote>
 <a id="more"></a>
-<p>@[toc]</p>
+<p>[TOC]</p>
 <h2 id="0-Instruction"><a href="#0-Instruction" class="headerlink" title="0 Instruction"></a>0 Instruction</h2><p>The most important thing in this class is to understand what we really want to do and how we do it. Currently, we all can connect to the Internet, we can use browser to see many different webpages, we can use laptop to play games, we can ssh, we can download, we can do almost anything we want. But how we do this?</p>
 <p>Let’s say all these things are called application data, which is really familiar to CS student or related-to-CS majors students. We cannot just pass this original application data to others, right? Why? Because we don’t know what to do, you just give me the data, where should I go? Like you want to deliver a package but you NEED address to locate the destination! That’s why we ENCAPSULATE the original data into a packet(usually TCP or UDP), which will indicates some information about this application data and how to deal with it. But in reality, we all know that in order to deliver a package, the address is not the only thing necessary, we also need ZIP, need car or trunk, and even receivers’ phone number. This all of them will help us to deliver a package correctly.  </p>
 <p>Yes, transport layer, network layer and data link layer are doing the stuff. More accurately, we can say transport layer just a car, network layer and data link layer indicate the address of a packet. We will encapsulate them one by one, and break them down one by one.</p>
@@ -663,6 +663,11 @@
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -709,11 +714,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
