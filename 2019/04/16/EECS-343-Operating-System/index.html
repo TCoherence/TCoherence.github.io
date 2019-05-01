@@ -87,10 +87,13 @@
 <meta property="og:site_name" content="Hanzhi&#39;s BLOG">
 <meta property="og:description" content="This is the first course note because OS is too important. I don’t want to return my knowledge to my professor, I need to keep the knowledge around me. lol.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-01T01:25:53.205Z">
+<meta property="og:image" content="https://tcoherence.github.io/Users/yanghanzhi/Public/Hexo/blog_github/TCoherence.github.io/source/_posts/EECS-343-Operating-System/1levelpaging.png">
+<meta property="og:image" content="https://tcoherence.github.io/Users/yanghanzhi/Public/Hexo/blog_github/TCoherence.github.io/source/_posts/EECS-343-Operating-System/2levelpaging.png">
+<meta property="og:updated_time" content="2019-05-01T01:49:59.289Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EECS_343_Operating_System">
 <meta name="twitter:description" content="This is the first course note because OS is too important. I don’t want to return my knowledge to my professor, I need to keep the knowledge around me. lol.">
+<meta name="twitter:image" content="https://tcoherence.github.io/Users/yanghanzhi/Public/Hexo/blog_github/TCoherence.github.io/source/_posts/EECS-343-Operating-System/1levelpaging.png">
 
 
 
@@ -340,7 +343,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-04-30T20:25:53-05:00">
+              <time title="Post modified" itemprop="dateModified" datetime="2019-04-30T20:49:59-05:00">
                 2019-04-30
               </time>
             
@@ -402,7 +405,7 @@
 <a id="more"></a>
 <p>@[toc]</p>
 <p>[TOC]</p>
-<h1 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h1><p>blah blah blah</p>
+<h1 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h1><p>blah blah blah.</p>
 <h1 id="2-Processes-amp-System-calls"><a href="#2-Processes-amp-System-calls" class="headerlink" title="2. Processes &amp; System calls"></a>2. Processes &amp; System calls</h1><ul>
 <li><strong>Process</strong> is the execution unit of a CPU.</li>
 <li><strong>Limited direct execution</strong> is a strategy to let many processes to share a single CPU as if they are all has full use of the CPU and memory(In the view of user, because you cannot tell the difference between 100ms and 100ns, lol)</li>
@@ -434,11 +437,48 @@
 </ul>
 <h2 id="4-1-Mechanism-and-policy-Still-not-clear"><a href="#4-1-Mechanism-and-policy-Still-not-clear" class="headerlink" title="4.1 Mechanism and policy[Still not clear]"></a>4.1 Mechanism and policy[Still not clear]</h2><p>The policies what is to be done while the mechanism specifies how it is to be done. For instance, the timer construct for ensuring CPU protection is mechanism. On the other hand, the decision of how long the timer is set for a particular user is a policy decision.</p>
 <p>The policy indicates what we need to do and the mechanism tells us how exactly we will implement this policy. Like we have several scheduling policies like FIFO, SJF, STCF, RR and MLFQ. But how to implement this, we have different ways.</p>
-<h1 id="5-Virtual-Memory-amp-Paging-🌟"><a href="#5-Virtual-Memory-amp-Paging-🌟" class="headerlink" title="5. Virtual Memory &amp; Paging[🌟]"></a>5. Virtual Memory &amp; Paging[🌟]</h1><h1 id="6-Memory-management-optimization"><a href="#6-Memory-management-optimization" class="headerlink" title="6. Memory management optimization"></a>6. Memory management optimization</h1><h1 id="x-Project"><a href="#x-Project" class="headerlink" title="x. Project"></a>x. Project</h1><h2 id="Issues"><a href="#Issues" class="headerlink" title="Issues:"></a>Issues:</h2><h3 id="Download-the-source-code"><a href="#Download-the-source-code" class="headerlink" title="Download the source code"></a>Download the source code</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://USERNAME@github.com/starzia-teaching/project-1-GROUPNAME.git</span><br></pre></td></tr></table></figure>
+<h1 id="5-Virtual-Memory-amp-Paging-🌟"><a href="#5-Virtual-Memory-amp-Paging-🌟" class="headerlink" title="5. Virtual Memory &amp; Paging[🌟]"></a>5. Virtual Memory &amp; Paging[🌟]</h1><ul>
+<li>Even given a virtual memory address, the addresses store in CR3, page directory table and page tables are still PHYSICAL address!</li>
+<li>Because alignment, the addresses stored in page directory table only use higher bits to store the part of real physical address(because lower part bits are zero, no need to store them), the lower bits are used as flags to indicate if the entry can be used or not.</li>
+<li>Here is an classic one-level and two-level paging example.(from Prof. Stephen Tarzia slides.)</li>
+</ul>
+<p><img src="/Users/yanghanzhi/Public/Hexo/blog_github/TCoherence.github.io/source/_posts/EECS-343-Operating-System/1levelpaging.png" alt="1levelpaging"></p>
+<p><img src="/Users/yanghanzhi/Public/Hexo/blog_github/TCoherence.github.io/source/_posts/EECS-343-Operating-System/2levelpaging.png" alt="2levelpaging"></p>
+<h1 id="6-Memory-management-optimization"><a href="#6-Memory-management-optimization" class="headerlink" title="6. Memory management optimization"></a>6. Memory management optimization</h1><p>Even we use virtual memory to solve some problem in view of user. But for OS, we have another problem to consider.</p>
+<ul>
+<li>Latency cost, because now we have to translate virtual memory to physical memory which takes a lot of time!<ul>
+<li>We introduce Translation Lookaside Buffer(TLB) caches most recent physical page translations.</li>
+</ul>
+</li>
+<li>Space cost, because we create page directory table and page table to store real page table entry or page entry, which costs memory space.<ul>
+<li>For different demands we use different level paging, and even combine them.</li>
+</ul>
+</li>
+<li>Another ways to reduce memory demands like copy-on-write fork(Project 2), demand zeroing, lazy loading and library sharing and etc.</li>
+</ul>
+<h1 id="7-Swapping"><a href="#7-Swapping" class="headerlink" title="7. Swapping"></a>7. Swapping</h1><p>If we cannot keep latency low, let’s increase the throughput!</p>
+<ul>
+<li>Disk is slow but large, and can be used to store RAM’s overflow</li>
+<li>Paging and swapping work together, using the same CPU mechanisms.</li>
+<li><em>Paging replacement policy</em> decides which page to be evicted.</li>
+<li>Thrashing is a state, in which system cannot doing anything because of swapping.</li>
+<li>Unified page cache handles both traditional paging and file caching to make user fell file system access is just as fast as memory access.</li>
+</ul>
+<h1 id="8-Free-space-Managements"><a href="#8-Free-space-Managements" class="headerlink" title="8. Free-space Managements"></a>8. Free-space Managements</h1><ul>
+<li>Free space memory is put on a <strong>free list</strong>.</li>
+<li>Free space management policy determines:<ul>
+<li>Which free blocks to choose for an allocation</li>
+<li>When to <strong>coalesce</strong> adjacent free blocks.</li>
+<li>Four policies: First fit, next fit, best fit and worst fit.</li>
+</ul>
+</li>
+</ul>
+<h1 id="x-Project"><a href="#x-Project" class="headerlink" title="x. Project"></a>x. Project</h1><h2 id="1-Issues"><a href="#1-Issues" class="headerlink" title="1. Issues:"></a>1. Issues:</h2><h3 id="1-1-Download-the-source-code"><a href="#1-1-Download-the-source-code" class="headerlink" title="1.1 Download the source code"></a>1.1 Download the source code</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://USERNAME@github.com/starzia-teaching/project-1-GROUPNAME.git</span><br></pre></td></tr></table></figure>
 <p>Notice that I added my github username to the user above, before “@github.com”.  If you get an error related to <code>gnome-ssh-askpass</code> then try running </p>
 <p><code>unsetenv SSH_ASKPASS</code> </p>
 <p>first (or log in with X11 forwarding).</p>
 <p>Be careful that on Internet we will see <code>unset SSH_ASKPASS</code> which may not works. But <code>unsetenv</code> works for me.</p>
+<p>*Update: unsetenv SSH_ASKPASS works for tcsh shell and <code>unset SSH_ASKPASS</code> works for bash and zsh shell.</p>
 
       
     </div>
@@ -663,7 +703,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Introduction"><span class="nav-text">1. Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Processes-amp-System-calls"><span class="nav-text">2. Processes &amp; System calls</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Process-creation-and-memory-layout"><span class="nav-text">3. Process creation and memory layout</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-Scheduling"><span class="nav-text">4. Scheduling</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-Mechanism-and-policy-Still-not-clear"><span class="nav-text">4.1 Mechanism and policy[Still not clear]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-Virtual-Memory-amp-Paging-🌟"><span class="nav-text">5. Virtual Memory &amp; Paging[🌟]</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-Memory-management-optimization"><span class="nav-text">6. Memory management optimization</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#x-Project"><span class="nav-text">x. Project</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Issues"><span class="nav-text">Issues:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Download-the-source-code"><span class="nav-text">Download the source code</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Introduction"><span class="nav-text">1. Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Processes-amp-System-calls"><span class="nav-text">2. Processes &amp; System calls</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Process-creation-and-memory-layout"><span class="nav-text">3. Process creation and memory layout</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-Scheduling"><span class="nav-text">4. Scheduling</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-Mechanism-and-policy-Still-not-clear"><span class="nav-text">4.1 Mechanism and policy[Still not clear]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-Virtual-Memory-amp-Paging-🌟"><span class="nav-text">5. Virtual Memory &amp; Paging[🌟]</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-Memory-management-optimization"><span class="nav-text">6. Memory management optimization</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-Swapping"><span class="nav-text">7. Swapping</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-Free-space-Managements"><span class="nav-text">8. Free-space Managements</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#x-Project"><span class="nav-text">x. Project</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Issues"><span class="nav-text">1. Issues:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Download-the-source-code"><span class="nav-text">1.1 Download the source code</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
