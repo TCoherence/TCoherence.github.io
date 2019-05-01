@@ -17,7 +17,9 @@ categories: Northwestern University
 
 # 1. Introduction
 
-blah blah blah
+blah blah blah.
+
+
 
 # 2. Processes & System calls
 
@@ -27,11 +29,15 @@ blah blah blah
 - System calls are software interrupts(Yes, we have hardware interrupts also, like I/O interrupts, NIC interrupts and etc.)
 - Because Interrupts is the only reason to cause the kernel to run, so we need set a *Timer Interrupt* to ensure that the kernel will run eventually.
 
+
+
 # 3. Process creation and memory layout
 
 - we use fork+exec to create a process and load a program code so that a program can be run in a process.
 - *Nondeterminism* means that a programs' output is unpredictable.
 - To easily switch from one process to another, we need to store some registers value in user's address space.
+
+
 
 # 4. Scheduling
 
@@ -54,17 +60,59 @@ The policies what is to be done while the mechanism specifies how it is to be do
 
 The policy indicates what we need to do and the mechanism tells us how exactly we will implement this policy. Like we have several scheduling policies like FIFO, SJF, STCF, RR and MLFQ. But how to implement this, we have different ways.
 
+
+
 # 5. Virtual Memory & Paging[🌟]
+
+- Even given a virtual memory address, the addresses store in CR3, page directory table and page tables are still PHYSICAL address!
+- Because alignment, the addresses stored in page directory table only use higher bits to store the part of real physical address(because lower part bits are zero, no need to store them), the lower bits are used as flags to indicate if the entry can be used or not.
+- Here is an classic one-level and two-level paging example.(from Prof. Stephen Tarzia slides.)
+
+![1levelpaging](/Users/yanghanzhi/Public/Hexo/blog_github/TCoherence.github.io/source/_posts/EECS-343-Operating-System/1levelpaging.png)
+
+![2levelpaging](/Users/yanghanzhi/Public/Hexo/blog_github/TCoherence.github.io/source/_posts/EECS-343-Operating-System/2levelpaging.png)
 
 
 
 # 6. Memory management optimization
 
+Even we use virtual memory to solve some problem in view of user. But for OS, we have another problem to consider.
+
+- Latency cost, because now we have to translate virtual memory to physical memory which takes a lot of time!
+  - We introduce Translation Lookaside Buffer(TLB) caches most recent physical page translations.
+- Space cost, because we create page directory table and page table to store real page table entry or page entry, which costs memory space.
+  - For different demands we use different level paging, and even combine them.
+- Another ways to reduce memory demands like copy-on-write fork(Project 2), demand zeroing, lazy loading and library sharing and etc.
+
+
+
+# 7. Swapping
+
+If we cannot keep latency low, let's increase the throughput!
+
+- Disk is slow but large, and can be used to store RAM's overflow
+- Paging and swapping work together, using the same CPU mechanisms.
+- *Paging replacement policy* decides which page to be evicted.
+- Thrashing is a state, in which system cannot doing anything because of swapping.
+- Unified page cache handles both traditional paging and file caching to make user fell file system access is just as fast as memory access.
+
+
+
+# 8. Free-space Managements
+
+- Free space memory is put on a **free list**.
+- Free space management policy determines:
+  - Which free blocks to choose for an allocation
+  - When to **coalesce** adjacent free blocks.
+  - Four policies: First fit, next fit, best fit and worst fit.
+
+
+
 # x. Project
 
-## Issues:
+## 1. Issues:
 
-### Download the source code
+### 1.1 Download the source code
 
 ```
 $ git clone https://USERNAME@github.com/starzia-teaching/project-1-GROUPNAME.git 
@@ -77,4 +125,6 @@ Notice that I added my github username to the user above, before "@github.com". 
 first (or log in with X11 forwarding).
 
 Be careful that on Internet we will see `unset SSH_ASKPASS` which may not works. But `unsetenv` works for me.
+
+\*Update: unsetenv SSH_ASKPASS works for tcsh shell and `unset SSH_ASKPASS` works for bash and zsh shell.
 
