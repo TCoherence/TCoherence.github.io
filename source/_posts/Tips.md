@@ -33,6 +33,18 @@ Then when I run zsh in my remote server, the feeling of coming home is there.
 
 
 
+I cannot bear the uncolored ssh terminal anymore especially that no color when I enter `git status` which makes it hard for me to see the report. So I google it and find it can be solved by enter
+
+```git config color.status always```
+
+Another happy thing: I've received the updated information from my intern company. Real world seems not that friendly. 😮
+
+:-)
+
+2019-5-9
+
+
+
 # Github issues
 
 ## 'invalid username or password'
