@@ -8,7 +8,7 @@
 echo "==========================================="
 echo "==== try to clean hexo and deploy later ==="
 echo "==========================================="
-# hexo clean && hexo d -g
+hexo clean && hexo d -g
 
 echo "==========================================="
 echo "==== Now is going to git add/commit/push =="
