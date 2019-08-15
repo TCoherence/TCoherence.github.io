@@ -49,3 +49,18 @@ while (  ) {
     3. from the rightmost element, then go back to the first pile based on the pointer value, and we will get the target LIS.
 }
 ```
+
+## 5. Quick sort & Quick select time analysis
+
+We both know these 2 algorithms but for time complexity I am confused about why one is O(nlogn) and the other is O(n). After doing the time complexity by myself one time I finally figure it out:
+
+For Quick sort, we have 
+$$
+T(n) = 2T(n/2)+O(n)
+$$
+While Quick select we only have 
+$$
+T(n) = T(n/2) + O(n)
+$$
+The parameter before T(n/2) makes a difference!
+
