@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Hanzhi&#39;s BLOG">
 <meta property="og:description" content="ALGORITHM This is how I learn algorithm.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-17T22:04:21.868Z">
+<meta property="og:updated_time" content="2019-08-15T03:58:40.308Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Algorithms">
 <meta name="twitter:description" content="ALGORITHM This is how I learn algorithm.">
@@ -324,7 +324,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-09T09:34:46-05:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-09T09:34:46-07:00">
                 2018-05-09
               </time>
             
@@ -340,8 +340,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-12-17T16:04:21-06:00">
-                2018-12-17
+              <time title="Post modified" itemprop="dateModified" datetime="2019-08-14T20:58:40-07:00">
+                2019-08-14
               </time>
             
           </span>
@@ -417,6 +417,8 @@
 </li>
 </ol>
 <p>To get a LIS given an array, when we have former rules, we can follow these steps:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (  ) &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="number">1</span>. build pile and pointer that points to the current top element of the pile</span><br><span class="line">    <span class="number">2</span>. whenever place a <span class="keyword">new</span> element to a pile, update its top element and its pointer to previous pile<span class="string">'s top elements.  </span></span><br><span class="line"><span class="string">    3. from the rightmost element, then go back to the first pile based on the pointer value, and we will get the target LIS.</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="5-Quick-sort-amp-Quick-select-time-analysis"><a href="#5-Quick-sort-amp-Quick-select-time-analysis" class="headerlink" title="5. Quick sort &amp; Quick select time analysis"></a>5. Quick sort &amp; Quick select time analysis</h2><p>We both know these 2 algorithms but for time complexity I am confused about why one is O(nlogn) and the other is O(n). After doing the time complexity by myself one time I finally figure it out:</p>
+<p>For Quick sort, we have<br>$$<br>T(n) = 2T(n/2)+O(n)<br>$$<br>While Quick select we only have<br>$$<br>T(n) = T(n/2) + O(n)<br>$$<br>The parameter before T(n/2) makes a difference!</p>
 
       
     </div>
@@ -639,7 +641,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ALGORITHM"><span class="nav-text">ALGORITHM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Backtracking"><span class="nav-text">1. Backtracking</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-DP-learning"><span class="nav-text">2. DP ( learning )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-BFS-amp-DFS"><span class="nav-text">3. BFS &amp; DFS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Patient-Sorting-used-for-LIS-Longest-Increasing-Sequence"><span class="nav-text">4. Patient Sorting ( used for LIS, Longest Increasing Sequence )</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ALGORITHM"><span class="nav-text">ALGORITHM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Backtracking"><span class="nav-text">1. Backtracking</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-DP-learning"><span class="nav-text">2. DP ( learning )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-BFS-amp-DFS"><span class="nav-text">3. BFS &amp; DFS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Patient-Sorting-used-for-LIS-Longest-Increasing-Sequence"><span class="nav-text">4. Patient Sorting ( used for LIS, Longest Increasing Sequence )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Quick-sort-amp-Quick-select-time-analysis"><span class="nav-text">5. Quick sort &amp; Quick select time analysis</span></a></li></ol></li></ol></div>
             
 
           </div>
