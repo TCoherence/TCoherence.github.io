@@ -110,6 +110,10 @@ If we cannot keep latency low, let's increase the throughput!
 
 # x. Project
 
+## 0. Basic knowledge for Projects
+
+1. {% post_link xv6-the-first-process xv6-the-first-process %}
+
 ## 1. Issues:
 
 ### 1.1 Download the source code
