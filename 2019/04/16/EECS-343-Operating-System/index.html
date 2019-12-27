@@ -89,7 +89,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS-343-Operating-System/1levelpaging.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS-343-Operating-System/2levelpaging.png">
-<meta property="og:updated_time" content="2019-05-01T02:13:43.333Z">
+<meta property="og:updated_time" content="2019-12-27T22:34:47.020Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EECS_343_Operating_System">
 <meta name="twitter:description" content="This is the first course note because OS is too important. I don’t want to return my knowledge to my professor, I need to keep the knowledge around me. lol. This course is offered by Prof. Stephen Ta">
@@ -301,7 +301,7 @@
     <link itemprop="mainEntityOfPage" href="https://tcoherence.github.io/2019/04/16/EECS-343-Operating-System/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Hanzhi Yang">
+      <meta itemprop="name" content="年轻的C同学">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.jpeg">
     </span>
@@ -343,8 +343,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-04-30T21:13:43-05:00">
-                2019-04-30
+              <time title="Post modified" itemprop="dateModified" datetime="2019-12-27T16:34:47-06:00">
+                2019-12-27
               </time>
             
           </span>
@@ -473,7 +473,11 @@
 </ul>
 </li>
 </ul>
-<h1 id="x-Project"><a href="#x-Project" class="headerlink" title="x. Project"></a>x. Project</h1><h2 id="1-Issues"><a href="#1-Issues" class="headerlink" title="1. Issues:"></a>1. Issues:</h2><h3 id="1-1-Download-the-source-code"><a href="#1-1-Download-the-source-code" class="headerlink" title="1.1 Download the source code"></a>1.1 Download the source code</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://USERNAME@github.com/starzia-teaching/project-1-GROUPNAME.git</span><br></pre></td></tr></table></figure>
+<h1 id="x-Project"><a href="#x-Project" class="headerlink" title="x. Project"></a>x. Project</h1><h2 id="0-Basic-knowledge-for-Projects"><a href="#0-Basic-knowledge-for-Projects" class="headerlink" title="0. Basic knowledge for Projects"></a>0. Basic knowledge for Projects</h2><ol>
+<li><a href="/2019/04/19/xv6-the-first-process/" title="xv6-the-first-process">xv6-the-first-process</a>
+</li>
+</ol>
+<h2 id="1-Issues"><a href="#1-Issues" class="headerlink" title="1. Issues:"></a>1. Issues:</h2><h3 id="1-1-Download-the-source-code"><a href="#1-1-Download-the-source-code" class="headerlink" title="1.1 Download the source code"></a>1.1 Download the source code</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://USERNAME@github.com/starzia-teaching/project-1-GROUPNAME.git</span><br></pre></td></tr></table></figure>
 <p>Notice that I added my github username to the user above, before “@github.com”.  If you get an error related to <code>gnome-ssh-askpass</code> then try running </p>
 <p><code>unsetenv SSH_ASKPASS</code> </p>
 <p>first (or log in with X11 forwarding).</p>
@@ -495,7 +499,7 @@
         <ul class="post-copyright">
   <li class="post-copyright-author">
     <strong>Post author:</strong>
-    Hanzhi Yang
+    年轻的C同学
   </li>
   <li class="post-copyright-link">
     <strong>Post link:</strong>
@@ -607,9 +611,9 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/avatar.jpeg" alt="Hanzhi Yang">
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpeg" alt="年轻的C同学">
             
-              <p class="site-author-name" itemprop="name">Hanzhi Yang</p>
+              <p class="site-author-name" itemprop="name">年轻的C同学</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
@@ -620,7 +624,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -662,7 +666,7 @@
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="mailto:hanzhiyang2019@gmail.com" target="_blank" title="E-Mail">
+                    <a href="mailto:hanzhiyang2019@u.northwestern.edu" target="_blank" title="E-Mail">
                       
                         <i class="fa fa-fw fa-envelope"></i></a>
                   </span>
@@ -703,7 +707,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Introduction"><span class="nav-text">1. Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Processes-amp-System-calls"><span class="nav-text">2. Processes &amp; System calls</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Process-creation-and-memory-layout"><span class="nav-text">3. Process creation and memory layout</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-Scheduling"><span class="nav-text">4. Scheduling</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-Mechanism-and-policy-Still-not-clear"><span class="nav-text">4.1 Mechanism and policy[Still not clear]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-Virtual-Memory-amp-Paging-🌟"><span class="nav-text">5. Virtual Memory &amp; Paging[🌟]</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-Memory-management-optimization"><span class="nav-text">6. Memory management optimization</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-Swapping"><span class="nav-text">7. Swapping</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-Free-space-Managements"><span class="nav-text">8. Free-space Managements</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#x-Project"><span class="nav-text">x. Project</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Issues"><span class="nav-text">1. Issues:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Download-the-source-code"><span class="nav-text">1.1 Download the source code</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Introduction"><span class="nav-text">1. Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Processes-amp-System-calls"><span class="nav-text">2. Processes &amp; System calls</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Process-creation-and-memory-layout"><span class="nav-text">3. Process creation and memory layout</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-Scheduling"><span class="nav-text">4. Scheduling</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-Mechanism-and-policy-Still-not-clear"><span class="nav-text">4.1 Mechanism and policy[Still not clear]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-Virtual-Memory-amp-Paging-🌟"><span class="nav-text">5. Virtual Memory &amp; Paging[🌟]</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-Memory-management-optimization"><span class="nav-text">6. Memory management optimization</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-Swapping"><span class="nav-text">7. Swapping</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-Free-space-Managements"><span class="nav-text">8. Free-space Managements</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#x-Project"><span class="nav-text">x. Project</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-Basic-knowledge-for-Projects"><span class="nav-text">0. Basic knowledge for Projects</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Issues"><span class="nav-text">1. Issues:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Download-the-source-code"><span class="nav-text">1.1 Download the source code</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -732,7 +736,7 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Hanzhi Yang</span>
+  <span class="author" itemprop="copyrightHolder">年轻的C同学</span>
 
   
 </div>
