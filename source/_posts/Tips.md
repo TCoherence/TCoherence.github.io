@@ -15,7 +15,7 @@ categories: Tips
 
 # SSH beautify
 
-After ssh to our school's server murphy, the appearance is go gross that I cannot bear anymore. So I am ready to make it like my own terminal.
+After ssh to our school's server *murphy*, the appearance is go gross that I cannot bear anymore. So I am ready to make it like my own terminal.
 
 I copied my .oh-my-zsh directory and .zshrc configuration file into my remote server. Then when I change me shell to zsh, it stuck. 
 
@@ -72,4 +72,107 @@ AND I FINALLY RECEIVE MY NEW AIRPODS!!!
 
 # Shell script
 
-## 
+
+
+# Hexo Configs & Frequent Problems
+
+> Here are some useful configurations for hexo.
+
+1. beautify the article with shadow
+
+```css
+/* path:themes/next/source/css/_custom/custom.styl */
+.post {
+  margin-top: 60px;
+  margin-bottom: 60px;
+  padding: 25px;
+  -webkit-box-shadow: 0 0 5px rgba(202, 203, 203, .5);
+  -moz-box-shadow: 0 0 5px rgba(202, 203, 204, .5);
+ }
+/*
+Get from: https://www.jianshu.com/p/d34e9531cfce
+*/
+```
+
+2. Avatar rotation
+
+```css
+/* path:themes/next/source/css/_custom/custom.styl */
+.site-author-image {
+  display: block;
+  margin: 0 auto;
+  padding: $site-author-image-padding;
+  max-width: $site-author-image-width;
+  height: $site-author-image-height;
+  border: site-author-image-border-color;
+  /* start*/
+  border-radius: 50%
+  webkit-transition: 1.4s all;
+  moz-transition: 1.4s all;
+  ms-transition: 1.4s all;
+  transition: 1.4s all;
+  /* end */
+}
+/* start */
+.site-author-image:hover {
+  background-color: #55DAE1;
+  webkit-transform: rotate(360deg) scale(0.9);
+  moz-transform: rotate(360deg) scale(0.9);
+  ms-transform: rotate(360deg) scale(0.9);
+  transform: rotate(360deg) scale(0.9);
+}
+/* end */
+/*
+Get from: https://www.jianshu.com/p/d34e9531cfce
+*/
+```
+
+3. Social icons don't appear
+
+```yml
+social:
+  GitHub: https://github.com/TCoherence || github
+  E-Mail: mailto:hanzhiyang2019@gmail.com || envelope
+  #Google: https://plus.google.com/yourname || google
+  Twitter: https://twitter.com/yang_hanzhi || twitter
+  FB Page: https://www.facebook.com/profile.php?id=100025563873836 || facebook
+  #VK Group: https://vk.com/yourname || vk
+  #StackOverflow: https://stackoverflow.com/yourname || stack-overflow
+  #YouTube: https://youtube.com/yourname || youtube
+  #Instagram: https://instagram.com/yourname || instagram
+  #Skype: skype:yourname?call|chat || skype
+```
+
+The final code should be something like this. 'social' cannot be commented out.
+
+4. Insert an image in a post
+
+- `![](/images/image.jpg)`
+- `![](image.jpg)`(need to set *past_asset_folder* attribute to true in **_config.yml**)
+
+5. 给文章添加 TOC
+
+   
+
+6. xcrun error: path error
+
+```
+If you are facing an error like that on new MacOS version.
+
+xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun
+
+It means that you need to install XCode command line, open a Terminal and run this command:
+
+$ xcode-select --install
+
+from: https://gist.github.com/gaquino/87bdf0e6e852e445c0489379d3e9732a
+```
+
+7. link to another post on hexo
+
+   `{% post_link xv6-the-first-process xv6-the-first-process %}`
+
+   first *xv6-the-first-process* is the name of your post and the second one is the link name for your post. 
+
+8. 
+
