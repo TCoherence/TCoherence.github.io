@@ -87,14 +87,14 @@
 <meta property="og:site_name" content="Hanzhi&#39;s BLOG">
 <meta property="og:description" content="Computer Network(Top-to-down) this is a brief summary of my 2019spring course, computer network. During this course, we talk about 4 main layers in current network architecture. They are Application l">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS-340-ComputerNetwork/Review001.jpg">
-<meta property="og:image" content="https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS-340-ComputerNetwork/AS_Routing.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS-340-ComputerNetwork/ARP_format_includingEthernet.png">
-<meta property="og:updated_time" content="2019-05-01T02:14:12.239Z">
+<meta property="og:image" content="https://tcoherence.github.io/2019/03/15/EECS-340-ComputerNetwork/Review001.jpg">
+<meta property="og:image" content="https://tcoherence.github.io/2019/03/15/EECS-340-ComputerNetwork/AS_Routing.png">
+<meta property="og:image" content="https://tcoherence.github.io/2019/03/15/EECS-340-ComputerNetwork/ARP_format_includingEthernet.png">
+<meta property="og:updated_time" content="2019-12-27T04:00:04.822Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EECS_340_ComputerNetwork">
 <meta name="twitter:description" content="Computer Network(Top-to-down) this is a brief summary of my 2019spring course, computer network. During this course, we talk about 4 main layers in current network architecture. They are Application l">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS-340-ComputerNetwork/Review001.jpg">
+<meta name="twitter:image" content="https://tcoherence.github.io/2019/03/15/EECS-340-ComputerNetwork/Review001.jpg">
 
 
 
@@ -328,7 +328,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-15T14:56:19-07:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-15T14:56:19-05:00">
                 2019-03-15
               </time>
             
@@ -344,8 +344,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-04-30T19:14:12-07:00">
-                2019-04-30
+              <time title="Post modified" itemprop="dateModified" datetime="2019-12-26T22:00:04-06:00">
+                2019-12-26
               </time>
             
           </span>
@@ -410,7 +410,7 @@
 <p>Let’s say all these things are called application data, which is really familiar to CS student or related-to-CS majors students. We cannot just pass this original application data to others, right? Why? Because we don’t know what to do, you just give me the data, where should I go? Like you want to deliver a package but you NEED address to locate the destination! That’s why we ENCAPSULATE the original data into a packet(usually TCP or UDP), which will indicates some information about this application data and how to deal with it. But in reality, we all know that in order to deliver a package, the address is not the only thing necessary, we also need ZIP, need car or trunk, and even receivers’ phone number. This all of them will help us to deliver a package correctly.  </p>
 <p>Yes, transport layer, network layer and data link layer are doing the stuff. More accurately, we can say transport layer just a car, network layer and data link layer indicate the address of a packet. We will encapsulate them one by one, and break them down one by one.</p>
 <p>Here is a brief illustration of this process.</p>
-<p><img src="https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS-340-ComputerNetwork/Review001.jpg" alt="Review001"></p>
+<p><img src="Review001.jpg" alt="Review001"></p>
 <h2 id="1-Application-Layer"><a href="#1-Application-Layer" class="headerlink" title="1 Application Layer"></a>1 Application Layer</h2><p>The communication between different application is in fact process communicating. Usually we use sockets.</p>
 <h3 id="1-1-Web-and-HTTP"><a href="#1-1-Web-and-HTTP" class="headerlink" title="1.1 Web and HTTP"></a>1.1 Web and HTTP</h3><h3 id="1-2-Electronic-Mail"><a href="#1-2-Electronic-Mail" class="headerlink" title="1.2 Electronic Mail"></a>1.2 Electronic Mail</h3><h3 id="1-3-DNS"><a href="#1-3-DNS" class="headerlink" title="1.3 DNS"></a>1.3 DNS</h3><h2 id="2-Transport-Layer"><a href="#2-Transport-Layer" class="headerlink" title="2 Transport Layer"></a>2 Transport Layer</h2><h3 id="2-1-UDP"><a href="#2-1-UDP" class="headerlink" title="2.1 UDP"></a>2.1 UDP</h3><h4 id="2-1-1-checksum"><a href="#2-1-1-checksum" class="headerlink" title="2.1.1 checksum"></a>2.1.1 checksum</h4><h3 id="2-2-reliable-transfer-protocol"><a href="#2-2-reliable-transfer-protocol" class="headerlink" title="2.2 reliable transfer protocol"></a>2.2 reliable transfer protocol</h3><h4 id="2-2-1-rdt1-0-amp-rdt-2-0"><a href="#2-2-1-rdt1-0-amp-rdt-2-0" class="headerlink" title="2.2.1 rdt1.0 &amp; rdt 2.0"></a>2.2.1 rdt1.0 &amp; rdt 2.0</h4><h4 id="2-2-2-rdt2-1-amp-rdt-2-2"><a href="#2-2-2-rdt2-1-amp-rdt-2-2" class="headerlink" title="2.2.2 rdt2.1 &amp; rdt 2.2"></a>2.2.2 rdt2.1 &amp; rdt 2.2</h4><h4 id="2-2-3-rdt3-0-stop-and-wait"><a href="#2-2-3-rdt3-0-stop-and-wait" class="headerlink" title="2.2.3 rdt3.0 (stop-and-wait)"></a>2.2.3 rdt3.0 (stop-and-wait)</h4><h4 id="2-2-4-Go-Back-N-amp-selective-repeat"><a href="#2-2-4-Go-Back-N-amp-selective-repeat" class="headerlink" title="2.2.4 Go-Back-N &amp; selective repeat"></a>2.2.4 Go-Back-N &amp; selective repeat</h4><h3 id="2-3-TCP"><a href="#2-3-TCP" class="headerlink" title="2.3 TCP"></a>2.3 TCP</h3><h4 id="2-3-1-seq-amp-acks"><a href="#2-3-1-seq-amp-acks" class="headerlink" title="2.3.1 seq # &amp; acks"></a>2.3.1 seq # &amp; acks</h4><h4 id="2-3-2-Fast-Retransmit"><a href="#2-3-2-Fast-Retransmit" class="headerlink" title="2.3.2 Fast Retransmit"></a>2.3.2 Fast Retransmit</h4><h4 id="2-3-3-Flow-Control-amp-Congestion-Control"><a href="#2-3-3-Flow-Control-amp-Congestion-Control" class="headerlink" title="2.3.3 Flow Control &amp; Congestion Control"></a>2.3.3 Flow Control &amp; Congestion Control</h4><h2 id="3-Network-Layer"><a href="#3-Network-Layer" class="headerlink" title="3 Network Layer"></a>3 Network Layer</h2><h3 id="3-1-Forwarding-Table"><a href="#3-1-Forwarding-Table" class="headerlink" title="3.1 Forwarding Table"></a>3.1 Forwarding Table</h3><h3 id="3-2-IP-datagram-format"><a href="#3-2-IP-datagram-format" class="headerlink" title="3.2 IP datagram format"></a>3.2 IP datagram format</h3><h3 id="3-3-NAT"><a href="#3-3-NAT" class="headerlink" title="3.3 NAT"></a>3.3 NAT</h3><p>It will alter the source IP to routers IP and other <strong>port #</strong>, so it also have a mapping table  between port # of router and the host.</p>
 <h3 id="3-4-Routering-Algorithms"><a href="#3-4-Routering-Algorithms" class="headerlink" title="3.4 Routering Algorithms"></a>3.4 Routering Algorithms</h3><p>Link-state(LS): Dijkstra</p>
@@ -420,14 +420,14 @@
 <p>Inter-AS usually uses BGP, and BGP is split into iBGP(internal BGP) and eBGP(external BGP). BGP uses DV.</p>
 <p>Routing policy:</p>
 <p>We classify 4 types router information, provider, customer, peer and ISP. For an AS, it will receive and store all incoming router information but for different people, they provide different message. Here is the illustration. (From Prof. Yan Chen slides)</p>
-<p><img src="https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS-340-ComputerNetwork/AS_Routing.png" alt="AS_Routing"></p>
+<p><img src="AS_Routing.png" alt="AS_Routing"></p>
 <h2 id="4-Data-Link-Layer"><a href="#4-Data-Link-Layer" class="headerlink" title="4 Data Link Layer"></a>4 Data Link Layer</h2><h3 id="4-1-MAC-address"><a href="#4-1-MAC-address" class="headerlink" title="4.1 MAC address"></a>4.1 MAC address</h3><p>Because IP is fixed in a given area like ZIP code, so how we identify a unique user under the same IP? This is why we need another address to locate a user and this address is called MAC address.</p>
 <p>MAC address is 48bits in such format:<code>xx-xx-xx-xx-xx-xx</code>.</p>
 <h3 id="4-2-Error-detection-and-correction"><a href="#4-2-Error-detection-and-correction" class="headerlink" title="4.2 Error detection and correction"></a>4.2 Error detection and correction</h3><p>We use CRC error detection in this layer and add CRC at the end of frame. Also, we talk about parity bit and 2-dimension parity bit.</p>
 <h3 id="4-3-Hub-and-Switch"><a href="#4-3-Hub-and-Switch" class="headerlink" title="4.3 Hub and Switch"></a>4.3 Hub and Switch</h3><p>Hub is a dumb device, just knows repeating one’s information to other(broadcast). But switch is smarter than hub, it will selectively to forward frame to different interface. This help switch to isolate collision domains. In reality, it seems another way to isolation collision domain called VLAN. But it is not the scope of this class.</p>
 <p>In reality, many devices share the media, that causes collision among them. So we can use Channel Partition(TDMA or FDMA) or Random Access(Aloha or CSMA) to solve this problem.</p>
 <h3 id="4-4-ARP"><a href="#4-4-ARP" class="headerlink" title="4.4 ARP"></a>4.4 ARP</h3><p>We use this to get the MAC address of other host. It is very important that the source and destination MAC in ARP is different with those in the head of Ethernet head, which is used to addressing. Here is an ARP message format(from <a href="http://www.cs.virginia.edu/~cs458/slides/module06-arpV2.pdf" target="_blank" rel="noopener">http://www.cs.virginia.edu/~cs458/slides/module06-arpV2.pdf</a>)</p>
-<p><img src="https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS-340-ComputerNetwork/ARP_format_includingEthernet.png" alt="ARP_format_includingEthernet"></p>
+<p><img src="ARP_format_includingEthernet.png" alt="ARP_format_includingEthernet"></p>
 <p>The one thing I don’t understand is that ARP is used to obtain MAC, and MAC is only used to addressing under the same subnet. WHY do we consider a scenario that one host A want to get another host B’s MAC address in a different subnet?</p>
 <p>Host A won’t send ARP to host B because they are not in the same subnet, host A will just send ARP to request gateway’s MAC address.</p>
 
@@ -480,8 +480,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/15/EECS-336-algs/" rel="next" title="EECS_336_algs">
-                <i class="fa fa-chevron-left"></i> EECS_336_algs
+              <a href="/2019/02/08/Kafka/" rel="next" title="Kafka">
+                <i class="fa fa-chevron-left"></i> Kafka
               </a>
             
           </div>
@@ -571,7 +571,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -582,7 +582,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -593,7 +593,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
