@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="final summary,Game,Unity,">
+  <meta name="keywords" content="Game,Unity,final summary,">
 
 
 
@@ -80,7 +80,7 @@
 
 
 <meta name="description" content="This is a really fun course to have. I’ve made a tiny game with my teammate using Unity. If you wanna play it you can download the game from here. We provide both Mac and PC version. Sorry about no L">
-<meta name="keywords" content="final summary,Game,Unity">
+<meta name="keywords" content="Game,Unity,final summary">
 <meta property="og:type" content="article">
 <meta property="og:title" content="EECS_377_GameStudio">
 <meta property="og:url" content="https://tcoherence.github.io/2019/03/15/EECS-377-GameStudio/index.html">
@@ -437,11 +437,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/final-summary/" rel="tag"># final summary</a>
-          
             <a href="/tags/Game/" rel="tag"># Game</a>
           
             <a href="/tags/Unity/" rel="tag"># Unity</a>
+          
+            <a href="/tags/final-summary/" rel="tag"># final summary</a>
           
         </div>
       
@@ -494,6 +494,9 @@
 
 
           
+
+  
+    <div id="gitalk-container"></div>
 
   
 
@@ -799,6 +802,22 @@
 
 
 
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: 'd560dc50b845642d9797',
+          clientSecret: 'c477964c6fb2b5dbfb8c4904ee9832f096c3a6b0',
+          repo: 'http://tcoherence.github.io/',
+          owner: 'TCoherence',
+          admin: ['TCoherence'],
+          id: location.pathname,
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
 
 
   

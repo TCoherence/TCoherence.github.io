@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Hanzhi&#39;s BLOG">
 <meta property="og:description" content="Here are some tips for the errors and other issues I’ve encountered during my study road~ Hope it helps. 😊">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-27T22:34:43.406Z">
+<meta property="og:updated_time" content="2019-12-28T23:50:41.995Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tips">
 <meta name="twitter:description" content="Here are some tips for the errors and other issues I’ve encountered during my study road~ Hope it helps. 😊">
@@ -340,8 +340,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-12-27T16:34:43-06:00">
-                2019-12-27
+              <time title="Post modified" itemprop="dateModified" datetime="2019-12-28T17:50:41-06:00">
+                2019-12-28
               </time>
             
           </span>
@@ -461,6 +461,9 @@
 <p><code><a href="/2019/04/19/xv6-the-first-process/" title="xv6-the-first-process">xv6-the-first-process</a></code></p>
 <p>first <em>xv6-the-first-process</em> is the name of your post and the second one is the link name for your post. </p>
 </li>
+<li><p>添加comment（gitalk, disqus, valine,最终选择了gitalk）</p>
+<p>主要参考：<a href="https://asdfv1929.github.io/2018/01/20/gitalk/" target="_blank" rel="noopener">https://asdfv1929.github.io/2018/01/20/gitalk/</a></p>
+</li>
 <li></li>
 </ol>
 
@@ -551,6 +554,9 @@
 
 
           
+
+  
+    <div id="gitalk-container"></div>
 
   
 
@@ -881,6 +887,22 @@
 
 
 
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: 'd560dc50b845642d9797',
+          clientSecret: 'c477964c6fb2b5dbfb8c4904ee9832f096c3a6b0',
+          repo: 'http://tcoherence.github.io/',
+          owner: 'TCoherence',
+          admin: ['TCoherence'],
+          id: location.pathname,
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
 
 
   
