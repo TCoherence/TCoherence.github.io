@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="LeetCode New Summary This is a review of every lc problems I have done.">
+<meta name="description" content="LeetCode New SummaryThis is a review of every lc problems I have done.">
 <meta name="keywords" content="LeetCode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode New Summary">
 <meta property="og:url" content="https://tcoherence.github.io/2018/06/18/LeetCode-New-Summary/index.html">
 <meta property="og:site_name" content="Hanzhi&#39;s BLOG">
-<meta property="og:description" content="LeetCode New Summary This is a review of every lc problems I have done.">
+<meta property="og:description" content="LeetCode New SummaryThis is a review of every lc problems I have done.">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2018-12-19T05:30:26.268Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode New Summary">
-<meta name="twitter:description" content="LeetCode New Summary This is a review of every lc problems I have done.">
+<meta name="twitter:description" content="LeetCode New SummaryThis is a review of every lc problems I have done.">
 
 
 
@@ -396,305 +396,161 @@
       
 
       
-        <h1 id="leetcode-new-summary"><a class="markdownIt-Anchor" href="#leetcode-new-summary"></a> LeetCode New Summary</h1>
-<p><strong>This is a review of every lc problems I have done.</strong></p>
+        <h1 id="LeetCode-New-Summary"><a href="#LeetCode-New-Summary" class="headerlink" title="LeetCode New Summary"></a>LeetCode New Summary</h1><p><strong>This is a review of every lc problems I have done.</strong></p>
 <a id="more"></a>
-<h1 id="0-100"><a class="markdownIt-Anchor" href="#0-100"></a> 0 - 100</h1>
-<h2 id="1-two-sum"><a class="markdownIt-Anchor" href="#1-two-sum"></a> 1. Two Sum</h2>
-<p>Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
+<h1 id="0-100"><a href="#0-100" class="headerlink" title="0 - 100"></a>0 - 100</h1><h2 id="1-Two-Sum"><a href="#1-Two-Sum" class="headerlink" title="1. Two Sum"></a>1. Two Sum</h2><p>Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
 <p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
 <blockquote>
-<p>Example:<br>
-Given nums = [2, 7, 11, 15], target = 9,<br>
-Because nums[0] + nums[1] = 2 + 7 = 9,<br>
-return [0, 1].</p>
+<p>Example:<br>Given nums = [2, 7, 11, 15], target = 9,<br>Because nums[0] + nums[1] = 2 + 7 = 9,<br>return [0, 1].</p>
 </blockquote>
-<p><strong>IDEA</strong>:<br>
-a. sorted -&gt; binary search -&gt; O(N) to search first num and O(logN) which leads to O(NlogN) in total and O(1) space cost.<br>
-b. use HashMap, O(N) time cost and O(N) space cose.</p>
-<h2 id="2-add-two-numbers"><a class="markdownIt-Anchor" href="#2-add-two-numbers"></a> 2. Add Two Numbers</h2>
-<p>You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
+<p><strong>IDEA</strong>:<br>a. sorted -&gt; binary search -&gt; O(N) to search first num and O(logN) which leads to O(NlogN) in total and O(1) space cost.<br>b. use HashMap, O(N) time cost and O(N) space cose.</p>
+<h2 id="2-Add-Two-Numbers"><a href="#2-Add-Two-Numbers" class="headerlink" title="2. Add Two Numbers"></a>2. Add Two Numbers</h2><p>You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
 <p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
-<p>Example:</p>
+<p>Example:  </p>
 <blockquote>
-<p>Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>
-Output: 7 -&gt; 0 -&gt; 8<br>
-Explanation: 342 + 465 = 807.</p>
+<p>Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>Output: 7 -&gt; 0 -&gt; 8<br>Explanation: 342 + 465 = 807.</p>
 </blockquote>
-<p><strong>IDEA:</strong><br>
-a. one temp var to record carry bit.</p>
-<h2 id="3-longest-substring-without-repeating-characters"><a class="markdownIt-Anchor" href="#3-longest-substring-without-repeating-characters"></a> 3. Longest Substring Without Repeating Characters</h2>
-<p>Given a string, find the length of the longest substring without repeating characters.</p>
+<p><strong>IDEA:</strong><br>a. one temp var to record carry bit.</p>
+<h2 id="3-Longest-Substring-Without-Repeating-Characters"><a href="#3-Longest-Substring-Without-Repeating-Characters" class="headerlink" title="3. Longest Substring Without Repeating Characters"></a>3. Longest Substring Without Repeating Characters</h2><p>Given a string, find the length of the longest substring without repeating characters.</p>
 <blockquote>
-<p>Example 1:<br>
-Input: “abcabcbb”<br>
-Output: 3<br>
-Explanation: The answer is “abc”, with the length of 3.<br>
-Example 2:<br>
-Input: “bbbbb”<br>
-Output: 1<br>
-Explanation: The answer is “b”, with the length of 1.<br>
-Example 3:<br>
-Input: “pwwkew”<br>
-Output: 3<br>
-Explanation: The answer is “wke”, with the length of 3.<br>
-Note that the answer must be a substring, “pwke” is a subsequence and not a substring.</p>
+<p>Example 1:<br>Input: “abcabcbb”<br>Output: 3<br>Explanation: The answer is “abc”, with the length of 3.<br>Example 2:<br>Input: “bbbbb”<br>Output: 1<br>Explanation: The answer is “b”, with the length of 1.<br>Example 3:<br>Input: “pwwkew”<br>Output: 3<br>Explanation: The answer is “wke”, with the length of 3.<br>             Note that the answer must be a substring, “pwke” is a subsequence and not a substring.  </p>
 </blockquote>
-<p><strong>IDEA:</strong><br>
-record every char’s index, once repeat, update globalMaxLength and localMaxLength;</p>
-<h2 id="4-median-of-two-sorted-arrays"><a class="markdownIt-Anchor" href="#4-median-of-two-sorted-arrays"></a> 4. Median of Two Sorted Arrays</h2>
-<p>There are two sorted arrays nums1 and nums2 of size m and n respectively.<br>
-Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).<br>
-You may assume nums1 and nums2 cannot be both empty.</p>
+<p><strong>IDEA:</strong><br>record every char’s index, once repeat, update globalMaxLength and localMaxLength;</p>
+<h2 id="4-Median-of-Two-Sorted-Arrays"><a href="#4-Median-of-Two-Sorted-Arrays" class="headerlink" title="4. Median of Two Sorted Arrays"></a>4. Median of Two Sorted Arrays</h2><p>There are two sorted arrays nums1 and nums2 of size m and n respectively.<br>Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).<br>You may assume nums1 and nums2 cannot be both empty.</p>
 <blockquote>
-<p>Example 1:<br>
-nums1 = [1, 3]<br>
-nums2 = [2]<br>
-The median is 2.0<br>
-Example 2:<br>
-nums1 = [1, 2]<br>
-nums2 = [3, 4]<br>
-The median is (2 + 3)/2 = 2.5</p>
+<p>Example 1:<br>nums1 = [1, 3]<br>nums2 = [2]<br>The median is 2.0<br>Example 2:<br>nums1 = [1, 2]<br>nums2 = [3, 4]<br>The median is (2 + 3)/2 = 2.5</p>
 </blockquote>
-<p><strong>IDEA:</strong><br>
-<strong>need to be write in detail</strong><br>
-The median of an array is a number that divide the array into 2 subarray, every num in the left array is smaller than the median and every num in the right array is larger than the median.</p>
-<h2 id="91-decode-ways"><a class="markdownIt-Anchor" href="#91-decode-ways"></a> 91. Decode Ways</h2>
-<p>A message containing letters from A-Z is being encoded to numbers using the following mapping:</p>
+<p><strong>IDEA:</strong><br><strong>need to be write in detail</strong><br>The median of an array is a number that divide the array into 2 subarray, every num in the left array is smaller than the median and every num in the right array is larger than the median.</p>
+<h2 id="91-Decode-Ways"><a href="#91-Decode-Ways" class="headerlink" title="91. Decode Ways"></a>91. Decode Ways</h2><p>A message containing letters from A-Z is being encoded to numbers using the following mapping:</p>
 <blockquote>
-<p>‘A’ -&gt; 1<br>
-‘B’ -&gt; 2<br>
-…<br>
-‘Z’ -&gt; 26</p>
+<p>‘A’ -&gt; 1<br>‘B’ -&gt; 2<br>…<br>‘Z’ -&gt; 26  </p>
 </blockquote>
 <p>Given a <strong>non-empty</strong> string containing only digits, determine the total number of ways to decode it.</p>
-<p><strong>Example 1:</strong></p>
+<p><strong>Example 1:</strong>  </p>
 <blockquote>
-<p>Input: “12”<br>
-Output: 2<br>
-Explanation: It could be decoded as “AB” (1 2) or “L” (12).</p>
+<p>Input: “12”<br>Output: 2<br>Explanation: It could be decoded as “AB” (1 2) or “L” (12).</p>
 </blockquote>
-<p><strong>Example 2:</strong></p>
+<p><strong>Example 2:</strong>  </p>
 <blockquote>
-<p>Input: “226”<br>
-Output: 3<br>
-Explanation: It could be decoded as “BZ” (2 26), “VF” (22 6), or “BBF” (2 2 6).</p>
+<p>Input: “226”<br>Output: 3<br>Explanation: It could be decoded as “BZ” (2 26), “VF” (22 6), or “BBF” (2 2 6).  </p>
 </blockquote>
-<p><strong>IDEA:</strong><br>
-DP solution:<br>
-Apparently, for every digit we need to see if it is valid([1 ~ 9]), then the digit comes after need to do the check too([10 ~ 26]), so we have 2 choices for every digit except for some corner cases.<br>
-Let’s consider buttom-up solution, which is from right to left in this problem. For i-th digit, if it is valid, then #the i-th total decode ways += total (i+1)-th decode ways. If (i_i+1) two digits are valid, then #the i-th total decode ways += (i+2)-th decode ways. This is showed as follows:<br>
-DP[i] = DP[i + 1] + DP[i + 2]</p>
-<h1 id="100-200"><a class="markdownIt-Anchor" href="#100-200"></a> 100 - 200</h1>
-<h2 id="104-maximum-depth-of-binary-tree"><a class="markdownIt-Anchor" href="#104-maximum-depth-of-binary-tree"></a> 104. Maximum Depth of Binary Tree</h2>
-<p>Given a binary tree, find its maximum depth.</p>
+<p><strong>IDEA:</strong><br>DP solution:<br>Apparently, for every digit we need to see if it is valid([1 ~ 9]), then the digit comes after need to do the check too([10 ~ 26]), so we have 2 choices for every digit except for some corner cases.<br>Let’s consider buttom-up solution, which is from right to left in this problem. For i-th digit, if it is valid, then #the i-th total decode ways += total (i+1)-th decode ways. If (i_i+1) two digits are valid, then #the i-th total decode ways += (i+2)-th decode ways. This is showed as follows:<br>DP[i] = DP[i + 1] + DP[i + 2]  </p>
+<h1 id="100-200"><a href="#100-200" class="headerlink" title="100 - 200"></a>100 - 200</h1><h2 id="104-Maximum-Depth-of-Binary-Tree"><a href="#104-Maximum-Depth-of-Binary-Tree" class="headerlink" title="104. Maximum Depth of Binary Tree"></a>104. Maximum Depth of Binary Tree</h2><p>Given a binary tree, find its maximum depth.</p>
 <p>The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.</p>
 <p><strong>Note:</strong> A leaf is a node with no children.</p>
-<p><strong>IDEA:</strong><br>
-dfs, recursive solution</p>
-<h2 id="136-single-number-e"><a class="markdownIt-Anchor" href="#136-single-number-e"></a> 136. Single Number [E]</h2>
-<p>Given a non-empty array of integers, every element appears twice except for one. Find that single one.</p>
-<p>Note:<br>
-Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?</p>
-<p><strong>Example 1:</strong></p>
+<p><strong>IDEA:</strong><br>dfs, recursive solution</p>
+<h2 id="136-Single-Number-E"><a href="#136-Single-Number-E" class="headerlink" title="136. Single Number [E]"></a>136. Single Number [E]</h2><p>Given a non-empty array of integers, every element appears twice except for one. Find that single one.</p>
+<p>Note:<br>Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?</p>
+<p><strong>Example 1:</strong>  </p>
 <blockquote>
-<p>Input: [2,2,1]<br>
-Output: 1</p>
+<p>Input: [2,2,1]<br>Output: 1</p>
 </blockquote>
 <p><strong>Example 2:</strong></p>
 <blockquote>
-<p>Input: [4,1,2,1,2]<br>
-Output: 4</p>
+<p>Input: [4,1,2,1,2]<br>Output: 4</p>
 </blockquote>
-<p><strong>IDEA:</strong><br>
-linear time -&gt; two loop, one loop to calculate the freq and one loop to find the single number.<br>
-If require no extra memory, we can use ^ oprator, because a ^ a ^ b = b.</p>
-<h1 id="200-300"><a class="markdownIt-Anchor" href="#200-300"></a> 200 - 300</h1>
-<h2 id="274-h-index"><a class="markdownIt-Anchor" href="#274-h-index"></a> 274. H-Index</h2>
-<p>Given an array of citations (each citation is a non-negative integer) of a researcher, write a function to compute the researcher’s h-index.<br>
-According to the definition of h-index on Wikipedia: “A scientist has index h if h of his/her N papers have at least h citations each, and the other N − h papers have no more than h citations each.”</p>
+<p><strong>IDEA:</strong><br>linear time -&gt; two loop, one loop to calculate the freq and one loop to find the single number.<br>If require no extra memory, we can use ^ oprator, because a ^ a ^ b = b.</p>
+<h1 id="200-300"><a href="#200-300" class="headerlink" title="200 - 300"></a>200 - 300</h1><h2 id="274-H-Index"><a href="#274-H-Index" class="headerlink" title="274. H-Index"></a>274. H-Index</h2><p>Given an array of citations (each citation is a non-negative integer) of a researcher, write a function to compute the researcher’s h-index.<br>According to the definition of h-index on Wikipedia: “A scientist has index h if h of his/her N papers have at least h citations each, and the other N − h papers have no more than h citations each.”</p>
 <p><strong>Example:</strong></p>
 <blockquote>
-<p>Input: citations = [3,0,6,1,5]<br>
-Output: 3<br>
-Explanation: [3,0,6,1,5] means the researcher has 5 papers in total and each of them had received 3, 0, 6, 1, 5 citations respectively. Since the researcher has 3 papers with <strong>at least</strong> 3 citations each and the remaining two with <strong>no more than</strong> 3 citations each, her h-index is 3.</p>
+<p>Input: citations = [3,0,6,1,5]<br>Output: 3<br>Explanation: [3,0,6,1,5] means the researcher has 5 papers in total and each of them had received 3, 0, 6, 1, 5 citations respectively. Since the researcher has 3 papers with <strong>at least</strong> 3 citations each and the remaining two with <strong>no more than</strong> 3 citations each, her h-index is 3.</p>
 </blockquote>
-<p><strong>IDEA:</strong><br>
-Solution 1:<br>
-sort the array, back to front.<br>
-Time Performance: O(nlogn)<br>
-Space Performance: O(1)</p>
-<p>Solution 2:<br>
-The key of this problem is that the range of h is [0, N], so we can use bucket index to present potential h-idx and the value in bucket to denote the number of papers cited more than bucket index.<br>
-So one loop for original array to update bucket array and one loop for bucket array to find h-idx.<br>
-Time Performance: O(N)<br>
-Space Performance: O(N)</p>
-<h2 id="292-nim-game"><a class="markdownIt-Anchor" href="#292-nim-game"></a> 292. Nim Game</h2>
-<p>You are playing the following Nim Game with your friend: There is a heap of stones on the table, each time one of you take turns to remove 1 to 3 stones. The one who removes the last stone will be the winner. You will take the first turn to remove the stones.</p>
+<p><strong>IDEA:</strong><br>Solution 1:<br>sort the array, back to front.<br>Time Performance: O(nlogn)<br>Space Performance: O(1)</p>
+<p>Solution 2:<br>The key of this problem is that the range of h is [0, N], so we can use bucket index to present potential h-idx and the value in bucket to denote the number of papers cited more than bucket index.<br>So one loop for original array to update bucket array and one loop for bucket array to find h-idx.<br>Time Performance: O(N)<br>Space Performance: O(N)</p>
+<h2 id="292-Nim-Game"><a href="#292-Nim-Game" class="headerlink" title="292. Nim Game"></a>292. Nim Game</h2><p>You are playing the following Nim Game with your friend: There is a heap of stones on the table, each time one of you take turns to remove 1 to 3 stones. The one who removes the last stone will be the winner. You will take the first turn to remove the stones.</p>
 <p>Both of you are very clever and have optimal strategies for the game. Write a function to determine whether you can win the game given the number of stones in the heap.</p>
-<p><strong>IDEA:</strong><br>
-it is important to find that it is relative to those multiples of 4.</p>
-<h1 id="300-400"><a class="markdownIt-Anchor" href="#300-400"></a> 300 - 400</h1>
-<h2 id="337-house-robber-iii"><a class="markdownIt-Anchor" href="#337-house-robber-iii"></a> 337. House Robber III</h2>
-<p>The thief has found himself a new place for his thievery again. There is only one entrance to this area, called the “root.” Besides the root, each house has one and only one parent house. After a tour, the smart thief realized that “all houses in this place forms a binary tree”. It will automatically contact the police if two directly-linked houses were broken into on the same night.</p>
+<p><strong>IDEA:</strong><br>it is important to find that it is relative to those multiples of 4.</p>
+<h1 id="300-400"><a href="#300-400" class="headerlink" title="300 - 400"></a>300 - 400</h1><h2 id="337-House-Robber-III"><a href="#337-House-Robber-III" class="headerlink" title="337. House Robber III"></a>337. House Robber III</h2><p>The thief has found himself a new place for his thievery again. There is only one entrance to this area, called the “root.” Besides the root, each house has one and only one parent house. After a tour, the smart thief realized that “all houses in this place forms a binary tree”. It will automatically contact the police if two directly-linked houses were broken into on the same night.</p>
 <p>Determine the maximum amount of money the thief can rob tonight without alerting the police.</p>
-<p><strong>IDEA:</strong><br>
-naive recursive solution -&gt; pruning solution(using HashMap) -&gt; DP solution(return results under 2 different conditions)</p>
-<h2 id="344-reverse-string-e"><a class="markdownIt-Anchor" href="#344-reverse-string-e"></a> 344. Reverse String [E]</h2>
-<p>Write a function that takes a string as input and returns the string reversed.</p>
-<p><strong>Example:</strong><br>
-Given s = “hello”, return “olleh”.</p>
-<p><strong>IDEA:</strong><br>
-easy swap</p>
-<h1 id="400-500"><a class="markdownIt-Anchor" href="#400-500"></a> 400 - 500</h1>
-<h2 id="461-hamming-distance-easy"><a class="markdownIt-Anchor" href="#461-hamming-distance-easy"></a> 461. Hamming Distance [Easy]</h2>
-<p>The Hamming distance between two integers is the number of positions at which the corresponding bits are different.<br>
-Given two integers x and y, calculate the Hamming distance.</p>
-<p><strong>IDEA:</strong><br>
-Integer.bitCount()</p>
-<h2 id="463-island-perimeter"><a class="markdownIt-Anchor" href="#463-island-perimeter"></a> 463. Island Perimeter</h2>
-<p>You are given a map in form of a two-dimensional integer grid where 1 represents land and 0 represents water. Grid cells are connected horizontally/vertically (not diagonally). The grid is completely surrounded by water, and there is exactly one island (i.e., one or more connected land cells). The island doesn’t have “lakes” (water inside that isn’t connected to the water around the island). One cell is a square with side length 1. The grid is rectangular, width and height don’t exceed 100. Determine the perimeter of the island.</p>
-<p><strong>IDEA:</strong><br>
-THIS IS ONLY ONE ISLAND. So go throught the whole 2D-array, for every ‘1’, we check its surrounding value and calculate its perimeter, and update the how perimeter.</p>
-<h1 id="500-600"><a class="markdownIt-Anchor" href="#500-600"></a> 500 - 600</h1>
-<h2 id="513-find-bottom-left-tree-value-medium"><a class="markdownIt-Anchor" href="#513-find-bottom-left-tree-value-medium"></a> 513. Find Bottom Left Tree Value [Medium]</h2>
-<p>Given a binary tree, find the leftmost value in the last row of the tree.</p>
-<p><strong>IDEA:</strong><br>
-Easy BFS and push node in left to right order. Then store the val from the first out node.</p>
-<h2 id="561-array-partition-i"><a class="markdownIt-Anchor" href="#561-array-partition-i"></a> 561. Array Partition I</h2>
-<p>Given an array of 2n integers, your task is to group these integers into n pairs of integer, say (a1, b1), (a2, b2), …, (an, bn) which makes sum of min(ai, bi) for all i from 1 to n as large as possible.</p>
-<p><strong>IDEA:</strong><br>
-greedy: sort then sum one out of every 2 numbers.</p>
-<h1 id="600-700"><a class="markdownIt-Anchor" href="#600-700"></a> 600 - 700</h1>
-<h2 id="605-can-place-flowers"><a class="markdownIt-Anchor" href="#605-can-place-flowers"></a> 605. Can Place Flowers</h2>
-<p>Suppose you have a long flowerbed in which some of the plots are planted and some are not. However, flowers cannot be planted in adjacent plots - they would compete for water and both would die.<br>
-Given a flowerbed (represented as an array containing 0 and 1, where 0 means empty and 1 means not empty), and a number n, return if n new flowers can be planted in it without violating the no-adjacent-flowers rule.</p>
+<p><strong>IDEA:</strong><br>naive recursive solution -&gt; pruning solution(using HashMap) -&gt; DP solution(return results under 2 different conditions)</p>
+<h2 id="344-Reverse-String-E"><a href="#344-Reverse-String-E" class="headerlink" title="344. Reverse String [E]"></a>344. Reverse String [E]</h2><p>Write a function that takes a string as input and returns the string reversed.</p>
+<p><strong>Example:</strong><br>Given s = “hello”, return “olleh”.</p>
+<p><strong>IDEA:</strong><br>easy swap</p>
+<h1 id="400-500"><a href="#400-500" class="headerlink" title="400 - 500"></a>400 - 500</h1><h2 id="461-Hamming-Distance-Easy"><a href="#461-Hamming-Distance-Easy" class="headerlink" title="461. Hamming Distance [Easy]"></a>461. Hamming Distance [Easy]</h2><p>The Hamming distance between two integers is the number of positions at which the corresponding bits are different.<br>Given two integers x and y, calculate the Hamming distance.</p>
+<p><strong>IDEA:</strong><br>Integer.bitCount()</p>
+<h2 id="463-Island-Perimeter"><a href="#463-Island-Perimeter" class="headerlink" title="463. Island Perimeter"></a>463. Island Perimeter</h2><p>You are given a map in form of a two-dimensional integer grid where 1 represents land and 0 represents water. Grid cells are connected horizontally/vertically (not diagonally). The grid is completely surrounded by water, and there is exactly one island (i.e., one or more connected land cells). The island doesn’t have “lakes” (water inside that isn’t connected to the water around the island). One cell is a square with side length 1. The grid is rectangular, width and height don’t exceed 100. Determine the perimeter of the island.</p>
+<p><strong>IDEA:</strong><br>THIS IS ONLY ONE ISLAND. So go throught the whole 2D-array, for every ‘1’, we check its surrounding value and calculate its perimeter, and update the how perimeter.</p>
+<h1 id="500-600"><a href="#500-600" class="headerlink" title="500 - 600"></a>500 - 600</h1><h2 id="513-Find-Bottom-Left-Tree-Value-Medium"><a href="#513-Find-Bottom-Left-Tree-Value-Medium" class="headerlink" title="513. Find Bottom Left Tree Value [Medium]"></a>513. Find Bottom Left Tree Value [Medium]</h2><p>Given a binary tree, find the leftmost value in the last row of the tree.</p>
+<p><strong>IDEA:</strong><br>Easy BFS and push node in left to right order. Then store the val from the first out node.</p>
+<h2 id="561-Array-Partition-I"><a href="#561-Array-Partition-I" class="headerlink" title="561. Array Partition I"></a>561. Array Partition I</h2><p>Given an array of 2n integers, your task is to group these integers into n pairs of integer, say (a1, b1), (a2, b2), …, (an, bn) which makes sum of min(ai, bi) for all i from 1 to n as large as possible.</p>
+<p><strong>IDEA:</strong><br>greedy: sort then sum one out of every 2 numbers.</p>
+<h1 id="600-700"><a href="#600-700" class="headerlink" title="600 - 700"></a>600 - 700</h1><h2 id="605-Can-Place-Flowers"><a href="#605-Can-Place-Flowers" class="headerlink" title="605. Can Place Flowers"></a>605. Can Place Flowers</h2><p>Suppose you have a long flowerbed in which some of the plots are planted and some are not. However, flowers cannot be planted in adjacent plots - they would compete for water and both would die.<br>Given a flowerbed (represented as an array containing 0 and 1, where 0 means empty and 1 means not empty), and a number n, return if n new flowers can be planted in it without violating the no-adjacent-flowers rule.</p>
 <p><strong>Example 1:</strong></p>
 <blockquote>
-<p><strong>Input</strong>: flowerbed = [1,0,0,0,1], n = 1<br>
-<strong>Output</strong>: True</p>
+<p><strong>Input</strong>: flowerbed = [1,0,0,0,1], n = 1<br><strong>Output</strong>: True  </p>
 </blockquote>
 <p><strong>Example 2:</strong></p>
 <blockquote>
-<p><strong>Input</strong>: flowerbed = [1,0,0,0,1], n = 2<br>
-<strong>Output</strong>: False</p>
+<p><strong>Input</strong>: flowerbed = [1,0,0,0,1], n = 2<br><strong>Output</strong>: False</p>
 </blockquote>
 <p>Note:</p>
 <blockquote>
-<p>The input array won’t violate no-adjacent-flowers rule.<br>
-The input array size is in the range of [1, 20000].<br>
-n is a non-negative integer which won’t exceed the input array size.</p>
+<p>The input array won’t violate no-adjacent-flowers rule.<br>The input array size is in the range of [1, 20000].<br>n is a non-negative integer which won’t exceed the input array size.</p>
 </blockquote>
-<p><strong>IDEA</strong>:<br>
-TWO corner cases: the first and the end of the array.</p>
-<h2 id="637-average-of-levels-in-binary-tree"><a class="markdownIt-Anchor" href="#637-average-of-levels-in-binary-tree"></a> 637. Average of Levels in Binary Tree</h2>
-<p>Given a non-empty binary tree, return the average value of the nodes on each level in the form of an array.</p>
-<p><strong>IDEA:</strong><br>
-BFS and calculate average, be careful about the result date type, int is not eligible</p>
-<h2 id="646-maximum-length-of-pair-chain"><a class="markdownIt-Anchor" href="#646-maximum-length-of-pair-chain"></a> 646. Maximum Length of Pair Chain</h2>
-<p><strong>Idea:</strong><br>
-The tag of this problem is DP but it seems like a greedy problem and I cannot figure out how to use dp to solve it?</p>
-<h2 id="657-judge-route-circle-easy"><a class="markdownIt-Anchor" href="#657-judge-route-circle-easy"></a> 657. Judge Route Circle [Easy]</h2>
-<p>Initially, there is a Robot at position (0, 0). Given a sequence of its moves, judge if this robot makes a circle, which means it moves back to the original place.</p>
+<p><strong>IDEA</strong>:<br>TWO corner cases: the first and the end of the array.</p>
+<h2 id="637-Average-of-Levels-in-Binary-Tree"><a href="#637-Average-of-Levels-in-Binary-Tree" class="headerlink" title="637. Average of Levels in Binary Tree"></a>637. Average of Levels in Binary Tree</h2><p>Given a non-empty binary tree, return the average value of the nodes on each level in the form of an array.</p>
+<p><strong>IDEA:</strong><br>BFS and calculate average, be careful about the result date type, int is not eligible</p>
+<h2 id="646-Maximum-Length-of-Pair-Chain"><a href="#646-Maximum-Length-of-Pair-Chain" class="headerlink" title="646. Maximum Length of Pair Chain"></a>646. Maximum Length of Pair Chain</h2><p><strong>Idea:</strong><br>The tag of this problem is DP but it seems like a greedy problem and I cannot figure out how to use dp to solve it?</p>
+<h2 id="657-Judge-Route-Circle-Easy"><a href="#657-Judge-Route-Circle-Easy" class="headerlink" title="657. Judge Route Circle [Easy]"></a>657. Judge Route Circle [Easy]</h2><p>Initially, there is a Robot at position (0, 0). Given a sequence of its moves, judge if this robot makes a circle, which means it moves back to the original place.</p>
 <p>The move sequence is represented by a string. And each move is represent by a character. The valid robot moves are R (Right), L (Left), U (Up) and D (down). The output should be true or false representing whether the robot makes a circle.</p>
-<p><strong>IDEA:</strong><br>
-Easy, no</p>
-<h2 id="693-binary-number-with-alternating-bits"><a class="markdownIt-Anchor" href="#693-binary-number-with-alternating-bits"></a> 693. Binary Number with Alternating Bits</h2>
-<p>Given a positive integer, check whether it has alternating bits: namely, if two adjacent bits will always have different values.</p>
+<p><strong>IDEA:</strong><br>Easy, no </p>
+<h2 id="693-Binary-Number-with-Alternating-Bits"><a href="#693-Binary-Number-with-Alternating-Bits" class="headerlink" title="693. Binary Number with Alternating Bits"></a>693. Binary Number with Alternating Bits</h2><p>Given a positive integer, check whether it has alternating bits: namely, if two adjacent bits will always have different values.</p>
 <p><strong>Example 1:</strong></p>
 <blockquote>
-<p>Input: 5<br>
-Output: True<br>
-Explanation:<br>
-The binary representation of 5 is: 101</p>
+<p>Input: 5<br>Output: True<br>Explanation:<br>The binary representation of 5 is: 101</p>
 </blockquote>
 <p><strong>Example 2:</strong></p>
 <blockquote>
-<p>Input: 7<br>
-Output: False<br>
-Explanation:<br>
-The binary representation of 7 is: 111.</p>
+<p>Input: 7<br>Output: False<br>Explanation:<br>The binary representation of 7 is: 111.</p>
 </blockquote>
 <p><strong>Example 3:</strong></p>
 <blockquote>
-<p>Input: 11<br>
-Output: False<br>
-Explanation:<br>
-The binary representation of 11 is: 1011.</p>
+<p>Input: 11<br>Output: False<br>Explanation:<br>The binary representation of 11 is: 1011.</p>
 </blockquote>
 <p><strong>Example 4:</strong></p>
 <blockquote>
-<p>Input: 10<br>
-Output: True<br>
-Explanation:<br>
-The binary representation of 10 is: 1010.</p>
+<p>Input: 10<br>Output: True<br>Explanation:<br>The binary representation of 10 is: 1010.</p>
 </blockquote>
-<p><strong>IDEA:</strong></p>
+<p><strong>IDEA:</strong>  </p>
 <ol>
 <li>O(32) solution, check every bit</li>
 <li>n -&gt; 32-bit ‘1’ -&gt; n&amp;(n + 1) == 0 ?</li>
 </ol>
-<h2 id="698-partition-to-k-equal-sum-subsets"><a class="markdownIt-Anchor" href="#698-partition-to-k-equal-sum-subsets"></a> 698. Partition to K Equal Sum Subsets</h2>
-<p>Given an array of integers nums and a positive integer k, find whether it’s possible to divide this array into k non-empty subsets whose sums are all equal.</p>
+<h2 id="698-Partition-to-K-Equal-Sum-Subsets"><a href="#698-Partition-to-K-Equal-Sum-Subsets" class="headerlink" title="698. Partition to K Equal Sum Subsets"></a>698. Partition to K Equal Sum Subsets</h2><p>Given an array of integers nums and a positive integer k, find whether it’s possible to divide this array into k non-empty subsets whose sums are all equal.</p>
 <p><strong>Example 1:</strong></p>
 <blockquote>
-<p>Input: nums = [4, 3, 2, 3, 5, 2, 1], k = 4<br>
-Output: True<br>
-Explanation: It’s possible to divide it into 4 subsets (5), (1, 4), (2,3), (2,3) with equal sums.</p>
+<p>Input: nums = [4, 3, 2, 3, 5, 2, 1], k = 4<br>Output: True<br>Explanation: It’s possible to divide it into 4 subsets (5), (1, 4), (2,3), (2,3) with equal sums.</p>
 </blockquote>
-<p>Note:</p>
+<p>Note:  </p>
 <ul>
 <li>1 &lt;= k &lt;= len(nums) &lt;= 16.</li>
 <li>0 &lt; nums[i] &lt; 10000.</li>
 </ul>
-<p><strong>IDEA:</strong><br>
-ONE OF THE MOST DISGUSTING PROBLEM:<br>
-Hints : buckets.</p>
-<h1 id="700-800"><a class="markdownIt-Anchor" href="#700-800"></a> 700 - 800</h1>
-<h2 id="766-toeplitz-matrix"><a class="markdownIt-Anchor" href="#766-toeplitz-matrix"></a> 766. Toeplitz Matrix</h2>
-<p>A matrix is Toeplitz if every diagonal from top-left to bottom-right has the same element.</p>
+<p><strong>IDEA:</strong><br>ONE OF THE MOST DISGUSTING PROBLEM:<br>Hints : buckets. </p>
+<h1 id="700-800"><a href="#700-800" class="headerlink" title="700 - 800"></a>700 - 800</h1><h2 id="766-Toeplitz-Matrix"><a href="#766-Toeplitz-Matrix" class="headerlink" title="766. Toeplitz Matrix"></a>766. Toeplitz Matrix</h2><p>A matrix is Toeplitz if every diagonal from top-left to bottom-right has the same element.</p>
 <p>Now given an M x N matrix, return True if and only if the matrix is Toeplitz.</p>
-<p><strong>IDEA:</strong><br>
-brute force. We have to check every elements.</p>
-<h1 id="800-900"><a class="markdownIt-Anchor" href="#800-900"></a> 800 - 900</h1>
-<h2 id="811-subdomain-visit-count-easy"><a class="markdownIt-Anchor" href="#811-subdomain-visit-count-easy"></a> 811. Subdomain Visit Count [Easy]</h2>
-<p>A website domain like “<a href="http://discuss.leetcode.com" target="_blank" rel="noopener">discuss.leetcode.com</a>” consists of various subdomains. At the top level, we have “com”, at the next level, we have “<a href="http://leetcode.com" target="_blank" rel="noopener">leetcode.com</a>”, and at the lowest level, “<a href="http://discuss.leetcode.com" target="_blank" rel="noopener">discuss.leetcode.com</a>”. When we visit a domain like “<a href="http://discuss.leetcode.com" target="_blank" rel="noopener">discuss.leetcode.com</a>”, we will also visit the parent domains “<a href="http://leetcode.com" target="_blank" rel="noopener">leetcode.com</a>” and “com” implicitly.</p>
-<p>Now, call a “count-paired domain” to be a count (representing the number of visits this domain received), followed by a space, followed by the address. An example of a count-paired domain might be “9001 <a href="http://discuss.leetcode.com" target="_blank" rel="noopener">discuss.leetcode.com</a>”.</p>
+<p><strong>IDEA:</strong><br>brute force. We have to check every elements.</p>
+<h1 id="800-900"><a href="#800-900" class="headerlink" title="800 - 900"></a>800 - 900</h1><h2 id="811-Subdomain-Visit-Count-Easy"><a href="#811-Subdomain-Visit-Count-Easy" class="headerlink" title="811. Subdomain Visit Count [Easy]"></a>811. Subdomain Visit Count [Easy]</h2><p>A website domain like “discuss.leetcode.com” consists of various subdomains. At the top level, we have “com”, at the next level, we have “leetcode.com”, and at the lowest level, “discuss.leetcode.com”. When we visit a domain like “discuss.leetcode.com”, we will also visit the parent domains “leetcode.com” and “com” implicitly.</p>
+<p>Now, call a “count-paired domain” to be a count (representing the number of visits this domain received), followed by a space, followed by the address. An example of a count-paired domain might be “9001 discuss.leetcode.com”.</p>
 <p>We are given a list cpdomains of count-paired domains. We would like a list of count-paired domains, (in the same format as the input, and in any order), that explicitly counts the number of visits to each subdomain.</p>
-<p><strong>Example 1:</strong></p>
+<p><strong>Example 1:</strong>  </p>
 <blockquote>
-<p>Input:<br>
-[“9001 <a href="http://discuss.leetcode.com" target="_blank" rel="noopener">discuss.leetcode.com</a>”]<br>
-Output:<br>
-[“9001 <a href="http://discuss.leetcode.com" target="_blank" rel="noopener">discuss.leetcode.com</a>”, “9001 <a href="http://leetcode.com" target="_blank" rel="noopener">leetcode.com</a>”, “9001 com”]<br>
-Explanation:<br>
-We only have one website domain: “<a href="http://discuss.leetcode.com" target="_blank" rel="noopener">discuss.leetcode.com</a>”. As discussed above, the subdomain “<a href="http://leetcode.com" target="_blank" rel="noopener">leetcode.com</a>” and “com” will also be visited. So they will all be visited 9001 times.</p>
+<p>Input:<br>[“9001 discuss.leetcode.com”]<br>Output:<br>[“9001 discuss.leetcode.com”, “9001 leetcode.com”, “9001 com”]<br>Explanation:<br>We only have one website domain: “discuss.leetcode.com”. As discussed above, the subdomain “leetcode.com” and “com” will also be visited. So they will all be visited 9001 times.</p>
 </blockquote>
 <p><strong>Example 2:</strong></p>
 <blockquote>
-<p>Input:<br>
-[“900 <a href="http://google.mail.com" target="_blank" rel="noopener">google.mail.com</a>”, “50 <a href="http://yahoo.com" target="_blank" rel="noopener">yahoo.com</a>”, “1 <a href="http://intel.mail.com" target="_blank" rel="noopener">intel.mail.com</a>”, “5 <a href="http://wiki.org" target="_blank" rel="noopener">wiki.org</a>”]<br>
-Output:<br>
-[“901 <a href="http://mail.com" target="_blank" rel="noopener">mail.com</a>”,“50 <a href="http://yahoo.com" target="_blank" rel="noopener">yahoo.com</a>”,“900 <a href="http://google.mail.com" target="_blank" rel="noopener">google.mail.com</a>”,“5 <a href="http://wiki.org" target="_blank" rel="noopener">wiki.org</a>”,“5 org”,“1 <a href="http://intel.mail.com" target="_blank" rel="noopener">intel.mail.com</a>”,“951 com”]<br>
-Explanation:<br>
-We will visit “<a href="http://google.mail.com" target="_blank" rel="noopener">google.mail.com</a>” 900 times, “<a href="http://yahoo.com" target="_blank" rel="noopener">yahoo.com</a>” 50 times, “<a href="http://intel.mail.com" target="_blank" rel="noopener">intel.mail.com</a>” once and “<a href="http://wiki.org" target="_blank" rel="noopener">wiki.org</a>” 5 times. For the subdomains, we</p>
+<p>Input:<br>[“900 google.mail.com”, “50 yahoo.com”, “1 intel.mail.com”, “5 wiki.org”]<br>Output:<br>[“901 mail.com”,”50 yahoo.com”,”900 google.mail.com”,”5 wiki.org”,”5 org”,”1 intel.mail.com”,”951 com”]<br>Explanation:<br>We will visit “google.mail.com” 900 times, “yahoo.com” 50 times, “intel.mail.com” once and “wiki.org” 5 times. For the subdomains, we</p>
 </blockquote>
-<p><strong>IDEA:</strong><br>
-Easy HashMap</p>
-<h2 id="852-peak-index-in-a-mountain-array"><a class="markdownIt-Anchor" href="#852-peak-index-in-a-mountain-array"></a> 852. Peak Index in a Mountain Array</h2>
-<p>Let’s call an array A a mountain if the following properties hold:</p>
-<p>A.length &gt;= 3<br>
-There exists some 0 &lt; i &lt; A.length - 1 such that A[0] &lt; A[1] &lt; … A[i-1] &lt; A[i] &gt; A[i+1] &gt; … &gt; A[A.length - 1]<br>
-Given an array that is definitely a mountain, return any i such that A[0] &lt; A[1] &lt; … A[i-1] &lt; A[i] &gt; A[i+1] &gt; … &gt; A[A.length - 1].</p>
+<p><strong>IDEA:</strong><br>Easy HashMap</p>
+<h2 id="852-Peak-Index-in-a-Mountain-Array"><a href="#852-Peak-Index-in-a-Mountain-Array" class="headerlink" title="852. Peak Index in a Mountain Array"></a>852. Peak Index in a Mountain Array</h2><p>Let’s call an array A a mountain if the following properties hold:</p>
+<p>A.length &gt;= 3<br>There exists some 0 &lt; i &lt; A.length - 1 such that A[0] &lt; A[1] &lt; … A[i-1] &lt; A[i] &gt; A[i+1] &gt; … &gt; A[A.length - 1]<br>Given an array that is definitely a mountain, return any i such that A[0] &lt; A[1] &lt; … A[i-1] &lt; A[i] &gt; A[i+1] &gt; … &gt; A[A.length - 1].</p>
 <p><strong>Example 1:</strong></p>
 <blockquote>
-<p>Input: [0,1,0]<br>
-Output: 1</p>
+<p>Input: [0,1,0]<br>Output: 1</p>
 </blockquote>
 <p><strong>Example 2:</strong></p>
 <blockquote>
-<p>Input: [0,2,1,0]<br>
-Output: 1</p>
+<p>Input: [0,2,1,0]<br>Output: 1</p>
 </blockquote>
 <p>Note:</p>
 <ul>
@@ -702,25 +558,14 @@ Output: 1</p>
 <li>0 &lt;= A[i] &lt;= 10^6</li>
 <li>A is a mountain, as defined above.</li>
 </ul>
-<p><strong>IDEA:</strong><br>
-Because it is definitely a mountain, we can binary search the topest value in this array and return its index.</p>
-<h2 id="853-car-fleet"><a class="markdownIt-Anchor" href="#853-car-fleet"></a> 853. Car Fleet</h2>
-<p>N cars are going to the same destination along a one lane road.  The destination is target miles away. Each car i has a constant speed speed[i] (in miles per hour), and initial position position[i] miles towards the target along the road.<br>
-A car can never pass another car ahead of it, but it can catch up to it, and drive bumper to bumper at the same speed.The distance between these two cars is ignored - they are assumed to have the same position.<br>
-A car fleet is some non-empty set of cars driving at the same position and same speed.  Note that a single car is also a car fleet.<br>
-If a car catches up to a car fleet right at the destination point,it will still be considered as one car fleet.</p>
+<p><strong>IDEA:</strong><br>Because it is definitely a mountain, we can binary search the topest value in this array and return its index.</p>
+<h2 id="853-Car-Fleet"><a href="#853-Car-Fleet" class="headerlink" title="853. Car Fleet"></a>853. Car Fleet</h2><p>N cars are going to the same destination along a one lane road.  The destination is target miles away. Each car i has a constant speed speed[i] (in miles per hour), and initial position position[i] miles towards the target along the road.<br>A car can never pass another car ahead of it, but it can catch up to it, and drive bumper to bumper at the same speed.The distance between these two cars is ignored - they are assumed to have the same position.<br>A car fleet is some non-empty set of cars driving at the same position and same speed.  Note that a single car is also a car fleet.<br>If a car catches up to a car fleet right at the destination point,it will still be considered as one car fleet.    </p>
 <p>How many car fleets will arrive at the destination?</p>
 <p><strong>Example 1:</strong></p>
 <blockquote>
-<p><strong>Input</strong>: target = 12, position = [10,8,0,5,3], speed = [2,4,1,1,3]<br>
-<strong>Output:</strong> 3<br>
-<strong>Explanation:</strong><br>
-The cars starting at 10 and 8 become a fleet, meeting each other at 12.<br>
-The car starting at 0 doesn’t catch up to any other car, so it is a fleet by itself.<br>
-The cars starting at 5 and 3 become a fleet, meeting each other at 6.<br>
-Note that no other cars meet these fleets before the destination, so the answer is 3.</p>
+<p><strong>Input</strong>: target = 12, position = [10,8,0,5,3], speed = [2,4,1,1,3]<br><strong>Output:</strong> 3<br><strong>Explanation:</strong><br>The cars starting at 10 and 8 become a fleet, meeting each other at 12.<br>The car starting at 0 doesn’t catch up to any other car, so it is a fleet by itself.<br>The cars starting at 5 and 3 become a fleet, meeting each other at 6.<br>Note that no other cars meet these fleets before the destination, so the answer is 3.</p>
 </blockquote>
-<p><strong>Note:</strong></p>
+<p><strong>Note:</strong>  </p>
 <ol>
 <li>0 &lt;= N &lt;= 10 ^ 4</li>
 <li>0 &lt; target &lt;= 10 ^ 6</li>
@@ -728,38 +573,30 @@ Note that no other cars meet these fleets before the destination, so the answer 
 <li>0 &lt;= position[i] &lt; target</li>
 <li>All initial positions are different.</li>
 </ol>
-<p><strong>IDEA:</strong><br>
-We need to find the fleets, so we need to know if one car will catch another one. To simplify the process, we sort the original position array, let’s say in ascending sequence, then we have a new array, let’s name it <em>pos</em>. Then the end of <em>pos</em> is closest to the target and the head of <em>pos</em> is farest to the target.<br>
-Now from the end of the array, we calculate the time that every car need to take to reach the target, if one car <em><strong>A</strong></em> firstly is ahead of car <em><strong>B</strong></em> but the time of car <em><strong>A</strong></em> need to take to reach the target is larger than <em><strong>B</strong></em>’s time, it means that car <em><strong>B</strong></em> catches car <em><strong>A</strong></em> in no doubt, which means they are views as one car fleet.<br>
-So the key of this solution is:</p>
+<p><strong>IDEA:</strong><br>We need to find the fleets, so we need to know if one car will catch another one. To simplify the process, we sort the original position array, let’s say in ascending sequence, then we have a new array, let’s name it <em>pos</em>. Then the end of <em>pos</em> is closest to the target and the head of <em>pos</em> is farest to the target.<br>Now from the end of the array, we calculate the time that every car need to take to reach the target, if one car <strong><em>A</em></strong> firstly is ahead of car <strong><em>B</em></strong> but the time of car <strong><em>A</em></strong> need to take to reach the target is larger than <strong><em>B</em></strong>‘s time, it means that car <strong><em>B</em></strong> catches car <strong><em>A</em></strong> in no doubt, which means they are views as one car fleet.<br>So the key of this solution is:</p>
 <ol>
 <li>sort position</li>
 <li>calculate the time consumption</li>
 <li>compare the time consumption from the end to the head with current time and determine the occurence of car catching.</li>
 </ol>
 <p><strong><a href="https://github.com/TCoherence/LeetCodeExercise/blob/master/853.%20Car%20Fleet.java" target="_blank" rel="noopener">CODE</a></strong></p>
-<h2 id="854-k-similar-strings"><a class="markdownIt-Anchor" href="#854-k-similar-strings"></a> 854. K-Similar Strings</h2>
-<p>Strings A and B are K-similar (for some non-negative integer K) if we can swap the positions of two letters in A exactly K times so that the resulting string equals B.</p>
+<h2 id="854-K-Similar-Strings"><a href="#854-K-Similar-Strings" class="headerlink" title="854. K-Similar Strings"></a>854. K-Similar Strings</h2><p>Strings A and B are K-similar (for some non-negative integer K) if we can swap the positions of two letters in A exactly K times so that the resulting string equals B.  </p>
 <p>Given two anagrams A and B, return the smallest K for which A and B are K-similar.</p>
 <p><strong>Example 1:</strong></p>
 <blockquote>
-<p>Input: A = “ab”, B = “ba”<br>
-Output: 1</p>
+<p>Input: A = “ab”, B = “ba”<br>Output: 1  </p>
 </blockquote>
-<p><strong>Example 2:</strong></p>
+<p><strong>Example 2:</strong>  </p>
 <blockquote>
-<p>Input: A = “abc”, B = “bca”<br>
-Output: 2</p>
+<p>Input: A = “abc”, B = “bca”<br>Output: 2  </p>
 </blockquote>
-<p><strong>Example 3:</strong></p>
+<p><strong>Example 3:</strong> </p>
 <blockquote>
-<p>Input: A = “abac”, B = “baca”<br>
-Output: 2</p>
+<p>Input: A = “abac”, B = “baca”<br>Output: 2  </p>
 </blockquote>
-<p><strong>Example 4:</strong></p>
+<p><strong>Example 4:</strong> </p>
 <blockquote>
-<p>Input: A = “aabc”, B = “abca”<br>
-Output: 2</p>
+<p>Input: A = “aabc”, B = “abca”<br>Output: 2  </p>
 </blockquote>
 <p><strong>Note:</strong></p>
 <blockquote>
@@ -768,42 +605,24 @@ Output: 2</p>
 <li>A and B contain only lowercase letters from the set {‘a’, ‘b’, ‘c’, ‘d’, ‘e’, ‘f’}</li>
 </ol>
 </blockquote>
-<p><strong>IDEA</strong>:<br>
-When it comes to the shortest distance or shortest of something, we need to consider BFS first. After all, it is the most common algs to solve this problem.<br>
-In this problem, we use BFS to guarantee the result is shortest, then we swap every pair in A to reach B and <em>offer (because in java queue, the func is offer())</em> all the results to queue then use BFS to solve it.</p>
-<p><strong><a href="https://github.com/TCoherence/LeetCodeExercise/blob/master/854.%20K-Similar%20Strings.java" target="_blank" rel="noopener">CODE</a></strong></p>
-<h2 id="855-exam-room"><a class="markdownIt-Anchor" href="#855-exam-room"></a> 855. Exam Room</h2>
-<p>In an exam room, there are N seats in a single row, numbered 0, 1, 2, …, N-1.<br>
-When a student enters the room, they must sit in the seat that maximizes the distance to the closest person.  If there are multiple such seats, they sit in the seat with the lowest number.  (Also, if no one is in the room, then the student sits at seat number 0.)<br>
-Return a class ExamRoom(int N) that exposes two functions: ExamRoom.seat() returning an int representing what seat the student sat in, and ExamRoom.leave(int p) representing that the student in seat number p now leaves the room.  It is guaranteed that any calls to ExamRoom.leave§ have a student sitting in seat p.</p>
+<p><strong>IDEA</strong>:<br>When it comes to the shortest distance or shortest of something, we need to consider BFS first. After all, it is the most common algs to solve this problem.<br>In this problem, we use BFS to guarantee the result is shortest, then we swap every pair in A to reach B and <em>offer (because in java queue, the func is offer())</em> all the results to queue then use BFS to solve it.</p>
+<p><strong><a href="https://github.com/TCoherence/LeetCodeExercise/blob/master/854.%20K-Similar%20Strings.java" target="_blank" rel="noopener">CODE</a></strong>  </p>
+<h2 id="855-Exam-Room"><a href="#855-Exam-Room" class="headerlink" title="855. Exam Room"></a>855. Exam Room</h2><p>In an exam room, there are N seats in a single row, numbered 0, 1, 2, …, N-1.<br>When a student enters the room, they must sit in the seat that maximizes the distance to the closest person.  If there are multiple such seats, they sit in the seat with the lowest number.  (Also, if no one is in the room, then the student sits at seat number 0.)<br>Return a class ExamRoom(int N) that exposes two functions: ExamRoom.seat() returning an int representing what seat the student sat in, and ExamRoom.leave(int p) representing that the student in seat number p now leaves the room.  It is guaranteed that any calls to ExamRoom.leave(p) have a student sitting in seat p.</p>
 <p>Example 1:</p>
 <blockquote>
-<p><strong>Input:</strong> [“ExamRoom”,“seat”,“seat”,“seat”,“seat”,“leave”,“seat”], [[10],[],[],[],[],[4],[]]<br>
-<strong>Output:</strong> [null,0,9,4,2,null,5]<br>
-<strong>Explanation:</strong><br>
-ExamRoom(10) -&gt; null<br>
-seat() -&gt; 0, no one is in the room, then the student sits at seat number 0.<br>
-seat() -&gt; 9, the student sits at the last seat number 9.<br>
-seat() -&gt; 4, the student sits at the last seat number 4.<br>
-seat() -&gt; 2, the student sits at the last seat number 2.<br>
-leave(4) -&gt; null<br>
-seat() -&gt; 5, the student​​​​​​​ sits at the last seat number 5.<br>
-​​</p>
+<p><strong>Input:</strong> [“ExamRoom”,”seat”,”seat”,”seat”,”seat”,”leave”,”seat”], [[10],[],[],[],[],[4],[]]<br><strong>Output:</strong> [null,0,9,4,2,null,5]<br><strong>Explanation:</strong><br>ExamRoom(10) -&gt; null<br>seat() -&gt; 0, no one is in the room, then the student sits at seat number 0.<br>seat() -&gt; 9, the student sits at the last seat number 9.<br>seat() -&gt; 4, the student sits at the last seat number 4.<br>seat() -&gt; 2, the student sits at the last seat number 2.<br>leave(4) -&gt; null<br>seat() -&gt; 5, the student​​​​​​​ sits at the last seat number 5.<br>​​</p>
 </blockquote>
 <p>Note:</p>
 <blockquote>
 <ol>
 <li>0 &lt;= N &lt;= 10^9</li>
 <li>ExamRoom.seat() and ExamRoom.leave() will be called at most 10^4 times across all test cases.</li>
-<li>Calls to ExamRoom.leave§ are guaranteed to have a student currently sitting in seat number p.</li>
+<li>Calls to ExamRoom.leave(p) are guaranteed to have a student currently sitting in seat number p.</li>
 </ol>
 </blockquote>
-<p><strong>IDEA:</strong><br>
-We notice that the range of N is from 0 to 10^9 so it is not wise to create an array to store every seat’s state. We can use segment to present the seat’s state and two points of a segment are both occupied.<br>
-In this case, the corner case are the first seat and the last point because their segments have just one point and the other is the boundry of the array which we need pay attention to.</p>
-<p><strong>Solution:</strong><br>
-Keyword: TreeSet, Point, Priority(Haven’t been reached, do it in few days later)</p>
-<p><strong><a href="https://github.com/TCoherence/LeetCodeExercise/blob/master/855.%20Exam%20Room.java" target="_blank" rel="noopener">CODE</a></strong></p>
+<p><strong>IDEA:</strong><br>We notice that the range of N is from 0 to 10^9 so it is not wise to create an array to store every seat’s state. We can use segment to present the seat’s state and two points of a segment are both occupied.<br>In this case, the corner case are the first seat and the last point because their segments have just one point and the other is the boundry of the array which we need pay attention to.</p>
+<p><strong>Solution:</strong><br>Keyword: TreeSet, Point, Priority(Haven’t been reached, do it in few days later)  </p>
+<p><strong><a href="https://github.com/TCoherence/LeetCodeExercise/blob/master/855.%20Exam%20Room.java" target="_blank" rel="noopener">CODE</a></strong>  </p>
 
       
     </div>
@@ -1029,7 +848,7 @@ Keyword: TreeSet, Point, Priority(Haven’t been reached, do it in few days late
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-new-summary"><span class="nav-text"> LeetCode New Summary</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0-100"><span class="nav-text"> 0 - 100</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-two-sum"><span class="nav-text"> 1. Two Sum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-add-two-numbers"><span class="nav-text"> 2. Add Two Numbers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-longest-substring-without-repeating-characters"><span class="nav-text"> 3. Longest Substring Without Repeating Characters</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-median-of-two-sorted-arrays"><span class="nav-text"> 4. Median of Two Sorted Arrays</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#91-decode-ways"><span class="nav-text"> 91. Decode Ways</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#100-200"><span class="nav-text"> 100 - 200</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#104-maximum-depth-of-binary-tree"><span class="nav-text"> 104. Maximum Depth of Binary Tree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#136-single-number-e"><span class="nav-text"> 136. Single Number [E]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#200-300"><span class="nav-text"> 200 - 300</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#274-h-index"><span class="nav-text"> 274. H-Index</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#292-nim-game"><span class="nav-text"> 292. Nim Game</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#300-400"><span class="nav-text"> 300 - 400</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#337-house-robber-iii"><span class="nav-text"> 337. House Robber III</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#344-reverse-string-e"><span class="nav-text"> 344. Reverse String [E]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#400-500"><span class="nav-text"> 400 - 500</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#461-hamming-distance-easy"><span class="nav-text"> 461. Hamming Distance [Easy]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#463-island-perimeter"><span class="nav-text"> 463. Island Perimeter</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#500-600"><span class="nav-text"> 500 - 600</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#513-find-bottom-left-tree-value-medium"><span class="nav-text"> 513. Find Bottom Left Tree Value [Medium]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#561-array-partition-i"><span class="nav-text"> 561. Array Partition I</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#600-700"><span class="nav-text"> 600 - 700</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#605-can-place-flowers"><span class="nav-text"> 605. Can Place Flowers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#637-average-of-levels-in-binary-tree"><span class="nav-text"> 637. Average of Levels in Binary Tree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#646-maximum-length-of-pair-chain"><span class="nav-text"> 646. Maximum Length of Pair Chain</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#657-judge-route-circle-easy"><span class="nav-text"> 657. Judge Route Circle [Easy]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#693-binary-number-with-alternating-bits"><span class="nav-text"> 693. Binary Number with Alternating Bits</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#698-partition-to-k-equal-sum-subsets"><span class="nav-text"> 698. Partition to K Equal Sum Subsets</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#700-800"><span class="nav-text"> 700 - 800</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#766-toeplitz-matrix"><span class="nav-text"> 766. Toeplitz Matrix</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#800-900"><span class="nav-text"> 800 - 900</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#811-subdomain-visit-count-easy"><span class="nav-text"> 811. Subdomain Visit Count [Easy]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#852-peak-index-in-a-mountain-array"><span class="nav-text"> 852. Peak Index in a Mountain Array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#853-car-fleet"><span class="nav-text"> 853. Car Fleet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#854-k-similar-strings"><span class="nav-text"> 854. K-Similar Strings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#855-exam-room"><span class="nav-text"> 855. Exam Room</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LeetCode-New-Summary"><span class="nav-text">LeetCode New Summary</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0-100"><span class="nav-text">0 - 100</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Two-Sum"><span class="nav-text">1. Two Sum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Add-Two-Numbers"><span class="nav-text">2. Add Two Numbers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Longest-Substring-Without-Repeating-Characters"><span class="nav-text">3. Longest Substring Without Repeating Characters</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Median-of-Two-Sorted-Arrays"><span class="nav-text">4. Median of Two Sorted Arrays</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#91-Decode-Ways"><span class="nav-text">91. Decode Ways</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#100-200"><span class="nav-text">100 - 200</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#104-Maximum-Depth-of-Binary-Tree"><span class="nav-text">104. Maximum Depth of Binary Tree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#136-Single-Number-E"><span class="nav-text">136. Single Number [E]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#200-300"><span class="nav-text">200 - 300</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#274-H-Index"><span class="nav-text">274. H-Index</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#292-Nim-Game"><span class="nav-text">292. Nim Game</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#300-400"><span class="nav-text">300 - 400</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#337-House-Robber-III"><span class="nav-text">337. House Robber III</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#344-Reverse-String-E"><span class="nav-text">344. Reverse String [E]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#400-500"><span class="nav-text">400 - 500</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#461-Hamming-Distance-Easy"><span class="nav-text">461. Hamming Distance [Easy]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#463-Island-Perimeter"><span class="nav-text">463. Island Perimeter</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#500-600"><span class="nav-text">500 - 600</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#513-Find-Bottom-Left-Tree-Value-Medium"><span class="nav-text">513. Find Bottom Left Tree Value [Medium]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#561-Array-Partition-I"><span class="nav-text">561. Array Partition I</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#600-700"><span class="nav-text">600 - 700</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#605-Can-Place-Flowers"><span class="nav-text">605. Can Place Flowers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#637-Average-of-Levels-in-Binary-Tree"><span class="nav-text">637. Average of Levels in Binary Tree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#646-Maximum-Length-of-Pair-Chain"><span class="nav-text">646. Maximum Length of Pair Chain</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#657-Judge-Route-Circle-Easy"><span class="nav-text">657. Judge Route Circle [Easy]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#693-Binary-Number-with-Alternating-Bits"><span class="nav-text">693. Binary Number with Alternating Bits</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#698-Partition-to-K-Equal-Sum-Subsets"><span class="nav-text">698. Partition to K Equal Sum Subsets</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#700-800"><span class="nav-text">700 - 800</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#766-Toeplitz-Matrix"><span class="nav-text">766. Toeplitz Matrix</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#800-900"><span class="nav-text">800 - 900</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#811-Subdomain-Visit-Count-Easy"><span class="nav-text">811. Subdomain Visit Count [Easy]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#852-Peak-Index-in-a-Mountain-Array"><span class="nav-text">852. Peak Index in a Mountain Array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#853-Car-Fleet"><span class="nav-text">853. Car Fleet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#854-K-Similar-Strings"><span class="nav-text">854. K-Similar Strings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#855-Exam-Room"><span class="nav-text">855. Exam Room</span></a></li></ol></li></ol></div>
             
 
           </div>
