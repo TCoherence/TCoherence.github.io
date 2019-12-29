@@ -190,5 +190,20 @@ from: https://gist.github.com/gaquino/87bdf0e6e852e445c0489379d3e9732a
 
    - 
 
-9. 
+9. Sort posts by updated time
+
+   Modify _config.yml file in root folder
+
+   ```yml
+   # Home page setting
+   # path: Root path for your blogs index page. (default = '')
+   # per_page: Posts displayed per page. (0 = disable pagination)
+   # order_by: Posts order. (Order by date descending by default)
+   index_generator:
+       path: ''
+       per_page: 10
+       order_by: -updated # <=== Here is the modification
+   ```
+
+10. 
 
