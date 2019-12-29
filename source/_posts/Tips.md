@@ -174,5 +174,21 @@ from: https://gist.github.com/gaquino/87bdf0e6e852e445c0489379d3e9732a
 
    first *xv6-the-first-process* is the name of your post and the second one is the link name for your post. 
 
-8. 
+8. 添加comment（gitalk, disqus, valine,最终选择了gitalk）
+
+   主要参考：https://asdfv1929.github.io/2018/01/20/gitalk/
+
+   - issue1: Error: Not found 
+
+     ![image-20191228180425473](Error.png)
+
+     似乎是需要一点时间来完成配置。
+
+   - issue2: ***Related [Issues](https://github.com/TCoherence/TCoherence.github.io/issues) not found Please contact @TCoherence to initialize the comment***
+
+     一度以为是next版本问题，其实是OAuth里面的URL的问题。。。不能用http，而是**https**，原因暂时未知。
+
+   - 
+
+9. 
 
