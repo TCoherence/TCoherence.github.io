@@ -404,38 +404,31 @@
 </blockquote>
 <a id="more"></a>
 <p>[TOC]</p>
-<h1 id="ssh-beautify"><a class="markdownIt-Anchor" href="#ssh-beautify"></a> SSH beautify</h1>
-<p>After ssh to our school’s server <em>murphy</em>, the appearance is go gross that I cannot bear anymore. So I am ready to make it like my own terminal.</p>
-<p>I copied my .oh-my-zsh directory and .zshrc configuration file into my remote server. Then when I change me shell to zsh, it stuck.</p>
-<p>My friend told me it is because git will scan all the file in the server(I really don’t know why git will do this and don’t know if it is true that git really will do this). So</p>
+<h1 id="SSH-beautify"><a href="#SSH-beautify" class="headerlink" title="SSH beautify"></a>SSH beautify</h1><p>After ssh to our school’s server <em>murphy</em>, the appearance is go gross that I cannot bear anymore. So I am ready to make it like my own terminal.</p>
+<p>I copied my .oh-my-zsh directory and .zshrc configuration file into my remote server. Then when I change me shell to zsh, it stuck. </p>
+<p>My friend told me it is because git will scan all the file in the server(I really don’t know why git will do this and don’t know if it is true that git really will do this). So </p>
 <ul>
 <li>I deleted all git-related plugin in my .oh-my-zsh directory (<code>rm -rf git*</code>).</li>
-<li>I disabled all git related thing in my theme file (You can find it in .oh-my-zsh/themes/$ZSH_THEMES_zsh.theme).</li>
+<li>I disabled all git related thing in my theme file (You can find it in .oh-my-zsh/themes/$ZSH_THEMES_zsh.theme). </li>
 <li>I comment all git-related plugin in my user configuration file (.zshrc) which is git, auto jump.</li>
 </ul>
-<p>Then when I run zsh in my remote server, the feeling of coming home is there.</p>
-<p>😃</p>
+<p>Then when I run zsh in my remote server, the feeling of coming home is there. </p>
+<p>:-)</p>
 <p>2019-4-25</p>
 <p>I cannot bear the uncolored ssh terminal anymore especially that no color when I enter <code>git status</code> which makes it hard for me to see the report. So I google it and find it can be solved by enter</p>
 <p><code>git config color.status always</code></p>
 <p>Another happy thing: I’ve received the updated information from my intern company. Real world seems not that friendly. 😮</p>
-<p>😃</p>
+<p>:-)</p>
 <p>2019-5-9</p>
-<h1 id="github-issues"><a class="markdownIt-Anchor" href="#github-issues"></a> Github issues</h1>
-<h2 id="invalid-username-or-password"><a class="markdownIt-Anchor" href="#invalid-username-or-password"></a> ‘invalid username or password’</h2>
-<p>When I try to help Michael to git push the local repo to the remote server, the terminal prompts out the error message:</p>
+<h1 id="Github-issues"><a href="#Github-issues" class="headerlink" title="Github issues"></a>Github issues</h1><h2 id="‘invalid-username-or-password’"><a href="#‘invalid-username-or-password’" class="headerlink" title="‘invalid username or password’"></a>‘invalid username or password’</h2><p>When I try to help Michael to git push the local repo to the remote server, the terminal prompts out the error message:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">error: invalid username or password</span><br><span class="line">fatal error: Autentication failed to ...</span><br></pre></td></tr></table></figure>
 <p>I search out all information about <code>fatal error</code> but seems nothing helps, then I notice that I have not 2FV but Mike has. So I try to cancel this property of Mike but then I realize that it is a personal settings.</p>
 <p>So I search something about it and then find this url: <a href="https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line" target="_blank" rel="noopener">https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line</a>.</p>
-<dl>
-<dt>Issue solved.</dt>
-<dd>-]</dd>
-</dl>
+<p>Issue solved.</p>
+<p>: -]</p>
 <p>2019-5-1</p>
 <p>AND I FINALLY RECEIVE MY NEW AIRPODS!!!</p>
-<h1 id="shell-script"><a class="markdownIt-Anchor" href="#shell-script"></a> Shell script</h1>
-<h1 id="hexo-configs-frequent-problems"><a class="markdownIt-Anchor" href="#hexo-configs-frequent-problems"></a> Hexo Configs &amp; Frequent Problems</h1>
-<blockquote>
+<h1 id="Shell-script"><a href="#Shell-script" class="headerlink" title="Shell script"></a>Shell script</h1><h1 id="Hexo-Configs-amp-Frequent-Problems"><a href="#Hexo-Configs-amp-Frequent-Problems" class="headerlink" title="Hexo Configs &amp; Frequent Problems"></a>Hexo Configs &amp; Frequent Problems</h1><blockquote>
 <p>Here are some useful configurations for hexo.</p>
 </blockquote>
 <ol>
@@ -459,38 +452,31 @@
 <li><code>![](image.jpg)</code>(need to set <em>past_asset_folder</em> attribute to true in <strong>_config.yml</strong>)</li>
 </ul>
 <ol start="5">
-<li>
-<p>给文章添加 TOC</p>
-</li>
-<li>
-<p>xcrun error: path error</p>
-</li>
+<li>给文章添加 TOC</li>
+</ol>
+<ol start="6">
+<li>xcrun error: path error</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">If you are facing an error like that on new MacOS version.</span><br><span class="line"></span><br><span class="line">xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun</span><br><span class="line"></span><br><span class="line">It means that you need to install XCode command line, open a Terminal and run this command:</span><br><span class="line"></span><br><span class="line">$ xcode-select --install</span><br><span class="line"></span><br><span class="line">from: https://gist.github.com/gaquino/87bdf0e6e852e445c0489379d3e9732a</span><br></pre></td></tr></table></figure>
 <ol start="7">
-<li>
-<p>link to another post on hexo</p>
+<li><p>link to another post on hexo</p>
 <p><code><a href="/2019/04/19/xv6-the-first-process/" title="xv6-the-first-process">xv6-the-first-process</a></code></p>
-<p>first <em>xv6-the-first-process</em> is the name of your post and the second one is the link name for your post.</p>
+<p>first <em>xv6-the-first-process</em> is the name of your post and the second one is the link name for your post. </p>
 </li>
-<li>
-<p>添加comment（gitalk, disqus, valine,最终选择了gitalk）</p>
+<li><p>添加comment（gitalk, disqus, valine,最终选择了gitalk）</p>
 <p>主要参考：<a href="https://asdfv1929.github.io/2018/01/20/gitalk/" target="_blank" rel="noopener">https://asdfv1929.github.io/2018/01/20/gitalk/</a></p>
 <ul>
-<li>
-<p>issue1: Error: Not found</p>
+<li><p>issue1: Error: Not found </p>
 <p><img src="Error.png" alt="image-20191228180425473"></p>
 <p>似乎是需要一点时间来完成配置。</p>
 </li>
-<li>
-<p>issue2: <em><strong>Related <a href="https://github.com/TCoherence/TCoherence.github.io/issues" target="_blank" rel="noopener">Issues</a> not found Please contact @TCoherence to initialize the comment</strong></em></p>
+<li><p>issue2: <strong><em>Related <a href="https://github.com/TCoherence/TCoherence.github.io/issues" target="_blank" rel="noopener">Issues</a> not found Please contact @TCoherence to initialize the comment</em></strong></p>
 <p>一度以为是next版本问题，其实是OAuth里面的URL的问题。。。不能用http，而是<strong>https</strong>，原因暂时未知。</p>
 </li>
 <li></li>
 </ul>
 </li>
-<li>
-<p>Sort posts by updated time</p>
+<li><p>Sort posts by updated time</p>
 <p>Modify _config.yml file in root folder</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Home page setting</span></span><br><span class="line"><span class="comment"># path: Root path for your blogs index page. (default = '')</span></span><br><span class="line"><span class="comment"># per_page: Posts displayed per page. (0 = disable pagination)</span></span><br><span class="line"><span class="comment"># order_by: Posts order. (Order by date descending by default)</span></span><br><span class="line"><span class="attr">index_generator:</span></span><br><span class="line"><span class="attr">    path:</span> <span class="string">''</span></span><br><span class="line"><span class="attr">    per_page:</span> <span class="number">10</span></span><br><span class="line"><span class="attr">    order_by:</span> <span class="bullet">-updated</span> <span class="comment"># &lt;=== Here is the modification</span></span><br></pre></td></tr></table></figure>
 </li>
@@ -638,7 +624,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -721,7 +707,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ssh-beautify"><span class="nav-text"> SSH beautify</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#github-issues"><span class="nav-text"> Github issues</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#invalid-username-or-password"><span class="nav-text"> ‘invalid username or password’</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#shell-script"><span class="nav-text"> Shell script</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo-configs-frequent-problems"><span class="nav-text"> Hexo Configs &amp; Frequent Problems</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SSH-beautify"><span class="nav-text">SSH beautify</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Github-issues"><span class="nav-text">Github issues</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#‘invalid-username-or-password’"><span class="nav-text">‘invalid username or password’</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Shell-script"><span class="nav-text">Shell script</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo-Configs-amp-Frequent-Problems"><span class="nav-text">Hexo Configs &amp; Frequent Problems</span></a></li></ol></div>
             
 
           </div>
