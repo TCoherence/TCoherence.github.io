@@ -70,6 +70,41 @@ AND I FINALLY RECEIVE MY NEW AIRPODS!!!
 
 
 
+## Chinese filename appears as unicode filename in *git status*
+
+```shell
+➜  _posts git:(save) ✗ git status
+On branch save
+Your branch is up to date with 'origin/save'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+  (commit or discard the untracked or modified content in submodules)
+
+	modified:   ../../themes/next (modified content, untracked content)
+	modified:   ../../themes/next-reloaded (modified content, untracked content)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	"\345\221\250\346\200\273\347\273\223.md"
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+ref:https://stackoverflow.com/questions/34549040/git-not-displaying-unicode-file-names
+
+try `git config --global core.quotePath false` command. The reason for this problem is because of MACOS implementation of Git. Since I updated MAC OS a few weeks ago, it may bring back the original configuration.
+
+now it fixes my issue.
+
+
+
+
+
+
+
 # Shell script
 
 
@@ -207,3 +242,4 @@ from: https://gist.github.com/gaquino/87bdf0e6e852e445c0489379d3e9732a
 
 10. 
 
+# 
