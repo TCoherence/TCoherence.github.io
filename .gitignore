@@ -6,3 +6,5 @@ node_modules/
 public/
 .deploy*/
 themes/*
+themes/next
+themes/next-reloaded
