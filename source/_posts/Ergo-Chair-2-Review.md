@@ -7,7 +7,9 @@ categories:
 
 # Ergo Chair 2 Review
 
-> 一个简单人体工学椅测评+一个升降桌测评
+> 一个简单人体工学椅测评 + 一个升降桌
+
+<!--more-->
 
 ## 前言
 买椅子之前本来是想着买一个最普通的就好了，从没想过要买一个ergonomic chair，因为当初对家里面桌椅的定位就是游戏桌椅。所以只是买了一个普通的，然而随着疫情的发展，几乎今年都要在家里面待着了，导致我与这普通的桌椅的高低长期保持接触，不合理的地方日渐凸显，比如桌子不能升降，椅子扶手也没法升降，而且没有腰部支撑，在坐久了之后会有明显的不适感，并且随着时间的推移，我的腰开始明显觉得不对劲，背部下侧很容易觉得酸，到现在开始觉得有点儿疼，于是人体工学椅终于上了我的日程。
@@ -39,5 +41,10 @@ categories:
 
 ### Link & 照片
 [点我点我点我呀](https://www.autonomous.ai/office-chairs/ergonomic-chair?utm_term=&utm_campaign=Sales-Search-85&utm_source=adwords&utm_medium=ppc&hsa_acc=9219256787&hsa_cam=8253909597&hsa_grp=91618353542&hsa_ad=417959848443&hsa_src=g&hsa_tgt=dsa-874514744115&hsa_kw=&hsa_mt=b&hsa_net=adwords&hsa_ver=3&gclid=EAIaIQobChMIr53Pl_vL6gIV7R-tBh2FJAjyEAAYASAAEgIL2_D_BwE)
+
+## 一个升降桌 
+链接：https://www.amazon.com/gp/product/B07GVRKCWP/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1
+
+刚买的时候觉得非常不错，但是后来发现空间还是小了点，除此之外一切都还是不错的！
 
 2020.7.14 老腰拯救记
