@@ -324,7 +324,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-19T16:06:56-07:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-19T16:06:56+08:00">
                 2019-04-19
               </time>
             
@@ -340,8 +340,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-04-30T19:18:02-07:00">
-                2019-04-30
+              <time title="Post modified" itemprop="dateModified" datetime="2019-05-01T10:18:02+08:00">
+                2019-05-01
               </time>
             
           </span>
@@ -401,15 +401,11 @@
 </blockquote>
 <a id="more"></a>
 <p>[TOC]</p>
-<h1 id="0-introduction"><a class="markdownIt-Anchor" href="#0-introduction"></a> 0. Introduction</h1>
-<p>It is so <strong>IMPORTANT</strong> for us to know how actually a system is loaded from the start and how the first process is executed. We all know about system calls from the user process, but what operations are executed by OS, we still don’t know. So here I want to walk through roughly procedures from how a system is loaded to what it is like when the first process is executed.</p>
-<h1 id="1-bios-bootloader"><a class="markdownIt-Anchor" href="#1-bios-bootloader"></a> 1. BIOS &amp; Bootloader</h1>
-<h2 id="11-bios"><a class="markdownIt-Anchor" href="#11-bios"></a> 1.1 BIOS</h2>
-<p>It is necessary to know that when we plug in the power, our computer will load BIOS and start self checking. Because at first we are in <em>real mode</em>, so we only have 20-bit addressable memory to access which is 1MB. Now CS:IP = 0xf000:0xfff0. The first instruction of BIOS is to load MBR(512KB) to 0x7c00. Then BIOS will change CS:IP to 0x0000:0x7c00. From now on, our OS is ready to take over this computer and do his work! (But the real world is more complicate, no worry, we don’t care now.)</p>
-<h2 id="12-bootloader"><a class="markdownIt-Anchor" href="#12-bootloader"></a> 1.2 Bootloader</h2>
-<p>Now we have our bootloader loaded, what we gonna do now? Let’s take a look about the source code.</p>
+<h1 id="0-Introduction"><a href="#0-Introduction" class="headerlink" title="0. Introduction"></a>0. Introduction</h1><p>It is so <strong>IMPORTANT</strong> for us to know how actually a system is loaded from the start and how the first process is executed. We all know about system calls from the user process, but what operations are executed by OS, we still don’t know. So here I want to walk through roughly procedures from how a system is loaded to what it is like when the first process is executed.</p>
+<h1 id="1-BIOS-amp-Bootloader"><a href="#1-BIOS-amp-Bootloader" class="headerlink" title="1. BIOS &amp; Bootloader"></a>1. BIOS &amp; Bootloader</h1><h2 id="1-1-BIOS"><a href="#1-1-BIOS" class="headerlink" title="1.1 BIOS"></a>1.1 BIOS</h2><p>It is necessary to know that when we plug in the power, our computer will load BIOS and start self checking. Because at first we are in <em>real mode</em>, so we only have 20-bit addressable memory to access which is 1MB. Now CS:IP = 0xf000:0xfff0. The first instruction of BIOS is to load MBR(512KB) to 0x7c00. Then BIOS will change CS:IP to 0x0000:0x7c00. From now on, our OS is ready to take over this computer and do his work! (But the real world is more complicate, no worry, we don’t care now.)</p>
+<h2 id="1-2-Bootloader"><a href="#1-2-Bootloader" class="headerlink" title="1.2 Bootloader"></a>1.2 Bootloader</h2><p>Now we have our bootloader loaded, what we gonna do now? Let’s take a look about the source code.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">start:												# WE WILL SEE THIS IN THE END</span><br><span class="line">  cli                         # BIOS enabled interrupts; disable</span><br><span class="line"></span><br><span class="line">  # Zero data segment registers DS, ES, and SS.</span><br><span class="line">  xorw    %ax,%ax             # Set %ax to zero</span><br><span class="line">  movw    %ax,%ds             # -&gt; Data Segment</span><br><span class="line">  movw    %ax,%es             # -&gt; Extra Segment</span><br><span class="line">  movw    %ax,%ss             # -&gt; Stack Segment</span><br><span class="line">	# Physical address line A20 is tied to zero so that the first PCs </span><br><span class="line">  # with 2 MB would run software that assumed 1 MB.  Undo that.</span><br><span class="line">seta20.1:</span><br><span class="line">  inb     $0x64,%al               # Wait for not busy</span><br><span class="line">  testb   $0x2,%al</span><br><span class="line">  jnz     seta20.1</span><br><span class="line"></span><br><span class="line">  movb    $0xd1,%al               # 0xd1 -&gt; port 0x64</span><br><span class="line">  outb    %al,$0x64</span><br><span class="line"></span><br><span class="line">seta20.2:</span><br><span class="line">  inb     $0x64,%al               # Wait for not busy</span><br><span class="line">  testb   $0x2,%al</span><br><span class="line">  jnz     seta20.2</span><br><span class="line"></span><br><span class="line">  movb    $0xdf,%al               # 0xdf -&gt; port 0x60</span><br><span class="line">  outb    %al,$0x60</span><br></pre></td></tr></table></figure>
-<p>We first disable interrupt and zero previous data segment registers and other related registers. Then we ENABLE A20. Why we do this? Because now we are in real mode, the ability of addressing is 20-bit address, we need to break this! let’s see the world of 32-bit addressing! So we send 2 binary code to the computer to enable A20.</p>
+<p>We first disable interrupt and zero previous data segment registers and other related registers. Then we ENABLE A20. Why we do this? Because now we are in real mode, the ability of addressing is 20-bit address, we need to break this! let’s see the world of 32-bit addressing! So we send 2 binary code to the computer to enable A20. </p>
 <p>From now on, we are going to see the world of 32-bit addressing. But here is a problem, in real mode, CS and IP is combined to find the physical address, which we call this is segment address. But now in 32-bit addressing world, or even 64-bit address world, it is so hard for CS and IP to do this. So we come up with another way to do that, let’s call CS register a segment selector and let the value lies in CS register to tell me where to find linear address(Why not physical address? Because there is still another obstacle to overcome to get the real address, that’s virtual memory part, we don’t talk about that.). Here is a typical 16-bit CS register format:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">+---------------------------------------------+</span><br><span class="line">|	index(13 bits)			|		T1(1 bit) |	RPL(2)	|</span><br><span class="line">+---------------------------------------------+</span><br></pre></td></tr></table></figure>
 <p>Index is the offset of where-to-find-linear-address table. And the so-called <em>where-to-find-linear-address</em> is actually stored in GDTR, or LDTR. That’s why we need T1 to help us to know which one we need to go. As for RPL, it is about priority, we don’t care for now.</p>
@@ -424,9 +420,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">entry:</span><br><span class="line">  # Turn on page size extension for 4Mbyte pages</span><br><span class="line">  movl    %cr4, %eax</span><br><span class="line">  orl     $(CR4_PSE), %eax</span><br><span class="line">  movl    %eax, %cr4</span><br><span class="line">  # Set page directory</span><br><span class="line">  movl    $(V2P_WO(entrypgdir)), %eax</span><br><span class="line">  movl    %eax, %cr3</span><br><span class="line">  # Turn on paging.</span><br><span class="line">  movl    %cr0, %eax</span><br><span class="line">  orl     $(CR0_PG|CR0_WP), %eax</span><br><span class="line">  movl    %eax, %cr0</span><br><span class="line"></span><br><span class="line">  # Set up the stack pointer.</span><br><span class="line">  movl $(stack + KSTACKSIZE), %esp</span><br><span class="line"></span><br><span class="line">  # Jump to main(), and switch to executing at</span><br><span class="line">  # high addresses. The indirect call is needed because</span><br><span class="line">  # the assembler produces a PC-relative instruction</span><br><span class="line">  # for a direct jump.</span><br><span class="line">  mov $main, %eax</span><br><span class="line">  jmp *%eax</span><br><span class="line"></span><br><span class="line">.comm stack, KSTACKSIZE</span><br></pre></td></tr></table></figure>
 <p>Oh, it sets the control registers again. then go to main()! Yeah, finally we see something familiar. Let’s take a look.</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Bootstrap processor starts running C code here.</span></span><br><span class="line"><span class="comment">// Allocate a real stack and switch to it, first</span></span><br><span class="line"><span class="comment">// doing some setup required for memory allocator to work.</span></span><br><span class="line"><span class="keyword">int</span></span><br><span class="line">main(<span class="keyword">void</span>)</span><br><span class="line">&#123;</span><br><span class="line">  kinit1(end, P2V(<span class="number">4</span>*<span class="number">1024</span>*<span class="number">1024</span>)); <span class="comment">// phys page allocator</span></span><br><span class="line">  kvmalloc();      <span class="comment">// kernel page table</span></span><br><span class="line">  mpinit();        <span class="comment">// detect other processors</span></span><br><span class="line">  lapicinit();     <span class="comment">// interrupt controller</span></span><br><span class="line">  seginit();       <span class="comment">// segment descriptors</span></span><br><span class="line">  picinit();       <span class="comment">// disable pic</span></span><br><span class="line">  ioapicinit();    <span class="comment">// another interrupt controller</span></span><br><span class="line">  consoleinit();   <span class="comment">// console hardware</span></span><br><span class="line">  uartinit();      <span class="comment">// serial port</span></span><br><span class="line">  pinit();         <span class="comment">// process table</span></span><br><span class="line">  tvinit();        <span class="comment">// trap vectors</span></span><br><span class="line">  binit();         <span class="comment">// buffer cache</span></span><br><span class="line">  fileinit();      <span class="comment">// file table</span></span><br><span class="line">  ideinit();       <span class="comment">// disk </span></span><br><span class="line">  startothers();   <span class="comment">// start other processors</span></span><br><span class="line">  kinit2(P2V(<span class="number">4</span>*<span class="number">1024</span>*<span class="number">1024</span>), P2V(PHYSTOP)); <span class="comment">// must come after startothers()</span></span><br><span class="line">  																				 /</span><br><span class="line">  userinit();      <span class="comment">// first user process  &lt;======== This is our FOCUS</span></span><br><span class="line">  																				 \</span><br><span class="line">  mpmain();        <span class="comment">// finish this processor's setup</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="the-first-process-initcodes"><a class="markdownIt-Anchor" href="#the-first-process-initcodes"></a> The first process - initcode.S</h1>
-<h1 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h1>
-<p>[1]. <a href="http://linbo.github.io/2018/04/14/xv6-first_process_1" target="_blank" rel="noopener">http://linbo.github.io/2018/04/14/xv6-first_process_1</a>.</p>
+<h1 id="The-first-process-initcode-S"><a href="#The-first-process-initcode-S" class="headerlink" title="The first process - initcode.S"></a>The first process - initcode.S</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p>[1]. <a href="http://linbo.github.io/2018/04/14/xv6-first_process_1" target="_blank" rel="noopener">http://linbo.github.io/2018/04/14/xv6-first_process_1</a>.</p>
 <p>[2]. <a href="http://ybin.cc/os/xv6-init-process/" target="_blank" rel="noopener">http://ybin.cc/os/xv6-init-process/</a>.</p>
 
       
@@ -572,7 +566,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -583,7 +577,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -594,7 +588,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -655,7 +649,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-introduction"><span class="nav-text"> 0. Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-bios-bootloader"><span class="nav-text"> 1. BIOS &amp; Bootloader</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#11-bios"><span class="nav-text"> 1.1 BIOS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-bootloader"><span class="nav-text"> 1.2 Bootloader</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#the-first-process-initcodes"><span class="nav-text"> The first process - initcode.S</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#reference"><span class="nav-text"> Reference</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-Introduction"><span class="nav-text">0. Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-BIOS-amp-Bootloader"><span class="nav-text">1. BIOS &amp; Bootloader</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-BIOS"><span class="nav-text">1.1 BIOS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-Bootloader"><span class="nav-text">1.2 Bootloader</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#The-first-process-initcode-S"><span class="nav-text">The first process - initcode.S</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-text">Reference</span></a></li></ol></div>
             
 
           </div>
@@ -680,7 +674,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
