@@ -8,3 +8,16 @@ public/
 themes/*
 themes/next
 themes/next-reloaded
+
+# Never commit private keys / credentials
+mykey
+mykey.pub
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+id_ecdsa*
+*.pkcs12
+*.p12
+.env
+.env.*
