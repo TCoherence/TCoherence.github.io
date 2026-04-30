@@ -1,0 +1,3 @@
+layout/_third-party/comments/gitalk.swig
+source/css/_common/components/third-party/gitalk.styl
+source/images/avatar.jpeg
