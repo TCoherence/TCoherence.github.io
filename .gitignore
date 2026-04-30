@@ -1,13 +1,35 @@
 .DS_Store
 Thumbs.db
 db.json
+search.json
+search.xml
 *.log
 node_modules/
 public/
 .deploy*/
 themes/*
-themes/next
-themes/next-reloaded
+!themes/next-reloaded
+
+# Hexo renders into public/, but if anyone runs the deploy script from
+# the wrong dir, these can leak into the repo root. Block them.
+/index.html
+/about/
+/archives/
+/categories/
+/tags/
+/2018/
+/2019/
+/2020/
+/2021/
+/2022/
+/2023/
+/2024/
+/2025/
+/2026/
+/css/
+/js/
+/lib/
+/images/
 
 # Never commit private keys / credentials
 mykey

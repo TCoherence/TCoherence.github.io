@@ -1,20 +1,48 @@
-#! /bin/bash
+#!/usr/bin/env bash
+# Build & deploy the blog, then commit source changes to the current branch.
+# Usage: ./autoDeployAndGit.sh "your commit message"
 
-#Discription:
-#Author:yanghanzhi
-#Version:1.0
-#CreateTime:2019-05-01 13:27:38
+set -euo pipefail
+
+if [[ $# -lt 1 || -z "${1// }" ]]; then
+  echo "Usage: $0 \"commit message\"" >&2
+  exit 1
+fi
+commit_msg="$1"
+
+HEXO=node_modules/.bin/hexo
+if [[ ! -x "$HEXO" ]]; then
+  echo "Local hexo not found at $HEXO. Run 'npm install' first." >&2
+  exit 1
+fi
 
 echo "==========================================="
-echo "==== try to clean hexo and deploy later ==="
+echo "==== hexo clean && hexo deploy --generate"
 echo "==========================================="
-hexo clean && hexo d -g
+"$HEXO" clean
+"$HEXO" deploy --generate
 
 echo "==========================================="
-echo "==== Now is going to git add/commit/push =="
+echo "==== git add (source-only) / commit / push"
 echo "==========================================="
-git add .
-git commit -m "$1"
-git push
+# Stage only source files, never build output. .gitignore covers most of
+# this, but be explicit to avoid surprises if the rules ever loosen.
+git add \
+  source/ \
+  themes/next-reloaded \
+  scaffolds/ \
+  _config.yml \
+  package.json \
+  package-lock.json \
+  .gitignore \
+  .gitmodules \
+  autoDeployAndGit.sh
+
+if git diff --cached --quiet; then
+  echo "No source changes staged; skipping commit/push."
+else
+  git commit -m "$commit_msg"
+  git push
+fi
 
 echo "==== FINISH ===="

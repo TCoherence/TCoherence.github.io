@@ -1,0 +1,4 @@
+[submodule "themes/next-reloaded"]
+	path = themes/next-reloaded
+	url = https://github.com/TCoherence/hexo-theme-next.git
+	branch = customizations
