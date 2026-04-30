@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 8.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/images/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tcoherence.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":2,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="Computer Network(Top-to-down)  this is a brief summary of my 2019spring course, computer network. During this course, we talk about 4 main layers in current network architecture. They are Application">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EECS_340_ComputerNetwork">
+<meta property="og:url" content="https://tcoherence.github.io/2019/03/14/EECS-340-ComputerNetwork/index.html">
+<meta property="og:site_name" content="Hanzhi&#39;s BLOG">
+<meta property="og:description" content="Computer Network(Top-to-down)  this is a brief summary of my 2019spring course, computer network. During this course, we talk about 4 main layers in current network architecture. They are Application">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tcoherence.github.io/2019/03/14/EECS-340-ComputerNetwork/Review001.jpg">
+<meta property="og:image" content="https://tcoherence.github.io/2019/03/14/EECS-340-ComputerNetwork/AS_Routing.png">
+<meta property="og:image" content="https://tcoherence.github.io/2019/03/14/EECS-340-ComputerNetwork/ARP_format_includingEthernet.png">
+<meta property="article:published_time" content="2019-03-15T06:56:19.000Z">
+<meta property="article:modified_time" content="2019-12-27T04:00:04.822Z">
+<meta property="article:author" content="年轻的C同学">
+<meta property="article:tag" content="Computer network">
+<meta property="article:tag" content="final summary">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tcoherence.github.io/2019/03/14/EECS-340-ComputerNetwork/Review001.jpg">
+
+<link rel="canonical" href="https://tcoherence.github.io/2019/03/14/EECS-340-ComputerNetwork/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>EECS_340_ComputerNetwork | Hanzhi's BLOG</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hanzhi's BLOG</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录、思考、生活</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tcoherence.github.io/2019/03/14/EECS-340-ComputerNetwork/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="年轻的C同学">
+      <meta itemprop="description" content="年轻的C同学的个人博客 — 关于工程、生活与一些碎片思考">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hanzhi's BLOG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          EECS_340_ComputerNetwork
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-15 14:56:19" itemprop="dateCreated datePublished" datetime="2019-03-15T14:56:19+08:00">2019-03-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-27 12:00:04" itemprop="dateModified" datetime="2019-12-27T12:00:04+08:00">2019-12-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Northwestern-University/" itemprop="url" rel="index"><span itemprop="name">Northwestern University</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="computer-networktop-to-down"><a class="markdownIt-Anchor" href="#computer-networktop-to-down"></a> Computer Network(Top-to-down)</h1>
+<blockquote>
+<p>this is a brief summary of my 2019spring course, computer network. During this course, we talk about 4 main layers in current network architecture. They are Application layer, Transport layer, Network layer and Data Link layer. We also have 3 projects for Application layer. Transport layer, and network layer.</p>
+<p>This course is offered by Prof. <a href="https://www.mccormick.northwestern.edu/research-faculty/directory/profiles/chen-yan.html">Yan Chen</a></p>
+</blockquote>
+<span id="more"></span>
+<p>[TOC]</p>
+<h2 id="0-instruction"><a class="markdownIt-Anchor" href="#0-instruction"></a> 0 Instruction</h2>
+<p>The most important thing in this class is to understand what we really want to do and how we do it. Currently, we all can connect to the Internet, we can use browser to see many different webpages, we can use laptop to play games, we can ssh, we can download, we can do almost anything we want. But how we do this?</p>
+<p>Let’s say all these things are called application data, which is really familiar to CS student or related-to-CS majors students. We cannot just pass this original application data to others, right? Why? Because we don’t know what to do, you just give me the data, where should I go? Like you want to deliver a package but you NEED address to locate the destination! That’s why we ENCAPSULATE the original data into a packet(usually TCP or UDP), which will indicates some information about this application data and how to deal with it. But in reality, we all know that in order to deliver a package, the address is not the only thing necessary, we also need ZIP, need car or trunk, and even receivers’ phone number. This all of them will help us to deliver a package correctly.</p>
+<p>Yes, transport layer, network layer and data link layer are doing the stuff. More accurately, we can say transport layer just a car, network layer and data link layer indicate the address of a packet. We will encapsulate them one by one, and break them down one by one.</p>
+<p>Here is a brief illustration of this process.</p>
+<p><img src="Review001.jpg" alt="Review001" /></p>
+<h2 id="1-application-layer"><a class="markdownIt-Anchor" href="#1-application-layer"></a> 1 Application Layer</h2>
+<p>The communication between different application is in fact process communicating. Usually we use sockets.</p>
+<h3 id="11-web-and-http"><a class="markdownIt-Anchor" href="#11-web-and-http"></a> 1.1 Web and HTTP</h3>
+<h3 id="12-electronic-mail"><a class="markdownIt-Anchor" href="#12-electronic-mail"></a> 1.2 Electronic Mail</h3>
+<h3 id="13-dns"><a class="markdownIt-Anchor" href="#13-dns"></a> 1.3 DNS</h3>
+<h2 id="2-transport-layer"><a class="markdownIt-Anchor" href="#2-transport-layer"></a> 2 Transport Layer</h2>
+<h3 id="21-udp"><a class="markdownIt-Anchor" href="#21-udp"></a> 2.1 UDP</h3>
+<h4 id="211-checksum"><a class="markdownIt-Anchor" href="#211-checksum"></a> 2.1.1 checksum</h4>
+<h3 id="22-reliable-transfer-protocol"><a class="markdownIt-Anchor" href="#22-reliable-transfer-protocol"></a> 2.2 reliable transfer protocol</h3>
+<h4 id="221-rdt10-rdt-20"><a class="markdownIt-Anchor" href="#221-rdt10-rdt-20"></a> 2.2.1 rdt1.0 &amp; rdt 2.0</h4>
+<h4 id="222-rdt21-rdt-22"><a class="markdownIt-Anchor" href="#222-rdt21-rdt-22"></a> 2.2.2 rdt2.1 &amp; rdt 2.2</h4>
+<h4 id="223-rdt30-stop-and-wait"><a class="markdownIt-Anchor" href="#223-rdt30-stop-and-wait"></a> 2.2.3 rdt3.0 (stop-and-wait)</h4>
+<h4 id="224-go-back-n-selective-repeat"><a class="markdownIt-Anchor" href="#224-go-back-n-selective-repeat"></a> 2.2.4 Go-Back-N &amp; selective repeat</h4>
+<h3 id="23-tcp"><a class="markdownIt-Anchor" href="#23-tcp"></a> 2.3 TCP</h3>
+<h4 id="231-seq-acks"><a class="markdownIt-Anchor" href="#231-seq-acks"></a> 2.3.1 seq # &amp; acks</h4>
+<h4 id="232-fast-retransmit"><a class="markdownIt-Anchor" href="#232-fast-retransmit"></a> 2.3.2 Fast Retransmit</h4>
+<h4 id="233-flow-control-congestion-control"><a class="markdownIt-Anchor" href="#233-flow-control-congestion-control"></a> 2.3.3 Flow Control &amp; Congestion Control</h4>
+<h2 id="3-network-layer"><a class="markdownIt-Anchor" href="#3-network-layer"></a> 3 Network Layer</h2>
+<h3 id="31-forwarding-table"><a class="markdownIt-Anchor" href="#31-forwarding-table"></a> 3.1 Forwarding Table</h3>
+<h3 id="32-ip-datagram-format"><a class="markdownIt-Anchor" href="#32-ip-datagram-format"></a> 3.2 IP datagram format</h3>
+<h3 id="33-nat"><a class="markdownIt-Anchor" href="#33-nat"></a> 3.3 NAT</h3>
+<p>It will alter the source IP to routers IP and other <strong>port #</strong>, so it also have a mapping table  between port # of router and the host.</p>
+<h3 id="34-routering-algorithms"><a class="markdownIt-Anchor" href="#34-routering-algorithms"></a> 3.4 Routering Algorithms</h3>
+<p>Link-state(LS): Dijkstra</p>
+<p>Distance Vector(DV): Bellman-Ford</p>
+<h3 id="35-hierarchy-routing"><a class="markdownIt-Anchor" href="#35-hierarchy-routing"></a> 3.5 Hierarchy Routing</h3>
+<p>We can’t store all dest’s in routing tables. Routing table exchange would swamp links! So we aggregate routers into regions, called “Autonomous systems”(AS). When we have hierarchy, we need to consider the routing between AS and inside AS, also called inter-AS and intra-AS.</p>
+<p>Intra-AS usually uses OSPF and RIP to router. The former is used in upper-tier ISPs and RIP is used in ISPs and enterprise networks.[Note: OSPF uses LS while RIP uses DV]</p>
+<p>Inter-AS usually uses BGP, and BGP is split into iBGP(internal BGP) and eBGP(external BGP). BGP uses DV.</p>
+<p>Routing policy:</p>
+<p>We classify 4 types router information, provider, customer, peer and ISP. For an AS, it will receive and store all incoming router information but for different people, they provide different message. Here is the illustration. (From Prof. Yan Chen slides)</p>
+<p><img src="AS_Routing.png" alt="AS_Routing" /></p>
+<h2 id="4-data-link-layer"><a class="markdownIt-Anchor" href="#4-data-link-layer"></a> 4 Data Link Layer</h2>
+<h3 id="41-mac-address"><a class="markdownIt-Anchor" href="#41-mac-address"></a> 4.1 MAC address</h3>
+<p>Because IP is fixed in a given area like ZIP code, so how we identify a unique user under the same IP? This is why we need another address to locate a user and this address is called MAC address.</p>
+<p>MAC address is 48bits in such format:<code>xx-xx-xx-xx-xx-xx</code>.</p>
+<h3 id="42-error-detection-and-correction"><a class="markdownIt-Anchor" href="#42-error-detection-and-correction"></a> 4.2 Error detection and correction</h3>
+<p>We use CRC error detection in this layer and add CRC at the end of frame. Also, we talk about parity bit and 2-dimension parity bit.</p>
+<h3 id="43-hub-and-switch"><a class="markdownIt-Anchor" href="#43-hub-and-switch"></a> 4.3 Hub and Switch</h3>
+<p>Hub is a dumb device, just knows repeating one’s information to other(broadcast). But switch is smarter than hub, it will selectively to forward frame to different interface. This help switch to isolate collision domains. In reality, it seems another way to isolation collision domain called VLAN. But it is not the scope of this class.</p>
+<p>In reality, many devices share the media, that causes collision among them. So we can use Channel Partition(TDMA or FDMA) or Random Access(Aloha or CSMA) to solve this problem.</p>
+<h3 id="44-arp"><a class="markdownIt-Anchor" href="#44-arp"></a> 4.4 ARP</h3>
+<p>We use this to get the MAC address of other host. It is very important that the source and destination MAC in ARP is different with those in the head of Ethernet head, which is used to addressing. Here is an ARP message format(from <a href="http://www.cs.virginia.edu/~cs458/slides/module06-arpV2.pdf">http://www.cs.virginia.edu/~cs458/slides/module06-arpV2.pdf</a>)</p>
+<p><img src="ARP_format_includingEthernet.png" alt="ARP_format_includingEthernet" /></p>
+<p>The one thing I don’t understand is that ARP is used to obtain MAC, and MAC is only used to addressing under the same subnet. WHY do we consider a scenario that one host A want to get another host B’s MAC address in a different subnet?</p>
+<p>Host A won’t send ARP to host B because they are not in the same subnet, host A will just send ARP to request gateway’s MAC address.</p>
+
+    </div>
+
+    
+    
+    
+<div class="comments" id="comments">
+  <script src="https://giscus.app/client.js"
+          data-repo="TCoherence/TCoherence.github.io"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkxMzE0MDY3MTA="
+          data-category="General"
+          data-category-id="DIC_kwDOB9Ubds4C8BCw"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="preferred_color_scheme"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>年轻的C同学
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://tcoherence.github.io/2019/03/14/EECS-340-ComputerNetwork/" title="EECS_340_ComputerNetwork">https://tcoherence.github.io/2019/03/14/EECS-340-ComputerNetwork/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Computer-network/" rel="tag"># Computer network</a>
+              <a href="/tags/final-summary/" rel="tag"># final summary</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/02/08/Kafka/" rel="prev" title="Kafka">
+      <i class="fa fa-chevron-left"></i> Kafka
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/03/14/EECS-368-CUDA/" rel="next" title="EECS_368_CUDA">
+      EECS_368_CUDA <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#computer-networktop-to-down"><span class="nav-text"> Computer Network(Top-to-down)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-instruction"><span class="nav-text"> 0 Instruction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-application-layer"><span class="nav-text"> 1 Application Layer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#11-web-and-http"><span class="nav-text"> 1.1 Web and HTTP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-electronic-mail"><span class="nav-text"> 1.2 Electronic Mail</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-dns"><span class="nav-text"> 1.3 DNS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-transport-layer"><span class="nav-text"> 2 Transport Layer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#21-udp"><span class="nav-text"> 2.1 UDP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#211-checksum"><span class="nav-text"> 2.1.1 checksum</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#22-reliable-transfer-protocol"><span class="nav-text"> 2.2 reliable transfer protocol</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#221-rdt10-rdt-20"><span class="nav-text"> 2.2.1 rdt1.0 &amp; rdt 2.0</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#222-rdt21-rdt-22"><span class="nav-text"> 2.2.2 rdt2.1 &amp; rdt 2.2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#223-rdt30-stop-and-wait"><span class="nav-text"> 2.2.3 rdt3.0 (stop-and-wait)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#224-go-back-n-selective-repeat"><span class="nav-text"> 2.2.4 Go-Back-N &amp; selective repeat</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#23-tcp"><span class="nav-text"> 2.3 TCP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#231-seq-acks"><span class="nav-text"> 2.3.1 seq # &amp; acks</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#232-fast-retransmit"><span class="nav-text"> 2.3.2 Fast Retransmit</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#233-flow-control-congestion-control"><span class="nav-text"> 2.3.3 Flow Control &amp; Congestion Control</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-network-layer"><span class="nav-text"> 3 Network Layer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#31-forwarding-table"><span class="nav-text"> 3.1 Forwarding Table</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#32-ip-datagram-format"><span class="nav-text"> 3.2 IP datagram format</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#33-nat"><span class="nav-text"> 3.3 NAT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#34-routering-algorithms"><span class="nav-text"> 3.4 Routering Algorithms</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#35-hierarchy-routing"><span class="nav-text"> 3.5 Hierarchy Routing</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-data-link-layer"><span class="nav-text"> 4 Data Link Layer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#41-mac-address"><span class="nav-text"> 4.1 MAC address</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#42-error-detection-and-correction"><span class="nav-text"> 4.2 Error detection and correction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#43-hub-and-switch"><span class="nav-text"> 4.3 Hub and Switch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#44-arp"><span class="nav-text"> 4.4 ARP</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="年轻的C同学"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">年轻的C同学</p>
+  <div class="site-description" itemprop="description">年轻的C同学的个人博客 — 关于工程、生活与一些碎片思考</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/TCoherence" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;TCoherence" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:hanzhiyang2019@u.northwestern.edu" title="E-Mail → mailto:hanzhiyang2019@u.northwestern.edu" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/yang_hanzhi" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;yang_hanzhi" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/profile.php?id=100025563873836" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id&#x3D;100025563873836" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">年轻的C同学</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

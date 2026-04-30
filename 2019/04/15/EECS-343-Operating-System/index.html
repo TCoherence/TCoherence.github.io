@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 8.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/images/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tcoherence.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":2,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="This is the first course note because OS is too important. I don’t want to return my knowledge to my professor, I need to keep the knowledge around me. lol. This course is offered by Prof. Stephen Ta">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EECS_343_Operating_System">
+<meta property="og:url" content="https://tcoherence.github.io/2019/04/15/EECS-343-Operating-System/index.html">
+<meta property="og:site_name" content="Hanzhi&#39;s BLOG">
+<meta property="og:description" content="This is the first course note because OS is too important. I don’t want to return my knowledge to my professor, I need to keep the knowledge around me. lol. This course is offered by Prof. Stephen Ta">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS-343-Operating-System/1levelpaging.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS-343-Operating-System/2levelpaging.png">
+<meta property="article:published_time" content="2019-04-16T06:29:50.000Z">
+<meta property="article:modified_time" content="2019-12-27T22:34:47.020Z">
+<meta property="article:author" content="年轻的C同学">
+<meta property="article:tag" content="Course notes">
+<meta property="article:tag" content="Operating System">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS-343-Operating-System/1levelpaging.png">
+
+<link rel="canonical" href="https://tcoherence.github.io/2019/04/15/EECS-343-Operating-System/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>EECS_343_Operating_System | Hanzhi's BLOG</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hanzhi's BLOG</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录、思考、生活</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tcoherence.github.io/2019/04/15/EECS-343-Operating-System/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="年轻的C同学">
+      <meta itemprop="description" content="年轻的C同学的个人博客 — 关于工程、生活与一些碎片思考">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hanzhi's BLOG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          EECS_343_Operating_System
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-16 14:29:50" itemprop="dateCreated datePublished" datetime="2019-04-16T14:29:50+08:00">2019-04-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-28 06:34:47" itemprop="dateModified" datetime="2019-12-28T06:34:47+08:00">2019-12-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Northwestern-University/" itemprop="url" rel="index"><span itemprop="name">Northwestern University</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>This is the first course note because OS is too important. I don’t want to return my knowledge to my professor, I need to keep the knowledge around me. lol.</p>
+<p>This course is offered by Prof. <a href="https://www.mccormick.northwestern.edu/research-faculty/directory/profiles/tarzia-stephen.html">Stephen Tarzia</a>.</p>
+</blockquote>
+<span id="more"></span>
+<p>[TOC]</p>
+<h1 id="1-introduction"><a class="markdownIt-Anchor" href="#1-introduction"></a> 1. Introduction</h1>
+<p>blah blah blah.</p>
+<h1 id="2-processes-system-calls"><a class="markdownIt-Anchor" href="#2-processes-system-calls"></a> 2. Processes &amp; System calls</h1>
+<ul>
+<li><strong>Process</strong> is the execution unit of a CPU.</li>
+<li><strong>Limited direct execution</strong> is a strategy to let many processes to share a single CPU as if they are all has full use of the CPU and memory(In the view of user, because you cannot tell the difference between 100ms and 100ns, lol)</li>
+<li>OS will divide execution part into user mode part and kernel mode part. It will prevent user processes from doing harmful operations. If user want to do something, it needs to use <em><strong>system call</strong></em>.</li>
+<li>System calls are software interrupts(Yes, we have hardware interrupts also, like I/O interrupts, NIC interrupts and etc.)</li>
+<li>Because Interrupts is the only reason to cause the kernel to run, so we need set a <em>Timer Interrupt</em> to ensure that the kernel will run eventually.</li>
+</ul>
+<h1 id="3-process-creation-and-memory-layout"><a class="markdownIt-Anchor" href="#3-process-creation-and-memory-layout"></a> 3. Process creation and memory layout</h1>
+<ul>
+<li>we use fork+exec to create a process and load a program code so that a program can be run in a process.</li>
+<li><em>Nondeterminism</em> means that a programs’ output is unpredictable.</li>
+<li>To easily switch from one process to another, we need to store some registers value in user’s address space.</li>
+</ul>
+<h1 id="4-scheduling"><a class="markdownIt-Anchor" href="#4-scheduling"></a> 4. Scheduling</h1>
+<p>So if we have multiple processes, we need to set up a policy to share the CPU(If we only have one CPU, sad…).</p>
+<ul>
+<li>Two metrics: turnaround time &amp; response time.
+<ul>
+<li>turnaround time: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mrow><mi>t</mi><mi>u</mi><mi>r</mi><mi>n</mi><mi>a</mi><mi>r</mi><mi>o</mi><mi>u</mi><mi>n</mi><mi>d</mi></mrow></msub><mo>=</mo><msub><mi>T</mi><mrow><mi>f</mi><mi>i</mi><mi>n</mi><mi>i</mi><mi>s</mi><mi>h</mi></mrow></msub><mo>−</mo><msub><mi>T</mi><mrow><mi>a</mi><mi>r</mi><mi>r</mi><mi>i</mi><mi>v</mi><mi>a</mi><mi>l</mi></mrow></msub></mrow><annotation encoding="application/x-tex">T_{turnaround} = T_{finish} - T_{arrival}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">u</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mathnormal mtight">n</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">u</span><span class="mord mathnormal mtight">n</span><span class="mord mathnormal mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">n</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight">h</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>. Optimized by Shortest Time-toComplete First (STCF).</li>
+<li>response time: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mrow><mi>r</mi><mi>e</mi><mi>s</mi><mi>p</mi><mi>o</mi><mi>n</mi><mi>s</mi><mi>e</mi></mrow></msub><mo>=</mo><msub><mi>T</mi><mrow><mi>s</mi><mi>t</mi><mi>a</mi><mi>r</mi><mi>t</mi></mrow></msub><mo>−</mo><msub><mi>T</mi><mrow><mi>a</mi><mi>r</mi><mi>r</mi><mi>i</mi><mi>v</mi><mi>a</mi><mi>l</mi></mrow></msub></mrow><annotation encoding="application/x-tex">T_{response} = T_{start} - T_{arrival}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight">p</span><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">n</span><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight">e</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>. Optimized by Round Robin (RR).</li>
+</ul>
+</li>
+<li>Context switch overhead is because of CPU cache missing.</li>
+<li>Multi-Level Feedback Queue.
+<ul>
+<li>A process goes to the highest priority queue when coming in.</li>
+<li>A processes with higher priority executes first.</li>
+<li>Same priority processes executes in RR. (context switch overhead).</li>
+<li>A process can use limited time of one priority queue, if use up, it should be moved to the next lower priority queue.</li>
+<li>All processes will to go highest priority queue in a fixed period of time.</li>
+</ul>
+</li>
+</ul>
+<h2 id="41-mechanism-and-policystill-not-clear"><a class="markdownIt-Anchor" href="#41-mechanism-and-policystill-not-clear"></a> 4.1 Mechanism and policy[Still not clear]</h2>
+<p>The policies what is to be done while the mechanism specifies how it is to be done. For instance, the timer construct for ensuring CPU protection is mechanism. On the other hand, the decision of how long the timer is set for a particular user is a policy decision.</p>
+<p>The policy indicates what we need to do and the mechanism tells us how exactly we will implement this policy. Like we have several scheduling policies like FIFO, SJF, STCF, RR and MLFQ. But how to implement this, we have different ways.</p>
+<h1 id="5-virtual-memory-paging"><a class="markdownIt-Anchor" href="#5-virtual-memory-paging"></a> 5. Virtual Memory &amp; Paging[🌟]</h1>
+<ul>
+<li>Even given a virtual memory address, the addresses store in CR3, page directory table and page tables are still PHYSICAL address!</li>
+<li>Because alignment, the addresses stored in page directory table only use higher bits to store the part of real physical address(because lower part bits are zero, no need to store them), the lower bits are used as flags to indicate if the entry can be used or not.</li>
+<li>Here is an classic one-level and two-level paging example.(from Prof. Stephen Tarzia slides.)</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS-343-Operating-System/1levelpaging.png" alt="1levelpaging" /></p>
+<p><img src="https://raw.githubusercontent.com/TCoherence/TCoherence.github.io/save/source/_posts/EECS-343-Operating-System/2levelpaging.png" alt="2levelpaging" /></p>
+<h1 id="6-memory-management-optimization"><a class="markdownIt-Anchor" href="#6-memory-management-optimization"></a> 6. Memory management optimization</h1>
+<p>Even we use virtual memory to solve some problem in view of user. But for OS, we have another problem to consider.</p>
+<ul>
+<li>Latency cost, because now we have to translate virtual memory to physical memory which takes a lot of time!
+<ul>
+<li>We introduce Translation Lookaside Buffer(TLB) caches most recent physical page translations.</li>
+</ul>
+</li>
+<li>Space cost, because we create page directory table and page table to store real page table entry or page entry, which costs memory space.
+<ul>
+<li>For different demands we use different level paging, and even combine them.</li>
+</ul>
+</li>
+<li>Another ways to reduce memory demands like copy-on-write fork(Project 2), demand zeroing, lazy loading and library sharing and etc.</li>
+</ul>
+<h1 id="7-swapping"><a class="markdownIt-Anchor" href="#7-swapping"></a> 7. Swapping</h1>
+<p>If we cannot keep latency low, let’s increase the throughput!</p>
+<ul>
+<li>Disk is slow but large, and can be used to store RAM’s overflow</li>
+<li>Paging and swapping work together, using the same CPU mechanisms.</li>
+<li><em>Paging replacement policy</em> decides which page to be evicted.</li>
+<li>Thrashing is a state, in which system cannot doing anything because of swapping.</li>
+<li>Unified page cache handles both traditional paging and file caching to make user fell file system access is just as fast as memory access.</li>
+</ul>
+<h1 id="8-free-space-managements"><a class="markdownIt-Anchor" href="#8-free-space-managements"></a> 8. Free-space Managements</h1>
+<ul>
+<li>Free space memory is put on a <strong>free list</strong>.</li>
+<li>Free space management policy determines:
+<ul>
+<li>Which free blocks to choose for an allocation</li>
+<li>When to <strong>coalesce</strong> adjacent free blocks.</li>
+<li>Four policies: First fit, next fit, best fit and worst fit.</li>
+</ul>
+</li>
+</ul>
+<h1 id="x-project"><a class="markdownIt-Anchor" href="#x-project"></a> x. Project</h1>
+<h2 id="0-basic-knowledge-for-projects"><a class="markdownIt-Anchor" href="#0-basic-knowledge-for-projects"></a> 0. Basic knowledge for Projects</h2>
+<ol>
+<li>
+<a href="/2019/04/19/xv6-the-first-process/" title="xv6 the first process">xv6-the-first-process</a>
+</li>
+</ol>
+<h2 id="1-issues"><a class="markdownIt-Anchor" href="#1-issues"></a> 1. Issues:</h2>
+<h3 id="11-download-the-source-code"><a class="markdownIt-Anchor" href="#11-download-the-source-code"></a> 1.1 Download the source code</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://USERNAME@github.com/starzia-teaching/project-1-GROUPNAME.git </span><br></pre></td></tr></table></figure>
+<p>Notice that I added my github username to the user above, before “@github.com”.  If you get an error related to <code>gnome-ssh-askpass</code> then try running</p>
+<p><code>unsetenv SSH_ASKPASS</code></p>
+<p>first (or log in with X11 forwarding).</p>
+<p>Be careful that on Internet we will see <code>unset SSH_ASKPASS</code> which may not works. But <code>unsetenv</code> works for me.</p>
+<p>*Update: unsetenv SSH_ASKPASS works for tcsh shell and <code>unset SSH_ASKPASS</code> works for bash and zsh shell.</p>
+
+    </div>
+
+    
+    
+    
+<div class="comments" id="comments">
+  <script src="https://giscus.app/client.js"
+          data-repo="TCoherence/TCoherence.github.io"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkxMzE0MDY3MTA="
+          data-category="General"
+          data-category-id="DIC_kwDOB9Ubds4C8BCw"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="preferred_color_scheme"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>年轻的C同学
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://tcoherence.github.io/2019/04/15/EECS-343-Operating-System/" title="EECS_343_Operating_System">https://tcoherence.github.io/2019/04/15/EECS-343-Operating-System/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Course-notes/" rel="tag"># Course notes</a>
+              <a href="/tags/Operating-System/" rel="tag"># Operating System</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/03/14/EECS-377-GameStudio/" rel="prev" title="EECS_377_GameStudio">
+      <i class="fa fa-chevron-left"></i> EECS_377_GameStudio
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/04/19/xv6-the-first-process/" rel="next" title="Xv6 the First Process">
+      Xv6 the First Process <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-introduction"><span class="nav-text"> 1. Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-processes-system-calls"><span class="nav-text"> 2. Processes &amp; System calls</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-process-creation-and-memory-layout"><span class="nav-text"> 3. Process creation and memory layout</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-scheduling"><span class="nav-text"> 4. Scheduling</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#41-mechanism-and-policystill-not-clear"><span class="nav-text"> 4.1 Mechanism and policy[Still not clear]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-virtual-memory-paging"><span class="nav-text"> 5. Virtual Memory &amp; Paging[🌟]</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-memory-management-optimization"><span class="nav-text"> 6. Memory management optimization</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-swapping"><span class="nav-text"> 7. Swapping</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-free-space-managements"><span class="nav-text"> 8. Free-space Managements</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#x-project"><span class="nav-text"> x. Project</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-basic-knowledge-for-projects"><span class="nav-text"> 0. Basic knowledge for Projects</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-issues"><span class="nav-text"> 1. Issues:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#11-download-the-source-code"><span class="nav-text"> 1.1 Download the source code</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="年轻的C同学"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">年轻的C同学</p>
+  <div class="site-description" itemprop="description">年轻的C同学的个人博客 — 关于工程、生活与一些碎片思考</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/TCoherence" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;TCoherence" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:hanzhiyang2019@u.northwestern.edu" title="E-Mail → mailto:hanzhiyang2019@u.northwestern.edu" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/yang_hanzhi" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;yang_hanzhi" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/profile.php?id=100025563873836" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id&#x3D;100025563873836" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">年轻的C同学</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
