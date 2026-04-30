@@ -93,5 +93,5 @@ markdown_it_plus:
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
     type: git
-    repo: https://github.com/TCoherence/Tcoherence.github.io.git
+    repo: https://github.com/TCoherence/TCoherence.github.io.git
     branch: master
