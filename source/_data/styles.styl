@@ -1,0 +1,30 @@
+// Custom styles for NexT theme.
+// Loaded via theme.custom_file_path.style in themes/next-reloaded/_config.yml.
+
+// Sidebar avatar: round + hover spin animation.
+// Origin: https://www.jianshu.com/p/d34e9531cfce
+.site-author-image {
+  border-radius: 50%;
+  -webkit-transition: 1.4s all;
+  -moz-transition: 1.4s all;
+  -ms-transition: 1.4s all;
+  transition: 1.4s all;
+}
+
+.site-author-image:hover {
+  background-color: #55DAE1;
+  -webkit-transform: rotate(360deg) scale(0.9);
+  -moz-transform: rotate(360deg) scale(0.9);
+  -ms-transform: rotate(360deg) scale(0.9);
+  transform: rotate(360deg) scale(0.9);
+}
+
+// Card-like post container with soft shadow.
+.post {
+  margin-top: 60px;
+  margin-bottom: 60px;
+  padding: 25px;
+  -webkit-box-shadow: 0 0 5px rgba(202, 203, 203, 0.5);
+  -moz-box-shadow: 0 0 5px rgba(202, 203, 204, 0.5);
+  box-shadow: 0 0 5px rgba(202, 203, 203, 0.5);
+}
