@@ -171,14 +171,14 @@ graph LR
  U1[用户] -->|对话| A1["AI / Agent"]
  end
  subgraph chat_substrate["chat as substrate（slock.ai）"]
- C1["engineering 频道"]
+ C1["#engineering channel"]
  C1 --- M1[人 1]
  C1 --- M2[人 2]
  C1 --- A2[Agent A]
  C1 --- A3[Agent B]
  C1 --- A4[Agent C]
- A2 -.提及.- A3
- M1 -.提及.- A2
+ A2 -.@.- A3
+ M1 -.@.- A2
  end
 ```
 
