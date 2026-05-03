@@ -83,7 +83,7 @@ markdown_it_plus:
     xhtmlOut: true
     breaks: true
     langPrefix:
-    linkify: true
+    linkify: false
     typographer:
     quotes: “”‘’
     pre_class: highlight

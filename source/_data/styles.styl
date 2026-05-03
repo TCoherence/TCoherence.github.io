@@ -28,3 +28,30 @@
   -moz-box-shadow: 0 0 5px rgba(202, 203, 204, 0.5);
   box-shadow: 0 0 5px rgba(202, 203, 203, 0.5);
 }
+
+// Dark-mode patches for things NexT 7.8 hardcoded outside its CSS-var system.
+// (NexT's darkmode rewrites :root vars but `code` and `.highlight` use
+// literal #eee / #f7f7f7 backgrounds that don't switch.)
+@media (prefers-color-scheme: dark) {
+  // Inline code: `~/.slock/agents/<uuid>/`, `MEMORY.md`, etc.
+  code {
+    background: #2c2f36;
+    color: #e6e6e6;
+  }
+
+  // Code blocks (Hexo highlight + plain pre).
+  .highlight,
+  pre {
+    background: #1a1d22;
+    color: #d0d4d9;
+  }
+
+  // Line-number gutter inside Hexo's highlight tables.
+  .highlight .gutter,
+  figure.highlight .gutter {
+    background: #14171c;
+  }
+  .highlight .gutter pre {
+    color: #6b7280;
+  }
+}
