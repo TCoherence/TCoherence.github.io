@@ -54,4 +54,11 @@
   .highlight .gutter pre {
     color: #6b7280;
   }
+
+  // Mermaid v8 dark theme darkens nodes but leaves the SVG canvas white.
+  // Force the wrapper + SVG to a dark background.
+  pre.mermaid,
+  pre.mermaid svg {
+    background: #1f2227 !important;
+  }
 }
