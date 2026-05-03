@@ -275,7 +275,7 @@
 <p>When I try to help Michael to git push the local repo to the remote server, the terminal prompts out the error message:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">error: invalid username or password</span><br><span class="line">fatal error: Autentication failed to ...</span><br></pre></td></tr></table></figure>
 <p>I search out all information about <code>fatal error</code> but seems nothing helps, then I notice that I have not 2FV but Mike has. So I try to cancel this property of Mike but then I realize that it is a personal settings.</p>
-<p>So I search something about it and then find this url: <a href="https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line">https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line</a>.</p>
+<p>So I search something about it and then find this url: https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line.</p>
 <dl>
 <dt>Issue solved.</dt>
 <dd>-]</dd>
@@ -284,7 +284,7 @@
 <p>AND I FINALLY RECEIVE MY NEW AIRPODS!!!</p>
 <h2 id="chinese-filename-appears-as-unicode-filename-in-git-status"><a class="markdownIt-Anchor" href="#chinese-filename-appears-as-unicode-filename-in-git-status"></a> Chinese filename appears as unicode filename in <em>git status</em></h2>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">➜  _posts git:(save) ✗ git status</span><br><span class="line">On branch save</span><br><span class="line">Your branch is up to date with &#x27;origin/save&#x27;.</span><br><span class="line"></span><br><span class="line">Changes not staged for commit:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span><br><span class="line">  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)</span><br><span class="line">  (commit or discard the untracked or modified content in submodules)</span><br><span class="line"></span><br><span class="line">	modified:   ../../themes/next (modified content, untracked content)</span><br><span class="line">	modified:   ../../themes/next-reloaded (modified content, untracked content)</span><br><span class="line"></span><br><span class="line">Untracked files:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)</span><br><span class="line"></span><br><span class="line">	&quot;\345\221\250\346\200\273\347\273\223.md&quot;</span><br><span class="line"></span><br><span class="line">no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</span><br></pre></td></tr></table></figure>
-<p>ref:<a href="https://stackoverflow.com/questions/34549040/git-not-displaying-unicode-file-names">https://stackoverflow.com/questions/34549040/git-not-displaying-unicode-file-names</a></p>
+<p>ref:https://stackoverflow.com/questions/34549040/git-not-displaying-unicode-file-names</p>
 <p>try <code>git config --global core.quotePath false</code> command. The reason for this problem is because of MACOS implementation of Git. Since I updated MAC OS a few weeks ago, it may bring back the original configuration.</p>
 <p>now it fixes my issue.</p>
 <h1 id="shell-script"><a class="markdownIt-Anchor" href="#shell-script"></a> Shell script</h1>
@@ -329,7 +329,7 @@
 </li>
 <li>
 <p>添加comment（gitalk, disqus, valine,最终选择了gitalk）</p>
-<p>主要参考：<a href="https://asdfv1929.github.io/2018/01/20/gitalk/">https://asdfv1929.github.io/2018/01/20/gitalk/</a></p>
+<p>主要参考：https://asdfv1929.github.io/2018/01/20/gitalk/</p>
 <ul>
 <li>
 <p>issue1: Error: Not found</p>
@@ -486,20 +486,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -602,6 +602,21 @@
 
 
 
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    var darkMQ = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+    var mermaidTheme = (darkMQ && darkMQ.matches) ? 'dark' : 'forest';
+    mermaid.initialize({
+      theme    : mermaidTheme,
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
 
 
   

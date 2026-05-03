@@ -275,7 +275,7 @@
 <h3 id="link-照片"><a class="markdownIt-Anchor" href="#link-照片"></a> Link &amp; 照片</h3>
 <p><a href="https://www.autonomous.ai/office-chairs/ergonomic-chair?utm_term=&amp;utm_campaign=Sales-Search-85&amp;utm_source=adwords&amp;utm_medium=ppc&amp;hsa_acc=9219256787&amp;hsa_cam=8253909597&amp;hsa_grp=91618353542&amp;hsa_ad=417959848443&amp;hsa_src=g&amp;hsa_tgt=dsa-874514744115&amp;hsa_kw=&amp;hsa_mt=b&amp;hsa_net=adwords&amp;hsa_ver=3&amp;gclid=EAIaIQobChMIr53Pl_vL6gIV7R-tBh2FJAjyEAAYASAAEgIL2_D_BwE">点我点我点我呀</a></p>
 <h2 id="一个升降桌"><a class="markdownIt-Anchor" href="#一个升降桌"></a> 一个升降桌</h2>
-<p>链接：<a href="https://www.amazon.com/gp/product/B07GVRKCWP/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&amp;psc=1">https://www.amazon.com/gp/product/B07GVRKCWP/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&amp;psc=1</a></p>
+<p>链接：https://www.amazon.com/gp/product/B07GVRKCWP/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&amp;psc=1</p>
 <p>刚买的时候觉得非常不错，但是后来发现空间还是小了点，除此之外一切都还是不错的！</p>
 <p>2020.7.14 老腰拯救记</p>
 
@@ -410,20 +410,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -526,6 +526,21 @@
 
 
 
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    var darkMQ = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+    var mermaidTheme = (darkMQ && darkMQ.matches) ? 'dark' : 'forest';
+    mermaid.initialize({
+      theme    : mermaidTheme,
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
 
 
   

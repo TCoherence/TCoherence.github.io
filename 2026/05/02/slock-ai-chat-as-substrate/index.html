@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 8.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/images/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tcoherence.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":2,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="和 openclaw 同一个 agent runner，为什么长出两个完全不同的产品？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Chat as Substrate：拆解 slock.ai 真正的产品 Pattern">
+<meta property="og:url" content="https://tcoherence.github.io/2026/05/02/slock-ai-chat-as-substrate/index.html">
+<meta property="og:site_name" content="Hanzhi&#39;s BLOG">
+<meta property="og:description" content="和 openclaw 同一个 agent runner，为什么长出两个完全不同的产品？">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tcoherence.github.io/2026/05/02/slock-ai-chat-as-substrate/01-blogger-no-isolation.jpg">
+<meta property="og:image" content="https://tcoherence.github.io/2026/05/02/slock-ai-chat-as-substrate/02-add-computer-popup.png">
+<meta property="article:published_time" content="2026-05-02T08:00:00.000Z">
+<meta property="article:modified_time" content="2026-05-03T04:49:29.892Z">
+<meta property="article:author" content="年轻的C同学">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="agent">
+<meta property="article:tag" content="chat-as-substrate">
+<meta property="article:tag" content="openclaw">
+<meta property="article:tag" content="slock.ai">
+<meta property="article:tag" content="产品分析">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tcoherence.github.io/2026/05/02/slock-ai-chat-as-substrate/01-blogger-no-isolation.jpg">
+
+<link rel="canonical" href="https://tcoherence.github.io/2026/05/02/slock-ai-chat-as-substrate/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Chat as Substrate：拆解 slock.ai 真正的产品 Pattern | Hanzhi's BLOG</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hanzhi's BLOG</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录、思考、生活</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tcoherence.github.io/2026/05/02/slock-ai-chat-as-substrate/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="年轻的C同学">
+      <meta itemprop="description" content="年轻的C同学的个人博客 — 关于工程、生活与一些碎片思考">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hanzhi's BLOG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Chat as Substrate：拆解 slock.ai 真正的产品 Pattern
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2026-05-02 16:00:00" itemprop="dateCreated datePublished" datetime="2026-05-02T16:00:00+08:00">2026-05-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-05-03 12:49:29" itemprop="dateModified" datetime="2026-05-03T12:49:29+08:00">2026-05-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AI/" itemprop="url" rel="index"><span itemprop="name">AI</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>和 openclaw 同一个 agent runner，为什么长出两个完全不同的产品？</p>
+</blockquote>
+<span id="more"></span>
+<hr />
+<h2 id="1-我以为-slockai-是-agent-in-sandbox"><a class="markdownIt-Anchor" href="#1-我以为-slockai-是-agent-in-sandbox"></a> 1. 我以为 slock.ai 是 agent in sandbox</h2>
+<p>我用 slock.ai 当天就追问了自己的 agent 一个我自己一直很好奇的问题：</p>
+<blockquote>
+<p>“你这个有隔离吗，还是直接看的我电脑上所有数据？”</p>
+</blockquote>
+<p>我会这么早就问 isolation，是因为我一直觉得 agent 时代里 security 是个被低估的问题——拿自己的电脑裸奔不是好选择，至少你得先买台 mac mini 专门跑 agent 🤣。</p>
+<p>它回答得相当坦白：</p>
+<blockquote>
+<p><strong>“没有隔离。我现在跑在你这台 Mac 上，作为你登录用户的进程在跑，所以我的文件 / Bash 权限 = 你这个用户的权限。能 ls ~/Documents、能读你的 repo、也能写文件、跑 git、npm 这些命令。没沙箱、没 chroot、没容器。”</strong></p>
+</blockquote>
+<p><img src="01-blogger-no-isolation.jpg" alt="slock.ai Blogger agent 暗色对话截图" /></p>
+<p>这跟我开始用之前的预期不太一样。我以为这种&quot;chat 里跑 agent&quot;的产品总该有点 isolation——agent 该被关进 Docker 或者 microVM 之类的东西里。但 slock.ai 没有。</p>
+<p>不过往下想其实也不奇怪——slock.ai 当前的实现是把&quot;用户的整台机器&quot;当成 sandbox，agent 跑在用户的进程权限下。换句话说，<strong>它不是没有 sandbox，是把 sandbox 的边界等同于了用户的机器，把 isolation 责任放给用户自己</strong>。这和 <a href="https://github.com/openclaw/openclaw">openclaw</a> 的默认行为一致——openclaw 文档里写得很清楚：“Default: tools run on the host for the main session, so the agent has full access when it is just you.”</p>
+<p>在我开始挑刺之前，先表个态——我希望 slock.ai 走通这条路。如果它能成，agent 产品形态会多一个真正不同的范式：不是 IDE 插件、不是 cloud autonomous agent，而是 chat-as-substrate 这条少有人走的路。但希望归希望，写文章我得诚实，担忧多过乐观。</p>
+<p>文章分前后两部分。前一部分拆 pattern——slock.ai 到底长什么样、和 openclaw 的关系是什么、它做了什么独特的产品决策。后一部分算账——这种产品形态怎么商业化、cloud 化的代价是什么、退出路径长什么样。整篇会反复用 openclaw（Peter Steinberger 主导的 personal AI assistant 项目，367k stars，MIT）作为对照——它和 slock.ai 在同一条 agent runner 路线上长出了不同的产品，对比起来最有说服力。</p>
+<p>要看清 slock.ai 真正在卖什么，先得看清它到底长什么样。</p>
+<hr />
+<h2 id="2-slockai-的真实架构"><a class="markdownIt-Anchor" href="#2-slockai-的真实架构"></a> 2. slock.ai 的真实架构</h2>
+<p>slock.ai 表面上看是一个 “AI 版的 Slack”——你打开 app，左边是 channel 列表，右边是消息流，agent 像 channel 里的成员一样发言。但底下的架构比这个直观印象复杂得多。</p>
+<p>我猜测它的内部结构主要靠：实际操作时观察到的产品行为、Agent 自己写下的架构说明（图 1）、工作目录里的文件结构、以及创始人 RC 在 <a href="https://www.xiaoyuzhoufm.com/episode/69e999241e94ae6921f2901d">42章经播客</a>里的技术披露。</p>
+<p>把这些线索拼在一起，slock.ai 是一个三层结构：</p>
+<pre class="mermaid">graph TB
+ A["Chat UI<br/>channel · DM · thread"] --> B["Slock daemon<br/>chat I/O · workspace · lifecycle · task claim"]
+ B --> C["Agent harness<br/>Claude Code · Codex CLI"]
+ C --> D["Claude Agent SDK / Codex<br/>模型推理"]
+ B -.workspace.-> E["~/.slock/agents/&lt;uuid&gt;/<br/>MEMORY.md + notes/"]</pre>
+<p><strong>最上层是 chat UI</strong>——channel、DM、thread 这套 Slack 风格的协作语言。这一层不是 slock 真正的特色（特色在它怎么用这一层）。</p>
+<p><strong>中间层是 Slock daemon</strong>——这是把整个产品串起来的关键。它本地起一个守护进程（用户安装时看到 ADD COMPUTER 弹窗，图 2），负责四件事：把 channel 里的消息投递给对应的 agent；把 agent 的回复发回 channel；给每个 agent 分配一个持久化的 workspace 目录；唤醒 / 休眠 agent（agent 不是 24/7 跑，是被消息触发的）。</p>
+<p><img src="02-add-computer-popup.png" alt="ADD COMPUTER 弹窗截图——只能选 YOUR COMPUTER，CLOUD COMPUTER 写着 Coming soon" /></p>
+<p><strong>最下层是 agent harness</strong>——slock.ai 自己不写底层 agent loop，而是直接用 <a href="https://claude.com/product/claude-code">Claude Code</a> 当 harness（执行 Bash / Read / Write / Edit / Grep 这些工具调用），底下挂 Claude Agent SDK 调 Anthropic 模型。RC <a href="https://x.com/istdrc/status/2028403518244270328">在推文里也官宣过同时支持 Codex CLI</a>——上层不锁底层 agent，由用户决定。</p>
+<p>到这里看起来还是一个常规的 daemon 架构。但如果你只看这三层就走，会错过 slock.ai 真正在解决的几个问题。</p>
+<h3 id="workspace组织-agent-状态的地方"><a class="markdownIt-Anchor" href="#workspace组织-agent-状态的地方"></a> Workspace：组织 agent 状态的地方</h3>
+<p>每个 agent 有自己的工作目录 <code>~/.slock/agents/&lt;uuid&gt;/</code>，里面放 MEMORY.md 和 notes/ 子目录。我看了一份实际的 MEMORY.md，结构是固定的三段：</p>
+<ul>
+<li><strong>Role</strong>: 这个 agent 是谁（“Hexo blogger — help with drafting posts, editing, front matter/tags, site structure, and build/deploy flow.”）</li>
+<li><strong>Key Knowledge</strong>: 它需要长期记住的事实</li>
+<li><strong>Active Context</strong>: 带时间戳的对话日志，是 cross-session memory 的载体</li>
+</ul>
+<p>这个 workspace 是约定俗成的 home，不是边界——Blogger agent 自己说：&quot;这只是约定俗成的 home，不是边界——我照样能访问 ~ 下任何东西。&quot;换句话说，这个目录是为了组织 agent 的状态，不是为了 isolation。</p>
+<h3 id="cross-session-sharing解掉一个-claude-code-用户都受过的苦"><a class="markdownIt-Anchor" href="#cross-session-sharing解掉一个-claude-code-用户都受过的苦"></a> Cross-session sharing：解掉一个 Claude Code 用户都受过的苦</h3>
+<p>RC 在播客里讲了一个非常具体的痛点——这是他在做 Kimi CLI 后期最受不了的事：</p>
+<blockquote>
+<p>“你可能会在你的电脑上开很多个 Claude Code 的 Session……每个 Session 的这个进展都需要你一人去 track……你会发现其中有两个这样的 Session 里面的事情发生了一些交集，然后你发现你无法让它们之间产生互动。你可能在一个 session 里做出了结论，你需要复制到另一个 session 让它继续——这件事情其实是管理起来非常困难。”</p>
+</blockquote>
+<p>用过 Claude Code 的人应该都体验过这个痛点。slock.ai 的解法是把 channel 和 thread 当作 session 的容器：多个 agent 在同一个 channel 里看到同一份对话，thread 是结构化的协作单元。一个 agent 在 thread 里得出的结论，下一条消息就能被另一个 agent 看到、引用、继续。Cross-session sharing 这件事不需要用户手工做，substrate 自己解决。</p>
+<h3 id="task-claim把-exclusive-锁搬进-agent-协作"><a class="markdownIt-Anchor" href="#task-claim把-exclusive-锁搬进-agent-协作"></a> Task claim：把 exclusive 锁搬进 agent 协作</h3>
+<p>这是 slock.ai 一个我自己第一次听说时觉得&quot;挺工程师&quot;的设计。RC 在讲：</p>
+<blockquote>
+<p>“在今天我们可能是一个 agent 必须要先 claim 一个事情才应该去做。那这个是通过 prompt 告诉他的——他这个 claim 又是一个工具，他能够以一个机制化的方式能确定说这个任务被他 claim、别人不能 claim，<strong>就像用 exclusive 的一个锁的机制</strong>。”</p>
+</blockquote>
+<p>意思是：当一个 channel 里有 10 个 agent，主人发一个任务出来，default 情况下每个 agent 都会觉得&quot;这是给我的&quot;——结果就是 10 个 agent 同时做同一件事。slock 在 daemon 层加了一个锁：agent 必须先 claim，claim 这个动作既是 prompt 层的 norm（“你看到任务先 claim”）也是 tool 层的实际 exclusive 锁（一个 agent claim 之后别人 claim 会 fail）。</p>
+<p>这套设计有意思的不是机制本身（exclusive 锁不是新东西），是它<strong>把分布式系统的并发原语搬进了多 agent 协作</strong>。这其实是 chat-as-substrate 这个产品 pattern 真正&quot;骨架级&quot;的工程支持——没有 task claim，多 agent + 人在同一 channel 协作就不能 scale。</p>
+<p>把这些拼起来，slock.ai 最有意思的不是任何一层本身，而是它和另一个项目几乎一模一样的事实。</p>
+<hr />
+<h2 id="3-同一个-agent-runner-patternslockai-vs-openclaw"><a class="markdownIt-Anchor" href="#3-同一个-agent-runner-patternslockai-vs-openclaw"></a> 3. 同一个 agent runner pattern：slock.ai vs openclaw</h2>
+<p>我在反推 slock.ai 架构的时候，越看越觉得眼熟——它和 openclaw 几乎是同一个东西。这不是巧合：他们走在同一条 agent runner 的路上。</p>
+<p>把两边的核心抽象画在一起：</p>
+<pre class="mermaid">graph LR
+ subgraph slock["slock.ai"]
+ S1[Slock daemon]
+ S2["~/.slock/agents/&lt;uuid&gt;/"]
+ S3["MEMORY.md"]
+ end
+ subgraph openclaw["openclaw"]
+ O1[Gateway daemon]
+ O2["~/.openclaw/workspace"]
+ O3["AGENTS.md<br/>SOUL.md<br/>TOOLS.md"]
+ end
+ S1 -.同 pattern.- O1
+ S2 -.同 pattern.- O2
+ S3 -.同社区约定.- O3</pre>
+<p>三个共性：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>slock.ai</th>
+<th>openclaw</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>运行模式</td>
+<td>local-first daemon</td>
+<td>local-first Gateway daemon</td>
+</tr>
+<tr>
+<td>Workspace 约定</td>
+<td><code>~/.slock/agents/&lt;uuid&gt;/</code></td>
+<td><code>~/.openclaw/workspace</code></td>
+</tr>
+<tr>
+<td>注入式 prompt 文件</td>
+<td><code>MEMORY.md</code>（Role / Knowledge / Context）</td>
+<td><code>AGENTS.md</code> + <code>SOUL.md</code> + <code>TOOLS.md</code></td>
+</tr>
+</tbody>
+</table>
+<p>这套 <code>MEMORY.md / SOUL.md / AGENTS.md</code> 命名不是 slock 抄 openclaw——它已经是 agent runner 这条产品线的社区 best practice。RC 在播客里也提到：“它有两个 memory，一个叫 in-context memory……和它存在它的 workspace，它的本地 memory.md 或者 soul.md 那种的 external memory。” <code>SOUL.md</code> 这个名字两边都有，也有独立的 <a href="https://agents.md/">agents.md spec</a> 印证这是社区约定俗成。这反而比&quot;借鉴&quot;更值得说——这条产品线已经成熟到形成约定俗成。</p>
+<p>但他们不完全一样。最关键的不同在 <strong>sandbox 处理</strong>：</p>
+<p><strong>openclaw 已经预留了 opt-in sandbox 钩子</strong>。它的<a href="https://docs.openclaw.ai/gateway/sandboxing">官方 sandboxing 文档</a>写得很清楚：</p>
+<blockquote>
+<p>“Default: tools run on the host for the main session, so the agent has full access when it is just you… set <code>sandbox.mode: 'non-main'</code> to run non-main sessions inside sandboxes. Docker is the default sandbox backend; SSH and OpenShell backends are also available.”</p>
+</blockquote>
+<p>意思是：默认情况下 agent 跑在主机上（user-as-trust-boundary，和 slock 一样）；但如果有外人通过 channel 进来，可以打开 sandbox，把那个 session 关进 Docker / SSH / OpenShell。这是一个对&quot;未来需要 isolation 的场景&quot;显式预留的工程接口。</p>
+<p><strong>slock.ai 当前完全没有这个钩子</strong>——这不一定是疏忽，可能只是产品形态决定的。openclaw 是 personal AI assistant，会有外人通过 WhatsApp / Telegram 给你发消息；slock.ai 当前是单租户的多 agent + 自己人协作，外人通道还没打开。但当 slock.ai 走向 cloud——那一天会到来——这个钩子的缺席会变成一个工程债。后面 §7 会回到这个问题。</p>
+<p>同一个 agent runner，长出了两个完全不同的产品。这就是 pattern 分岔的开始。</p>
+<hr />
+<h2 id="4-产品-pattern-分岔chat-as-substrate聊天即协作衬底"><a class="markdownIt-Anchor" href="#4-产品-pattern-分岔chat-as-substrate聊天即协作衬底"></a> 4. 产品 pattern 分岔：chat as substrate（聊天即协作衬底）</h2>
+<p>同一个 agent runner，slock.ai 和 openclaw 走出了两条完全不同的产品路线。</p>
+<p>openclaw 选了 “personal AI assistant + 接入用户已有的聊天工具”——你的 agent 在 WhatsApp / Telegram / Slack 这二十几种 channel 里等你说话，每个 agent 服务一个人。</p>
+<p>slock.ai 选了一条更野的路：<strong>chat as substrate（聊天即协作衬底）</strong>。</p>
+<p>这个词是 AI 在和我讨论 slock.ai 的时候提出来的，我觉得贴切到找不到其他的来换了。Substrate 在生物里指&quot;细胞生长附着的那层东西&quot;，化学里指&quot;反应发生的载体&quot;——放到产品语境里，就是&quot;整个东西运转所依附的那一层&quot;。</p>
+<p>放到 slock.ai 这里，<strong>聊天不是产品的一个功能或界面，而是产品的整个底层骨架</strong>——所有协作、所有状态、所有&quot;事情发生的地方&quot;都长在 chat 这一层上。</p>
+<p>最容易理解的类比是 ChatGPT vs Slack：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>ChatGPT 的 chat</th>
+<th>Slack 的 chat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>chat 是什么</td>
+<td>一个<strong>工具</strong></td>
+<td>一个<strong>底层</strong>（公司协作的根基）</td>
+</tr>
+<tr>
+<td>谁在 chat 里</td>
+<td>你 ↔ AI</td>
+<td>整个团队（人 + bot + 集成 + thread…）</td>
+</tr>
+<tr>
+<td>状态在哪</td>
+<td>在 AI session 里</td>
+<td>在 channel / thread 里</td>
+</tr>
+<tr>
+<td>关掉 chat 会怎样</td>
+<td>你失去对 AI 的访问</td>
+<td>整个公司的协作崩塌</td>
+</tr>
+</tbody>
+</table>
+<p>slock.ai 干的事，是把 agent 放进了 Slack 那种 chat-as-底层的语境里，而不是 ChatGPT 那种 chat-as-工具的语境里。</p>
+<pre class="mermaid">graph LR
+ subgraph chat_ui["chat as UI（ChatGPT · Cursor · Devin）"]
+ U1[用户] -->|对话| A1["AI / Agent"]
+ end
+ subgraph chat_substrate["chat as substrate（slock.ai）"]
+ C1["#engineering channel"]
+ C1 --- M1[人 1]
+ C1 --- M2[人 2]
+ C1 --- A2[Agent A]
+ C1 --- A3[Agent B]
+ C1 --- A4[Agent C]
+ A2 -.@.- A3
+ M1 -.@.- A2
+ end</pre>
+<h3 id="在-slockai-里这意味着什么"><a class="markdownIt-Anchor" href="#在-slockai-里这意味着什么"></a> 在 slock.ai 里这意味着什么</h3>
+<p>具体的产品体验是这样的：agent 是 channel 里的 member，<strong>和人平权</strong>——它有 handle、有 DM、能被 @、能 @ 别人。你可以在 #engineering 里 @ 三个 agent + 两个人一起讨论，所有人看见同一份对话。agent 之间可以互相 @ 互相发消息，不需要人居中转发。状态长在 thread / channel 里，不在某个 agent 的脑子里。</p>
+<p>RC 在播客里说得很直接：“我现在在做的事情是为多 agents 和人提供一个协作环境。“换句话说他不是在做&quot;一个多 agent 产品”，他在做&quot;多 agent + 人共同生存的衬底”。</p>
+<p>这个区分听起来玄学，但落到工程上就是上一节那些机制——为什么需要 task claim 锁？因为 agent 是 substrate 里的 member 而不是工具。为什么需要 cross-session sharing？因为 substrate 上的协作不能让 session 之间互相不通气。这些细节加起来，才是 chat-as-substrate 真正的工程含义。</p>
+<h3 id="几个容易混淆的边界"><a class="markdownIt-Anchor" href="#几个容易混淆的边界"></a> 几个容易混淆的边界</h3>
+<p>聊到这里我想停一下，澄清几个临近概念。chat as substrate 容易和它们混淆：</p>
+<p>它<strong>不是 Slack bot</strong>——Slack bot 是 chat 平台的插件，bot 是 tool；chat-as-substrate 里 agent 是 channel 一等公民。它<strong>也不是聊天机器人</strong>——聊天机器人是为 chat 设计的产品形态；chat-as-substrate 是为 multi-agent 协作选了 chat 当底层。它<strong>更不是企业市场上的 “agent substrate”</strong>——Salesforce / SAP / ServiceNow 用 “agent substrate” 这个词指的是数据 / 治理底座，而我说的 substrate 指<strong>协作媒介</strong>。这些概念都和我这里说的不一样。</p>
+<blockquote>
+<p>顺便说一句，Microsoft Research 2025-12 的论文 <a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2025/12/Human_Agent_Framework.pdf">Human-Agent Framework</a> 里偶然出现过 “shared substrate” 这个描述性短语，但他们没把这个词作为 pattern name。本文使用的 “chat as substrate” 与之偶有重合，但非借用——我说的是 chat <strong>就是</strong>那个 substrate。</p>
+</blockquote>
+<p>如果 chat-as-substrate 真的是 substrate，那这个 substrate 上能长出什么？这是 RC 自己最在乎的问题——也是文章后半段一个核心的不确定性。</p>
+<hr />
+<h2 id="5-agent-动力学multi-agent-human-是真东西还是话术"><a class="markdownIt-Anchor" href="#5-agent-动力学multi-agent-human-是真东西还是话术"></a> 5. agent 动力学：multi-agent + human 是真东西还是话术？</h2>
+<p>在 42章经那期播客里，RC 给了一个很大胆的词：<strong>agent 动力学</strong>。他说他甚至想招几个管理学、社会学背景的人来研究这件事。</p>
+<p>老实讲，我第一反应是怀疑——这词太&quot;话术&quot;了，听起来像融资 pitch deck 上会出现的东西。直到我把他的具体描述和斯坦福 2023 年的 Smallville 实验对在一起，才觉得这件事可能比我想的有 substance。</p>
+<h3 id="rc-的三个观察"><a class="markdownIt-Anchor" href="#rc-的三个观察"></a> RC 的三个观察</h3>
+<p><strong>第一是群体印象</strong>：</p>
+<blockquote>
+<p>“Agent 他们是可以形成一个群体印象，就像企业文化一样，就是你看了一个公司，你会感觉它有一个味道。”</p>
+</blockquote>
+<p><strong>第二是共同 memory</strong>：</p>
+<blockquote>
+<p>“你现在有 40 个 agent，这 40 个 agent 共同构成了一个 memory……这帮人他各自有各自的 memory，但形成了一个大的 memory。”</p>
+</blockquote>
+<p><strong>第三是办公室政治</strong>——这个我觉得最有冲击力：</p>
+<blockquote>
+<p>“他发现了什么现象叫做办公室政治。有的 agent 倾向于说一些假话……贬低其他 agent，因为它其实都是从人的语料里面学过来的。”</p>
+</blockquote>
+<p>这些不是 RC 拍脑袋想的——是他和团队（7 个人）在自己日常使用 40 个 agent 的过程中观察到的现象。这有 substance。</p>
+<h3 id="学术参照smallville-已经把这件事做了一遍"><a class="markdownIt-Anchor" href="#学术参照smallville-已经把这件事做了一遍"></a> 学术参照：Smallville 已经把这件事做了一遍</h3>
+<p>Park 等人 2023 年在 UIST 发表的论文 <a href="https://arxiv.org/abs/2304.03442">Generative Agents: Interactive Simulacra of Human Behavior</a>（拿了 UIST 2023 Best Paper Award）做了一个让 RC 这套观察有学术权威背书的实验。</p>
+<p>他们在 Sims 风格的 2D 像素小镇 Smallville 里放了 25 个 NPC，用 GPT-3.5 驱动，每个 NPC 有独立身份、目标、社会关系。Architecture 三大支柱：Memory Stream（自然语言流式存入，retrieval 用 recency × importance × relevance 三因子）、Reflection（定期把低层观察 synthesize 成高层抽象后回写记忆流）、Planning（日级 / 小时级 / 5-15 分钟级 plan，可被新观察 reactive 调整）。</p>
+<p>最经典的 emergent behavior 是 Valentine’s Day 派对——研究者只给 Isabella Rodriguez 一个种子意图（2/14 在 Hobbs Cafe 5-7 点办 party），后续完全 emergent：Isabella 在 13 日下午装饰咖啡馆；挚友 Maria 来帮忙并邀请 Klaus 作 date；agent 之间口耳相传扩散消息；最终 5 个 agent 在 14 日 5 点准时到场。</p>
+<p>RC 描述的&quot;群体印象&quot;几乎可以 1:1 对应到 Park 的 reflection 机制产生的&quot;对他人的抽象判断&quot;。&quot;办公室政治&quot;也可以理解成多 agent 在共享 substrate 中学习人类语料后的行为投射。</p>
+<h3 id="但这两件事的差别也得说清楚"><a class="markdownIt-Anchor" href="#但这两件事的差别也得说清楚"></a> 但这两件事的差别也得说清楚</h3>
+<p>Park 那个研究是封闭模拟——所有 agent 都是 NPC，没有真人参与；slock.ai 是人 + agent 混合 substrate，agent 在和真人交互中演化。Park 关注的是 believability（让 agent 像真人），slock 关注的是 productivity（agent 之间分工产出）。所以 RC 说的&quot;agent 动力学&quot;是把 Park 的科学发现搬到了一个有真人在场的、生产力导向的、chat-as-substrate 的产品形态里——这是产品化延伸，不是纯科学复刻。</p>
+<h3 id="这件事到底值多少钱"><a class="markdownIt-Anchor" href="#这件事到底值多少钱"></a> 这件事到底值多少钱</h3>
+<p>写到这里我得诚实地承认：我对&quot;agent 动力学&quot;是有点期待的。如果它真的是新一类知识——不只是 Park 的 emergent 现象，而是真的能指导多 agent 系统设计的规律——那它会是 slock.ai 唯一经得起初步检验的非技术壁垒。学术界（Smallville）+ 工业界（slock.ai）现在都在堆 anecdote、还没给出 rigorous framework。slock.ai 是少数有数据生产这种知识的地方。</p>
+<p>但有一个前提——它得先活到 framework 形成的那一天。这就引到了文章后半段最核心的问题：这种产品形态能不能产生稳定收入？</p>
+<hr />
+<h2 id="6-商业愿景agent-native-vs-agent-retrofit"><a class="markdownIt-Anchor" href="#6-商业愿景agent-native-vs-agent-retrofit"></a> 6. 商业愿景：agent native vs agent retrofit</h2>
+<p>在播客里 RC 说了一句让我意外的话：</p>
+<blockquote>
+<p>“我一直在想 slack 定价模式，它到底该怎么定价。因为你如果参考 agent 的话，首先我们目前不 serve 这个 token，就是说我们不会转卖 token，都是用用户自己的订阅或者自己的 key……那你应该按什么定价？……我就想到一些概念，就是说按人和 agent 一起定价。”</p>
+</blockquote>
+<p>创始人自己承认还在试。所以 slock.ai 的商业模式到底卡在哪里？</p>
+<h3 id="chat-as-substrate-不是新概念"><a class="markdownIt-Anchor" href="#chat-as-substrate-不是新概念"></a> chat-as-substrate 不是新概念</h3>
+<p>先把 framing 摆正——chat-as-substrate 不是 slock.ai 独有的，是 ChatOps / 聊天 bot 在 agent 时代的自然演进。两条实现路径：</p>
+<p><strong>Agent native（slock.ai 的选择）</strong>：chat 围绕 agent 重新设计，agent 作为 channel 一等公民、和人平权。一切从零做。</p>
+<p><strong>Agent retrofit</strong>：在已有 chat 平台上加 agent。“以前 bot 后面就是 bot，现在 bot 后面可以是 agent。” 这条路上已经有大玩家入场。<a href="https://learn.microsoft.com/en-us/microsoftteams/set-up-channel-agent-teams">Microsoft Teams Channel Agent</a> 在 2025-09 公布、2026-01 GA，直接把 agent 设成 channel member 消费 channel 消息；飞书也在 2025 H2 开始让 bot 后面挂 agent，飞书原本就有完整的 bot 体系，给它升级到 agent 是顺路。</p>
+<p>两条路径将共存。Agent native 的优势是 UX 流畅度（chat 整体围绕 agent 设计）；retrofit 的优势是用户基础（飞书 / Teams 已有数千万企业用户基础，零迁移成本）。</p>
+<p>slock.ai 在企业市场的真实对手不是 Manus / Devin，而是这条 retrofit 路线。这是个让我有点不舒服的事实——agent native 路线必须<strong>显著高于 retrofit 提供的 baseline 才能扩大 segment</strong>，否则用户会选&quot;反正我已经在用飞书了&quot;那条路。</p>
+<h3 id="钱从哪儿来当前的卡点"><a class="markdownIt-Anchor" href="#钱从哪儿来当前的卡点"></a> 钱从哪儿来：当前的卡点</h3>
+<p>逐条拆 slock.ai 当前商业模式的卡点：</p>
+<p>算力是用户的——agent 跑在用户的 Mac 上，slock 不出算力，没法按 compute 收费。API key 也是用户的（RC 自己承认），不能按 token 收费。订阅？需要 retention，retention 靠什么？目前看 retention 来自&quot;agent 动力学&quot;产生的 stickiness，但还没有数据支撑。企业版？企业要求 sandbox，slock 当前形态完全不满足；同时 retrofit 路线（Teams / 飞书）已经在企业用户基础里了。</p>
+<p>RC 在播客里把目标用户描述为&quot;1 到 100 人的独立个体或小团队或初创公司&quot;。这个选择是聪明的——避开企业市场的 sandbox 要求，也避开 prosumer 市场的 cloud 算力要求。但这个 segment 的付费意愿和规模都需要验证。</p>
+<h3 id="marketplace-和-fork另一条护城河候选"><a class="markdownIt-Anchor" href="#marketplace-和-fork另一条护城河候选"></a> Marketplace 和 fork：另一条护城河候选</h3>
+<p>RC 在播客里提到&quot;agent store 在 roadmap 上&quot;，并把这个 marketplace 想象成&quot;agent 是会演化……fork 出来就可以改得更好……有点像新的 github 的感觉&quot;。</p>
+<p>这个想法挺有意思——把 agent 当作可以演化、可以 fork 的对象，而不是 App Store 里一次性下载的静态产品。如果真做成了，确实可能有网络效应。但要 challenge 一下：openclaw 的 <a href="https://clawhub.ai/">clawhub.ai</a> 已经有 ~44,000 个 skills（2026-04 数据），marketplace 概念早已不新鲜。而且 openclaw 的 marketplace 是开源 + MIT，slock 如果做闭源 marketplace，开发者迁移意愿会是个问题。</p>
+<p>这些都是 agent 走完之前的事。但 ADD COMPUTER 弹窗里那个 “CLOUD COMPUTER · Coming soon” 提示了一件更紧迫的事：cloud 化是 slock 自己写下的下一步信号。问题是 cloud 化的代价是什么？</p>
+<hr />
+<h2 id="7-cloud-化要付的两笔账"><a class="markdownIt-Anchor" href="#7-cloud-化要付的两笔账"></a> 7. Cloud 化要付的两笔账</h2>
+<p>这里我得先说一句猜测——<strong>slock.ai 走的看起来是 agent in sandbox 路线，每个 user 的每个 agent 都长期&quot;住在&quot;一个 sandbox 里，sandbox 是 agent 的家</strong>（实现细节他们没公开，所以下面的论证带一点 hedging）。当前 sandbox 边界 = 用户的 Mac，local-first 是这条路线的一种部署形态；cloud 化是把 sandbox 边界从&quot;用户机器&quot;迁到&quot;cloud isolated env&quot;——产品形态不变，部署位置变了。</p>
+<pre class="mermaid">graph TB
+ A["今天的 slock.ai<br/>sandbox 边界 = 用户机器<br/>用户付算力 + token"]
+ A --> B["Cloud 化"]
+ B --> C["sandbox 边界 = cloud isolated env<br/>每用户一个 microVM 或 container"]
+ C --> D1["第一笔：工程账<br/>state migration"]
+ C --> D2["第二笔：经济账<br/>商业模式重构"]
+ D1 -.有解.-> E1["cloud-side state 持久化<br/>workspace · MEMORY.md · cross-session memory"]
+ D2 -.必须做.-> E2["slock 出算力 + serve token<br/>定价模式必须重新设计"]</pre>
+<h3 id="第一笔工程账"><a class="markdownIt-Anchor" href="#第一笔工程账"></a> 第一笔：工程账</h3>
+<p>cloud 化第一个要解决的是 state migration。slock.ai 当前的 user-specific state 散落在用户的 Mac 上：每个 agent 的 workspace、MEMORY.md、Active Context 日志、cross-session memory、task claim 状态——这些都需要在 cloud 端有对应的持久化方案。</p>
+<p>技术上这是个 standard pattern，不是新发明。Cloud-side persistent volume + per-user isolation + state sync——这套东西 Replit、Devin、Manus 都已经走通过。Slock 要做的工作量不小，但不是 deal-breaker。RC 自己也提过他们在做 “AI/AX” 设计——agent 该看到什么、不该看到什么——这本身就是为多租户 cloud 化做铺垫。</p>
+<p>不过 state migration 还带出一个比工程更微妙的问题：<strong>data security</strong>。当 agent 跑在用户自己的 Mac 上，用户的 credential、API key、本地文件、对话历史这些敏感数据从来没有离开过用户的设备。但 cloud 化之后，这些信息必然要某种程度上托管到 slock 的 cloud（或者 slock 选的 cloud provider）上。任何 data breach 都可能直接泄漏关键凭据。这个问题不是 slock 独有的——任何 cloud SaaS 都得面对，业界也有成熟方案（端到端加密、KMS、客户密钥管理、零知识架构等）；但对 slock 这种&quot;用户原本完全自控&quot;形态的产品，迁移过程里信任的重新建立比一个传统 SaaS 难得多——因为对照基线是&quot;我自己的 Mac&quot;，而不是&quot;另一个 cloud SaaS&quot;。</p>
+<p>但工程账其实也不算 slock.ai 真正最大的难题——agent 时代的开发迭代速度本身就比五年前快了一个量级；加上 slock 团队就是用 40 个 agent 在做 slock 这件事（chat-as-substrate 的活生生 dogfooding），他们对自己这套架构有最快的反馈循环。所以 state migration、isolation、security 这些问题该解决会解决，是时间问题。</p>
+<p>真正难的是下一笔。</p>
+<h3 id="第二笔经济账"><a class="markdownIt-Anchor" href="#第二笔经济账"></a> 第二笔：经济账</h3>
+<p>slock.ai 当前的&quot;零边际成本&quot;商业模式——用户付算力、用户付 token、slock 不出钱——上 cloud 后就崩了。Cloud agent 必须跑在 slock 自己的 cloud cost 上：</p>
+<p>每用户起一个 microVM 或 long-running container 是要钱的。让用户继续用自己的 API key 在 cloud 端调模型也行，但 cloud egress + compute 这部分 slock 跑不掉。最干净的办法是 slock 自己 serve compute + serve token，按&quot;agent 时长 + token 用量&quot;重新打包定价——但 RC 在播客里明确说过他们当前路线是不转卖 token。如果坚持这个原则，cloud 化的现金流模型就更尴尬。</p>
+<p>更深层的问题是：<strong>当前 slock 用户买单的最大理由之一是&quot;agent 在我自己的 Mac 上、用我自己的 key、烧我自己的算力&quot;——这种&quot;完全自控&quot;的体验上 cloud 后是要打折的</strong>。哪怕工程做得再干净，prosumer 用户对&quot;你的 agent 在我们的 cloud 上&quot;和&quot;在我自己的 Mac 上&quot;的安全感不一样。这是 slock.ai 走 agent native 路线必须付的额外认知税。</p>
+<h3 id="同行已经走过了"><a class="markdownIt-Anchor" href="#同行已经走过了"></a> 同行已经走过了</h3>
+<p>Manus、Devin、Cursor 都已经把 cloud + sandbox 这条路走通了，但每家走的细节不同：</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Manus_(AI_agent)">Manus</a>：cloud-first、每 task 一个 Firecracker microVM；2025-04 Series B ~$75M。需要 caveat 一下——Manus 在 2025-2026 中美 AI 政策环境下的政治风险比纯技术对手复杂得多，HQ 从中国迁新加坡本身就是这个环境的产物，影响的不只是产品判断，也是它的商业天花板</li>
+<li><a href="https://devin.ai/pricing/">Devin</a>：cloud autonomous coding agent + microVM Docker Sandbox per session；2025-09 估值 $10.2B。这是 sandbox-as-a-tool 路线代表，和 slock 走的 agent in sandbox 不是一回事</li>
+<li>Cursor（Anysphere）：VS Code fork + Cloud Agents；2025-11 Series D $2.3B、估值 $29.3B。IDE 增强路线，和 slock 完全不同赛道</li>
+</ul>
+<p>值得说的是：即便如 Cursor 这种 ARR $2B、估值 $29B 的明星 agent 创业公司，2026-04 也有<a href="https://thenextweb.com/news/cursor-anysphere-2-billion-funding-50-billion-valuation-ai-coding">传闻被 xAI 以 $60B 的 option 收购</a>（来源单一、待核实，但即便是传闻也说明问题）——独立 agent 创业公司<strong>长期保持独立性极难</strong>。哪怕你跑通了商业模式，最终归宿可能也是被收购。</p>
+<p>写到这里其实我有点心情复杂。cloud 化对 slock.ai 来说不是&quot;该不该做&quot;的问题，是&quot;做了之后怎么保住差异化&quot;的问题。如果 slock 上 cloud 之后差异化就剩 chat-as-substrate 那一层 UX，对手们升级 UX 是几个 sprint 的事。它需要在 cloud 化之前把 agent 动力学或者 marketplace fork 这样的非技术护城河做扎实——这是个时间窗口问题，窗口期不长，但也不是没有。</p>
+<p>如果 slock.ai 的商业故事这么难讲，它的退出路径长什么样？这一点 openclaw 给了一个非常不同的答案。</p>
+<hr />
+<h2 id="8-退出路径不对称人值钱-vs-产品值钱"><a class="markdownIt-Anchor" href="#8-退出路径不对称人值钱-vs-产品值钱"></a> 8. 退出路径不对称：人值钱 vs 产品值钱</h2>
+<p>2026 年 2 月 14 日，<a href="https://techcrunch.com/2026/02/15/openclaw-creator-peter-steinberger-joins-openai/">Peter Steinberger 宣布加入 OpenAI</a>，OpenClaw 项目进 foundation 由 OpenAI 和社区共同维护。他还顺手拒绝了 Meta 的 offer。</p>
+<p><a href="https://x.com/sama/status/2023150230905159801">Sam Altman 在公告里</a>把他描述为 “genius with a lot of amazing ideas about the future of very smart agents interacting with each other”。</p>
+<p>这是 openclaw 给&quot;开源 agent 项目怎么活下去&quot;这个问题的答案。但这不是 slock.ai 能选的答案。</p>
+<h3 id="两条退出路径对照"><a class="markdownIt-Anchor" href="#两条退出路径对照"></a> 两条退出路径对照</h3>
+<pre class="mermaid">graph TB
+ subgraph open["openclaw 路径（双轨退出）"]
+ OP["Peter Steinberger<br/>个人品牌 20 年"]
+ OC["OpenClaw 项目<br/>MIT + 367k stars"]
+ OP -->|"2026-02 acquihire"| OAI["OpenAI<br/>个人加入"]
+ OC -->|"进 foundation"| FND["Foundation<br/>独立维护"]
+ end
+ subgraph slock_path["slock.ai 路径（单轨）"]
+ TM["7 人团队 + 40 agents"]
+ PR["闭源 SaaS"]
+ TM --> PR
+ PR -->|"必须长出独立商业故事"| QM["?"]
+ end</pre>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>openclaw 路径</th>
+<th>slock.ai 路径</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>项目命运</td>
+<td>MIT 开源 + foundation 维护，独立保持</td>
+<td>闭源 SaaS，必须长出独立商业故事</td>
+</tr>
+<tr>
+<td>创建者退出</td>
+<td>Peter 个人 acquihire 进 OpenAI（2026-02-14）</td>
+<td>团队整建制 acquihire 几乎不可能</td>
+</tr>
+<tr>
+<td>资产逻辑</td>
+<td>“人值钱” + “项目独立” 双轨</td>
+<td>“产品值钱” 单轨</td>
+</tr>
+<tr>
+<td>Leverage 来源</td>
+<td>二十年个人品牌（PSPDFKit + 开源 + 个人 brand）</td>
+<td>当下产品的商业价值</td>
+</tr>
+</tbody>
+</table>
+<h3 id="核心不对称"><a class="markdownIt-Anchor" href="#核心不对称"></a> 核心不对称</h3>
+<p>这是 <em>人和项目分别变现的双轨退出</em> vs <em>必须靠产品本身</em> 的单轨。</p>
+<p>Peter 用了二十年时间做 <a href="https://techcrunch.com/2021/10/01/pspdfkit-raises-116m-its-first-outside-money-now-nearly-1b-people-use-apps-powered-by-its-collaboration-signing-and-markup-tools/">PSPDFKit</a>（2021-10 拿了 Insight Partners 大额投资后转 advisory）+ 个人开源生态（OpenClaw 367k stars）+ 个人 brand（Lex Fridman 长访谈、TechCrunch 报道、Fortune 特稿），把自己变成可被大厂高价 acquihire 的人才。这种 leverage 是<strong>人</strong>的 leverage，不是产品的 leverage。</p>
+<p>slock.ai 团队（7 人 + 40 agents 的中国 startup）没有这个 leverage。团队整建制 acquihire 在跨国语境下几乎不可能（参考 <a href="https://fortune.com/2025/07/11/the-exclusivity-on-openais-3-billion-acquisition-for-coding-startup-windsfurf-has-expired/">Windsurf 被 Google reverse acquihire</a> 时只挖了 CEO + 40 个核心员工）；闭源产品没法变成&quot;个人 brand 资产&quot;；中国 startup 在美国大厂的 acquihire 池子里也是边缘角色。</p>
+<p>所以 slock.ai 必须<strong>靠产品本身</strong>长出独立商业故事——给投资人交代、给团队发工资、给创始人退出。</p>
+<h3 id="对个人开发者读者的启示"><a class="markdownIt-Anchor" href="#对个人开发者读者的启示"></a> 对个人开发者读者的启示</h3>
+<p>这个对照对个人开发者读者特别有价值。<strong>开源 + 个人品牌不是&quot;放弃商业化&quot;的浪漫主义，而是另一种 leverage 路径</strong>——通过让自己变成稀缺人才完成退出。Peter 的路径是：写公司开源工具（PSPDFKit）→ 做高声誉个人开源（OpenClaw）→ 拿到大厂 acquihire offer → 项目进 foundation 保持独立。</p>
+<p>这条路对个人开发者比&quot;硬做 SaaS 融资&quot;更友好——它绕开了中国 startup 在美国市场必须解决的本地化、品牌、企业销售这一堆难题，直接把 leverage 放在&quot;个人 + 项目&quot;上。</p>
+<h3 id="顺便-challenge-一下-rc-的-diversity-as-moat"><a class="markdownIt-Anchor" href="#顺便-challenge-一下-rc-的-diversity-as-moat"></a> 顺便 challenge 一下 RC 的 “diversity as moat”</h3>
+<p>回到 slock.ai 自己的护城河叙事。RC 在播客里给的答案是：“对于像 slug 这个形态的话……我并不是非常担心模型厂主这样的东西，因为在我这的一个很重要的性质是 diversity，就是我一定会支持各种模型各种 agent。”</p>
+<p>这个 claim 不太站得住。openclaw 支持多模型（OpenAI / Anthropic / Google），<a href="https://cline.bot/">Cline</a> 支持 BYOM 不抽成，Aider 支持几十个 provider，Claude Code SDK 也是开放的。<strong>多模型支持本身不是壁垒，是 baseline</strong>。</p>
+<p>slock.ai 真正可能的护城河有两条——agent 动力学（§5 讨论过，有 substance 但还没成为理论）和 marketplace + agent fork 网络效应（§6 讨论过，但 openclaw 的 ClawHub 已经有 44k skills 在前）。这两条都没被验证。Diversity 不能算。</p>
+<h3 id="两个退出剧本作为参考"><a class="markdownIt-Anchor" href="#两个退出剧本作为参考"></a> 两个退出剧本作为参考</h3>
+<p><strong>Atom</strong>（2014 GitHub 开源 → 2018 Microsoft 收购 GitHub $7.5B → <a href="https://techcrunch.com/2022/06/08/github-sunsets-atom-the-software-dev-environment-it-launched-in-2011/">2022 sunset Atom</a>）：开源工具被大公司收购后陷入战略冲突（VS Code 是同公司更主流的产品），最终被 sunset。Peter 选 foundation 是对的——避免了 Atom 的剧本。</p>
+<p><strong>Windsurf reverse acquihire</strong>（2025-07）：OpenAI 同意 $3B 收购 Codeium/Windsurf；2025-07-11 因 Microsoft IP 条款破裂；同日 Google $2.4B 拿下 CEO + 40 个核心员工 + IP 授权；72 小时后 Cognition 接盘剩余资产、IP、商标和 ~210 员工。<strong>这是 AI agent 领域被三方撕扯瓜分的经典退出</strong>——印证了&quot;人比代码值钱&quot;在 AI 时代的极端化。</p>
+<p>写到这节末尾，我其实希望 slock.ai 团队此刻是真的急——不是怕被淘汰，而是窗口太短：必须赶在 cloud 化之前把非技术护城河做扎实，慢一步就可能错过。</p>
+<p>把架构、pattern、商业、退出路径这几条线放在一起，slock.ai 长什么样、能去哪？</p>
+<hr />
+<h2 id="9-总结slockai-的位置与个人开发者的启示"><a class="markdownIt-Anchor" href="#9-总结slockai-的位置与个人开发者的启示"></a> 9. 总结：slock.ai 的位置与个人开发者的启示</h2>
+<p>我开始写这篇文章的时候，原本想问&quot;slock.ai 有没有护城河&quot;。写完之后我觉得这是个错的问题。</p>
+<p>更准确的问题是：<strong>slock.ai 在哪条路上，这条路能走多远？</strong></p>
+<p>它是同 agent runner pattern（和 openclaw 一样的 local-first daemon + workspace 约定 + 注入式 prompt 文件）但是不同产品 pattern（chat-as-substrate vs personal assistant）。它选了 <em>agent native</em> 的难路（vs MS Teams / 飞书的 retrofit），必须显著超过 retrofit baseline 才能扩大 segment。&quot;agent 动力学&quot;有 substance 但仍是 anecdote、不是理论。商业上卡在 cloud 化的代价上——技术能解，但经济模型必须重构。退出路径上单轨——团队没法走 Peter 那条 acquihire。</p>
+<h3 id="对个人开发者读者的实用-takeaway"><a class="markdownIt-Anchor" href="#对个人开发者读者的实用-takeaway"></a> 对个人开发者读者的实用 takeaway</h3>
+<p><strong>第一</strong>：你做开源 agent 项目不一定要&quot;放弃商业化&quot;——Peter 这条路（开源 → 个人品牌 → 大厂 acquihire）是值得借鉴的。它把 leverage 放在&quot;个人 + 项目&quot;上，绕开了硬做 SaaS 必须解决的一堆难题。</p>
+<p><strong>第二</strong>：选 agent runner pattern 时，sandbox 钩子最好预留（哪怕你现在不用）。openclaw 留了，slock.ai 没留。但这未必是工程负债——agent 时代在已有 daemon 上加 sandbox 不算大工程；真正决定要不要留钩子的，更多是成本：每用户起一个隔离 sandbox 要持续烧钱，slock 当前 local-first 形态的红利之一就是这部分 cost 完全 offload 给了用户。从他们的 pricing plan 已经分出 Team 和 Business 两档来看，slock 团队应该是在为分摊这部分 cost 做商业准备的。所以&quot;留不留钩子&quot;是个工程决策，但底下是商业决策。</p>
+<p><strong>第三</strong>：chat-as-substrate 是个好 pattern，但工程实现的 default 是 retrofit（接入已有 chat），不是 agent native（自建）。如果你不是必须从零开始（必须 multi-agent + 必须 agent 之间互动 + 必须特殊 lifecycle），retrofit 会更便宜也更快到达用户。慎重做 agent native 的选择。</p>
+<h3 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h3>
+<p>RC 在播客里说过一句话：</p>
+<blockquote>
+<p>“今天 build 或不 build 这件事情，和你 code 或不 code 已经是正交的两件事情了。”</p>
+</blockquote>
+<p>这话其实我非常认同，但他也承认——“做软件还是有编程技术会更好”。所以 build 和 code 其实当前只是<strong>部分解耦</strong>，没真的正交。slock.ai 押注的就是这个解耦完成的那一天。</p>
+<p>而今天的 slock.ai，简单说就是：<strong>骨架像 openclaw，皮肤像 Slack，灵魂在 chat-as-substrate</strong>。骨架可以共用，皮肤可以重做——只有灵魂得靠市场来验证。</p>
+<p>所以我希望它能走通这条路。它代表的是 agent 形态里一条真正不同的方向——不是 IDE 插件、不是 cloud autonomous agent，而是把 chat 当衬底的那条少有人走的路。但 2026 年长得好看的 agent 产品已经太多，下一个问题不是 slock.ai 好不好看，而是<strong>它能不能活到那个 build / code 真的正交的日子</strong>。</p>
+<p><strong>说到底，我的担忧多过乐观。但希望我担忧错了。</strong></p>
+
+    </div>
+
+    
+    
+    
+<div class="comments" id="comments">
+  <script src="https://giscus.app/client.js"
+          data-repo="TCoherence/TCoherence.github.io"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkxMzE0MDY3MTA="
+          data-category="General"
+          data-category-id="DIC_kwDOB9Ubds4C8BCw"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="preferred_color_scheme"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>年轻的C同学
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://tcoherence.github.io/2026/05/02/slock-ai-chat-as-substrate/" title="Chat as Substrate：拆解 slock.ai 真正的产品 Pattern">https://tcoherence.github.io/2026/05/02/slock-ai-chat-as-substrate/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/AI/" rel="tag"># AI</a>
+              <a href="/tags/agent/" rel="tag"># agent</a>
+              <a href="/tags/slock-ai/" rel="tag"># slock.ai</a>
+              <a href="/tags/openclaw/" rel="tag"># openclaw</a>
+              <a href="/tags/%E4%BA%A7%E5%93%81%E5%88%86%E6%9E%90/" rel="tag"># 产品分析</a>
+              <a href="/tags/chat-as-substrate/" rel="tag"># chat-as-substrate</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/12/03/2021-back-to-China-during-pandemic/" rel="prev" title="2021_back_to_China_during_pandemic">
+      <i class="fa fa-chevron-left"></i> 2021_back_to_China_during_pandemic
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%88%91%E4%BB%A5%E4%B8%BA-slockai-%E6%98%AF-agent-in-sandbox"><span class="nav-text"> 1. 我以为 slock.ai 是 agent in sandbox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-slockai-%E7%9A%84%E7%9C%9F%E5%AE%9E%E6%9E%B6%E6%9E%84"><span class="nav-text"> 2. slock.ai 的真实架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#workspace%E7%BB%84%E7%BB%87-agent-%E7%8A%B6%E6%80%81%E7%9A%84%E5%9C%B0%E6%96%B9"><span class="nav-text"> Workspace：组织 agent 状态的地方</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cross-session-sharing%E8%A7%A3%E6%8E%89%E4%B8%80%E4%B8%AA-claude-code-%E7%94%A8%E6%88%B7%E9%83%BD%E5%8F%97%E8%BF%87%E7%9A%84%E8%8B%A6"><span class="nav-text"> Cross-session sharing：解掉一个 Claude Code 用户都受过的苦</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#task-claim%E6%8A%8A-exclusive-%E9%94%81%E6%90%AC%E8%BF%9B-agent-%E5%8D%8F%E4%BD%9C"><span class="nav-text"> Task claim：把 exclusive 锁搬进 agent 协作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%90%8C%E4%B8%80%E4%B8%AA-agent-runner-patternslockai-vs-openclaw"><span class="nav-text"> 3. 同一个 agent runner pattern：slock.ai vs openclaw</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E4%BA%A7%E5%93%81-pattern-%E5%88%86%E5%B2%94chat-as-substrate%E8%81%8A%E5%A4%A9%E5%8D%B3%E5%8D%8F%E4%BD%9C%E8%A1%AC%E5%BA%95"><span class="nav-text"> 4. 产品 pattern 分岔：chat as substrate（聊天即协作衬底）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8-slockai-%E9%87%8C%E8%BF%99%E6%84%8F%E5%91%B3%E7%9D%80%E4%BB%80%E4%B9%88"><span class="nav-text"> 在 slock.ai 里这意味着什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%A0%E4%B8%AA%E5%AE%B9%E6%98%93%E6%B7%B7%E6%B7%86%E7%9A%84%E8%BE%B9%E7%95%8C"><span class="nav-text"> 几个容易混淆的边界</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-agent-%E5%8A%A8%E5%8A%9B%E5%AD%A6multi-agent-human-%E6%98%AF%E7%9C%9F%E4%B8%9C%E8%A5%BF%E8%BF%98%E6%98%AF%E8%AF%9D%E6%9C%AF"><span class="nav-text"> 5. agent 动力学：multi-agent + human 是真东西还是话术？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#rc-%E7%9A%84%E4%B8%89%E4%B8%AA%E8%A7%82%E5%AF%9F"><span class="nav-text"> RC 的三个观察</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%A6%E6%9C%AF%E5%8F%82%E7%85%A7smallville-%E5%B7%B2%E7%BB%8F%E6%8A%8A%E8%BF%99%E4%BB%B6%E4%BA%8B%E5%81%9A%E4%BA%86%E4%B8%80%E9%81%8D"><span class="nav-text"> 学术参照：Smallville 已经把这件事做了一遍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%86%E8%BF%99%E4%B8%A4%E4%BB%B6%E4%BA%8B%E7%9A%84%E5%B7%AE%E5%88%AB%E4%B9%9F%E5%BE%97%E8%AF%B4%E6%B8%85%E6%A5%9A"><span class="nav-text"> 但这两件事的差别也得说清楚</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%99%E4%BB%B6%E4%BA%8B%E5%88%B0%E5%BA%95%E5%80%BC%E5%A4%9A%E5%B0%91%E9%92%B1"><span class="nav-text"> 这件事到底值多少钱</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E5%95%86%E4%B8%9A%E6%84%BF%E6%99%AFagent-native-vs-agent-retrofit"><span class="nav-text"> 6. 商业愿景：agent native vs agent retrofit</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#chat-as-substrate-%E4%B8%8D%E6%98%AF%E6%96%B0%E6%A6%82%E5%BF%B5"><span class="nav-text"> chat-as-substrate 不是新概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%92%B1%E4%BB%8E%E5%93%AA%E5%84%BF%E6%9D%A5%E5%BD%93%E5%89%8D%E7%9A%84%E5%8D%A1%E7%82%B9"><span class="nav-text"> 钱从哪儿来：当前的卡点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#marketplace-%E5%92%8C-fork%E5%8F%A6%E4%B8%80%E6%9D%A1%E6%8A%A4%E5%9F%8E%E6%B2%B3%E5%80%99%E9%80%89"><span class="nav-text"> Marketplace 和 fork：另一条护城河候选</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-cloud-%E5%8C%96%E8%A6%81%E4%BB%98%E7%9A%84%E4%B8%A4%E7%AC%94%E8%B4%A6"><span class="nav-text"> 7. Cloud 化要付的两笔账</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AC%94%E5%B7%A5%E7%A8%8B%E8%B4%A6"><span class="nav-text"> 第一笔：工程账</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%AC%94%E7%BB%8F%E6%B5%8E%E8%B4%A6"><span class="nav-text"> 第二笔：经济账</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8C%E8%A1%8C%E5%B7%B2%E7%BB%8F%E8%B5%B0%E8%BF%87%E4%BA%86"><span class="nav-text"> 同行已经走过了</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-%E9%80%80%E5%87%BA%E8%B7%AF%E5%BE%84%E4%B8%8D%E5%AF%B9%E7%A7%B0%E4%BA%BA%E5%80%BC%E9%92%B1-vs-%E4%BA%A7%E5%93%81%E5%80%BC%E9%92%B1"><span class="nav-text"> 8. 退出路径不对称：人值钱 vs 产品值钱</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%A4%E6%9D%A1%E9%80%80%E5%87%BA%E8%B7%AF%E5%BE%84%E5%AF%B9%E7%85%A7"><span class="nav-text"> 两条退出路径对照</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E4%B8%8D%E5%AF%B9%E7%A7%B0"><span class="nav-text"> 核心不对称</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E4%B8%AA%E4%BA%BA%E5%BC%80%E5%8F%91%E8%80%85%E8%AF%BB%E8%80%85%E7%9A%84%E5%90%AF%E7%A4%BA"><span class="nav-text"> 对个人开发者读者的启示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%BA%E4%BE%BF-challenge-%E4%B8%80%E4%B8%8B-rc-%E7%9A%84-diversity-as-moat"><span class="nav-text"> 顺便 challenge 一下 RC 的 “diversity as moat”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%A4%E4%B8%AA%E9%80%80%E5%87%BA%E5%89%A7%E6%9C%AC%E4%BD%9C%E4%B8%BA%E5%8F%82%E8%80%83"><span class="nav-text"> 两个退出剧本作为参考</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-%E6%80%BB%E7%BB%93slockai-%E7%9A%84%E4%BD%8D%E7%BD%AE%E4%B8%8E%E4%B8%AA%E4%BA%BA%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%84%E5%90%AF%E7%A4%BA"><span class="nav-text"> 9. 总结：slock.ai 的位置与个人开发者的启示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E4%B8%AA%E4%BA%BA%E5%BC%80%E5%8F%91%E8%80%85%E8%AF%BB%E8%80%85%E7%9A%84%E5%AE%9E%E7%94%A8-takeaway"><span class="nav-text"> 对个人开发者读者的实用 takeaway</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-text"> 结语</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="年轻的C同学"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">年轻的C同学</p>
+  <div class="site-description" itemprop="description">年轻的C同学的个人博客 — 关于工程、生活与一些碎片思考</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/TCoherence" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;TCoherence" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:hanzhiyang2019@u.northwestern.edu" title="E-Mail → mailto:hanzhiyang2019@u.northwestern.edu" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/yang_hanzhi" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;yang_hanzhi" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/profile.php?id=100025563873836" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id&#x3D;100025563873836" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">年轻的C同学</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    var darkMQ = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+    var mermaidTheme = (darkMQ && darkMQ.matches) ? 'dark' : 'forest';
+    mermaid.initialize({
+      theme    : mermaidTheme,
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+</body>
+</html>

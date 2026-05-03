@@ -305,7 +305,7 @@
 <p>Hub is a dumb device, just knows repeating one’s information to other(broadcast). But switch is smarter than hub, it will selectively to forward frame to different interface. This help switch to isolate collision domains. In reality, it seems another way to isolation collision domain called VLAN. But it is not the scope of this class.</p>
 <p>In reality, many devices share the media, that causes collision among them. So we can use Channel Partition(TDMA or FDMA) or Random Access(Aloha or CSMA) to solve this problem.</p>
 <h3 id="44-arp"><a class="markdownIt-Anchor" href="#44-arp"></a> 4.4 ARP</h3>
-<p>We use this to get the MAC address of other host. It is very important that the source and destination MAC in ARP is different with those in the head of Ethernet head, which is used to addressing. Here is an ARP message format(from <a href="http://www.cs.virginia.edu/~cs458/slides/module06-arpV2.pdf">http://www.cs.virginia.edu/~cs458/slides/module06-arpV2.pdf</a>)</p>
+<p>We use this to get the MAC address of other host. It is very important that the source and destination MAC in ARP is different with those in the head of Ethernet head, which is used to addressing. Here is an ARP message format(from http://www.cs.virginia.edu/~cs458/slides/module06-arpV2.pdf)</p>
 <p><img src="ARP_format_includingEthernet.png" alt="ARP_format_includingEthernet" /></p>
 <p>The one thing I don’t understand is that ARP is used to obtain MAC, and MAC is only used to addressing under the same subnet. WHY do we consider a scenario that one host A want to get another host B’s MAC address in a different subnet?</p>
 <p>Host A won’t send ARP to host B because they are not in the same subnet, host A will just send ARP to request gateway’s MAC address.</p>
@@ -445,20 +445,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -561,6 +561,21 @@
 
 
 
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    var darkMQ = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+    var mermaidTheme = (darkMQ && darkMQ.matches) ? 'dark' : 'forest';
+    mermaid.initialize({
+      theme    : mermaidTheme,
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
 
 
   

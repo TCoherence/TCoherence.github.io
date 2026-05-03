@@ -507,26 +507,26 @@ Hints : buckets.</p>
 brute force. We have to check every elements.</p>
 <h1 id="800-900"><a class="markdownIt-Anchor" href="#800-900"></a> 800 - 900</h1>
 <h2 id="811-subdomain-visit-count-easy"><a class="markdownIt-Anchor" href="#811-subdomain-visit-count-easy"></a> 811. Subdomain Visit Count [Easy]</h2>
-<p>A website domain like “<a href="http://discuss.leetcode.com">discuss.leetcode.com</a>” consists of various subdomains. At the top level, we have “com”, at the next level, we have “<a href="http://leetcode.com">leetcode.com</a>”, and at the lowest level, “<a href="http://discuss.leetcode.com">discuss.leetcode.com</a>”. When we visit a domain like “<a href="http://discuss.leetcode.com">discuss.leetcode.com</a>”, we will also visit the parent domains “<a href="http://leetcode.com">leetcode.com</a>” and “com” implicitly.</p>
-<p>Now, call a “count-paired domain” to be a count (representing the number of visits this domain received), followed by a space, followed by the address. An example of a count-paired domain might be “9001 <a href="http://discuss.leetcode.com">discuss.leetcode.com</a>”.</p>
+<p>A website domain like “discuss.leetcode.com” consists of various subdomains. At the top level, we have “com”, at the next level, we have “leetcode.com”, and at the lowest level, “discuss.leetcode.com”. When we visit a domain like “discuss.leetcode.com”, we will also visit the parent domains “leetcode.com” and “com” implicitly.</p>
+<p>Now, call a “count-paired domain” to be a count (representing the number of visits this domain received), followed by a space, followed by the address. An example of a count-paired domain might be “9001 discuss.leetcode.com”.</p>
 <p>We are given a list cpdomains of count-paired domains. We would like a list of count-paired domains, (in the same format as the input, and in any order), that explicitly counts the number of visits to each subdomain.</p>
 <p><strong>Example 1:</strong></p>
 <blockquote>
 <p>Input:<br />
-[“9001 <a href="http://discuss.leetcode.com">discuss.leetcode.com</a>”]<br />
+[“9001 discuss.leetcode.com”]<br />
 Output:<br />
-[“9001 <a href="http://discuss.leetcode.com">discuss.leetcode.com</a>”, “9001 <a href="http://leetcode.com">leetcode.com</a>”, “9001 com”]<br />
+[“9001 discuss.leetcode.com”, “9001 leetcode.com”, “9001 com”]<br />
 Explanation:<br />
-We only have one website domain: “<a href="http://discuss.leetcode.com">discuss.leetcode.com</a>”. As discussed above, the subdomain “<a href="http://leetcode.com">leetcode.com</a>” and “com” will also be visited. So they will all be visited 9001 times.</p>
+We only have one website domain: “discuss.leetcode.com”. As discussed above, the subdomain “leetcode.com” and “com” will also be visited. So they will all be visited 9001 times.</p>
 </blockquote>
 <p><strong>Example 2:</strong></p>
 <blockquote>
 <p>Input:<br />
-[“900 <a href="http://google.mail.com">google.mail.com</a>”, “50 <a href="http://yahoo.com">yahoo.com</a>”, “1 <a href="http://intel.mail.com">intel.mail.com</a>”, “5 <a href="http://wiki.org">wiki.org</a>”]<br />
+[“900 google.mail.com”, “50 yahoo.com”, “1 intel.mail.com”, “5 wiki.org”]<br />
 Output:<br />
-[“901 <a href="http://mail.com">mail.com</a>”,“50 <a href="http://yahoo.com">yahoo.com</a>”,“900 <a href="http://google.mail.com">google.mail.com</a>”,“5 <a href="http://wiki.org">wiki.org</a>”,“5 org”,“1 <a href="http://intel.mail.com">intel.mail.com</a>”,“951 com”]<br />
+[“901 mail.com”,“50 yahoo.com”,“900 google.mail.com”,“5 wiki.org”,“5 org”,“1 intel.mail.com”,“951 com”]<br />
 Explanation:<br />
-We will visit “<a href="http://google.mail.com">google.mail.com</a>” 900 times, “<a href="http://yahoo.com">yahoo.com</a>” 50 times, “<a href="http://intel.mail.com">intel.mail.com</a>” once and “<a href="http://wiki.org">wiki.org</a>” 5 times. For the subdomains, we</p>
+We will visit “google.mail.com” 900 times, “yahoo.com” 50 times, “intel.mail.com” once and “wiki.org” 5 times. For the subdomains, we</p>
 </blockquote>
 <p><strong>IDEA:</strong><br />
 Easy HashMap</p>
@@ -788,20 +788,20 @@ Keyword: TreeSet, Point, Priority(Haven’t been reached, do it in few days late
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -904,6 +904,21 @@ Keyword: TreeSet, Point, Priority(Haven’t been reached, do it in few days late
 
 
 
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    var darkMQ = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+    var mermaidTheme = (darkMQ && darkMQ.matches) ? 'dark' : 'forest';
+    mermaid.initialize({
+      theme    : mermaidTheme,
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
 
 
   
