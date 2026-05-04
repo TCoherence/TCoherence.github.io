@@ -1,15 +1,16 @@
 'use strict';
 
 /**
- * Hexo helper for the AI 报告 landing hub at /reports/.
+ * Hexo helpers for the AI 报告 landing hub at /reports/.
  *
- * Returns an array of topic descriptors with statically-configured display
- * data (label/icon/freq/desc) merged with runtime stats (post count, latest
- * date) computed from `site.posts`. The reports.swig layout iterates this.
+ * - `reports_topics()`: returns the 5 topic cards with display data merged
+ *   with runtime stats (count, latest date) computed from `site.posts`.
+ * - `reports_latest()`: returns posts dated on the most-recent date that
+ *   has any AI-report posts, used to render a "最新更新" quick-jump strip.
  *
  * Adding/renaming a topic: edit TOPICS below + the matching block in
- * scripts/sync-ai-reports.js. The two share the same `label` field as a
- * join key with `categories: [AI报告, <label>]` on each synced post.
+ * scripts/sync-ai-reports.js. The two share the same `label` field as the
+ * join key (`categories: [AI报告, <label>]` on each synced primary post).
  */
 
 const TOPICS = [
@@ -44,31 +45,95 @@ const TOPICS = [
   {
     key: 'market',
     label: '市场',
-    icon: 'fa fa-line-chart',
+    icon: 'fa fa-chart-line',
     freq: 'daily + weekly',
     desc: 'AI / 财经 / 中美地缘政治',
   },
 ];
 
+// Frontmatter dates are in Asia/Shanghai. Format and compare in the same
+// zone — formatting in system-local (e.g. PDT) shifts a Shanghai-noon
+// date back one calendar day.
+const DISPLAY_TZ = 'Asia/Shanghai';
+
+function fmtDate(d) {
+  if (!d) return null;
+  if (d.tz) return d.tz(DISPLAY_TZ).format('YYYY-MM-DD');
+  if (d.format) return d.format('YYYY-MM-DD');
+  return new Date(d).toISOString().slice(0, 10);
+}
+
 hexo.extend.helper.register('reports_topics', function () {
-  // hexo.model('Post') sees hidden posts; this.site.posts may have been
-  // filtered by hexo-hide-posts already (depends on which generator is rendering).
+  // hexo.model('Post') sees hidden posts; this.site.posts gets filtered by
+  // hexo-hide-posts for some generators (which is why we go to the model).
   const Post = hexo.model('Post');
   const allPosts = Post.find({ published: true });
   return TOPICS.map((t) => {
-    const posts = allPosts.filter((p) => {
+    const matched = allPosts.filter((p) => {
       const cats = p.categories;
       if (!cats) return false;
-      // categories on a post is an array of category IDs; resolve via Category model.
-      const catNames = cats.toArray().map((c) => c.name);
-      return catNames.includes(t.label);
+      return cats.toArray().some((c) => c.name === t.label);
     });
-    const sorted = posts.sort('-date');
-    const latest = sorted.length ? sorted.toArray()[0] : null;
+    // Plain JS sort — Warehouse's `sort('-date')` doesn't reliably reorder
+    // here, leaving "latest" as whatever was loaded first.
+    const arr = matched.toArray();
+    arr.sort((a, b) => {
+      const ad = a.date ? +a.date : 0;
+      const bd = b.date ? +b.date : 0;
+      return bd - ad;
+    });
+    const latest = arr.length ? arr[0] : null;
     return Object.assign({}, t, {
-      count: posts.length,
-      latest_date: latest ? latest.date.format('YYYY-MM-DD') : null,
+      count: arr.length,
+      latest_date: fmtDate(latest && latest.date),
       url: `/categories/AI%E6%8A%A5%E5%91%8A/${encodeURIComponent(t.label)}/`,
     });
   });
+});
+
+hexo.extend.helper.register('reports_latest', function () {
+  const Post = hexo.model('Post');
+  const allPosts = Post.find({ published: true });
+
+  // All AI-report primaries (secondaries have no category).
+  const arr = allPosts
+    .filter((p) => {
+      const cats = p.categories;
+      if (!cats) return false;
+      return cats.toArray().some((c) => c.name === 'AI报告');
+    })
+    .toArray();
+
+  if (arr.length === 0) return { date: null, items: [] };
+
+  arr.sort((a, b) => +b.date - +a.date);
+  const latestDateStr = fmtDate(arr[0].date);
+  const sameDay = arr.filter((p) => fmtDate(p.date) === latestDateStr);
+
+  const topicByLabel = Object.fromEntries(
+    TOPICS.map((t) => [t.label, t])
+  );
+  const topicOrder = Object.fromEntries(
+    TOPICS.map((t, i) => [t.key, i])
+  );
+
+  const items = sameDay.map((p) => {
+    const cats = p.categories ? p.categories.toArray() : [];
+    const topicCat = cats.find((c) => topicByLabel[c.name]);
+    const topic = topicCat ? topicByLabel[topicCat.name] : null;
+    return {
+      topic_key: topic ? topic.key : '',
+      topic_label: topic ? topic.label : '',
+      title: p.title,
+      url: '/' + (p.path || '').replace(/^\/+/, ''),
+    };
+  });
+
+  items.sort((a, b) => {
+    const o =
+      (topicOrder[a.topic_key] ?? 99) - (topicOrder[b.topic_key] ?? 99);
+    return o !== 0 ? o : a.title.localeCompare(b.title);
+  });
+
+  return { date: latestDateStr, items };
 });
