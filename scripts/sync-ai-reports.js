@@ -182,20 +182,25 @@ function humanize(s) {
 
 function bucketToDate(bucket) {
   if (/^\d{4}-\d{2}-\d{2}$/.test(bucket)) return bucket;
+  // ISO week format `YYYY-WNN`: anchor to Sunday (end of week) so the
+  // post's "date" reflects when the report covers *through*, not when
+  // the period started. e.g. 2026-W18 covers Apr 27–May 3 → date = May 3.
   let m = bucket.match(/^(\d{4})-W(\d{2})$/);
-  if (m) return isoWeekToMondayDate(parseInt(m[1], 10), parseInt(m[2], 10));
+  if (m) return isoWeekToSundayDate(parseInt(m[1], 10), parseInt(m[2], 10));
   m = bucket.match(/(\d{4}-\d{2}-\d{2})/);
   if (m) return m[1];
   return null;
 }
 
-function isoWeekToMondayDate(year, week) {
+function isoWeekToSundayDate(year, week) {
+  // ISO 8601: week 1 contains Jan 4. Compute the Monday of `week`, then
+  // add 6 days to reach Sunday.
   const jan4 = new Date(Date.UTC(year, 0, 4));
-  const jan4Day = (jan4.getUTCDay() + 6) % 7;
+  const jan4Day = (jan4.getUTCDay() + 6) % 7; // Mon=0..Sun=6
   const week1Monday = new Date(jan4);
   week1Monday.setUTCDate(jan4.getUTCDate() - jan4Day);
   const target = new Date(week1Monday);
-  target.setUTCDate(week1Monday.getUTCDate() + (week - 1) * 7);
+  target.setUTCDate(week1Monday.getUTCDate() + (week - 1) * 7 + 6);
   return target.toISOString().slice(0, 10);
 }
 
