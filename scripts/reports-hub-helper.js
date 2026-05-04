@@ -51,10 +51,11 @@ const TOPICS = [
   },
 ];
 
-// Frontmatter dates are in Asia/Shanghai. Format and compare in the same
-// zone — formatting in system-local (e.g. PDT) shifts a Shanghai-noon
-// date back one calendar day.
-const DISPLAY_TZ = 'Asia/Shanghai';
+// Frontmatter dates are TZ-naive ("YYYY-MM-DD HH:mm:ss"); Hexo parses them
+// in `_config.yml timezone:`. Mirror that TZ here so card "最新" labels and
+// the "最新更新" strip's date both align with what the post listing pages
+// show. Update both this constant and `_config.yml timezone:` together.
+const DISPLAY_TZ = 'America/Los_Angeles';
 
 function fmtDate(d) {
   if (!d) return null;
@@ -135,29 +136,8 @@ hexo.extend.helper.register('reports_latest', function () {
     return o !== 0 ? o : a.title.localeCompare(b.title);
   });
 
-  // Dedupe to one row per topic — for topics like 市场 that produce 7+
-  // parallel primaries per day, expose only the alphabetical first as a
-  // representative and link to the topic's category page for the rest.
-  const seenTopics = new Set();
-  const counts = {};
-  for (const it of allItems) {
-    counts[it.topic_key] = (counts[it.topic_key] || 0) + 1;
-  }
-  const items = [];
-  for (const it of allItems) {
-    if (seenTopics.has(it.topic_key)) continue;
-    seenTopics.add(it.topic_key);
-    const extra = counts[it.topic_key] - 1;
-    items.push(
-      Object.assign({}, it, {
-        extra_count: extra,
-        extra_url:
-          extra > 0
-            ? `/categories/AI%E6%8A%A5%E5%91%8A/${encodeURIComponent(it.topic_label)}/`
-            : null,
-      })
-    );
-  }
-
-  return { date: latestDateStr, items };
+  // Show every primary on the latest day. Secondaries are excluded
+  // upstream (no `AI报告` category on them), so e.g. market daily yields
+  // exactly ai/finance/politics rather than the full 7 parallel files.
+  return { date: latestDateStr, items: allItems };
 });

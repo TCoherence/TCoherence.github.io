@@ -34,11 +34,11 @@ const PENDING_FILE = path.join(STATE_DIR, 'ai-reports-pending.json');
 const OUTPUT_ROOT = path.join(hexo.source_dir, '_posts/ai-reports');
 
 // Hexo's preferred frontmatter format is `YYYY-MM-DD HH:mm:ss` — parsed
-// with `_config.yml timezone:` (Asia/Shanghai for this blog), no offset
-// suffix. ISO-with-offset like `2026-04-27T12:00:00+08:00` round-trips
-// through Hexo's pipeline as the same instant in PDT (system local) and
-// renders one *day* off in the HTML <time> tag. Plain "DATE 12:00:00"
-// avoids both that and the date-only UTC-midnight parsing bug.
+// with whatever `_config.yml timezone:` says, no offset suffix. Anchoring
+// at noon avoids any DST/edge-of-day shift in display. ISO-with-offset
+// like `2026-04-27T12:00:00+08:00` round-trips through Hexo's pipeline as
+// the same instant in system-local time and renders one *day* off in the
+// HTML <time> tag, so we deliberately stay TZ-naive here.
 const DATE_TIME_SUFFIX = ' 12:00:00';
 
 // Per-topic config. `parse(relpath)` returns {date, slug, title, bucket,
@@ -147,20 +147,27 @@ const TOPICS = {
     label: '市场',
     sourceDirs: ['market-briefing/daily', 'market-briefing/weekly'],
     parse(relpath) {
-      // daily: "2026-04-07/ai.md" — 3 sibling files, all primary, no hierarchy
-      // weekly: "2026-W18/cross-domain.md" — single, primary
+      // daily bucket: "2026-04-07/<slot>.md".
+      //   Primary slots = exec summaries (ai / finance / politics).
+      //   Secondary slots = sub-domain detail (frontier_radar, macro_news,
+      //   paper_layer, people_pool) — surfaced via the primaries' "相关
+      //   细分报告" footer instead of cluttering the category listing.
+      // weekly bucket: "2026-W18/cross-domain.md" — single, primary.
       const parts = relpath.split('/');
       const bucket = parts[0];
       const date = bucketToDate(bucket);
       if (!date) return null;
       const filename = parts[parts.length - 1].replace(/\.md$/, '');
       const safeBucket = bucket.replace(/[^a-zA-Z0-9-]/g, '-');
+      const isDailyBucket = /^\d{4}-\d{2}-\d{2}$/.test(bucket);
+      const DAILY_PRIMARY = new Set(['ai', 'finance', 'politics']);
+      const isPrimary = isDailyBucket ? DAILY_PRIMARY.has(filename) : true;
       return {
         date,
         slug: `${safeBucket}-${filename}`,
         title: `[市场·${bucket}] ${humanize(filename)}`,
         bucket,
-        isPrimary: true,
+        isPrimary,
         group: `market-${bucket}`,
       };
     },
