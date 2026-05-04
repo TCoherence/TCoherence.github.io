@@ -76,6 +76,15 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: next-reloaded
 
+# AI 报告板块的隐藏配置 — 通过 hexo-hide-posts 让 hidden: true 的 post
+# 默认从所有 generator 隐藏（首页/archive/tag/json 搜索/RSS）
+# 仅在下面 allowlist 里的 generator 保留可见。
+hide_posts:
+  noindex: true                # <meta name="robots" content="noindex">
+  filter: hidden               # 触发的 frontmatter key
+  allowlist_generators:
+    - category                 # /categories/AI报告/<topic>/ 仍能列出报告
+
 ## markdown_it_plus: https://github.com/CHENXCHEN/hexo-renderer-markdown-it-plus
 markdown_it_plus:
     highlight: true

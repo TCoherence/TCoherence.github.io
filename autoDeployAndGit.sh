@@ -22,6 +22,15 @@ echo "==========================================="
 "$HEXO" clean
 "$HEXO" deploy --generate
 
+# Promote AI-reports watermark only after deploy succeeded — sync wrote a
+# pending watermark earlier this build; promoting it means "next build skips
+# files we just shipped." If deploy had failed, set -e would have exited and
+# pending stays — next build re-syncs the same files (idempotent).
+if [[ -f .cache/ai-reports-pending.json ]]; then
+  mv .cache/ai-reports-pending.json .cache/ai-reports-watermark.json
+  echo "[ai-reports] watermark advanced after successful deploy"
+fi
+
 echo "==========================================="
 echo "==== git add (source-only) / commit / push"
 echo "==========================================="

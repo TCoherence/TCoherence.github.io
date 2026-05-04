@@ -8,6 +8,11 @@ node_modules/
 public/
 .deploy*/
 .claude/
+
+# AI 报告：每次 build 由 scripts/sync-ai-reports.js 从 oh-my-agent dir
+# 重新生成；watermark 也是 derived 状态。
+/source/_posts/ai-reports/
+/.cache/
 themes/*
 !themes/next-reloaded
 
