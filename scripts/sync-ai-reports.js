@@ -25,8 +25,16 @@ const WATERMARK_FILE = path.join(STATE_DIR, 'ai-reports-watermark.json');
 const PENDING_FILE = path.join(STATE_DIR, 'ai-reports-pending.json');
 const OUTPUT_ROOT = path.join(hexo.source_dir, '_posts/ai-reports');
 
-// Per-topic config. `parse(relpath)` returns {date, slug, title} or null
-// if the path doesn't match an expected shape (and the file is skipped).
+// Per-topic config. `parse(relpath)` returns {date, slug, title, bucket,
+// isPrimary, group} or null if the path doesn't match an expected shape.
+//
+// `isPrimary` distinguishes summary-style files (shown on listing pages)
+// from detail files like deals/<date>/references/* and podcast/<bucket>/
+// _episodes/* (hidden from listings, only reachable from the primary's
+// auto-injected "相关报告" footer).
+//
+// `group` is a stable key tying primaries to their secondaries within the
+// same date/bucket so the footer-injection pass can find siblings.
 const TOPICS = {
   deals: {
     label: '折扣',
@@ -44,7 +52,14 @@ const TOPICS = {
       const labelSuffix = isReference
         ? `Sources · ${humanize(filename)}`
         : humanize(filename);
-      return { date, slug, title: `[折扣·${date}] ${labelSuffix}` };
+      return {
+        date,
+        slug,
+        title: `[折扣·${date}] ${labelSuffix}`,
+        bucket: date,
+        isPrimary: !isReference,
+        group: `deals-${date}`,
+      };
     },
   },
 
@@ -52,11 +67,18 @@ const TOPICS = {
     label: '论文',
     sourceDirs: ['paper-digest/daily'],
     parse(relpath) {
-      // "2026-05-03.md"
+      // "2026-05-03.md" — single file/day, always primary.
       const m = relpath.match(/^(\d{4}-\d{2}-\d{2})\.md$/);
       if (!m) return null;
       const date = m[1];
-      return { date, slug: date, title: `[论文·${date}]` };
+      return {
+        date,
+        slug: date,
+        title: `[论文·${date}]`,
+        bucket: date,
+        isPrimary: true,
+        group: `papers-${date}`,
+      };
     },
   },
 
@@ -64,11 +86,18 @@ const TOPICS = {
     label: '房市',
     sourceDirs: ['seattle-metro-housing-watch/weekly'],
     parse(relpath) {
-      // "2026-04-19.md"
+      // "2026-04-19.md" — single file/week, always primary.
       const m = relpath.match(/^(\d{4}-\d{2}-\d{2})\.md$/);
       if (!m) return null;
       const date = m[1];
-      return { date, slug: date, title: `[房市·${date}]` };
+      return {
+        date,
+        slug: date,
+        title: `[房市·${date}]`,
+        bucket: date,
+        isPrimary: true,
+        group: `housing-${date}`,
+      };
     },
   },
 
@@ -77,15 +106,13 @@ const TOPICS = {
     sourceDirs: ['youtube-podcast-digest/weekly'],
     parse(relpath) {
       // "2026-W18/report.md" or "2026-W18/_episodes/<ep>.md"
-      // or "catchup-14d-2026-04-17/..." (date-style bucket)
+      // or "catchup-14d-2026-04-17/..." (date-style bucket).
       const parts = relpath.split('/');
       const bucket = parts[0];
       const date = bucketToDate(bucket);
       if (!date) return null;
       const isEpisode = parts[1] === '_episodes';
       const filename = parts[parts.length - 1].replace(/\.md$/, '');
-      // Episode filenames look like "deep_dive__JVO8roYiNXM" — humanize the
-      // category half, keep the youtube id verbatim.
       let labelSuffix;
       let slugBase;
       if (isEpisode) {
@@ -106,6 +133,9 @@ const TOPICS = {
         date,
         slug: `${safeBucket}-${slugBase}`,
         title: `[Podcast·${bucket}] ${labelSuffix}`,
+        bucket,
+        isPrimary: !isEpisode,
+        group: `podcast-${bucket}`,
       };
     },
   },
@@ -114,8 +144,8 @@ const TOPICS = {
     label: '市场',
     sourceDirs: ['market-briefing/daily', 'market-briefing/weekly'],
     parse(relpath) {
-      // daily: "2026-04-07/ai.md"
-      // weekly: "2026-W18/cross-domain.md"
+      // daily: "2026-04-07/ai.md" (3 sibling files, all primary, cross-link)
+      // weekly: "2026-W18/cross-domain.md" (single, primary)
       const parts = relpath.split('/');
       const bucket = parts[0];
       const date = bucketToDate(bucket);
@@ -126,6 +156,9 @@ const TOPICS = {
         date,
         slug: `${safeBucket}-${filename}`,
         title: `[市场·${bucket}] ${humanize(filename)}`,
+        bucket,
+        isPrimary: true,
+        group: `market-${bucket}`,
       };
     },
   },

@@ -61,4 +61,85 @@
   pre.mermaid svg {
     background: #1f2227 !important;
   }
+
+  // Reports hub cards in dark mode.
+  .reports-card {
+    background: #2a2e34 !important;
+    border-color: #3a3f47 !important;
+  }
+  .reports-card:hover {
+    background: #323841 !important;
+    border-color: #55dae1 !important;
+  }
+  .reports-card-meta,
+  .reports-card-latest,
+  .reports-card-desc {
+    color: #b8bdc4 !important;
+  }
+}
+
+// AI 报告 hub landing page.
+.reports-hub-intro {
+  margin-bottom: 30px;
+  font-size: 0.95em;
+  color: #666;
+  line-height: 1.7;
+}
+
+.reports-hub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+  margin-top: 10px;
+}
+
+.reports-card {
+  display: flex;
+  flex-direction: column;
+  padding: 22px;
+  background: #fafafa;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.reports-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  border-color: #55dae1;
+  text-decoration: none;
+}
+
+.reports-card-icon {
+  font-size: 1.8em;
+  color: #55dae1;
+  margin-bottom: 10px;
+}
+
+.reports-card-title {
+  font-size: 1.25em;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: inherit;
+}
+
+.reports-card-meta {
+  font-size: 0.85em;
+  color: #888;
+  margin-bottom: 4px;
+}
+
+.reports-card-latest {
+  font-size: 0.85em;
+  color: #999;
+  margin-bottom: 10px;
+}
+
+.reports-card-desc {
+  font-size: 0.9em;
+  color: #555;
+  line-height: 1.5;
+  margin-top: auto;
 }
