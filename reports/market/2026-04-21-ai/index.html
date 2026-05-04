@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 8.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/images/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tcoherence.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":2,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="AI 日报｜2026-04-21 一句话结论：Amazon 追加最高 $250 亿投资 Anthropic 并锁定 5GW Trainium 算力，标志前沿 AI 竞赛进入&quot;基础设施绑定&quot;新阶段；OpenAI Spud（GPT-5.5）被捕获在生产级 API 测试中，发布或在数日内；垂直专用模型（GPT-Rosalind 生命科学、GPT-5.4-Cyber 网安）成为新的差">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[市场·2026-04-21] AI">
+<meta property="og:url" content="https://tcoherence.github.io/reports/market/2026-04-21-ai/index.html">
+<meta property="og:site_name" content="Hanzhi&#39;s BLOG">
+<meta property="og:description" content="AI 日报｜2026-04-21 一句话结论：Amazon 追加最高 $250 亿投资 Anthropic 并锁定 5GW Trainium 算力，标志前沿 AI 竞赛进入&quot;基础设施绑定&quot;新阶段；OpenAI Spud（GPT-5.5）被捕获在生产级 API 测试中，发布或在数日内；垂直专用模型（GPT-Rosalind 生命科学、GPT-5.4-Cyber 网安）成为新的差">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-04-20T09:00:00.000Z">
+<meta property="article:modified_time" content="2026-05-04T04:33:48.492Z">
+<meta property="article:author" content="年轻的C同学">
+<meta property="article:tag" content="Hanzhi, 博客, blog, hexo, next, 软件工程, 生活">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://tcoherence.github.io/reports/market/2026-04-21-ai/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>[市场·2026-04-21] AI | Hanzhi's BLOG</title><meta name="robots" content="noindex">
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hanzhi's BLOG</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录、思考、生活</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-reports">
+
+    <a href="/categories/AI%E6%8A%A5%E5%91%8A/" rel="section"><i class="fa fa-newspaper-o fa-fw"></i>AI 报告</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tcoherence.github.io/reports/market/2026-04-21-ai/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="年轻的C同学">
+      <meta itemprop="description" content="年轻的C同学的个人博客 — 关于工程、生活与一些碎片思考">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hanzhi's BLOG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [市场·2026-04-21] AI
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2026-04-20 17:00:00" itemprop="dateCreated datePublished" datetime="2026-04-20T17:00:00+08:00">2026-04-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-05-04 12:33:48" itemprop="dateModified" datetime="2026-05-04T12:33:48+08:00">2026-05-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AI%E6%8A%A5%E5%91%8A/" itemprop="url" rel="index"><span itemprop="name">AI报告</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AI%E6%8A%A5%E5%91%8A/%E5%B8%82%E5%9C%BA/" itemprop="url" rel="index"><span itemprop="name">市场</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="ai-日报2026-04-21"><a class="markdownIt-Anchor" href="#ai-日报2026-04-21"></a> AI 日报｜2026-04-21</h1>
+<p>一句话结论：Amazon 追加最高 $250 亿投资 Anthropic 并锁定 5GW Trainium 算力，标志前沿 AI 竞赛进入&quot;基础设施绑定&quot;新阶段；OpenAI Spud（GPT-5.5）被捕获在生产级 API 测试中，发布或在数日内；垂直专用模型（GPT-Rosalind 生命科学、GPT-5.4-Cyber 网安）成为新的差异化战场。</p>
+<h2 id="摘要"><a class="markdownIt-Anchor" href="#摘要"></a> 摘要</h2>
+<p>本日最大事件是 Amazon 宣布向 Anthropic 追加最高 $250 亿美元投资（首期 $50 亿即时到账），附带 Anthropic 未来十年在 AWS 上消费超 $1000 亿、锁定 5GW Trainium2/3 算力的对价协议。这是继 2 月 Amazon 向 OpenAI 投 $500 亿后的第二笔巨额 AI 基础设施押注，凸显云巨头正以&quot;投资+算力锁定&quot;模式圈占前沿模型公司。同日，OpenAI 代号 Spud（疑似 GPT-5.5）的下一代模型被 API 监控捕获在生产级测试中，Polymarket 给出 4 月 23 日发布概率 81%。垂直专用模型持续扩张——GPT-Rosalind（生命科学）已面向企业受信用户开放 preview，Physical Intelligence 发布 π0.7 展示通用机器人基座模型新进展。</p>
+<h2 id="frontier-labs-frontier-model-radar"><a class="markdownIt-Anchor" href="#frontier-labs-frontier-model-radar"></a> Frontier Labs / Frontier Model Radar</h2>
+<ul>
+<li><strong>Anthropic × Amazon 扩大合作</strong>：Amazon 将向 Anthropic 追加投资最高 $250 亿（首批 $50 亿按 $3800 亿估值即时注入），Anthropic 承诺十年在 AWS 消费超 $1000 亿，并锁定 5GW Trainium2/Trainium3 算力，年底前上线近 1GW。Anthropic 年化收入已超 $300 亿（2025 年底约 $90 亿）。(<a href="https://www.cnbc.com/2026/04/20/amazon-invest-up-to-25-billion-in-anthropic-part-of-ai-infrastructure.html">CNBC</a>, <a href="https://www.engadget.com/ai/amazon-will-invest-up-to-25-billion-in-anthropic-in-a-broad-deal-225239302.html">Engadget</a>)</li>
+<li><strong>OpenAI Spud 生产级测试曝光</strong>：API 监控于 4 月 19 日捕获代号 Spud 模型在生产环境运行，预训练于 3 月 24 日完成。该模型定位为正面对标 Claude Mythos 的下一代旗舰，疑似 GPT-5.5/GPT-5o。Polymarket 4 月 23 日发布概率达 81%。(<a href="https://medium.com/@adityakumarjha292004/openais-next-ai-model-was-caught-live-testing-and-it-could-change-everything-about-how-you-use-73f87883c813">Medium</a>, <a href="https://the-decoder.com/openais-leaked-memo-says-new-spud-model-will-make-all-its-products-significantly-better/">The Decoder</a>)</li>
+<li><strong>GPT-Rosalind 生命科学 preview 开放</strong>：OpenAI 面向 Amgen、Moderna、Novo Nordisk、Thermo Fisher 等受信企业客户开放 GPT-Rosalind 研究预览，覆盖基因组学、蛋白质工程、药物发现流程，配套 Life Sciences 插件对接 50+ 科学数据源。(<a href="https://openai.com/index/introducing-gpt-rosalind/">OpenAI</a>, <a href="https://venturebeat.com/technology/openai-debuts-gpt-rosalind-a-new-limited-access-model-for-life-sciences-and-broader-codex-plugin-on-github">VentureBeat</a>)</li>
+<li><strong>xAI Grok 4.3 静默上线</strong>：4 月 17 日 Grok 4.3 beta 向 SuperGrok/$300 月费用户开放，Musk 确认为 0.5T 参数版本，1T 版数日内到来。Grok 5 正在 Colossus 2 超级集群上训练，据报 6T 参数。(<a href="https://llm-stats.com/llm-updates">LLM Stats</a>)</li>
+<li><strong>ChatGPT 大规模宕机</strong>：4 月 20 日 10:05am ET 起 ChatGPT 全球大面积不可用，OpenAI 已部署修复并监控恢复中。(<a href="https://www.techradar.com/news/live/chatgpt-down-april-2026">TechRadar</a>)</li>
+</ul>
+<p><strong>未验证前沿信号</strong>：</p>
+<ul>
+<li>Spud 具体能力边界与 benchmark 尚无官方披露，仅有泄露内部备忘录和生产测试痕迹。</li>
+<li>Grok 5 的 6T 参数规模为社区传言，无官方确认。</li>
+</ul>
+<h2 id="关键人物与社区信号"><a class="markdownIt-Anchor" href="#关键人物与社区信号"></a> 关键人物与社区信号</h2>
+<ul>
+<li><strong>Sam Altman</strong>（OpenAI CEO）：未直接发声但 Spud 泄露引发社区广泛关注，Altman 此前确认预训练 3/24 完成、“几周内发布”。</li>
+<li><strong>Karol Hausman</strong>（Physical Intelligence CEO/联合创始人）：π0.7 机器人基座模型发布，展示未训练任务的零样本执行能力，标志通用机器人大模型的关键进展。(<a href="https://techcrunch.com/2026/04/16/physical-intelligence-a-hot-robotics-startup-says-its-new-robot-brain-can-figure-out-tasks-it-was-never-taught/">TechCrunch</a>)</li>
+<li><strong>Sergey Levine</strong>（Physical Intelligence 联合创始人/UC Berkeley 教授）：表示模型跨越&quot;从精确复现训练任务到组合泛化&quot;的门槛后，“能力增长超过线性”。</li>
+<li><strong>洪乐潼 Carina Hong</strong>（Axiom Math 创始人）：24 岁华人数学家，Axiom 完成 $2 亿 A 轮融资、估值 $16 亿，探索 AI for Math 方向，本日登上张小珺播客进行首次中文深度访谈。(<a href="https://b.capital/why-we-invested/toward-mathematical-superintelligence-why-we-invested-in-axiom/">B Capital</a>)</li>
+</ul>
+<h2 id="energy"><a class="markdownIt-Anchor" href="#energy"></a> Energy</h2>
+<ul>
+<li><strong>US 公用事业 $1.4 万亿资本开支计划</strong>：4 月 14 日分析显示，美国投资者所有公用事业公司已公布到 2030 年 $1.4 万亿资本开支计划（同比增 27%），主要驱动力为 AI 数据中心电力需求。Duke Energy 承诺 $1022 亿、Southern Company $812 亿。AI 用电已占美国总电力的约 9%。(<a href="https://tech-insider.org/us-utility-1-4-trillion-ai-data-center-energy-2026/">Tech Insider</a>)</li>
+<li><strong>Amazon × Anthropic 5GW 算力协议</strong>：Anthropic 锁定 5GW 新算力（Trainium2 + Trainium3），年底前上线近 1GW，折射 AI 能源需求的指数级增长。</li>
+</ul>
+<h2 id="chips"><a class="markdownIt-Anchor" href="#chips"></a> Chips</h2>
+<ul>
+<li><strong>NVIDIA Blackwell 售罄至年中</strong>：Blackwell GPU 单价约 $40,000，已售罄至 2026 年中，TSMC 下一代 CoWoS 封装产能 70% 被 NVIDIA 锁定，交付周期 36-52 周。NVIDIA 与 TSMC 签署美国本土首块 Blackwell 晶圆的里程碑。(<a href="https://blogs.nvidia.com/blog/tsmc-blackwell-manufacturing/">NVIDIA Blog</a>)</li>
+<li><strong>全球半导体产业 $9750 亿峰值</strong>：2026 年全球半导体销售预计达 $9750 亿历史新高，同比增长 26%，AI 基础设施建设为核心驱动。Samsung 计划 2026 年投入 110 万亿韩元（约 $732 亿）用于研发和设施。(<a href="https://www.deloitte.com/us/en/insights/industry/technology/technology-media-telecom-outlooks/semiconductor-industry-outlook.html">Deloitte</a>)</li>
+</ul>
+<h2 id="infra"><a class="markdownIt-Anchor" href="#infra"></a> Infra</h2>
+<ul>
+<li><strong>Amazon 双线下注 AI infra</strong>：2 月投 OpenAI $500 亿 + 4/21 追投 Anthropic $250 亿，合计 $750 亿，配合 Trainium 芯片生态锁定两大前沿模型公司。</li>
+<li><strong>AI 数据中心五大关切</strong>：ITIF 4 月 6 日报告聚焦 AI 数据中心的能耗、水资源、土地使用、电网压力和社区影响，并提出政策建议。(<a href="https://itif.org/publications/2026/04/06/five-concerns-about-ai-data-centers-and-what-to-do-about-them/">ITIF</a>)</li>
+<li><strong>Big Tech 2026 合计 AI infra capex 接近 $7000 亿</strong>（此前报告数据），本日 Amazon-Anthropic 交易进一步确认趋势。</li>
+</ul>
+<h2 id="model"><a class="markdownIt-Anchor" href="#model"></a> Model</h2>
+<ul>
+<li><strong>Spud（GPT-5.5）即将发布</strong>：预训练完成，生产级 API 测试已被观测到，定位为对标 Mythos 的全能旗舰。</li>
+<li><strong>GPT-Rosalind 垂直专用模型</strong>：生命科学领域首个前沿专用模型 preview，标志 OpenAI 从通用走向垂直差异化。</li>
+<li><strong>Physical Intelligence π0.7</strong>：通用机器人基座模型，展示在未训练任务上的零样本执行能力，向&quot;通用机器人大脑&quot;迈出关键一步。(<a href="https://www.technology.org/2026/04/17/physical-intelligences-%CF%800-7-robot-brain-tackles-tasks-it-was-never-trained-on/">Technology.org</a>)</li>
+<li><strong>DeepSeek V4 完整版预期</strong>：社区预期 4 月内公开发布，SWE-bench Verified 80%+ 目标若达成将为首个开源模型匹配闭源前沿。（未经官方确认）</li>
+<li><strong>Qwen 3.5 9B</strong>：Apache 2.0 授权，$0.10/百万 token，小参数量在推理 benchmark 上表现超预期。</li>
+</ul>
+<h2 id="application"><a class="markdownIt-Anchor" href="#application"></a> Application</h2>
+<ul>
+<li><strong>Claude Design 研究预览上线</strong>：Anthropic 推出 Claude Design，支持与 Claude 协作创建设计稿、原型、幻灯片等视觉输出，可导出并移交 Claude Code，面向 Pro/Max/Team/Enterprise 用户。</li>
+<li><strong>Claude Code 更新</strong>：更快的 /resume、更快的 MCP 启动、内联思考进度显示、插件和安全检查修复。</li>
+<li><strong>OpenAI Codex GitHub 插件扩展</strong>：与 GPT-Rosalind 同步发布，Codex 在 GitHub 上的集成进一步扩展。</li>
+</ul>
+<h2 id="层间联动影响"><a class="markdownIt-Anchor" href="#层间联动影响"></a> 层间联动影响</h2>
+<ul>
+<li><strong>Energy → Infra → Model 传导加速</strong>：Amazon-Anthropic 5GW 协议直接连接能源层（Trainium 芯片电力需求）→ 基础设施层（$1000 亿 AWS 消费承诺）→ 模型层（Claude 训练和推理规模），形成完整的&quot;算力-能源-资本&quot;三角锁定。公用事业 $1.4 万亿 capex 计划为这一传导链的宏观背景。</li>
+<li><strong>Model → Application 垂直化</strong>：GPT-Rosalind（生命科学）和 GPT-5.4-Cyber（网安）代表前沿模型从通用竞争走向垂直行业专用的转折点，Application 层将从&quot;接 API 调通用模型&quot;转向&quot;接行业专用模型+行业插件生态&quot;。</li>
+<li><strong>Chips 供应约束仍为瓶颈</strong>：Blackwell 售罄+交付周期 36-52 周意味着 2026 下半年的 Model 层训练扩张可能受限于芯片供应，而非资本或能源。</li>
+</ul>
+<h2 id="️-播客动态"><a class="markdownIt-Anchor" href="#️-播客动态"></a> 🎙️ 播客动态</h2>
+<ul>
+<li><strong><a href="https://www.xiaoyuzhoufm.com/episode/69e4e6951d989496e7fecc7b">张小珺Jùn｜商业访谈录 — 137. 对洪乐潼的4小时访谈：AI for Math、把数学变成Lean、数学天书中的证明、直觉、被创造与被发现的</a></strong>：Axiom Math 创始人洪乐潼（Carina Hong）首次中文深度访谈，探讨 AI for Math 方向、Lean 形式化证明、数学直觉与 AI 的关系。洪乐潼为 00 后华人数学家，Axiom 刚完成 $2 亿 A 轮（估值 $16 亿），曾引发&quot;57 岁终身教授辞职给 24 岁华人女孩打工&quot;的话题。</li>
+</ul>
+<h2 id="候选池变化与后续关注"><a class="markdownIt-Anchor" href="#候选池变化与后续关注"></a> 候选池变化与后续关注</h2>
+<h3 id="新候选人发现"><a class="markdownIt-Anchor" href="#新候选人发现"></a> 新候选人发现</h3>
+<p>本日发现扫描识别 2 名达标候选人：</p>
+<ol>
+<li><strong>Karol Hausman</strong>（Physical Intelligence CEO/联合创始人）：π0.7 通用机器人基座模型发布，展示零样本任务执行的关键突破，公司估值 $56 亿、累计融资超 $10 亿。属于 oss-ai-builders 方向但更偏 robotics，建议归入 ai-generalists。</li>
+<li><strong>洪乐潼 Carina Hong</strong>（Axiom Math 创始人）：AI for Math 方向标杆人物，$2 亿 A 轮/$16 亿估值，团队从 Meta FAIR、Google Brain 招募。本日首次中文播客深度曝光。建议归入 ai-generalists。</li>
+</ol>
+<h3 id="后续关注"><a class="markdownIt-Anchor" href="#后续关注"></a> 后续关注</h3>
+<ul>
+<li><strong>Spud 发布时间窗</strong>：4 月 23 日前后密切关注 OpenAI 官方公告，该模型直接影响 Anthropic-OpenAI 前沿竞争格局。</li>
+<li><strong>DeepSeek V4 完整版</strong>：社区预期本月内发布，若 SWE-bench 80%+ 达标将重定义开源-闭源差距。</li>
+<li><strong>Grok 4.3 1T 版 / Grok 5 训练进展</strong>：Musk 预告 1T 版数日内到来。</li>
+<li><strong>ChatGPT 宕机后续</strong>：关注 OpenAI 是否会发布事后分析报告。</li>
+</ul>
+<h2 id="来源与交叉验证说明"><a class="markdownIt-Anchor" href="#来源与交叉验证说明"></a> 来源与交叉验证说明</h2>
+<p><strong>来源组合</strong>：以 company/filing（Anthropic 官方、OpenAI 官方、NVIDIA 博客）和 media/analysis（CNBC、TechCrunch、Bloomberg、Engadget、VentureBeat）为主体，辅以 community/social（API 监控泄露、Polymarket、Medium 分析）。</p>
+<p><strong>验证说明</strong>：Amazon-Anthropic 投资由 CNBC、Engadget、Yahoo Finance、GeekWire 等多家媒体交叉确认；GPT-Rosalind 由 OpenAI 官方博客+多家科技/生物医药媒体确认；Spud 测试为 API 监控社区发现，属未经官方确认信号；Physical Intelligence π0.7 由 TechCrunch + Technology.org 交叉确认；洪乐潼/Axiom 信息由 B Capital 投资博客+多家媒体确认。Grok 4.3 参数规模来自 Musk 个人确认，缺第三方验证。</p>
+<!-- flag of hidden posts -->
+    </div>
+
+    
+    
+    
+<div class="comments" id="comments">
+  <script src="https://giscus.app/client.js"
+          data-repo="TCoherence/TCoherence.github.io"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkxMzE0MDY3MTA="
+          data-category="General"
+          data-category-id="DIC_kwDOB9Ubds4C8BCw"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="preferred_color_scheme"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>年轻的C同学
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://tcoherence.github.io/reports/market/2026-04-21-ai/" title="[市场·2026-04-21] AI">https://tcoherence.github.io/reports/market/2026-04-21-ai/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ai-%E6%97%A5%E6%8A%A52026-04-21"><span class="nav-text"> AI 日报｜2026-04-21</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-text"> 摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#frontier-labs-frontier-model-radar"><span class="nav-text"> Frontier Labs &#x2F; Frontier Model Radar</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E4%BA%BA%E7%89%A9%E4%B8%8E%E7%A4%BE%E5%8C%BA%E4%BF%A1%E5%8F%B7"><span class="nav-text"> 关键人物与社区信号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#energy"><span class="nav-text"> Energy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chips"><span class="nav-text"> Chips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#infra"><span class="nav-text"> Infra</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#model"><span class="nav-text"> Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#application"><span class="nav-text"> Application</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%82%E9%97%B4%E8%81%94%E5%8A%A8%E5%BD%B1%E5%93%8D"><span class="nav-text"> 层间联动影响</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EF%B8%8F-%E6%92%AD%E5%AE%A2%E5%8A%A8%E6%80%81"><span class="nav-text"> 🎙️ 播客动态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%80%99%E9%80%89%E6%B1%A0%E5%8F%98%E5%8C%96%E4%B8%8E%E5%90%8E%E7%BB%AD%E5%85%B3%E6%B3%A8"><span class="nav-text"> 候选池变化与后续关注</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%80%99%E9%80%89%E4%BA%BA%E5%8F%91%E7%8E%B0"><span class="nav-text"> 新候选人发现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8E%E7%BB%AD%E5%85%B3%E6%B3%A8"><span class="nav-text"> 后续关注</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A5%E6%BA%90%E4%B8%8E%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81%E8%AF%B4%E6%98%8E"><span class="nav-text"> 来源与交叉验证说明</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="年轻的C同学"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">年轻的C同学</p>
+  <div class="site-description" itemprop="description">年轻的C同学的个人博客 — 关于工程、生活与一些碎片思考</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/TCoherence" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;TCoherence" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:hanzhiyang2019@u.northwestern.edu" title="E-Mail → mailto:hanzhiyang2019@u.northwestern.edu" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/yang_hanzhi" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;yang_hanzhi" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/profile.php?id=100025563873836" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id&#x3D;100025563873836" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">年轻的C同学</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js', () => {
+    var darkMQ = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+    var mermaidTheme = (darkMQ && darkMQ.matches) ? 'dark' : 'forest';
+    mermaid.initialize({
+      theme    : mermaidTheme,
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+</body>
+</html>

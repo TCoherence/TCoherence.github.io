@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 8.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/images/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tcoherence.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":2,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="论文雷达日报｜2026-05-02 一句话结论：今日 105 条候选锁定两条主线——computer-use &#x2F; 工具型 agent 的成本与可靠性，以及 RL 训练动力学与对齐机理；S2 similar_papers 与 affiliation 同步缺失，延伸阅读和新作者发现两段降级。  摘要 今日 105 条候选，三源（arXiv &#x2F; HF Daily &#x2F; Semantic Scholar）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[论文·2026-05-02]">
+<meta property="og:url" content="https://tcoherence.github.io/reports/papers/2026-05-02/index.html">
+<meta property="og:site_name" content="Hanzhi&#39;s BLOG">
+<meta property="og:description" content="论文雷达日报｜2026-05-02 一句话结论：今日 105 条候选锁定两条主线——computer-use &#x2F; 工具型 agent 的成本与可靠性，以及 RL 训练动力学与对齐机理；S2 similar_papers 与 affiliation 同步缺失，延伸阅读和新作者发现两段降级。  摘要 今日 105 条候选，三源（arXiv &#x2F; HF Daily &#x2F; Semantic Scholar）">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-05-01T09:00:00.000Z">
+<meta property="article:modified_time" content="2026-05-04T04:33:48.437Z">
+<meta property="article:author" content="年轻的C同学">
+<meta property="article:tag" content="Hanzhi, 博客, blog, hexo, next, 软件工程, 生活">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://tcoherence.github.io/reports/papers/2026-05-02/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>[论文·2026-05-02] | Hanzhi's BLOG</title><meta name="robots" content="noindex">
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hanzhi's BLOG</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录、思考、生活</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-reports">
+
+    <a href="/categories/AI%E6%8A%A5%E5%91%8A/" rel="section"><i class="fa fa-newspaper-o fa-fw"></i>AI 报告</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tcoherence.github.io/reports/papers/2026-05-02/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="年轻的C同学">
+      <meta itemprop="description" content="年轻的C同学的个人博客 — 关于工程、生活与一些碎片思考">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hanzhi's BLOG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [论文·2026-05-02]
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2026-05-01 17:00:00" itemprop="dateCreated datePublished" datetime="2026-05-01T17:00:00+08:00">2026-05-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-05-04 12:33:48" itemprop="dateModified" datetime="2026-05-04T12:33:48+08:00">2026-05-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AI%E6%8A%A5%E5%91%8A/" itemprop="url" rel="index"><span itemprop="name">AI报告</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AI%E6%8A%A5%E5%91%8A/%E8%AE%BA%E6%96%87/" itemprop="url" rel="index"><span itemprop="name">论文</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="论文雷达日报2026-05-02"><a class="markdownIt-Anchor" href="#论文雷达日报2026-05-02"></a> 论文雷达日报｜2026-05-02</h1>
+<p>一句话结论：今日 105 条候选锁定两条主线——computer-use / 工具型 agent 的成本与可靠性，以及 RL 训练动力学与对齐机理；S2 similar_papers 与 affiliation 同步缺失，延伸阅读和新作者发现两段降级。</p>
+<h2 id="摘要"><a class="markdownIt-Anchor" href="#摘要"></a> 摘要</h2>
+<p>今日 105 条候选，三源（arXiv / HF Daily / Semantic Scholar）全部正常召回：105 篇拿到 S2 paper_id、98 篇带 s2_tldr，HF Daily 命中 32 篇 trending。Top picks 集中在 computer-use agent 成本（Step-level 双监控）、工具型 agent 可靠性（FAMA、Claw-Eval-Live）、RL 训练动力学（Exploration Hacking、Length Value Model）与方法论（CARE），并夹一篇 NVIDIA Nemotron 3 Nano Omni 多模态开模和 MoCapAnything V2 端到端任意骨架 motion capture。S2 similar_papers 字段全部未返回，延伸阅读段降级；HF Daily 与 arXiv 抓取在本期 affiliation 字段均为空，新作者发现段无法机构验证。seen-pool 14 天窗口含 235 条，今日候选无 seen_before 命中，trending 列表整体新鲜。</p>
+<h2 id="top-picks-交叉命中"><a class="markdownIt-Anchor" href="#top-picks-交叉命中"></a> 📌 Top picks (交叉命中)</h2>
+<ol>
+<li>
+<p><strong><a href="https://arxiv.org/abs/2604.27151">Step-level Optimization for Efficient Computer-use Agents</a></strong></p>
+<ul>
+<li>作者：Jinbiao Wei, Kangqi Ni, Yilun Zhao, Guo Gan, Arman Cohan</li>
+<li>信号：HF upvotes=9 · HF rank=2 · score=9.3 · reasons=hf_trending_rank:2; watchlist_keyword:reasoning,agent,inference; nice_to_have:benchmark</li>
+<li>中文速读：用 Stuck/Milestone 双监控降本提速 GUI agent</li>
+<li>入选理由：ranking_score 9.3（HF trending #2 + watchlist 命中 reasoning/agent/inference）；用 Stuck Monitor 检测停滞 + Milestone Monitor 触发稀疏校验，把大模型调用从「每步」降成「关键步」，是 computer-use agent 成本/延迟优化的首选阅读。</li>
+<li>S2 TLDR：This framework combines two complementary signals: a Stuck Monitor that detects degraded progress from recent reasoning-action history and triggers recovery, and a Milestone Monitor that identifies semantically meaningful checkpoints where sparse verification is most informative for catching drift.</li>
+<li>补充链接：<a href="https://huggingface.co/papers/2604.27151">https://huggingface.co/papers/2604.27151</a> · <a href="https://www.semanticscholar.org/paper/447343e3d9c7d3d02bc681f6dc50b6eb7bc5a66e">https://www.semanticscholar.org/paper/447343e3d9c7d3d02bc681f6dc50b6eb7bc5a66e</a></li>
+</ul>
+</li>
+<li>
+<p><strong><a href="https://arxiv.org/abs/2604.24954">Nemotron 3 Nano Omni: Efficient and Open Multimodal Intelligence</a></strong></p>
+<ul>
+<li>作者：NVIDIA, Amala Sanjay Deshmukh, Kateryna Chumachenko, Tuomas Rintamaki, Matthieu Le, 等</li>
+<li>信号：HF upvotes=14 · HF rank=1 · score=6.9 · reasons=hf_trending_rank:1; watchlist_keyword:agent,inference</li>
+<li>中文速读：NVIDIA Nemotron 3 Nano Omni：原生支持音频的多模态开模</li>
+<li>入选理由：HF trending #1（14 upvotes），watchlist 命中 agent/inference；NVIDIA 自研多模态系列把音频纳入原生输入，宣称在长音视频与 agentic 计算机使用任务上领先，可作为开权重多模态对齐与基座对比基线。</li>
+<li>S2 TLDR：Nemotron 3 Nano Omni is introduced, the latest model in the Nemotron multimodal series and the first to natively support audio inputs alongside text, images, and video and incorporates innovative multimodal token-reduction techniques.</li>
+<li>补充链接：<a href="https://huggingface.co/papers/2604.24954">https://huggingface.co/papers/2604.24954</a> · <a href="https://www.semanticscholar.org/paper/789c4d5029c44caa10567d9301fbdae990baca7b">https://www.semanticscholar.org/paper/789c4d5029c44caa10567d9301fbdae990baca7b</a></li>
+</ul>
+</li>
+<li>
+<p><strong><a href="https://arxiv.org/abs/2604.27039">Length Value Model: Scalable Value Pretraining for Token-Level Length Modeling</a></strong></p>
+<ul>
+<li>作者：Zhen Zhang, Changyi Yang, Zijie Xia, Zhen Yang, Chengzhi Liu, 等</li>
+<li>信号：HF upvotes=17 · HF rank=11 · score=5.9 · reasons=hf_trending_rank:11; watchlist_keyword:reasoning,inference</li>
+<li>中文速读：Token 级长度建模 Length Value 模型</li>
+<li>入选理由：HF trending #11（17 upvotes），watchlist 命中 reasoning/inference；把生成长度建模成 token 级 value 估计问题（每 token 常量负奖励、bounded discounted return），为 RL 长度可控性提供通用框架。</li>
+<li>S2 TLDR：Results demonstrate that LenVM supports a broad range of applications and token length can be effectively modeled as a token-level value signal, highlighting the potential of LenVM as a general framework for length modeling and as a length-specific value signal that could support future RL training.</li>
+<li>补充链接：<a href="https://huggingface.co/papers/2604.27039">https://huggingface.co/papers/2604.27039</a> · <a href="https://www.semanticscholar.org/paper/71c1c0b8664106c676679cbef3e0352102b713e5">https://www.semanticscholar.org/paper/71c1c0b8664106c676679cbef3e0352102b713e5</a></li>
+</ul>
+</li>
+<li>
+<p><strong><a href="http://arxiv.org/abs/2604.28130v1">MoCapAnything V2: End-to-End Motion Capture for Arbitrary Skeletons</a></strong></p>
+<ul>
+<li>作者：Kehong Gong, Zhengyu Wen, Dao Thien Phong, Mingxi Xu, Weixia He, 等</li>
+<li>信号：HF upvotes=6 · HF rank=16 · score=5.4 · reasons=hf_trending_rank:16; watchlist_keyword:reasoning,inference</li>
+<li>中文速读：端到端任意骨架 motion capture</li>
+<li>入选理由：HF trending #16，watchlist 命中 reasoning/inference；把 IK 阶段从不可微分的 analytical 改为可学，配合参考 pose-rotation pair，实现首个全端到端任意骨架 motion capture 流水线。</li>
+<li>S2 TLDR：This work presents the first fully end-to-end framework in which both Video-to-Pose and Pose-to-Rotation are learnable and jointly optimized, and introduces a reference pose-rotation pair from the target asset that turns rotation prediction into a well-constrained conditional problem and enables effective learning.</li>
+<li>补充链接：<a href="https://huggingface.co/papers/2604.28130">https://huggingface.co/papers/2604.28130</a> · <a href="https://www.semanticscholar.org/paper/16b5d61ff702ed4f514149225adbddfdfcb8bca3">https://www.semanticscholar.org/paper/16b5d61ff702ed4f514149225adbddfdfcb8bca3</a></li>
+</ul>
+</li>
+<li>
+<p><strong><a href="https://arxiv.org/abs/2604.25135">FAMA: Failure-Aware Meta-Agentic Framework for Open-Source LLMs in Interactive Tool Use Environments</a></strong></p>
+<ul>
+<li>作者：Amir Saeidi, Venkatesh Mishra, Souradeep Mukhopadhyay, Gaowen Liu, Ali Payani</li>
+<li>信号：HF upvotes=8 · HF rank=28 · score=5.2 · reasons=hf_trending_rank:28; watchlist_keyword:agent,inference; nice_to_have:benchmark,evaluation</li>
+<li>中文速读：FAMA：失败感知 meta-agent 提升小模型工具使用</li>
+<li>入选理由：HF trending #28（8 upvotes），watchlist 命中 agent/inference + benchmark；针对开源小模型在交互式工具使用中的级联失败，设计两阶段 meta-agent 协调器，把失败模式注入决策上下文。</li>
+<li>S2 TLDR：The Failure-Aware Meta-Agentic (FAMA) framework operates in two stages: it employs an orchestration mechanism that activates a minimal subset of specialized agents tailored to address common failures by injecting a targeted context for the tool-use agent before the decision-making step.</li>
+<li>补充链接：<a href="https://huggingface.co/papers/2604.25135">https://huggingface.co/papers/2604.25135</a> · <a href="https://www.semanticscholar.org/paper/493958fba07c538029cd831cc282ae0eb2c86ec1">https://www.semanticscholar.org/paper/493958fba07c538029cd831cc282ae0eb2c86ec1</a></li>
+</ul>
+</li>
+<li>
+<p><strong><a href="http://arxiv.org/abs/2604.28139v1">Claw-Eval-Live: A Live Agent Benchmark for Evolving Real-World Workflows</a></strong></p>
+<ul>
+<li>作者：Chenxin Li, Zhengyang Tang, Huangxin Lin, Yunlong Lin, Shijue Huang, 等</li>
+<li>信号：HF upvotes=26 · HF rank=9 · score=5.1 · reasons=hf_trending_rank:9; watchlist_keyword:agent; nice_to_have:benchmark,evaluation</li>
+<li>中文速读：Claw-Eval-Live：可演化工作流 agent 在线基准</li>
+<li>入选理由：HF trending #9（26 upvotes），watchlist 命中 agent + benchmark；把 workflow agent 评测拆成「可刷新需求层 + 可复现快照层」，提出动态 + 时间戳双重 grounding，缓解 frozen benchmark 与现实漂移。</li>
+<li>S2 TLDR：Claw-Eval-Live is introduced, a live benchmark for workflow agents that separates a refreshable signal layer, updated across releases from public workflow-demand signals, from a reproducible, time-stamped release snapshot and suggests that workflow-agent evaluation should be grounded twice, in fresh external demand and in verifiable agent action.</li>
+<li>补充链接：<a href="https://huggingface.co/papers/2604.28139">https://huggingface.co/papers/2604.28139</a> · <a href="https://www.semanticscholar.org/paper/488f39fe41221ff8c695713e997697b48eaa89b2">https://www.semanticscholar.org/paper/488f39fe41221ff8c695713e997697b48eaa89b2</a></li>
+</ul>
+</li>
+<li>
+<p><strong><a href="http://arxiv.org/abs/2604.28182v1">Exploration Hacking: Can LLMs Learn to Resist RL Training?</a></strong></p>
+<ul>
+<li>作者：Eyon Jang, Damon Falck, Joschka Braun, Nathalie Kirch, Achu Menon</li>
+<li>信号：HF upvotes=N/A · score=5.0 · reasons=watchlist_keyword:reasoning,agent; nice_to_have:sft,fine-tuning</li>
+<li>中文速读：Exploration Hacking：LLM 抗 RL 训练的可学行为</li>
+<li>入选理由：watchlist 命中 reasoning/agent + sft/fine-tuning；显示前沿模型在了解训练上下文后能显式推理「抑制探索」以影响后续训练，是 RL 训练对抗性与对齐研究的稀缺实证。</li>
+<li>S2 TLDR：It is shown that current frontier models can exhibit explicit reasoning about suppressing their exploration when provided with sufficient information about their training context, with higher rates when this information is acquired indirectly through the environment.</li>
+<li>补充链接：<a href="https://huggingface.co/papers/2604.28182">https://huggingface.co/papers/2604.28182</a> · <a href="https://www.semanticscholar.org/paper/ef127c71a2a77d315feacdc522c52f79d8a47ef1">https://www.semanticscholar.org/paper/ef127c71a2a77d315feacdc522c52f79d8a47ef1</a></li>
+</ul>
+</li>
+<li>
+<p><strong><a href="http://arxiv.org/abs/2604.28043v1">Collaborative Agent Reasoning Engineering (CARE): A Three-Party Design Methodology for Systematically Engineering AI Agents with Subject Matter Experts, Developers, and Helper Agents</a></strong></p>
+<ul>
+<li>作者：Rahul Ramachandran, Nidhi Jha, Muthukumaran Ramasubramanian</li>
+<li>信号：HF upvotes=N/A · score=4.5 · reasons=watchlist_keyword:reasoning,agent; nice_to_have:evaluation</li>
+<li>中文速读：CARE：三方协同的 LLM agent 工程方法论</li>
+<li>入选理由：watchlist 命中 reasoning/agent + evaluation；提出 SME / 开发者 / helper agent 三方协同的 stage-gated 方法论，强调 artifact 驱动的 agent 工程化流程，对落地科学领域 agent 团队有方法学参考。</li>
+<li>S2 TLDR：Evaluation results from a scientific use case demonstrate that this stage-gated, artifact-driven methodology yields measurable improvements in development efficiency and complex-query performance.</li>
+<li>补充链接：<a href="https://huggingface.co/papers/2604.28043">https://huggingface.co/papers/2604.28043</a> · <a href="https://www.semanticscholar.org/paper/6a283dc5a132523ebe0157dc5d44c51395791208">https://www.semanticscholar.org/paper/6a283dc5a132523ebe0157dc5d44c51395791208</a></li>
+</ul>
+</li>
+</ol>
+<h2 id="watchlist-分类命中"><a class="markdownIt-Anchor" href="#watchlist-分类命中"></a> 🏷 Watchlist 分类命中</h2>
+<h3 id="csai-cslg-reasoning-agents"><a class="markdownIt-Anchor" href="#csai-cslg-reasoning-agents"></a> cs.AI / cs.LG (reasoning &amp; agents)</h3>
+<ul>
+<li><strong><a href="https://arxiv.org/abs/2604.23758">Agentic Fusion of Large Atomic and Language Models to Accelerate Superconductors Discovery</a></strong>（2604.23758）— ElementsClaw：原子模型+LLM agent 加速超导体发现。
+<ul>
+<li>信号：score=4.5 · reasons=hf_trending_rank:25; watchlist_keyword:reasoning,agent</li>
+</ul>
+</li>
+<li><strong><a href="https://arxiv.org/abs/2604.27083">Co-Evolving Policy Distillation</a></strong>（2604.27083）— CoPD：多专家 RLVR 训练中并行双向蒸馏。
+<ul>
+<li>信号：score=3.6 · reasons=hf_trending_rank:14; watchlist_keyword:reasoning</li>
+</ul>
+</li>
+<li><strong><a href="http://arxiv.org/abs/2604.28158v1">Intern-Atlas: A Methodological Evolution Graph as Research Infrastructure for AI Scientists</a></strong>（2604.28158）— Intern-Atlas：方法演化图作为 AI Scientist 的研究底座。
+<ul>
+<li>信号：score=3.5 · reasons=hf_trending_rank:20; watchlist_keyword:agent; nice_to_have:evaluation</li>
+</ul>
+</li>
+<li><strong><a href="http://arxiv.org/abs/2604.28093v1">What Makes a Good Terminal-Agent Benchmark Task: A Guideline for Adversarial, Difficult, and Discriminative Tasks</a></strong>（2604.28093）— Terminal-Agent Benchmark 的设计准则。
+<ul>
+<li>信号：score=3.0 · reasons=watchlist_keyword:agent; nice_to_have:benchmark,evaluation</li>
+</ul>
+</li>
+</ul>
+<h3 id="cscv-csgr-generation-alignment"><a class="markdownIt-Anchor" href="#cscv-csgr-generation-alignment"></a> cs.CV / cs.GR (generation &amp; alignment)</h3>
+<ul>
+<li><strong><a href="http://arxiv.org/abs/2604.28169v1">PhyCo: Learning Controllable Physical Priors for Generative Motion</a></strong>（2604.28169）— PhyCo：连续可解物理先验注入视频生成。
+<ul>
+<li>信号：score=4.2 · reasons=hf_trending_rank:18; watchlist_keyword:inference; nice_to_have:benchmark,fine-tuning</li>
+</ul>
+</li>
+<li><strong><a href="http://arxiv.org/abs/2604.28177v1">AEGIS: A Holistic Benchmark for Evaluating Forensic Analysis of AI-Generated Academic Images</a></strong>（2604.28177）— AEGIS：AI 学术配图取证 holistic 基准。
+<ul>
+<li>信号：score=3.0 · reasons=watchlist_keyword:reasoning; nice_to_have:benchmark,evaluation</li>
+</ul>
+</li>
+<li><strong><a href="http://arxiv.org/abs/2604.28078v1">AesRM: Improving Video Aesthetics with Expert-Level Feedback</a></strong>（2604.28078）— AesRM：用专家级反馈提升视频美学。
+<ul>
+<li>信号：score=3.0 · reasons=watchlist_keyword:reasoning; nice_to_have:benchmark,evaluation</li>
+</ul>
+</li>
+</ul>
+<h3 id="cscl-scaling-alignment"><a class="markdownIt-Anchor" href="#cscl-scaling-alignment"></a> cs.CL / scaling &amp; alignment</h3>
+<ul>
+<li><strong><a href="https://arxiv.org/abs/2604.27419">InteractWeb-Bench: Can Multimodal Agent Escape Blind Execution in Interactive Website Generation?</a></strong>（2604.27419）— InteractWeb-Bench：交互式建站多模态 agent 基准。
+<ul>
+<li>信号：score=4.0 · reasons=hf_trending_rank:15; watchlist_keyword:agent; nice_to_have:benchmark</li>
+</ul>
+</li>
+<li><strong><a href="https://arxiv.org/abs/2604.24902">Safety Drift After Fine-Tuning: Evidence from High-Stakes Domains</a></strong>（2604.24902）— Safety Drift：高风险微调下安全指标的异质漂移。
+<ul>
+<li>信号：score=3.9 · reasons=hf_trending_rank:6; nice_to_have:benchmark,fine-tuning,evaluation</li>
+</ul>
+</li>
+</ul>
+<h3 id="csdc-cslg-systems-efficiency"><a class="markdownIt-Anchor" href="#csdc-cslg-systems-efficiency"></a> cs.DC / cs.LG (systems &amp; efficiency)</h3>
+<ul>
+<li><strong><a href="http://arxiv.org/abs/2604.28036v1">Exponential families from a single KL identity</a></strong>（2604.28036）— 用单一 KL 恒等式推导指数族经典结果。
+<ul>
+<li>信号：score=4.0 · reasons=watchlist_keyword:inference,rlhf</li>
+</ul>
+</li>
+</ul>
+<h2 id="延伸阅读-semantic-scholar-相似论文"><a class="markdownIt-Anchor" href="#延伸阅读-semantic-scholar-相似论文"></a> 🔗 延伸阅读 (Semantic Scholar 相似论文)</h2>
+<p>本段今日无高置信度增量信号（S2 相似论文未返回）。</p>
+<h2 id="新出现的作者-团队"><a class="markdownIt-Anchor" href="#新出现的作者-团队"></a> 🧑‍🔬 新出现的作者 / 团队</h2>
+<p>本日发现扫描未发现达标候选：HF Daily 候选未携带 affiliation 字段，arXiv 抓取在本期亦未填充机构，无法满足 discovery_rules 的机构交叉验证门槛；只有 Nemotron 3 Nano Omni 在 author 字段以 “NVIDIA” 字符串自标，暂记入 <code>tracked_labs_seen.nvidia-research</code>，等下次 abstract scrape 拿到机构再补正式发现。</p>
+<h2 id="覆盖缺口与不确定性"><a class="markdownIt-Anchor" href="#覆盖缺口与不确定性"></a> 📉 覆盖缺口与不确定性</h2>
+<ul>
+<li><code>s2_similar_unavailable</code>：本期 Semantic Scholar 候选项均未返回 <code>similar_papers</code>，延伸阅读段降级为占位说明。</li>
+<li><code>hf_affiliation_missing</code>：HF Daily JSON 不附作者机构，arXiv 抓取本期 affiliation 字段亦为空，新作者发现段无法机构层验证。</li>
+<li>seen-pool 14 天窗口含 235 条，本期 105 条候选 <code>seen_before=False</code>，未触发任何降级；trending 列表本日整体新鲜，但同样意味着候选与历史无重叠交叉信号。</li>
+</ul>
+<h2 id="来源与交叉验证说明"><a class="markdownIt-Anchor" href="#来源与交叉验证说明"></a> 来源与交叉验证说明</h2>
+<p>arXiv 为 primary（论文 PDF / 摘要 ground truth）；HF Daily 提供 trending 信号与 upvote 强度（curated）；Semantic Scholar 补 tldr 与 paper id（metadata）。本期未引用任何 other 来源。</p>
+<p>结论锚定 arXiv 摘要原文与 S2 tldr；HF trending rank 与 upvotes 仅作策划信号，未当作论文结果证据。S2 的 tldr 在引用时直接放进 tldr_en 字段（未自行翻译），ranking_reasons 透明展示打分依据。</p>
+<!-- flag of hidden posts -->
+    </div>
+
+    
+    
+    
+<div class="comments" id="comments">
+  <script src="https://giscus.app/client.js"
+          data-repo="TCoherence/TCoherence.github.io"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkxMzE0MDY3MTA="
+          data-category="General"
+          data-category-id="DIC_kwDOB9Ubds4C8BCw"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="preferred_color_scheme"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>年轻的C同学
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://tcoherence.github.io/reports/papers/2026-05-02/" title="[论文·2026-05-02]">https://tcoherence.github.io/reports/papers/2026-05-02/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BA%E6%96%87%E9%9B%B7%E8%BE%BE%E6%97%A5%E6%8A%A52026-05-02"><span class="nav-text"> 论文雷达日报｜2026-05-02</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-text"> 摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#top-picks-%E4%BA%A4%E5%8F%89%E5%91%BD%E4%B8%AD"><span class="nav-text"> 📌 Top picks (交叉命中)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#watchlist-%E5%88%86%E7%B1%BB%E5%91%BD%E4%B8%AD"><span class="nav-text"> 🏷 Watchlist 分类命中</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#csai-cslg-reasoning-agents"><span class="nav-text"> cs.AI &#x2F; cs.LG (reasoning &amp; agents)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cscv-csgr-generation-alignment"><span class="nav-text"> cs.CV &#x2F; cs.GR (generation &amp; alignment)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cscl-scaling-alignment"><span class="nav-text"> cs.CL &#x2F; scaling &amp; alignment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#csdc-cslg-systems-efficiency"><span class="nav-text"> cs.DC &#x2F; cs.LG (systems &amp; efficiency)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%B6%E4%BC%B8%E9%98%85%E8%AF%BB-semantic-scholar-%E7%9B%B8%E4%BC%BC%E8%AE%BA%E6%96%87"><span class="nav-text"> 🔗 延伸阅读 (Semantic Scholar 相似论文)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%87%BA%E7%8E%B0%E7%9A%84%E4%BD%9C%E8%80%85-%E5%9B%A2%E9%98%9F"><span class="nav-text"> 🧑‍🔬 新出现的作者 &#x2F; 团队</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A6%86%E7%9B%96%E7%BC%BA%E5%8F%A3%E4%B8%8E%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7"><span class="nav-text"> 📉 覆盖缺口与不确定性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A5%E6%BA%90%E4%B8%8E%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81%E8%AF%B4%E6%98%8E"><span class="nav-text"> 来源与交叉验证说明</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="年轻的C同学"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">年轻的C同学</p>
+  <div class="site-description" itemprop="description">年轻的C同学的个人博客 — 关于工程、生活与一些碎片思考</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/TCoherence" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;TCoherence" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:hanzhiyang2019@u.northwestern.edu" title="E-Mail → mailto:hanzhiyang2019@u.northwestern.edu" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/yang_hanzhi" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;yang_hanzhi" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/profile.php?id=100025563873836" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id&#x3D;100025563873836" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">年轻的C同学</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js', () => {
+    var darkMQ = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+    var mermaidTheme = (darkMQ && darkMQ.matches) ? 'dark' : 'forest';
+    mermaid.initialize({
+      theme    : mermaidTheme,
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+</body>
+</html>

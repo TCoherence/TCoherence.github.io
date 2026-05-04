@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 8.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/images/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tcoherence.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":2,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="论文雷达日报｜2026-04-28 一句话结论：今日 VLA &#x2F; 具身安全与过程级奖励是高密度交叉信号；KV cache、长上下文 upcycling、智能体自组织亦有可读论文，但 S2 相似论文图谱未返回，延伸阅读维度降级。  摘要  三源（arXiv + HF Daily + Semantic Scholar）共抓 129 篇 raw 候选，过去 14 天 seen-pool 命中 0 篇，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[论文·2026-04-28]">
+<meta property="og:url" content="https://tcoherence.github.io/reports/papers/2026-04-28/index.html">
+<meta property="og:site_name" content="Hanzhi&#39;s BLOG">
+<meta property="og:description" content="论文雷达日报｜2026-04-28 一句话结论：今日 VLA &#x2F; 具身安全与过程级奖励是高密度交叉信号；KV cache、长上下文 upcycling、智能体自组织亦有可读论文，但 S2 相似论文图谱未返回，延伸阅读维度降级。  摘要  三源（arXiv + HF Daily + Semantic Scholar）共抓 129 篇 raw 候选，过去 14 天 seen-pool 命中 0 篇，">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-04-27T09:00:00.000Z">
+<meta property="article:modified_time" content="2026-05-04T04:33:48.435Z">
+<meta property="article:author" content="年轻的C同学">
+<meta property="article:tag" content="Hanzhi, 博客, blog, hexo, next, 软件工程, 生活">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://tcoherence.github.io/reports/papers/2026-04-28/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>[论文·2026-04-28] | Hanzhi's BLOG</title><meta name="robots" content="noindex">
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hanzhi's BLOG</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录、思考、生活</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-reports">
+
+    <a href="/categories/AI%E6%8A%A5%E5%91%8A/" rel="section"><i class="fa fa-newspaper-o fa-fw"></i>AI 报告</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tcoherence.github.io/reports/papers/2026-04-28/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="年轻的C同学">
+      <meta itemprop="description" content="年轻的C同学的个人博客 — 关于工程、生活与一些碎片思考">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hanzhi's BLOG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [论文·2026-04-28]
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2026-04-27 17:00:00" itemprop="dateCreated datePublished" datetime="2026-04-27T17:00:00+08:00">2026-04-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-05-04 12:33:48" itemprop="dateModified" datetime="2026-05-04T12:33:48+08:00">2026-05-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AI%E6%8A%A5%E5%91%8A/" itemprop="url" rel="index"><span itemprop="name">AI报告</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AI%E6%8A%A5%E5%91%8A/%E8%AE%BA%E6%96%87/" itemprop="url" rel="index"><span itemprop="name">论文</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="论文雷达日报2026-04-28"><a class="markdownIt-Anchor" href="#论文雷达日报2026-04-28"></a> 论文雷达日报｜2026-04-28</h1>
+<p>一句话结论：今日 VLA / 具身安全与过程级奖励是高密度交叉信号；KV cache、长上下文 upcycling、智能体自组织亦有可读论文，但 S2 相似论文图谱未返回，延伸阅读维度降级。</p>
+<h2 id="摘要"><a class="markdownIt-Anchor" href="#摘要"></a> 摘要</h2>
+<ul>
+<li>三源（arXiv + HF Daily + Semantic Scholar）共抓 129 篇 raw 候选，过去 14 天 seen-pool 命中 0 篇，全部 fresh。</li>
+<li>VLA 方向同时出现「方法层」(CF-VLA 粗细两阶段动作生成) 与「安全层」(VLA Safety 综述)，是今日唯一双信号 cluster。</li>
+<li>过程奖励模型 (PRM) 出现两条不同方向延伸：感知中心 (Perceval) 与数据分析智能体 (Scientific Process)，PRM 正在跳出数学领域。</li>
+<li>推理效率侧 DepthKV 给出层级差异化 KV pruning 的实证；多智能体侧 ReTAS 用辩证对齐缓解 Actor-Observer 归因偏差。</li>
+<li>S2 <code>similar_papers</code> 字段未返回，延伸阅读段降级；无 tracked-author / 机构命中，新作者发现段为空。</li>
+</ul>
+<h2 id="top-picks-交叉命中"><a class="markdownIt-Anchor" href="#top-picks-交叉命中"></a> 📌 Top picks (交叉命中)</h2>
+<ol>
+<li><strong><a href="http://arxiv.org/abs/2604.24622v1">CF-VLA: Efficient Coarse-to-Fine Action Generation for Vision-Language-Action Policies</a></strong>（cs.CV/cs.AI · watchlist: inference+vla+dpo · ranking_score 7.00）→ 粗细两阶段重塑 VLA 动作生成，先粗初始化骨架再精修，缩短实时推理路径。</li>
+<li><strong><a href="https://arxiv.org/abs/2604.23775">Vision-Language-Action Safety: Threats, Challenges, Evaluations, and Mechanisms</a></strong>（HF trending #17, 40 upvotes · watchlist: vla+inference · ranking_score 6.80）→ 系统综述具身 VLA 的多模态攻击面、长视野错误传播与数据供应链漏洞。</li>
+<li><strong><a href="http://arxiv.org/abs/2604.24583v1">Improving Vision-language Models with Perception-centric Process Reward Models</a></strong>（cs.CV · HF trending #9 · ranking_score 6.60）→ 提出 Perceval：把 VLM 回复中的图像断言逐条对照视觉证据，定位感知错误而非仅看最终答案。</li>
+<li><strong><a href="https://arxiv.org/abs/2604.24198">Rewarding the Scientific Process: Process-Level Reward Modeling for Agentic Data Analysis</a></strong>（HF trending #27, 14 upvotes · watchlist: reasoning+agent+inference · ranking_score 6.30）→ 把 PRM 推到数据分析智能体场景，识别静默错误并避免错惩 exploratory 动作。</li>
+<li><strong><a href="http://arxiv.org/abs/2604.24647v1">DepthKV: Layer-Dependent KV Cache Pruning for Long-Context LLM Inference</a></strong>（cs.CL/cs.AI · watchlist: kv cache+inference · ranking_score 6.00）→ 反对统一剪枝率假设，按层重要性差异化裁剪 KV cache，降低长上下文显存。</li>
+<li><strong><a href="https://arxiv.org/abs/2604.23210">Discovering Agentic Safety Specifications from 1-Bit Danger Signals</a></strong>（HF trending #10 · watchlist: reasoning+agent · S2 已索引 · ranking_score 6.00）→ EPO-Safe：仅靠稀疏二元危险信号让 LLM 通过反思自我演化出自然语言安全规范。</li>
+<li><strong><a href="https://arxiv.org/abs/2604.19548">Taming Actor-Observer Asymmetry in Agents via Dialectical Alignment</a></strong>（HF trending #15, 8 upvotes · watchlist: reasoning+agent · S2 已索引 · ranking_score 6.00）→ ReTAS 用「正-反-合」辩证对齐训练，强制视角不变推理，缓解多智能体归因偏差。</li>
+<li><strong><a href="https://arxiv.org/abs/2604.23644">RaV-IDP: A Reconstruction-as-Validation Framework for Faithful Intelligent Document Processing</a></strong>（HF trending #2 · watchlist: inference · ranking_score 5.80）→ 用「重建反向校验」让文档抽取自带忠实性验证，捕捉静默错误。</li>
+</ol>
+<h2 id="watchlist-分类命中"><a class="markdownIt-Anchor" href="#watchlist-分类命中"></a> 🏷 Watchlist 分类命中</h2>
+<h3 id="cscl-4"><a class="markdownIt-Anchor" href="#cscl-4"></a> cs.CL (4)</h3>
+<ul>
+<li><strong><a href="http://arxiv.org/abs/2604.24645v1">K-MetBench: A Multi-Dimensional Benchmark for Fine-Grained Evaluation of Expert Reasoning</a></strong> → 多维度细粒度专家推理评测基准。</li>
+<li><strong><a href="http://arxiv.org/abs/2604.24715v1">Long-Context Aware Upcycling: A New Frontier for Hybrid LLM Scaling</a></strong> → 把长上下文意识纳入 hybrid 模型 upcycling 路径。</li>
+<li><strong><a href="http://arxiv.org/abs/2604.24698v1">The Chameleon’s Limit: Investigating Persona Collapse and Homogenization in Large Models</a></strong> → 量化大模型 persona 坍缩与同质化现象。</li>
+<li><strong><a href="http://arxiv.org/abs/2604.24536v1">Generating Place-Based Compromises Between Two Points of View</a></strong> → 在地理语境下生成两方观点的折中文本。</li>
+</ul>
+<h3 id="csai-3"><a class="markdownIt-Anchor" href="#csai-3"></a> cs.AI (3)</h3>
+<ul>
+<li><strong><a href="http://arxiv.org/abs/2604.24618v1">Evaluating whether AI models would sabotage AI safety research</a></strong> → 评估前沿模型是否会主动破坏 AI 安全研究流程。</li>
+<li><strong><a href="http://arxiv.org/abs/2604.24572v1">FastOMOP: A Foundational Architecture for Reliable Agentic Real-World Evidence Generation</a></strong> → 面向真实世界证据生成的 agentic 基础架构。</li>
+<li><strong><a href="http://arxiv.org/abs/2604.24512v1">Beyond the Attention Stability Boundary: Agentic Self-Synthesizing Reasoning</a></strong> → 突破注意力稳定性边界的智能体自合成推理。</li>
+</ul>
+<h3 id="csro-1"><a class="markdownIt-Anchor" href="#csro-1"></a> cs.RO (1)</h3>
+<ul>
+<li><strong><a href="http://arxiv.org/abs/2604.24661v1">Agent-Centric Visual Reinforcement Learning under Dynamic Perturbations</a></strong> → 动态扰动下的智能体中心视觉 RL。</li>
+</ul>
+<h3 id="hf-daily-候选无-arxiv-主分类按-trending-排序4-篇"><a class="markdownIt-Anchor" href="#hf-daily-候选无-arxiv-主分类按-trending-排序4-篇"></a> HF Daily 候选（无 arXiv 主分类，按 trending 排序，4 篇）</h3>
+<ul>
+<li><strong><a href="https://arxiv.org/abs/2604.23099">ProEval: Proactive Failure Discovery and Efficient Performance Estimation</a></strong>（HF #24）→ 用迁移学习提前发现失败模式并估算性能。</li>
+<li><strong><a href="https://arxiv.org/abs/2604.16391">Disentangled Robot Learning via Separate Forward and Inverse Dynamics Pretraining</a></strong>（HF #4 · S2 引用速率 0.22）→ DeFI 解耦视觉前向与逆向动力学预训练。</li>
+<li><strong><a href="https://arxiv.org/abs/2604.17565">UniGeo: Unifying Geometric Guidance for Camera-Controllable Image Editing</a></strong>（HF #5）→ 帧解耦几何参考注入提升相机可控图像编辑跨视图一致性。</li>
+<li><strong><a href="https://arxiv.org/abs/2604.22446">From Skills to Talent: Organising Heterogeneous Agents as a Real-World Company</a></strong>（HF #13, 73 upvotes）→ 把多智能体系统组织成自演化「公司」，由静态 pipeline 转为自组织。</li>
+</ul>
+<h2 id="延伸阅读-semantic-scholar-相似论文"><a class="markdownIt-Anchor" href="#延伸阅读-semantic-scholar-相似论文"></a> 🔗 延伸阅读 (Semantic Scholar 相似论文)</h2>
+<p>本段今日无高置信度增量信号（S2 相似论文未返回，candidate JSON 缺 <code>similar_papers</code> 字段，按硬性约束不再外部检索）。</p>
+<h2 id="新出现的作者-团队"><a class="markdownIt-Anchor" href="#新出现的作者-团队"></a> 🧑‍🔬 新出现的作者 / 团队</h2>
+<p>本日发现扫描未发现达标候选人：候选 ranking_reasons 中 0 条 <code>tracked_author</code> / <code>tracked_affiliation</code> 命中，HF Daily / arXiv abs 元数据均未附 <code>affiliations</code> 字段，按 discovery_rules 不为凑数硬塞外部搜索结果。</p>
+<h2 id="覆盖缺口与不确定性"><a class="markdownIt-Anchor" href="#覆盖缺口与不确定性"></a> 📉 覆盖缺口与不确定性</h2>
+<ul>
+<li><code>s2_similar_unavailable</code>：候选 JSON 没有 <code>similar_papers</code>，延伸阅读段为空。</li>
+<li><code>affiliations_missing</code>：129 篇候选 <code>affiliations</code> 全部为空数组，机构与新作者发现段降级；后续可考虑在 paper_fetch 阶段补 OpenReview / S2 author lookup。</li>
+<li>HF Daily / arXiv 三源全部 OK（<code>/tmp/paper_fetch.err</code> 为空），seen-pool 14 天滚动命中 0；不存在源降级。</li>
+</ul>
+<h2 id="来源与交叉验证说明"><a class="markdownIt-Anchor" href="#来源与交叉验证说明"></a> 来源与交叉验证说明</h2>
+<p>本期权重：arXiv (primary, 排序贡献分类与 watchlist 关键词) + HF Daily (curated, 提供 trending rank 与 upvote) + Semantic Scholar (metadata, 提供 s2_tldr 与 citation_velocity，本期 similar_papers 缺失)。Top picks 中 6/8 同时被 arXiv 与 HF Daily 命中（双源交叉），其余 2 篇 (CF-VLA, DepthKV) 仅 arXiv 单源命中但 watchlist 关键词强匹配。结论锚定 primary 即 arXiv 摘要文本；citation_count 普遍为 0/None 属于新预印本正常情形，不作为降权依据。</p>
+<!-- flag of hidden posts -->
+    </div>
+
+    
+    
+    
+<div class="comments" id="comments">
+  <script src="https://giscus.app/client.js"
+          data-repo="TCoherence/TCoherence.github.io"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkxMzE0MDY3MTA="
+          data-category="General"
+          data-category-id="DIC_kwDOB9Ubds4C8BCw"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="preferred_color_scheme"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>年轻的C同学
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://tcoherence.github.io/reports/papers/2026-04-28/" title="[论文·2026-04-28]">https://tcoherence.github.io/reports/papers/2026-04-28/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BA%E6%96%87%E9%9B%B7%E8%BE%BE%E6%97%A5%E6%8A%A52026-04-28"><span class="nav-text"> 论文雷达日报｜2026-04-28</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-text"> 摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#top-picks-%E4%BA%A4%E5%8F%89%E5%91%BD%E4%B8%AD"><span class="nav-text"> 📌 Top picks (交叉命中)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#watchlist-%E5%88%86%E7%B1%BB%E5%91%BD%E4%B8%AD"><span class="nav-text"> 🏷 Watchlist 分类命中</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cscl-4"><span class="nav-text"> cs.CL (4)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#csai-3"><span class="nav-text"> cs.AI (3)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#csro-1"><span class="nav-text"> cs.RO (1)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hf-daily-%E5%80%99%E9%80%89%E6%97%A0-arxiv-%E4%B8%BB%E5%88%86%E7%B1%BB%E6%8C%89-trending-%E6%8E%92%E5%BA%8F4-%E7%AF%87"><span class="nav-text"> HF Daily 候选（无 arXiv 主分类，按 trending 排序，4 篇）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%B6%E4%BC%B8%E9%98%85%E8%AF%BB-semantic-scholar-%E7%9B%B8%E4%BC%BC%E8%AE%BA%E6%96%87"><span class="nav-text"> 🔗 延伸阅读 (Semantic Scholar 相似论文)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%87%BA%E7%8E%B0%E7%9A%84%E4%BD%9C%E8%80%85-%E5%9B%A2%E9%98%9F"><span class="nav-text"> 🧑‍🔬 新出现的作者 &#x2F; 团队</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A6%86%E7%9B%96%E7%BC%BA%E5%8F%A3%E4%B8%8E%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7"><span class="nav-text"> 📉 覆盖缺口与不确定性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A5%E6%BA%90%E4%B8%8E%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81%E8%AF%B4%E6%98%8E"><span class="nav-text"> 来源与交叉验证说明</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="年轻的C同学"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">年轻的C同学</p>
+  <div class="site-description" itemprop="description">年轻的C同学的个人博客 — 关于工程、生活与一些碎片思考</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/TCoherence" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;TCoherence" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:hanzhiyang2019@u.northwestern.edu" title="E-Mail → mailto:hanzhiyang2019@u.northwestern.edu" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/yang_hanzhi" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;yang_hanzhi" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/profile.php?id=100025563873836" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id&#x3D;100025563873836" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">年轻的C同学</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js', () => {
+    var darkMQ = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+    var mermaidTheme = (darkMQ && darkMQ.matches) ? 'dark' : 'forest';
+    mermaid.initialize({
+      theme    : mermaidTheme,
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+</body>
+</html>

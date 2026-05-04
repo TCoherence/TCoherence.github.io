@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 8.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/images/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tcoherence.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":2,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="AI 日报｜2026-04-13 一句话结论：今天最清晰的主线不是“又有新模型”，而是 AI 产业已经进入“需求兑现更快、算力锁定更重、能源约束更硬、开源版图更全球化”的新阶段。  关键要点  企业侧兑现继续加速：OpenAI 披露企业收入已超过总营收的 40%，Codex 周活达到 300 万，API 吞吐超过每分钟 150 亿 tokens，说明 agent&#x2F;workflow 类需求已经从试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[市场·2026-04-13] AI">
+<meta property="og:url" content="https://tcoherence.github.io/reports/market/2026-04-13-ai/index.html">
+<meta property="og:site_name" content="Hanzhi&#39;s BLOG">
+<meta property="og:description" content="AI 日报｜2026-04-13 一句话结论：今天最清晰的主线不是“又有新模型”，而是 AI 产业已经进入“需求兑现更快、算力锁定更重、能源约束更硬、开源版图更全球化”的新阶段。  关键要点  企业侧兑现继续加速：OpenAI 披露企业收入已超过总营收的 40%，Codex 周活达到 300 万，API 吞吐超过每分钟 150 亿 tokens，说明 agent&#x2F;workflow 类需求已经从试">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-04-12T09:00:00.000Z">
+<meta property="article:modified_time" content="2026-05-04T04:33:48.483Z">
+<meta property="article:author" content="年轻的C同学">
+<meta property="article:tag" content="Hanzhi, 博客, blog, hexo, next, 软件工程, 生活">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://tcoherence.github.io/reports/market/2026-04-13-ai/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>[市场·2026-04-13] AI | Hanzhi's BLOG</title><meta name="robots" content="noindex">
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hanzhi's BLOG</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录、思考、生活</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-reports">
+
+    <a href="/categories/AI%E6%8A%A5%E5%91%8A/" rel="section"><i class="fa fa-newspaper-o fa-fw"></i>AI 报告</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tcoherence.github.io/reports/market/2026-04-13-ai/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="年轻的C同学">
+      <meta itemprop="description" content="年轻的C同学的个人博客 — 关于工程、生活与一些碎片思考">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hanzhi's BLOG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [市场·2026-04-13] AI
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2026-04-12 17:00:00" itemprop="dateCreated datePublished" datetime="2026-04-12T17:00:00+08:00">2026-04-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-05-04 12:33:48" itemprop="dateModified" datetime="2026-05-04T12:33:48+08:00">2026-05-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AI%E6%8A%A5%E5%91%8A/" itemprop="url" rel="index"><span itemprop="name">AI报告</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AI%E6%8A%A5%E5%91%8A/%E5%B8%82%E5%9C%BA/" itemprop="url" rel="index"><span itemprop="name">市场</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="ai-日报2026-04-13"><a class="markdownIt-Anchor" href="#ai-日报2026-04-13"></a> AI 日报｜2026-04-13</h1>
+<p>一句话结论：今天最清晰的主线不是“又有新模型”，而是 AI 产业已经进入“需求兑现更快、算力锁定更重、能源约束更硬、开源版图更全球化”的新阶段。</p>
+<h2 id="关键要点"><a class="markdownIt-Anchor" href="#关键要点"></a> 关键要点</h2>
+<ul>
+<li>企业侧兑现继续加速：OpenAI 披露企业收入已超过总营收的 40%，<code>Codex</code> 周活达到 300 万，API 吞吐超过每分钟 150 亿 tokens，说明 agent/workflow 类需求已经从试点走向生产（<a href="https://openai.com/index/next-phase-of-enterprise-ai/">OpenAI，2026-04-08</a>）。</li>
+<li>算力军备竞赛没有放缓：Anthropic 4 月 6 日宣布与 Google、Broadcom 签下“多吉瓦”级下一代 TPU 容量协议，且大部分新算力将落在美国，这说明头部公司已经在锁定 2027 年后的供给（<a href="https://www.anthropic.com/news/google-broadcom-partnership-compute">Anthropic，2026-04-06</a>）。</li>
+<li>上游景气仍强：TSMC 2026 年 3 月营收同比增长 45.2%，Q1 累计同比增长 35.1%，继续验证 AI 芯片与代工需求仍在高景气区间（<a href="https://investor.tsmc.com/english/monthly-revenue/2026">TSMC，2026-04-10</a>）。</li>
+<li>模型层仍高频更新，但重点转向“可部署性”：Google DeepMind 模型页在 2026 年 4 月继续主推 <code>Gemma 4</code>，模型卡也显示 <code>Gemma 4</code> 于 4 月 2 日更新，<code>Veo 3.1 Lite</code> 于 4 月 8 日更新，说明开放模型与生成式多模态产品都在持续迭代（<a href="https://deepmind.google/models/">DeepMind models</a>, <a href="https://deepmind.google/models/model-cards/">model cards</a>）。</li>
+<li>开源生态不是简单扩张，而是“扩张 + 集中 + 地理重排”同时发生：Hugging Face Spring 2026 指出，头部 200 个模型占到 49.6% 下载量，中国模型在过去一年已占到 41% 下载份额，开源竞争重心继续东移（<a href="https://huggingface.co/blog/huggingface/state-of-os-hf-spring-2026">Hugging Face，2026-03-17</a>）。</li>
+<li>能源约束正在从背景变量变成硬边界：最新 arXiv 研究预计六家头部公司相关 AI 负荷到 2030 年将升至 239-295 TWh，约占全球电力需求 1%，局部区域电网脆弱性已可量化（<a href="https://arxiv.org/abs/2604.06198">arXiv，2026-03-13</a>）。</li>
+</ul>
+<h2 id="摘要"><a class="markdownIt-Anchor" href="#摘要"></a> 摘要</h2>
+<p>如果只看表层，今天像是“多条新闻并列”；但把这些信号拼起来，结构其实非常一致。</p>
+<p>下游需求端，OpenAI 在 2026 年 4 月 8 日明确给出企业化经营指标，说明 agent、编码、企业工作流已经不再是演示场景，而是在转成持续付费的生产系统（<a href="https://openai.com/index/next-phase-of-enterprise-ai/">OpenAI</a>）。</p>
+<p>中游基础设施端，Anthropic 用“多吉瓦”级 TPU 协议把 2027 年后的算力先锁住；这不是普通扩容，而是头部厂商在提前卡位长周期供给（<a href="https://www.anthropic.com/news/google-broadcom-partnership-compute">Anthropic</a>）。TSMC 同期的 3 月与 Q1 数据则给了这条判断更硬的验证，说明上游订单并没有降温（<a href="https://investor.tsmc.com/english/monthly-revenue/2026">TSMC</a>）。</p>
+<p>模型端并未停，但重点已经从“是否更新”转向“更新能否马上部署”。Google DeepMind 在 4 月继续把 <code>Gemma 4</code> 放到主推位置，同时更新 <code>Veo 3.1 Lite</code> 等多模态资产，说明开放模型和产品化模型都在向更高频、更细分的供给节奏演进（<a href="https://deepmind.google/models/">DeepMind models</a>, <a href="https://deepmind.google/models/model-cards/">model cards</a>）。</p>
+<p>与此同时，开源世界也不再只是“社区热闹”。Hugging Face 的平台数据表明，流量在极少数头部模型上高度集中，而且地域格局在过去一年出现明显变化，中国模型下载权重显著上升（<a href="https://huggingface.co/blog/huggingface/state-of-os-hf-spring-2026">Hugging Face</a>）。这意味着 2026 年的开源竞争，不只是技术路线之争，也是在争夺全球分发与产业嵌入位置。</p>
+<p>最后，能源问题已经足够硬，不能再被当成遥远风险。arXiv 研究把 AI 数据中心负荷对区域电网的压力做成了可量化框架，提示扩张速度将越来越受制于“电力是否能交付”，而不只是“GPU 是否买得到”（<a href="https://arxiv.org/abs/2604.06198">arXiv</a>）。</p>
+<h2 id="关键人物与社区信号"><a class="markdownIt-Anchor" href="#关键人物与社区信号"></a> 关键人物与社区信号</h2>
+<p>今天的人物级新增信号不强，平台级和公司级信号更强。</p>
+<p>最值得关注的不是某个单独 KOL 发言，而是头部公司公开口径开始同时强调三件事：真实付费需求、长期算力锁定、开放生态再平衡。OpenAI 和 Anthropic 分别从收入/使用量、算力供给两个方向给出高置信更新；Hugging Face 则补上了开源分发与地域结构的底层数据（<a href="https://openai.com/index/next-phase-of-enterprise-ai/">OpenAI</a>, <a href="https://www.anthropic.com/news/google-broadcom-partnership-compute">Anthropic</a>, <a href="https://huggingface.co/blog/huggingface/state-of-os-hf-spring-2026">Hugging Face</a>）。</p>
+<ul>
+<li>今日 <code>new_candidate_people = 0</code></li>
+<li>今日 <code>promoted_people = 0</code></li>
+<li>人物池暂不调整，继续优先观察“算力-电力-开源平台”交叉位置的新高信号人物</li>
+</ul>
+<h2 id="energy"><a class="markdownIt-Anchor" href="#energy"></a> Energy</h2>
+<p>能源继续上升为部署硬约束。arXiv 在 2026 年 3 月 13 日发布的研究预计，六家领先公司带来的 AI 数据中心用电到 2030 年可能达到 239-295 TWh，约全球电力需求的 1%；而 Oregon、Virginia、Ireland 等区域可能出现更高的电网压力指标（<a href="https://arxiv.org/abs/2604.06198">arXiv</a>）。</p>
+<p>这意味着 2026 年之后，基础设施竞争不只是 GPU、TPU 和资本开支，还包括选址、并网、绿电与冷却系统。谁能更早拿到可交付电力，谁就更可能把模型与 agent 服务真正扩到大规模。</p>
+<h2 id="chips"><a class="markdownIt-Anchor" href="#chips"></a> Chips</h2>
+<p>TSMC 2026 年月度营收页面显示，3 月营收为 415,191 百万新台币，同比 +45.2%；Q1 累计 1,134,103 百万新台币，同比 +35.1%（<a href="https://investor.tsmc.com/english/monthly-revenue/2026">TSMC</a>）。</p>
+<p>对 AI 市场的含义很直接：即便进入 2026 年，训练与推理相关芯片需求仍处于强势扩张区间。只要 TSMC 这类最上游环节没有显著降速，就很难支持“AI 投资热度已明显退潮”的判断。</p>
+<h2 id="infra"><a class="markdownIt-Anchor" href="#infra"></a> Infra</h2>
+<p>Anthropic 4 月 6 日公告显示，其与 Google、Broadcom 签署了“多吉瓦”级下一代 TPU 容量协议，预计从 2027 年开始上线；Anthropic 同时披露 2026 年 run-rate revenue 已超过 300 亿美元，且年化支出超过 100 万美元的企业客户数量在不到两个月内从 500 家翻倍到 1,000 家以上（<a href="https://www.anthropic.com/news/google-broadcom-partnership-compute">Anthropic</a>）。</p>
+<p>这说明基础设施正在出现两个变化：</p>
+<ul>
+<li>需求已经足够强，足以支撑前置锁定多年后的算力供给。</li>
+<li>头部厂商的竞争单位不再是单个模型发布，而是“企业收入能力 + 长周期算力采购能力 + 多云分发能力”的组合。</li>
+</ul>
+<h2 id="model"><a class="markdownIt-Anchor" href="#model"></a> Model</h2>
+<p>Google DeepMind 当前模型页将 <code>Gemma 4</code> 列为 2026 年 4 月的重点更新，模型卡页面显示 <code>Gemma 4</code> 更新日期为 2026 年 4 月 2 日；同页还可见 <code>Gemini 3.1 Flash Live</code> 更新于 2026 年 3 月 26 日，<code>Veo 3.1 Lite</code> 更新于 2026 年 4 月 8 日（<a href="https://deepmind.google/models/">DeepMind models</a>, <a href="https://deepmind.google/models/model-cards/">model cards</a>）。</p>
+<p>这组信号说明模型供给的几个方向仍然很清楚：</p>
+<ul>
+<li>开放模型继续推，<code>Gemma 4</code> 是 Google 在开放生态中的重要抓手。</li>
+<li>实时、多模态、视频等方向仍在加速推进。</li>
+<li>模型更新节奏本身已经产品化，厂商开始持续用“模型页 + 模型卡 + 分发入口”维护市场注意力。</li>
+</ul>
+<h2 id="application"><a class="markdownIt-Anchor" href="#application"></a> Application</h2>
+<p>OpenAI 在 2026 年 4 月 8 日的企业文章里披露，企业收入占比已超过 40%，<code>Codex</code> 周活达到 300 万，API 处理量超过每分钟 150 亿 tokens，并点名了金融、保险、出行、生命科学等行业客户（<a href="https://openai.com/index/next-phase-of-enterprise-ai/">OpenAI</a>）。</p>
+<p>这说明应用层最重要的变化不是又多了多少 AI 功能，而是 AI 已经成为企业内部“统一工作层”的竞逐对象。谁能把模型、权限、工具调用、上下文和审计打包为可运营的平台，谁就更接近 2026 年真正的企业 AI 收益池。</p>
+<h2 id="open-source"><a class="markdownIt-Anchor" href="#open-source"></a> Open Source</h2>
+<p>Hugging Face Spring 2026 给出的平台数据非常关键：头部 200 个模型占 49.6% 下载量，超过 30% 的《财富》500 强企业已经在 Hugging Face 拥有认证账号，同时中国已经在月度与总下载量上超过美国，过去一年中国模型占到 41% 下载份额（<a href="https://huggingface.co/blog/huggingface/state-of-os-hf-spring-2026">Hugging Face</a>）。</p>
+<p>这意味着“开源繁荣”不能被简单理解成参与者越来越平均。真实情况更像是：</p>
+<ul>
+<li>头部模型虹吸更强。</li>
+<li>企业对开源的组织化采用更深。</li>
+<li>全球开源重心继续向中国厂商与模型族群倾斜。</li>
+</ul>
+<h2 id="层间联动影响"><a class="markdownIt-Anchor" href="#层间联动影响"></a> 层间联动影响</h2>
+<ul>
+<li><code>application -&gt; infra</code>：企业真实付费需求增强，推动厂商提前锁算力（<a href="https://openai.com/index/next-phase-of-enterprise-ai/">OpenAI</a>, <a href="https://www.anthropic.com/news/google-broadcom-partnership-compute">Anthropic</a>）。</li>
+<li><code>infra -&gt; chips</code>：多年期扩容承诺继续抬升上游芯片与代工景气（<a href="https://www.anthropic.com/news/google-broadcom-partnership-compute">Anthropic</a>, <a href="https://investor.tsmc.com/english/monthly-revenue/2026">TSMC</a>）。</li>
+<li><code>chips -&gt; energy</code>：算力扩张越顺畅，电力与并网约束越快变成瓶颈（<a href="https://investor.tsmc.com/english/monthly-revenue/2026">TSMC</a>, <a href="https://arxiv.org/abs/2604.06198">arXiv</a>）。</li>
+<li><code>model -&gt; open_source</code>：开放模型仍在扩张，但下载与生态权重越来越集中到少数头部模型和区域（<a href="https://deepmind.google/models/">DeepMind models</a>, <a href="https://huggingface.co/blog/huggingface/state-of-os-hf-spring-2026">Hugging Face</a>）。</li>
+</ul>
+<h2 id="候选池变化与后续关注"><a class="markdownIt-Anchor" href="#候选池变化与后续关注"></a> 候选池变化与后续关注</h2>
+<ul>
+<li>今日未新增高置信人物候选，也未执行晋升。</li>
+<li>后续重点关注 2026 年 4 月下旬是否出现更多“电力接入 / 数据中心选址 / 主权算力”政策型信号。</li>
+<li>后续重点关注 Google、OpenAI、Anthropic 在 4 月余下时间是否继续披露更具体的 agent 商业化指标。</li>
+<li>后续重点关注 Hugging Face 生态里欧美开源模型对中国头部开源模型的追赶幅度。</li>
+</ul>
+<h2 id="来源与交叉验证说明"><a class="markdownIt-Anchor" href="#来源与交叉验证说明"></a> 来源与交叉验证说明</h2>
+<ul>
+<li>source mix：<code>primary / official</code>（OpenAI、Anthropic、Google DeepMind）+ <code>company / filing</code>（TSMC）+ <code>community / social</code>（Hugging Face）+ <code>research / analysis</code>（arXiv）</li>
+<li>verification：硬指标优先采用官方披露与公司数据；平台型社区数据只用于结构判断；关于 2027 年后算力与 2030 年电力压力的部分属于基于公开披露和研究结果的前瞻推断，不当作既成事实</li>
+</ul>
+<!-- flag of hidden posts -->
+    </div>
+
+    
+    
+    
+<div class="comments" id="comments">
+  <script src="https://giscus.app/client.js"
+          data-repo="TCoherence/TCoherence.github.io"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkxMzE0MDY3MTA="
+          data-category="General"
+          data-category-id="DIC_kwDOB9Ubds4C8BCw"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="preferred_color_scheme"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>年轻的C同学
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://tcoherence.github.io/reports/market/2026-04-13-ai/" title="[市场·2026-04-13] AI">https://tcoherence.github.io/reports/market/2026-04-13-ai/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ai-%E6%97%A5%E6%8A%A52026-04-13"><span class="nav-text"> AI 日报｜2026-04-13</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E8%A6%81%E7%82%B9"><span class="nav-text"> 关键要点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-text"> 摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E4%BA%BA%E7%89%A9%E4%B8%8E%E7%A4%BE%E5%8C%BA%E4%BF%A1%E5%8F%B7"><span class="nav-text"> 关键人物与社区信号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#energy"><span class="nav-text"> Energy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chips"><span class="nav-text"> Chips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#infra"><span class="nav-text"> Infra</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#model"><span class="nav-text"> Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#application"><span class="nav-text"> Application</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#open-source"><span class="nav-text"> Open Source</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%82%E9%97%B4%E8%81%94%E5%8A%A8%E5%BD%B1%E5%93%8D"><span class="nav-text"> 层间联动影响</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%80%99%E9%80%89%E6%B1%A0%E5%8F%98%E5%8C%96%E4%B8%8E%E5%90%8E%E7%BB%AD%E5%85%B3%E6%B3%A8"><span class="nav-text"> 候选池变化与后续关注</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A5%E6%BA%90%E4%B8%8E%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81%E8%AF%B4%E6%98%8E"><span class="nav-text"> 来源与交叉验证说明</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="年轻的C同学"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">年轻的C同学</p>
+  <div class="site-description" itemprop="description">年轻的C同学的个人博客 — 关于工程、生活与一些碎片思考</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/TCoherence" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;TCoherence" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:hanzhiyang2019@u.northwestern.edu" title="E-Mail → mailto:hanzhiyang2019@u.northwestern.edu" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/yang_hanzhi" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;yang_hanzhi" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/profile.php?id=100025563873836" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id&#x3D;100025563873836" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">年轻的C同学</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js', () => {
+    var darkMQ = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+    var mermaidTheme = (darkMQ && darkMQ.matches) ? 'dark' : 'forest';
+    mermaid.initialize({
+      theme    : mermaidTheme,
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+</body>
+</html>

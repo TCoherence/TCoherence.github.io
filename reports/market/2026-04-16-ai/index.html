@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 8.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/images/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tcoherence.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":2,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="AI 日报｜2026-04-16 一句话结论：前沿模型竞争进入&quot;发布前夜&quot;密集博弈期——Anthropic Opus 4.7 泄露、OpenAI Spud 预训练完成待发、Gemini 3.1 Pro 基准领跑，同时 coding agent 渗透率突破 84%，AI 正从聊天工具加速转向生产力基础设施。  摘要 本周 AI 领域处于多条主线并行的高密度窗口：(1) Anth">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[市场·2026-04-16] AI">
+<meta property="og:url" content="https://tcoherence.github.io/reports/market/2026-04-16-ai/index.html">
+<meta property="og:site_name" content="Hanzhi&#39;s BLOG">
+<meta property="og:description" content="AI 日报｜2026-04-16 一句话结论：前沿模型竞争进入&quot;发布前夜&quot;密集博弈期——Anthropic Opus 4.7 泄露、OpenAI Spud 预训练完成待发、Gemini 3.1 Pro 基准领跑，同时 coding agent 渗透率突破 84%，AI 正从聊天工具加速转向生产力基础设施。  摘要 本周 AI 领域处于多条主线并行的高密度窗口：(1) Anth">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-04-15T09:00:00.000Z">
+<meta property="article:modified_time" content="2026-05-04T04:33:48.487Z">
+<meta property="article:author" content="年轻的C同学">
+<meta property="article:tag" content="Hanzhi, 博客, blog, hexo, next, 软件工程, 生活">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://tcoherence.github.io/reports/market/2026-04-16-ai/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>[市场·2026-04-16] AI | Hanzhi's BLOG</title><meta name="robots" content="noindex">
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hanzhi's BLOG</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录、思考、生活</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-reports">
+
+    <a href="/categories/AI%E6%8A%A5%E5%91%8A/" rel="section"><i class="fa fa-newspaper-o fa-fw"></i>AI 报告</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tcoherence.github.io/reports/market/2026-04-16-ai/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="年轻的C同学">
+      <meta itemprop="description" content="年轻的C同学的个人博客 — 关于工程、生活与一些碎片思考">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hanzhi's BLOG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [市场·2026-04-16] AI
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2026-04-15 17:00:00" itemprop="dateCreated datePublished" datetime="2026-04-15T17:00:00+08:00">2026-04-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-05-04 12:33:48" itemprop="dateModified" datetime="2026-05-04T12:33:48+08:00">2026-05-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AI%E6%8A%A5%E5%91%8A/" itemprop="url" rel="index"><span itemprop="name">AI报告</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AI%E6%8A%A5%E5%91%8A/%E5%B8%82%E5%9C%BA/" itemprop="url" rel="index"><span itemprop="name">市场</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="ai-日报2026-04-16"><a class="markdownIt-Anchor" href="#ai-日报2026-04-16"></a> AI 日报｜2026-04-16</h1>
+<p>一句话结论：前沿模型竞争进入&quot;发布前夜&quot;密集博弈期——Anthropic Opus 4.7 泄露、OpenAI Spud 预训练完成待发、Gemini 3.1 Pro 基准领跑，同时 coding agent 渗透率突破 84%，AI 正从聊天工具加速转向生产力基础设施。</p>
+<h2 id="摘要"><a class="markdownIt-Anchor" href="#摘要"></a> 摘要</h2>
+<p>本周 AI 领域处于多条主线并行的高密度窗口：(1) Anthropic 因配置错误泄露 Claude Opus 4.7 及 Mythos/Capybara 新模型层级细节，预计本周内发布；(2) OpenAI GPT-5.5 (Spud) 预训练已于 3 月 24 日完成，Polymarket 给出 4 月 23 日发布 63% 概率；(3) Google Gemini 3.1 Pro 在 16 项基准中 13 项领先，ARC-AGI-2 达 77.1%；(4) Coding agent 日常使用率达 84%，GitHub 报告超 51% 代码由 AI 生成或辅助；(5) 能源层面，印第安纳州今日签署 SMR 税收激励法案，核能-AI 数据中心绑定持续深化。</p>
+<h2 id="frontier-labs-frontier-model-radar"><a class="markdownIt-Anchor" href="#frontier-labs-frontier-model-radar"></a> Frontier Labs / Frontier Model Radar</h2>
+<h3 id="anthropic-claude-opus-47-泄露与-mythos-浮出水面"><a class="markdownIt-Anchor" href="#anthropic-claude-opus-47-泄露与-mythos-浮出水面"></a> Anthropic — Claude Opus 4.7 泄露与 Mythos 浮出水面</h3>
+<ul>
+<li><strong>4 月 14 日 The Information 报道</strong>：Anthropic 即将发布 Claude Opus 4.7，同步推出 AI 设计工具（可通过自然语言生成网站/落地页/演示文稿）。(<a href="https://www.geeky-gadgets.com/claude-opus-4-7-leak-anthropic-updates/">来源</a>)</li>
+<li><strong>Mythos/Capybara 泄露</strong>：因 CMS 配置错误，约 3,000 份未发布资产被公开访问。泄露草稿显示 Mythos 产品代号&quot;Capybara&quot;，定位为 Opus 之上的全新模型层级——“比 Opus 模型更大、更智能”，在编程、学术推理和网络安全测试中&quot;显著高于&quot; Opus 4.6。(<a href="https://www.techzine.eu/news/applications/140017/details-leak-on-anthropics-step-change-mythos-model/">来源</a>)</li>
+<li><strong>Opus 4.6 性能争议持续</strong>：用户反馈推理中断、幻觉增多。Anthropic 回应称与 2 月 9 日默认开启 adaptive thinking 及 3 月 3 日将 effort level 调至 85 有关。(<a href="https://venturebeat.com/technology/is-anthropic-nerfing-claude-users-increasingly-report-performance">来源</a>)</li>
+<li><strong>Claude Code 高频迭代</strong>：3-4 月从 v2.1.69 推进到 v2.1.101，5 周内超过 30 个版本。(<a href="https://help.apiyi.com/en/claude-code-changelog-2026-april-updates-en.html">来源</a>)</li>
+</ul>
+<h3 id="openai-spud-待发gpt-54-继续打天下"><a class="markdownIt-Anchor" href="#openai-spud-待发gpt-54-继续打天下"></a> OpenAI — Spud 待发，GPT-5.4 继续打天下</h3>
+<ul>
+<li><strong>GPT-5.5 (Spud) 预训练 3 月 24 日完成</strong>，Sam Altman 称其&quot;能真正加速经济&quot;，Greg Brockman 描述为&quot;两年研究的结晶&quot;。Polymarket 给 4 月 23 日发布 63% 概率，4 月 30 日前发布概率 78%。是否命名为 GPT-5.5 或 GPT-6 尚未决定。(<a href="https://www.abhs.in/blog/openai-spud-gpt-5-5-release-date-polymarket-april-2026">来源</a>)</li>
+<li><strong>GPT-5.4</strong> 继续作为主力模型，1M context window，83% GDPVal，原生 computer-use 能力领先。</li>
+</ul>
+<h3 id="google-deepmind-gemini-31-pro-基准霸榜"><a class="markdownIt-Anchor" href="#google-deepmind-gemini-31-pro-基准霸榜"></a> Google DeepMind — Gemini 3.1 Pro 基准霸榜</h3>
+<ul>
+<li>Gemini 3.1 Pro 在 16 项基准中 13 项领先，GPQA Diamond 94.3%，ARC-AGI-2 77.1%，多模态语音视觉能力强化。</li>
+</ul>
+<h3 id="其他实验室"><a class="markdownIt-Anchor" href="#其他实验室"></a> 其他实验室</h3>
+<ul>
+<li><strong>Meta Llama 4 Maverick</strong>：代码生成匹敌 GPT-5.3，通用推理表现稳健。</li>
+<li><strong>DeepSeek V3.2</strong>：推理任务接近 GPT-5 水平，V4 &quot;数周内&quot;发布（Reuters 4/3 确认）。</li>
+<li><strong>Qwen 3.6-Plus</strong>：1M context window，瞄准 agentic coding。</li>
+<li><strong>Mistral Small 4</strong>（3/16）：119B MoE，推理+视觉+编码统一端点。</li>
+<li><strong>智谱 GLM-5.1</strong>：744B MoE，4 月发布。</li>
+</ul>
+<h3 id="行业联防"><a class="markdownIt-Anchor" href="#行业联防"></a> 行业联防</h3>
+<ul>
+<li>OpenAI、Anthropic、Google 联合打击中国竞争对手模型抄袭。Anthropic 安全团队发现约 24,000 个欺诈账号（追溯至 DeepSeek、Moonshot AI、MiniMax）与 Claude 产生超 1,600 万次交互。(<a href="https://www.bloomberg.com/news/articles/2026-04-06/openai-anthropic-google-unite-to-combat-model-copying-in-china">来源</a>)</li>
+</ul>
+<h2 id="关键人物与社区信号"><a class="markdownIt-Anchor" href="#关键人物与社区信号"></a> 关键人物与社区信号</h2>
+<ul>
+<li><strong>Andrej Karpathy</strong>（4 月初）：分享从&quot;用 AI 写代码&quot;转向&quot;用 AI 建第二大脑&quot;的工作流——将原始研究材料投入文件夹，LLM 自动构建互链 wiki，帖子大规模传播。(<a href="https://medium.com/neuralnotions/andrej-karpathy-stopped-using-ai-to-write-code-hes-using-it-to-build-a-second-brain-instead-cddceadc5df5">来源</a>)</li>
+<li><strong>Simon Willison</strong>（4/10）：受 Karpathy 启发，讨论 AI 能力认知差距随接入点和领域不同而加大；另发文指出 ChatGPT 语音模式使用的是较弱模型。(<a href="https://simonwillison.net/2026/Apr/10/voice-mode-is-weaker/">来源</a>)</li>
+<li><strong>Sam Altman</strong>：内部表态 Spud “能真正加速经济”。</li>
+<li><strong>Greg Brockman</strong>：Big Technology 播客中称 Spud 代表&quot;两年研究&quot;，“不是增量改进”。</li>
+</ul>
+<h2 id="energy"><a class="markdownIt-Anchor" href="#energy"></a> Energy</h2>
+<ul>
+<li><strong>印第安纳州今日（4/16）签署 SMR 税收激励法案</strong>，为开发小型模块反应堆的能源公司提供税收优惠。</li>
+<li><strong>Meta 核能布局</strong>：与 Constellation Energy 签署 20 年 1.1GW 核电供应协议（伊利诺伊州，2027 年起供电），加上与 Vistra、TerraPower、Oklo 的协议，Meta 已成为美国最大的企业核能采购方之一。</li>
+<li><strong>Microsoft-Constellation</strong> 20 年协议重启三里岛核电站，投资 16 亿美元。</li>
+<li><strong>宏观趋势</strong>：到 2026 年，Amazon、Microsoft、Google、Meta 合计用电可能超过 1,000 TWh，相当于全球核电站去年总发电量的三分之一。</li>
+</ul>
+<h2 id="chips"><a class="markdownIt-Anchor" href="#chips"></a> Chips</h2>
+<ul>
+<li><strong>NVIDIA Vera Rubin 进入量产</strong>，首批云实例 2026 下半年上线（AWS、Google Cloud、Microsoft、OCI 及 CoreWeave、Lambda 等）。</li>
+<li><strong>NVIDIA RTX PRO 5000 72GB Blackwell GPU</strong> 4 月 9 日 GA，扩展桌面端 agentic AI 工作负载内存选项。</li>
+<li><strong>OpenAI-NVIDIA 战略合作</strong>：NVIDIA 拟向 OpenAI 投资最多 1,000 亿美元，首个 1GW NVIDIA 系统 2026 下半年部署在 Vera Rubin 平台上。</li>
+<li><strong>BlueField-4</strong>：NVIDIA 推出面向下一代 AI 的原生存储基础设施。</li>
+</ul>
+<h2 id="infra"><a class="markdownIt-Anchor" href="#infra"></a> Infra</h2>
+<ul>
+<li><strong>Microsoft Agent Framework 1.0</strong> 发布：稳定 API + LTS 承诺 + 完整 MCP 支持 + 浏览器端 DevUI 可视化 agent 执行和工具调用。这是 MCP+A2A 架构成为生产 agentic 系统默认选择的最具体信号。</li>
+<li><strong>MCP v2.1</strong>：Claude Desktop 和 Cursor 均已完成支持。</li>
+<li><strong>Firmus Technologies</strong>（NVIDIA 投资）融资 5.05 亿美元，用于亚太 AI 基础设施建设。(<a href="https://www.bloomberg.com/news/articles/2026-04-06/nvidia-backed-data-center-builder-firmus-raises-505-million">来源</a>)</li>
+</ul>
+<h2 id="model"><a class="markdownIt-Anchor" href="#model"></a> Model</h2>
+<ul>
+<li>4 月成为 LLM 发布最密集的月份——&quot;纯文本模型不再单独发布&quot;成为新常态，所有新模型均为原生多模态。</li>
+<li>Coding 正在成为&quot;新 GPU&quot;——张小珺播客中广密判断：领先的 coding 模型就像领先的 GPU，正在加速 AGI 实现。</li>
+<li>Anthropic Sonnet 4.6 以 GDPval-AA Elo 1,633 分领跑，1M context window。</li>
+<li>模型竞争从纯性能转向可控性（governance）、可部署性（enterprise readiness）和工具集成。</li>
+</ul>
+<h2 id="application"><a class="markdownIt-Anchor" href="#application"></a> Application</h2>
+<ul>
+<li><strong>GitHub 数据</strong>：2026 年初超 51% 提交代码由 AI 生成或大幅辅助。</li>
+<li><strong>Stack Overflow 调查</strong>：84% 开发者每天使用 AI 编码工具，但仅 29% 信任 AI 生成代码可直接用于生产。</li>
+<li><strong>趋势</strong>：AI 从 Chatbot 第一幕（聊天）进入 Agent 第二幕（干活），coding agent 是核心加速器。</li>
+<li><strong>n8n 博客</strong>：呼吁重新认识 2026 年的 AI agent 开发工具——已从概念验证进入可靠工程阶段。</li>
+</ul>
+<h2 id="层间联动影响"><a class="markdownIt-Anchor" href="#层间联动影响"></a> 层间联动影响</h2>
+<ul>
+<li><strong>Energy → Chips → Infra 链条加速</strong>：核能长协 + Vera Rubin 量产 + OpenAI 1,000 亿投资承诺，形成从能源到算力的多年供给锁定。供给确定性正在拉高 model/application 层的迭代节奏上限。</li>
+<li><strong>Model → Application 传导</strong>：Coding 成为 model 层能力最直接的变现通道。84% 日常使用率意味着 coding agent 已跨过采纳拐点，但 29% 信任率揭示了从&quot;辅助&quot;到&quot;自主&quot;的最后一公里仍需 model 层在可控性上突破。</li>
+<li><strong>Frontier 竞争 → 行业联防</strong>：模型蒸馏/抄袭威胁正迫使本应竞争的头部实验室联手，这反过来可能加速模型闭源化趋势，对开源生态构成压力。</li>
+</ul>
+<h2 id="播客动态"><a class="markdownIt-Anchor" href="#播客动态"></a> 播客动态</h2>
+<ul>
+<li><strong><a href="https://www.xiaoyuzhoufm.com/episode/69dae02ab977fb2c47b033c0">十字路口 Crossing — 具身智能的滔天大泡沫中，他已经把机器人送进300个家庭</a></strong>：对话未来不远创始人张翼，讨论具身智能泡沫（中国至少 5 家公司拿到 10 亿级融资）、家庭机器人 F2 发布、先潜行三年不融资的差异化路径。</li>
+<li><strong><a href="https://www.xiaoyuzhoufm.com/episode/69de68cfb977fb2c47f1ee14">张小珺Jun｜商业访谈录 — 全球大模型季报第9集</a></strong>：与广密对谈。核心判断：Coding 是 AGI 第二幕加速器，领先 coding 模型 = 领先 GPU；Opus 4.5→4.6 是 GPT-3→4 级别跨代际跃升；6 月前可能还有一次同等幅度跨越；白领通缩与失业窗口正在打开。</li>
+</ul>
+<h2 id="候选池变化与后续关注"><a class="markdownIt-Anchor" href="#候选池变化与后续关注"></a> 候选池变化与后续关注</h2>
+<h3 id="后续观察点"><a class="markdownIt-Anchor" href="#后续观察点"></a> 后续观察点</h3>
+<ol>
+<li><strong>Opus 4.7 正式发布</strong>：The Information 4/14 报道&quot;本周内&quot;，密切关注 Anthropic 官方公告。</li>
+<li><strong>Spud/GPT-5.5 发布窗口</strong>：Polymarket 4/23 概率 63%，关注 OpenAI 是否命名为 GPT-6。</li>
+<li><strong>DeepSeek V4 发布</strong>：Reuters 确认&quot;数周内&quot;，需追踪实际时间与能力定位。</li>
+<li><strong>Mythos/Capybara 时间线</strong>：泄露信息指向&quot;5 月 6 日前&quot;，关注其是否真正代表 Opus 之上的新层级。</li>
+<li><strong>Coding agent 信任率拐点</strong>：84% 使用率 vs 29% 生产信任率，关注哪些 model/infra 改进能收窄差距。</li>
+<li><strong>模型抄袭联防实效</strong>：三巨头联合行动是否能有效遏制模型蒸馏，对开源生态的溢出影响。</li>
+</ol>
+<h3 id="人物候选池"><a class="markdownIt-Anchor" href="#人物候选池"></a> 人物候选池</h3>
+<ul>
+<li><strong>广密</strong>（张小珺播客嘉宾）：对 coding-as-AGI-accelerator 的判断值得持续追踪，待确认身份与持续信号后考虑纳入。</li>
+</ul>
+<h2 id="来源与交叉验证说明"><a class="markdownIt-Anchor" href="#来源与交叉验证说明"></a> 来源与交叉验证说明</h2>
+<p><strong>来源构成</strong>：company/filing（Anthropic、OpenAI、NVIDIA、Meta 官方发布与文档）为主体，media/analysis（The Information、Bloomberg、VentureBeat、Reuters）用于未公开信号的交叉验证，community/social（X.com、Medium、小宇宙播客）用于社区温度与人物信号。</p>
+<p><strong>验证说明</strong>：Opus 4.7 泄露与 Mythos 信息来自 The Information 独家及 CMS 泄露，尚未获 Anthropic 官方确认，置于 unverified frontier signals 处理。Spud 预训练完成由 Sam Altman 对内确认、Greg Brockman 播客公开确认，可信度较高。GitHub 51% AI 代码数据来自 GitHub 官方报告。核能协议来自各公司官方公告与 SEC 文件。</p>
+<!-- flag of hidden posts -->
+    </div>
+
+    
+    
+    
+<div class="comments" id="comments">
+  <script src="https://giscus.app/client.js"
+          data-repo="TCoherence/TCoherence.github.io"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkxMzE0MDY3MTA="
+          data-category="General"
+          data-category-id="DIC_kwDOB9Ubds4C8BCw"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="preferred_color_scheme"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>年轻的C同学
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://tcoherence.github.io/reports/market/2026-04-16-ai/" title="[市场·2026-04-16] AI">https://tcoherence.github.io/reports/market/2026-04-16-ai/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ai-%E6%97%A5%E6%8A%A52026-04-16"><span class="nav-text"> AI 日报｜2026-04-16</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-text"> 摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#frontier-labs-frontier-model-radar"><span class="nav-text"> Frontier Labs &#x2F; Frontier Model Radar</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#anthropic-claude-opus-47-%E6%B3%84%E9%9C%B2%E4%B8%8E-mythos-%E6%B5%AE%E5%87%BA%E6%B0%B4%E9%9D%A2"><span class="nav-text"> Anthropic — Claude Opus 4.7 泄露与 Mythos 浮出水面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#openai-spud-%E5%BE%85%E5%8F%91gpt-54-%E7%BB%A7%E7%BB%AD%E6%89%93%E5%A4%A9%E4%B8%8B"><span class="nav-text"> OpenAI — Spud 待发，GPT-5.4 继续打天下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#google-deepmind-gemini-31-pro-%E5%9F%BA%E5%87%86%E9%9C%B8%E6%A6%9C"><span class="nav-text"> Google DeepMind — Gemini 3.1 Pro 基准霸榜</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%AE%9E%E9%AA%8C%E5%AE%A4"><span class="nav-text"> 其他实验室</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%8C%E4%B8%9A%E8%81%94%E9%98%B2"><span class="nav-text"> 行业联防</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E4%BA%BA%E7%89%A9%E4%B8%8E%E7%A4%BE%E5%8C%BA%E4%BF%A1%E5%8F%B7"><span class="nav-text"> 关键人物与社区信号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#energy"><span class="nav-text"> Energy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chips"><span class="nav-text"> Chips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#infra"><span class="nav-text"> Infra</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#model"><span class="nav-text"> Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#application"><span class="nav-text"> Application</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%82%E9%97%B4%E8%81%94%E5%8A%A8%E5%BD%B1%E5%93%8D"><span class="nav-text"> 层间联动影响</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%92%AD%E5%AE%A2%E5%8A%A8%E6%80%81"><span class="nav-text"> 播客动态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%80%99%E9%80%89%E6%B1%A0%E5%8F%98%E5%8C%96%E4%B8%8E%E5%90%8E%E7%BB%AD%E5%85%B3%E6%B3%A8"><span class="nav-text"> 候选池变化与后续关注</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8E%E7%BB%AD%E8%A7%82%E5%AF%9F%E7%82%B9"><span class="nav-text"> 后续观察点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%BA%E7%89%A9%E5%80%99%E9%80%89%E6%B1%A0"><span class="nav-text"> 人物候选池</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A5%E6%BA%90%E4%B8%8E%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81%E8%AF%B4%E6%98%8E"><span class="nav-text"> 来源与交叉验证说明</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="年轻的C同学"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">年轻的C同学</p>
+  <div class="site-description" itemprop="description">年轻的C同学的个人博客 — 关于工程、生活与一些碎片思考</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/TCoherence" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;TCoherence" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:hanzhiyang2019@u.northwestern.edu" title="E-Mail → mailto:hanzhiyang2019@u.northwestern.edu" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/yang_hanzhi" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;yang_hanzhi" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/profile.php?id=100025563873836" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id&#x3D;100025563873836" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">年轻的C同学</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js', () => {
+    var darkMQ = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+    var mermaidTheme = (darkMQ && darkMQ.matches) ? 'dark' : 'forest';
+    mermaid.initialize({
+      theme    : mermaidTheme,
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+</body>
+</html>
