@@ -9,6 +9,14 @@
  * is "since last successful deploy" — the sync writes a *pending* watermark,
  * and autoDeployAndGit.sh promotes it after `hexo deploy` succeeds.
  *
+ * Each report belongs to a `group` (e.g. one date for deals, one ISO week
+ * for podcast). Within a group, exactly one file is the `primary` (summary
+ * / report / digest), and the rest are `secondaries` (per-source references
+ * or per-episode breakdowns). Primaries get an "相关细分报告" footer; each
+ * secondary gets a "返回主报告" header. Listing pages and the hub count
+ * only see primaries — secondaries are reachable only by following these
+ * internal links or by direct URL.
+ *
  * Output is gitignored — source of truth stays in oh-my-agent dir.
  */
 
@@ -25,22 +33,21 @@ const WATERMARK_FILE = path.join(STATE_DIR, 'ai-reports-watermark.json');
 const PENDING_FILE = path.join(STATE_DIR, 'ai-reports-pending.json');
 const OUTPUT_ROOT = path.join(hexo.source_dir, '_posts/ai-reports');
 
+// Hexo's preferred frontmatter format is `YYYY-MM-DD HH:mm:ss` — parsed
+// with `_config.yml timezone:` (Asia/Shanghai for this blog), no offset
+// suffix. ISO-with-offset like `2026-04-27T12:00:00+08:00` round-trips
+// through Hexo's pipeline as the same instant in PDT (system local) and
+// renders one *day* off in the HTML <time> tag. Plain "DATE 12:00:00"
+// avoids both that and the date-only UTC-midnight parsing bug.
+const DATE_TIME_SUFFIX = ' 12:00:00';
+
 // Per-topic config. `parse(relpath)` returns {date, slug, title, bucket,
 // isPrimary, group} or null if the path doesn't match an expected shape.
-//
-// `isPrimary` distinguishes summary-style files (shown on listing pages)
-// from detail files like deals/<date>/references/* and podcast/<bucket>/
-// _episodes/* (hidden from listings, only reachable from the primary's
-// auto-injected "相关报告" footer).
-//
-// `group` is a stable key tying primaries to their secondaries within the
-// same date/bucket so the footer-injection pass can find siblings.
 const TOPICS = {
   deals: {
     label: '折扣',
     sourceDirs: ['deals-scanner/daily'],
     parse(relpath) {
-      // "2026-04-21/summary.md" or "2026-04-21/references/credit-cards.md"
       const parts = relpath.split('/');
       const date = parts[0];
       if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return null;
@@ -67,7 +74,6 @@ const TOPICS = {
     label: '论文',
     sourceDirs: ['paper-digest/daily'],
     parse(relpath) {
-      // "2026-05-03.md" — single file/day, always primary.
       const m = relpath.match(/^(\d{4}-\d{2}-\d{2})\.md$/);
       if (!m) return null;
       const date = m[1];
@@ -86,7 +92,6 @@ const TOPICS = {
     label: '房市',
     sourceDirs: ['seattle-metro-housing-watch/weekly'],
     parse(relpath) {
-      // "2026-04-19.md" — single file/week, always primary.
       const m = relpath.match(/^(\d{4}-\d{2}-\d{2})\.md$/);
       if (!m) return null;
       const date = m[1];
@@ -105,8 +110,6 @@ const TOPICS = {
     label: 'Podcast',
     sourceDirs: ['youtube-podcast-digest/weekly'],
     parse(relpath) {
-      // "2026-W18/report.md" or "2026-W18/_episodes/<ep>.md"
-      // or "catchup-14d-2026-04-17/..." (date-style bucket).
       const parts = relpath.split('/');
       const bucket = parts[0];
       const date = bucketToDate(bucket);
@@ -144,8 +147,8 @@ const TOPICS = {
     label: '市场',
     sourceDirs: ['market-briefing/daily', 'market-briefing/weekly'],
     parse(relpath) {
-      // daily: "2026-04-07/ai.md" (3 sibling files, all primary, cross-link)
-      // weekly: "2026-W18/cross-domain.md" (single, primary)
+      // daily: "2026-04-07/ai.md" — 3 sibling files, all primary, no hierarchy
+      // weekly: "2026-W18/cross-domain.md" — single, primary
       const parts = relpath.split('/');
       const bucket = parts[0];
       const date = bucketToDate(bucket);
@@ -167,7 +170,6 @@ const TOPICS = {
 // --- helpers --------------------------------------------------------------
 
 function humanize(s) {
-  // 'credit-cards' -> 'Credit Cards'; 'ai' -> 'AI'; 'cross-domain' -> 'Cross Domain'
   return s
     .split(/[-_]+/)
     .filter(Boolean)
@@ -182,16 +184,14 @@ function bucketToDate(bucket) {
   if (/^\d{4}-\d{2}-\d{2}$/.test(bucket)) return bucket;
   let m = bucket.match(/^(\d{4})-W(\d{2})$/);
   if (m) return isoWeekToMondayDate(parseInt(m[1], 10), parseInt(m[2], 10));
-  // catchup-14d-2026-04-17 → use embedded date
   m = bucket.match(/(\d{4}-\d{2}-\d{2})/);
   if (m) return m[1];
   return null;
 }
 
 function isoWeekToMondayDate(year, week) {
-  // ISO 8601: week 1 contains the year's first Thursday.
   const jan4 = new Date(Date.UTC(year, 0, 4));
-  const jan4Day = (jan4.getUTCDay() + 6) % 7; // Mon=0..Sun=6
+  const jan4Day = (jan4.getUTCDay() + 6) % 7;
   const week1Monday = new Date(jan4);
   week1Monday.setUTCDate(jan4.getUTCDate() - jan4Day);
   const target = new Date(week1Monday);
@@ -233,6 +233,15 @@ async function* walkMd(dir) {
   }
 }
 
+function permalinkFor(fi) {
+  return `/reports/${fi.topicKey}/${fi.meta.slug}/`;
+}
+
+// Strip "[折扣·2026-04-21] " prefix when used as inline link text.
+function shortTitle(fullTitle) {
+  return fullTitle.replace(/^\[[^\]]+\]\s*/, '').trim();
+}
+
 // --- main sync ------------------------------------------------------------
 
 async function syncReports() {
@@ -249,19 +258,15 @@ async function syncReports() {
   const wm = await loadJSON(WATERMARK_FILE, { last_deployed_mtime: 0 });
   const cutoff = wm.last_deployed_mtime || 0;
 
-  let synced = 0;
-  let skipped = 0;
+  // Pass 1: walk all files, collect file infos (don't read content yet).
+  const fileInfos = [];
   let unparseable = 0;
-  let maxMtime = cutoff;
-
   for (const [topicKey, cfg] of Object.entries(TOPICS)) {
     for (const sub of cfg.sourceDirs) {
       const root = path.join(REPORTS_ROOT, sub);
       if (!(await pathExists(root))) continue;
-
       for await (const file of walkMd(root)) {
         const stat = await fs.stat(file);
-        const mtime = stat.mtimeMs;
         const relpath = path.relative(root, file);
         const meta = cfg.parse(relpath);
         if (!meta) {
@@ -271,39 +276,95 @@ async function syncReports() {
           unparseable++;
           continue;
         }
-        if (mtime > maxMtime) maxMtime = mtime;
-        if (mtime <= cutoff) {
-          skipped++;
-          continue;
-        }
-
-        const raw = await fs.readFile(file, 'utf8');
-        // Strip any pre-existing frontmatter (defensive — agent reports
-        // shouldn't have any, but if they grow one we want to overwrite).
-        const parsed = matter(raw);
-
-        const fm = {
-          title: meta.title,
-          date: meta.date,
-          permalink: `/reports/${topicKey}/${meta.slug}/`,
-          categories: ['AI报告', cfg.label],
-          // No `tags`: hide_posts excludes hidden posts from /tags/ pages
-          // but not from `site.tags`, so any tag on a hidden post pollutes
-          // the tag cloud. Categories navigate fine without them.
-          hidden: true,
-        };
-
-        const out = matter.stringify(parsed.content, fm);
-        const outDir = path.join(OUTPUT_ROOT, topicKey);
-        await fs.mkdir(outDir, { recursive: true });
-        await fs.writeFile(
-          path.join(outDir, `${meta.slug}.md`),
-          out,
-          'utf8'
-        );
-        synced++;
+        fileInfos.push({
+          topicKey,
+          cfg,
+          sourceFile: file,
+          relpath,
+          mtime: stat.mtimeMs,
+          meta,
+        });
       }
     }
+  }
+
+  // Pass 2: build group index { groupKey -> { primary, secondaries[] } }.
+  const groups = {};
+  for (const fi of fileInfos) {
+    const g = fi.meta.group;
+    if (!groups[g]) groups[g] = { primary: null, secondaries: [] };
+    if (fi.meta.isPrimary) {
+      groups[g].primary = fi;
+    } else {
+      groups[g].secondaries.push(fi);
+    }
+  }
+
+  // Pass 3: figure out which groups need (re)writing — any member changed.
+  // We rewrite the whole group together to keep cross-links consistent.
+  const groupsToWrite = new Set();
+  let maxMtime = cutoff;
+  for (const fi of fileInfos) {
+    if (fi.mtime > maxMtime) maxMtime = fi.mtime;
+    if (fi.mtime > cutoff) groupsToWrite.add(fi.meta.group);
+  }
+
+  // Pass 4: write files for marked groups, with cross-links injected.
+  let synced = 0;
+  let skipped = 0;
+  for (const fi of fileInfos) {
+    if (!groupsToWrite.has(fi.meta.group)) {
+      skipped++;
+      continue;
+    }
+
+    const raw = await fs.readFile(fi.sourceFile, 'utf8');
+    const parsed = matter(raw);
+    let content = parsed.content;
+
+    const group = groups[fi.meta.group];
+
+    // Inject "返回主报告" header on secondaries.
+    if (!fi.meta.isPrimary && group.primary) {
+      const link = `[${group.primary.meta.title}](${permalinkFor(group.primary)})`;
+      content = `> ← 返回主报告：${link}\n\n${content}`;
+    }
+
+    // Inject "相关细分报告" footer on primaries with secondaries.
+    if (fi.meta.isPrimary && group.secondaries.length > 0) {
+      const links = group.secondaries
+        .slice()
+        .sort((a, b) => a.meta.slug.localeCompare(b.meta.slug))
+        .map(
+          (s) => `- [${shortTitle(s.meta.title)}](${permalinkFor(s)})`
+        )
+        .join('\n');
+      content = `${content.replace(/\s+$/, '')}\n\n---\n\n## 相关细分报告\n\n${links}\n`;
+    }
+
+    const fm = {
+      title: fi.meta.title,
+      date: `${fi.meta.date}${DATE_TIME_SUFFIX}`,
+      permalink: permalinkFor(fi),
+      hidden: true,
+    };
+    if (fi.meta.isPrimary) {
+      // Categories drive the hub count + category page listing. Secondaries
+      // intentionally have NO categories so they vanish from those views.
+      fm.categories = ['AI报告', fi.cfg.label];
+    } else {
+      fm.secondary = true;
+    }
+
+    const out = matter.stringify(content, fm);
+    const outDir = path.join(OUTPUT_ROOT, fi.topicKey);
+    await fs.mkdir(outDir, { recursive: true });
+    await fs.writeFile(
+      path.join(outDir, `${fi.meta.slug}.md`),
+      out,
+      'utf8'
+    );
+    synced++;
   }
 
   await fs.writeFile(
@@ -311,8 +372,10 @@ async function syncReports() {
     JSON.stringify({ last_deployed_mtime: maxMtime }, null, 2)
   );
 
+  const groupCount = Object.keys(groups).length;
   hexo.log.info(
-    `[ai-reports] sync complete: ${synced} written, ${skipped} unchanged, ${unparseable} unparseable; pending watermark = ${new Date(maxMtime).toISOString()}`
+    `[ai-reports] sync: ${synced} written / ${skipped} unchanged / ${unparseable} unparseable; ` +
+      `${groupCount} groups; pending watermark = ${new Date(maxMtime).toISOString()}`
   );
 }
 
