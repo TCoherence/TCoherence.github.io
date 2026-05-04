@@ -117,7 +117,7 @@ hexo.extend.helper.register('reports_latest', function () {
     TOPICS.map((t, i) => [t.key, i])
   );
 
-  const items = sameDay.map((p) => {
+  const allItems = sameDay.map((p) => {
     const cats = p.categories ? p.categories.toArray() : [];
     const topicCat = cats.find((c) => topicByLabel[c.name]);
     const topic = topicCat ? topicByLabel[topicCat.name] : null;
@@ -129,11 +129,35 @@ hexo.extend.helper.register('reports_latest', function () {
     };
   });
 
-  items.sort((a, b) => {
+  allItems.sort((a, b) => {
     const o =
       (topicOrder[a.topic_key] ?? 99) - (topicOrder[b.topic_key] ?? 99);
     return o !== 0 ? o : a.title.localeCompare(b.title);
   });
+
+  // Dedupe to one row per topic — for topics like 市场 that produce 7+
+  // parallel primaries per day, expose only the alphabetical first as a
+  // representative and link to the topic's category page for the rest.
+  const seenTopics = new Set();
+  const counts = {};
+  for (const it of allItems) {
+    counts[it.topic_key] = (counts[it.topic_key] || 0) + 1;
+  }
+  const items = [];
+  for (const it of allItems) {
+    if (seenTopics.has(it.topic_key)) continue;
+    seenTopics.add(it.topic_key);
+    const extra = counts[it.topic_key] - 1;
+    items.push(
+      Object.assign({}, it, {
+        extra_count: extra,
+        extra_url:
+          extra > 0
+            ? `/categories/AI%E6%8A%A5%E5%91%8A/${encodeURIComponent(it.topic_label)}/`
+            : null,
+      })
+    );
+  }
 
   return { date: latestDateStr, items };
 });
