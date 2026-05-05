@@ -5,6 +5,8 @@ permalink: /reports/market/2026-05-05-people_pool/
 hidden: true
 secondary: true
 ---
+> ← 返回主报告：[[市场·2026-05-05] Politics](/reports/market/2026-05-05-politics/)
+
 # People Pool — 2026-05-05
 
 ## 综述
