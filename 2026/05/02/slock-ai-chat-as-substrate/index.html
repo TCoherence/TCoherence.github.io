@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://tcoherence.github.io/2026/05/02/slock-ai-chat-as-substrate/01-blogger-no-isolation.jpg">
 <meta property="og:image" content="https://tcoherence.github.io/2026/05/02/slock-ai-chat-as-substrate/02-add-computer-popup.png">
 <meta property="article:published_time" content="2026-05-02T23:00:00.000Z">
-<meta property="article:modified_time" content="2026-05-03T06:20:42.939Z">
+<meta property="article:modified_time" content="2026-05-05T00:12:49.018Z">
 <meta property="article:author" content="年轻的C同学">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="agent">
@@ -227,10 +227,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2026-05-02 16:00:00 / 修改时间：23:20:42" itemprop="dateCreated datePublished" datetime="2026-05-02T16:00:00-07:00">2026-05-02</time>
+              <time title="创建时间：2026-05-02 16:00:00" itemprop="dateCreated datePublished" datetime="2026-05-02T16:00:00-07:00">2026-05-02</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-05-04 17:12:49" itemprop="dateModified" datetime="2026-05-04T17:12:49-07:00">2026-05-04</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -309,7 +315,113 @@
 </blockquote>
 <p>意思是：当一个 channel 里有 10 个 agent，主人发一个任务出来，default 情况下每个 agent 都会觉得&quot;这是给我的&quot;——结果就是 10 个 agent 同时做同一件事。slock 在 daemon 层加了一个锁：agent 必须先 claim，claim 这个动作既是 prompt 层的 norm（“你看到任务先 claim”）也是 tool 层的实际 exclusive 锁（一个 agent claim 之后别人 claim 会 fail）。</p>
 <p>这套设计有意思的不是机制本身（exclusive 锁不是新东西），是它<strong>把分布式系统的并发原语搬进了多 agent 协作</strong>。这其实是 chat-as-substrate 这个产品 pattern 真正&quot;骨架级&quot;的工程支持——没有 task claim，多 agent + 人在同一 channel 协作就不能 scale。</p>
-<p>把这些拼起来，slock.ai 最有意思的不是任何一层本身，而是它和另一个项目几乎一模一样的事实。</p>
+<p>把这些拼起来，slock.ai 最有意思的不是任何一层本身，而是它和另一个项目几乎一模一样的事实——不过在这之前，先非常快速地过一下它<strong>实际</strong>长什么样，顺便和我自己做的 <a href="https://github.com/TCoherence/oh-my-agent">oh-my-agent</a> 比一比异同。</p>
+<h3 id="基于实物文件的-slockai-架构速览"><a class="markdownIt-Anchor" href="#基于实物文件的-slockai-架构速览"></a> 基于实物文件的 slock.ai 架构速览</h3>
+<p>slock落在容器里的文件结构：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">.slock/</span><br><span class="line">├── agents/&lt;agent-uuid&gt;/                  # 每个agent一个UUID目录，是agent的cwd</span><br><span class="line">│   ├── .slock/</span><br><span class="line">│   │   ├── agent-token                   # 按agent发的认证token</span><br><span class="line">│   │   ├── claude-mcp-config.json        # 启动daemon-side chat-bridge MCP server</span><br><span class="line">│   │   ├── claude-system-prompt.md       # ~310行叙事式角色定义</span><br><span class="line">│   │   ├── runtime-sessions/             # session切换时的handoff记录</span><br><span class="line">│   │   └── slock                         # daemon CLI wrapper binary</span><br><span class="line">│   ├── MEMORY.md                         # 启动第一个读的memory索引</span><br><span class="line">│   ├── notes/                            # 长期知识 (user-preferences/channels/&lt;domain&gt;)</span><br><span class="line">│   └── &lt;agent自己创建的项目目录&gt;/        # e.g. dige_agent/, video_work/</span><br><span class="line">└── machines/machine-&lt;fingerprint&gt;/</span><br><span class="line">    └── daemon.lock/owner.json            # daemon PID + token + serverUrl</span><br></pre></td></tr></table></figure>
+<p><strong>slock的核心架构选择</strong>：</p>
+<ol>
+<li><strong>每个agent一个UUID workspace + persistent identity</strong> — Cindy、Blogger、Dige各自有自己的目录、MEMORY、notes、scripts。Agent有&quot;职业身份&quot;，跨session积累专长。</li>
+<li><strong>叙事式system prompt</strong> — <code>claude-system-prompt.md</code> 用prose而非YAML定义 Who you are / Runtime Context / Communication rules / Startup sequence / Memory structure / Capabilities，约310行一气呵成。</li>
+<li><strong>唯一输出通道是 <code>slock</code> CLI</strong> — daemon往PATH里注入wrapper，agent通过20条命令 (message/task/channel/thread/attachment/profile/reminder) 与平台交互。Stdout本身不是通道。</li>
+<li><strong>Tasks-as-messages</strong> — 任务就是消息+metadata，<code>claim</code> 是抢占原语，状态流 <code>todo → in_progress → in_review → done</code>。</li>
+<li><strong>Stream-json mid-turn message injection</strong> — 系统提示词原文：“Slock preserves Claude Code same-turn steering through a gated stream-json delivery path”。新消息到达时在Claude observed safe boundary插入到当前turn，无需重启session。</li>
+<li><strong>MEMORY.md compaction-safe recovery point</strong> — 上下文压缩后第一个重读的就是它；结构固定为 <code>Role / Key Knowledge (索引到notes/) / Active Context</code>。</li>
+<li><strong>Reminder = author-owned, persistent, observable, cancelable wake-up signal</strong> — anchored到具体message/thread；用它替代runtime cron，让user能看到/取消。</li>
+<li><strong><code>in_review</code> 是task一等公民状态</strong> — agent做完工作切到 in_review 等人类批准，不是一个pop-up确认而是状态机里的位置。</li>
+<li><strong>Onboarding agent (Cindy)</strong> — Slock默认ship一个引导agent，用决策树 (Step 1-5 + Intent A-E) 路由用户意图，目标是帮助用户搭出 ≥3 agent + 实用channel结构。</li>
+</ol>
+<h3 id="子系统对照"><a class="markdownIt-Anchor" href="#子系统对照"></a> 子系统对照</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>slock.ai</th>
+<th>oh-my-agent</th>
+<th>差距/相似</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Agent定义</td>
+<td>叙事markdown system prompt + 持久workspace</td>
+<td>YAML config (<code>agents:</code>) + 通用 <code>BaseCLIAgent</code></td>
+<td>slock per-agent定制更深；oma是&quot;通用CLI按名字dispatch&quot;</td>
+</tr>
+<tr>
+<td>Memory</td>
+<td>per-agent <code>MEMORY.md</code> (固定结构) + <code>notes/</code> 自由扩展</td>
+<td>全局 <code>JudgeStore</code> (yaml) + 合成的 <code>MEMORY.md</code> + <code>Judge</code> LLM</td>
+<td>oma的judge更聪明 (LLM驱动+scope+evidence)，slock更&quot;agent本人维护&quot;</td>
+</tr>
+<tr>
+<td>Skill</td>
+<td>没有显式skill系统；通过孵化新agent达到专门化</td>
+<td><code>skills/&lt;name&gt;/SKILL.md</code> + <code>SkillSync</code> + <code>SkillValidator</code></td>
+<td>oma赢一筹 (复用、验证、跨CLI同步)</td>
+</tr>
+<tr>
+<td>Routing</td>
+<td>Cindy靠playbook决策树；非硬编码</td>
+<td><code>OpenAICompatibleRouter</code> 5种canonical intent + 0.55 threshold</td>
+<td>oma机器化routing；slock prose-based</td>
+</tr>
+<tr>
+<td>Task runtime</td>
+<td>消息+metadata，<code>claim</code>抢占，状态流<code>todo/in_progress/in_review/done</code></td>
+<td><code>RuntimeService</code> 独立DB + worktree + Discord buttons</td>
+<td>oma内部state machine更深 (DRAFT/RUNNING/VALIDATING/WAITING_MERGE)；slock跟chat一体</td>
+</tr>
+<tr>
+<td>HITL</td>
+<td><code>in_review</code> 是task primary status</td>
+<td><code>WAITING_MERGE</code> 仅用于 <code>repo_change</code> 类型</td>
+<td>slock把HITL扩展到所有task；oma仅repo_change走merge gate</td>
+</tr>
+<tr>
+<td>Automation/cron</td>
+<td><code>slock reminder schedule</code> (anchored, cancelable)</td>
+<td><code>automations/*.yaml</code> (cron/interval)</td>
+<td>slock chat-visible，oma offline yaml</td>
+</tr>
+<tr>
+<td>多agent协作</td>
+<td>多agent同channel，etiquette rules约束噪声</td>
+<td>一channel一CLI fallback chain；多agent是 <code>@claude/@gemini/@codex</code> 显式触发</td>
+<td>slock围绕&quot;多agent团队&quot;设计；oma围绕&quot;一个agent + fallback&quot;</td>
+</tr>
+<tr>
+<td>Mid-turn steering</td>
+<td>stream-json delivery，busy时buffered到safe boundary</td>
+<td><code>BaseCLIAgent</code> flatten history到一次prompt，串行执行</td>
+<td>slock真正实时；oma是&quot;消息→prompt→响应→消息&quot;</td>
+</tr>
+<tr>
+<td>Auth/identity</td>
+<td>per-agent token + machine fingerprint</td>
+<td>per-platform bot token + <code>auth/providers/</code> (bilibili等)</td>
+<td>不同领域，难直接比</td>
+</tr>
+<tr>
+<td>Sandbox</td>
+<td>UUID目录隔离 + daemon CLI抽象</td>
+<td>三层 (workspace cwd + env白名单 + CLI native sandbox) + per-task git worktree</td>
+<td>oma赢一筹 (worktree级别隔离 + 反混淆env)</td>
+</tr>
+<tr>
+<td>平台抽象</td>
+<td>单平台 (Slock UI/server)</td>
+<td><code>BaseChannel</code> ABC, Discord first, Slack/Feishu未来扩展</td>
+<td>oma结构上更可移植</td>
+</tr>
+<tr>
+<td>Stream/语言</td>
+<td>多语言agent，自动检测user语言不pin死</td>
+<td>thread默认agent；user可prefix <code>@claude/@gemini/@codex</code></td>
+<td>设计目标不同</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <h2 id="3-同一个-agent-runner-patternslockai-vs-openclaw"><a class="markdownIt-Anchor" href="#3-同一个-agent-runner-patternslockai-vs-openclaw"></a> 3. 同一个 agent runner pattern：slock.ai vs openclaw</h2>
 <p>我在反推 slock.ai 架构的时候，越看越觉得眼熟——它和 openclaw 几乎是同一个东西。这不是巧合：他们走在同一条 agent runner 的路上。</p>
@@ -715,7 +827,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%88%91%E4%BB%A5%E4%B8%BA-slockai-%E6%98%AF-agent-in-sandbox"><span class="nav-text"> 1. 我以为 slock.ai 是 agent in sandbox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-slockai-%E7%9A%84%E7%9C%9F%E5%AE%9E%E6%9E%B6%E6%9E%84"><span class="nav-text"> 2. slock.ai 的真实架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#workspace%E7%BB%84%E7%BB%87-agent-%E7%8A%B6%E6%80%81%E7%9A%84%E5%9C%B0%E6%96%B9"><span class="nav-text"> Workspace：组织 agent 状态的地方</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cross-session-sharing%E8%A7%A3%E6%8E%89%E4%B8%80%E4%B8%AA-claude-code-%E7%94%A8%E6%88%B7%E9%83%BD%E5%8F%97%E8%BF%87%E7%9A%84%E8%8B%A6"><span class="nav-text"> Cross-session sharing：解掉一个 Claude Code 用户都受过的苦</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#task-claim%E6%8A%8A-exclusive-%E9%94%81%E6%90%AC%E8%BF%9B-agent-%E5%8D%8F%E4%BD%9C"><span class="nav-text"> Task claim：把 exclusive 锁搬进 agent 协作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%90%8C%E4%B8%80%E4%B8%AA-agent-runner-patternslockai-vs-openclaw"><span class="nav-text"> 3. 同一个 agent runner pattern：slock.ai vs openclaw</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E4%BA%A7%E5%93%81-pattern-%E5%88%86%E5%B2%94chat-as-substrate%E8%81%8A%E5%A4%A9%E5%8D%B3%E5%8D%8F%E4%BD%9C%E8%A1%AC%E5%BA%95"><span class="nav-text"> 4. 产品 pattern 分岔：chat as substrate（聊天即协作衬底）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8-slockai-%E9%87%8C%E8%BF%99%E6%84%8F%E5%91%B3%E7%9D%80%E4%BB%80%E4%B9%88"><span class="nav-text"> 在 slock.ai 里这意味着什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%A0%E4%B8%AA%E5%AE%B9%E6%98%93%E6%B7%B7%E6%B7%86%E7%9A%84%E8%BE%B9%E7%95%8C"><span class="nav-text"> 几个容易混淆的边界</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-agent-%E5%8A%A8%E5%8A%9B%E5%AD%A6multi-agent-human-%E6%98%AF%E7%9C%9F%E4%B8%9C%E8%A5%BF%E8%BF%98%E6%98%AF%E8%AF%9D%E6%9C%AF"><span class="nav-text"> 5. agent 动力学：multi-agent + human 是真东西还是话术？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#rc-%E7%9A%84%E4%B8%89%E4%B8%AA%E8%A7%82%E5%AF%9F"><span class="nav-text"> RC 的三个观察</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%A6%E6%9C%AF%E5%8F%82%E7%85%A7smallville-%E5%B7%B2%E7%BB%8F%E6%8A%8A%E8%BF%99%E4%BB%B6%E4%BA%8B%E5%81%9A%E4%BA%86%E4%B8%80%E9%81%8D"><span class="nav-text"> 学术参照：Smallville 已经把这件事做了一遍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%86%E8%BF%99%E4%B8%A4%E4%BB%B6%E4%BA%8B%E7%9A%84%E5%B7%AE%E5%88%AB%E4%B9%9F%E5%BE%97%E8%AF%B4%E6%B8%85%E6%A5%9A"><span class="nav-text"> 但这两件事的差别也得说清楚</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%99%E4%BB%B6%E4%BA%8B%E5%88%B0%E5%BA%95%E5%80%BC%E5%A4%9A%E5%B0%91%E9%92%B1"><span class="nav-text"> 这件事到底值多少钱</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E5%95%86%E4%B8%9A%E6%84%BF%E6%99%AFagent-native-vs-agent-retrofit"><span class="nav-text"> 6. 商业愿景：agent native vs agent retrofit</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#chat-as-substrate-%E4%B8%8D%E6%98%AF%E6%96%B0%E6%A6%82%E5%BF%B5"><span class="nav-text"> chat-as-substrate 不是新概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%92%B1%E4%BB%8E%E5%93%AA%E5%84%BF%E6%9D%A5%E5%BD%93%E5%89%8D%E7%9A%84%E5%8D%A1%E7%82%B9"><span class="nav-text"> 钱从哪儿来：当前的卡点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#marketplace-%E5%92%8C-fork%E5%8F%A6%E4%B8%80%E6%9D%A1%E6%8A%A4%E5%9F%8E%E6%B2%B3%E5%80%99%E9%80%89"><span class="nav-text"> Marketplace 和 fork：另一条护城河候选</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-cloud-%E5%8C%96%E8%A6%81%E4%BB%98%E7%9A%84%E4%B8%A4%E7%AC%94%E8%B4%A6"><span class="nav-text"> 7. Cloud 化要付的两笔账</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AC%94%E5%B7%A5%E7%A8%8B%E8%B4%A6"><span class="nav-text"> 第一笔：工程账</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%AC%94%E7%BB%8F%E6%B5%8E%E8%B4%A6"><span class="nav-text"> 第二笔：经济账</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8C%E8%A1%8C%E5%B7%B2%E7%BB%8F%E8%B5%B0%E8%BF%87%E4%BA%86"><span class="nav-text"> 同行已经走过了</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-%E9%80%80%E5%87%BA%E8%B7%AF%E5%BE%84%E4%B8%8D%E5%AF%B9%E7%A7%B0%E4%BA%BA%E5%80%BC%E9%92%B1-vs-%E4%BA%A7%E5%93%81%E5%80%BC%E9%92%B1"><span class="nav-text"> 8. 退出路径不对称：人值钱 vs 产品值钱</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%A4%E6%9D%A1%E9%80%80%E5%87%BA%E8%B7%AF%E5%BE%84%E5%AF%B9%E7%85%A7"><span class="nav-text"> 两条退出路径对照</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E4%B8%8D%E5%AF%B9%E7%A7%B0"><span class="nav-text"> 核心不对称</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E4%B8%AA%E4%BA%BA%E5%BC%80%E5%8F%91%E8%80%85%E8%AF%BB%E8%80%85%E7%9A%84%E5%90%AF%E7%A4%BA"><span class="nav-text"> 对个人开发者读者的启示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%BA%E4%BE%BF-challenge-%E4%B8%80%E4%B8%8B-rc-%E7%9A%84-diversity-as-moat"><span class="nav-text"> 顺便 challenge 一下 RC 的 “diversity as moat”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%A4%E4%B8%AA%E9%80%80%E5%87%BA%E5%89%A7%E6%9C%AC%E4%BD%9C%E4%B8%BA%E5%8F%82%E8%80%83"><span class="nav-text"> 两个退出剧本作为参考</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-%E6%80%BB%E7%BB%93slockai-%E7%9A%84%E4%BD%8D%E7%BD%AE%E4%B8%8E%E4%B8%AA%E4%BA%BA%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%84%E5%90%AF%E7%A4%BA"><span class="nav-text"> 9. 总结：slock.ai 的位置与个人开发者的启示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E4%B8%AA%E4%BA%BA%E5%BC%80%E5%8F%91%E8%80%85%E8%AF%BB%E8%80%85%E7%9A%84%E5%AE%9E%E7%94%A8-takeaway"><span class="nav-text"> 对个人开发者读者的实用 takeaway</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-text"> 结语</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%88%91%E4%BB%A5%E4%B8%BA-slockai-%E6%98%AF-agent-in-sandbox"><span class="nav-text"> 1. 我以为 slock.ai 是 agent in sandbox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-slockai-%E7%9A%84%E7%9C%9F%E5%AE%9E%E6%9E%B6%E6%9E%84"><span class="nav-text"> 2. slock.ai 的真实架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#workspace%E7%BB%84%E7%BB%87-agent-%E7%8A%B6%E6%80%81%E7%9A%84%E5%9C%B0%E6%96%B9"><span class="nav-text"> Workspace：组织 agent 状态的地方</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cross-session-sharing%E8%A7%A3%E6%8E%89%E4%B8%80%E4%B8%AA-claude-code-%E7%94%A8%E6%88%B7%E9%83%BD%E5%8F%97%E8%BF%87%E7%9A%84%E8%8B%A6"><span class="nav-text"> Cross-session sharing：解掉一个 Claude Code 用户都受过的苦</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#task-claim%E6%8A%8A-exclusive-%E9%94%81%E6%90%AC%E8%BF%9B-agent-%E5%8D%8F%E4%BD%9C"><span class="nav-text"> Task claim：把 exclusive 锁搬进 agent 协作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%AE%9E%E7%89%A9%E6%96%87%E4%BB%B6%E7%9A%84-slockai-%E6%9E%B6%E6%9E%84%E9%80%9F%E8%A7%88"><span class="nav-text"> 基于实物文件的 slock.ai 架构速览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%90%E7%B3%BB%E7%BB%9F%E5%AF%B9%E7%85%A7"><span class="nav-text"> 子系统对照</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%90%8C%E4%B8%80%E4%B8%AA-agent-runner-patternslockai-vs-openclaw"><span class="nav-text"> 3. 同一个 agent runner pattern：slock.ai vs openclaw</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E4%BA%A7%E5%93%81-pattern-%E5%88%86%E5%B2%94chat-as-substrate%E8%81%8A%E5%A4%A9%E5%8D%B3%E5%8D%8F%E4%BD%9C%E8%A1%AC%E5%BA%95"><span class="nav-text"> 4. 产品 pattern 分岔：chat as substrate（聊天即协作衬底）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8-slockai-%E9%87%8C%E8%BF%99%E6%84%8F%E5%91%B3%E7%9D%80%E4%BB%80%E4%B9%88"><span class="nav-text"> 在 slock.ai 里这意味着什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%A0%E4%B8%AA%E5%AE%B9%E6%98%93%E6%B7%B7%E6%B7%86%E7%9A%84%E8%BE%B9%E7%95%8C"><span class="nav-text"> 几个容易混淆的边界</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-agent-%E5%8A%A8%E5%8A%9B%E5%AD%A6multi-agent-human-%E6%98%AF%E7%9C%9F%E4%B8%9C%E8%A5%BF%E8%BF%98%E6%98%AF%E8%AF%9D%E6%9C%AF"><span class="nav-text"> 5. agent 动力学：multi-agent + human 是真东西还是话术？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#rc-%E7%9A%84%E4%B8%89%E4%B8%AA%E8%A7%82%E5%AF%9F"><span class="nav-text"> RC 的三个观察</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%A6%E6%9C%AF%E5%8F%82%E7%85%A7smallville-%E5%B7%B2%E7%BB%8F%E6%8A%8A%E8%BF%99%E4%BB%B6%E4%BA%8B%E5%81%9A%E4%BA%86%E4%B8%80%E9%81%8D"><span class="nav-text"> 学术参照：Smallville 已经把这件事做了一遍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%86%E8%BF%99%E4%B8%A4%E4%BB%B6%E4%BA%8B%E7%9A%84%E5%B7%AE%E5%88%AB%E4%B9%9F%E5%BE%97%E8%AF%B4%E6%B8%85%E6%A5%9A"><span class="nav-text"> 但这两件事的差别也得说清楚</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%99%E4%BB%B6%E4%BA%8B%E5%88%B0%E5%BA%95%E5%80%BC%E5%A4%9A%E5%B0%91%E9%92%B1"><span class="nav-text"> 这件事到底值多少钱</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E5%95%86%E4%B8%9A%E6%84%BF%E6%99%AFagent-native-vs-agent-retrofit"><span class="nav-text"> 6. 商业愿景：agent native vs agent retrofit</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#chat-as-substrate-%E4%B8%8D%E6%98%AF%E6%96%B0%E6%A6%82%E5%BF%B5"><span class="nav-text"> chat-as-substrate 不是新概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%92%B1%E4%BB%8E%E5%93%AA%E5%84%BF%E6%9D%A5%E5%BD%93%E5%89%8D%E7%9A%84%E5%8D%A1%E7%82%B9"><span class="nav-text"> 钱从哪儿来：当前的卡点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#marketplace-%E5%92%8C-fork%E5%8F%A6%E4%B8%80%E6%9D%A1%E6%8A%A4%E5%9F%8E%E6%B2%B3%E5%80%99%E9%80%89"><span class="nav-text"> Marketplace 和 fork：另一条护城河候选</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-cloud-%E5%8C%96%E8%A6%81%E4%BB%98%E7%9A%84%E4%B8%A4%E7%AC%94%E8%B4%A6"><span class="nav-text"> 7. Cloud 化要付的两笔账</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AC%94%E5%B7%A5%E7%A8%8B%E8%B4%A6"><span class="nav-text"> 第一笔：工程账</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%AC%94%E7%BB%8F%E6%B5%8E%E8%B4%A6"><span class="nav-text"> 第二笔：经济账</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8C%E8%A1%8C%E5%B7%B2%E7%BB%8F%E8%B5%B0%E8%BF%87%E4%BA%86"><span class="nav-text"> 同行已经走过了</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-%E9%80%80%E5%87%BA%E8%B7%AF%E5%BE%84%E4%B8%8D%E5%AF%B9%E7%A7%B0%E4%BA%BA%E5%80%BC%E9%92%B1-vs-%E4%BA%A7%E5%93%81%E5%80%BC%E9%92%B1"><span class="nav-text"> 8. 退出路径不对称：人值钱 vs 产品值钱</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%A4%E6%9D%A1%E9%80%80%E5%87%BA%E8%B7%AF%E5%BE%84%E5%AF%B9%E7%85%A7"><span class="nav-text"> 两条退出路径对照</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E4%B8%8D%E5%AF%B9%E7%A7%B0"><span class="nav-text"> 核心不对称</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E4%B8%AA%E4%BA%BA%E5%BC%80%E5%8F%91%E8%80%85%E8%AF%BB%E8%80%85%E7%9A%84%E5%90%AF%E7%A4%BA"><span class="nav-text"> 对个人开发者读者的启示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%BA%E4%BE%BF-challenge-%E4%B8%80%E4%B8%8B-rc-%E7%9A%84-diversity-as-moat"><span class="nav-text"> 顺便 challenge 一下 RC 的 “diversity as moat”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%A4%E4%B8%AA%E9%80%80%E5%87%BA%E5%89%A7%E6%9C%AC%E4%BD%9C%E4%B8%BA%E5%8F%82%E8%80%83"><span class="nav-text"> 两个退出剧本作为参考</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-%E6%80%BB%E7%BB%93slockai-%E7%9A%84%E4%BD%8D%E7%BD%AE%E4%B8%8E%E4%B8%AA%E4%BA%BA%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%84%E5%90%AF%E7%A4%BA"><span class="nav-text"> 9. 总结：slock.ai 的位置与个人开发者的启示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E4%B8%AA%E4%BA%BA%E5%BC%80%E5%8F%91%E8%80%85%E8%AF%BB%E8%80%85%E7%9A%84%E5%AE%9E%E7%94%A8-takeaway"><span class="nav-text"> 对个人开发者读者的实用 takeaway</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-text"> 结语</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
