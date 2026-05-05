@@ -9,9 +9,8 @@ public/
 .deploy*/
 .claude/
 
-# AI 报告：每次 build 由 scripts/sync-ai-reports.js 从 oh-my-agent dir
-# 重新生成；watermark 也是 derived 状态。
-/source/_posts/ai-reports/
+# AI 报告：本地 sync 后 commit 进仓库，让 CI 能看到。
+# watermark / pending state 仍然是本地 derived，不进仓库。
 /.cache/
 themes/*
 !themes/next-reloaded
