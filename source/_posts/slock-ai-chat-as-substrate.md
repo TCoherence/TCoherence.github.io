@@ -48,7 +48,7 @@ graph TB
  A["Chat UI<br/>channel · DM · thread"] --> B["Slock daemon<br/>chat I/O · workspace · lifecycle · task claim"]
  B --> C["Agent harness<br/>Claude Code · Codex CLI"]
  C --> D["Claude Agent SDK / Codex<br/>模型推理"]
- B -.workspace.-> E["~/.slock/agents/<uuid>/<br/>MEMORY.md + notes/"]
+ B -.workspace.-> E["~/.slock/agents/{uuid}/<br/>MEMORY.md + notes/"]
 ```
 
 **最上层是 chat UI**——channel、DM、thread 这套 Slack 风格的协作语言。这一层不是 slock 真正的特色（特色在它怎么用这一层）。
@@ -145,7 +145,7 @@ slock落在容器里的文件结构如下：
 graph LR
  subgraph slock["slock.ai"]
  S1[Slock daemon]
- S2["~/.slock/agents/<uuid>/"]
+ S2["~/.slock/agents/{uuid}/"]
  S3["MEMORY.md"]
  end
  subgraph openclaw["openclaw"]
