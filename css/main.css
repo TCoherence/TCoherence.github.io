@@ -1224,7 +1224,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #e9ff24;
+  background: #ab0547;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2766,6 +2766,39 @@ ul.breadcrumb li + li:last-child {
     background: #14171c;
     color: #b8bdc4;
   }
+  .markdown-alert {
+    background: rgba(255,255,255,0.04) !important;
+  }
+  .markdown-alert-note {
+    border-left-color: #58a6ff !important;
+  }
+  .markdown-alert-note .markdown-alert-title {
+    color: #58a6ff !important;
+  }
+  .markdown-alert-tip {
+    border-left-color: #3fb950 !important;
+  }
+  .markdown-alert-tip .markdown-alert-title {
+    color: #3fb950 !important;
+  }
+  .markdown-alert-important {
+    border-left-color: #a371f7 !important;
+  }
+  .markdown-alert-important .markdown-alert-title {
+    color: #a371f7 !important;
+  }
+  .markdown-alert-warning {
+    border-left-color: #d29922 !important;
+  }
+  .markdown-alert-warning .markdown-alert-title {
+    color: #d29922 !important;
+  }
+  .markdown-alert-caution {
+    border-left-color: #f85149 !important;
+  }
+  .markdown-alert-caution .markdown-alert-title {
+    color: #f85149 !important;
+  }
   pre.mermaid,
   pre.mermaid svg {
     background: #1f2227 !important;
@@ -2805,6 +2838,57 @@ ul.breadcrumb li + li:last-child {
     background: #1c3a3d !important;
     color: #7ce6ec !important;
   }
+}
+.markdown-alert {
+  padding: 0.5em 1em;
+  margin: 1em 0;
+  border-left: 4px solid;
+  border-radius: 4px;
+  background: rgba(0,0,0,0.02);
+}
+.markdown-alert > p {
+  margin: 0.4em 0;
+}
+.markdown-alert-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 0.95em;
+  margin-bottom: 0.3em !important;
+}
+.markdown-alert-title svg {
+  flex-shrink: 0;
+}
+.markdown-alert-note {
+  border-left-color: #0969da;
+}
+.markdown-alert-note .markdown-alert-title {
+  color: #0969da;
+}
+.markdown-alert-tip {
+  border-left-color: #1a7f37;
+}
+.markdown-alert-tip .markdown-alert-title {
+  color: #1a7f37;
+}
+.markdown-alert-important {
+  border-left-color: #8250df;
+}
+.markdown-alert-important .markdown-alert-title {
+  color: #8250df;
+}
+.markdown-alert-warning {
+  border-left-color: #9a6700;
+}
+.markdown-alert-warning .markdown-alert-title {
+  color: #9a6700;
+}
+.markdown-alert-caution {
+  border-left-color: #cf222e;
+}
+.markdown-alert-caution .markdown-alert-title {
+  color: #cf222e;
 }
 .reports-hub-intro {
   margin-bottom: 24px;
