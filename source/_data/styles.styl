@@ -46,13 +46,33 @@
     color: #d0d4d9;
   }
 
+  // Hexo's highlighter wraps fenced blocks in
+  //   <figure class="highlight"><table><tr>
+  //     <td class="gutter"><pre>line numbers</pre></td>
+  //     <td class="code"><pre>actual code</pre></td>
+  //   </tr></table></figure>
+  // The inner `.highlight .code pre` rule (specificity 0,2,1) shadows our
+  // `pre` rule (0,0,1) and re-applies the default `#f7f7f7`, which is why
+  // a fenced block looks white-on-dark in dark mode without these overrides.
+  .highlight .code pre {
+    background: #1a1d22;
+    color: #d0d4d9;
+  }
+
   // Line-number gutter inside Hexo's highlight tables.
   .highlight .gutter,
   figure.highlight .gutter {
     background: #14171c;
   }
   .highlight .gutter pre {
+    background: #14171c;
     color: #6b7280;
+  }
+
+  // Caption row above the table (lang label / copy button host).
+  .highlight figcaption {
+    background: #14171c;
+    color: #b8bdc4;
   }
 
   // Mermaid v8 dark theme darkens nodes but leaves the SVG canvas white.
