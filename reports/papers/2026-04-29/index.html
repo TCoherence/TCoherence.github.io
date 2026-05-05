@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 8.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/images/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tcoherence.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":2,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="论文雷达日报｜2026-04-29 一句话结论：今日 HF 流量主导榜单，主线集中在 Agent 评测&#x2F;蒸馏（AutoResearchBench、TCOD、Recursive MAS、GoClick） 与 音频&#x2F;视觉模型对齐（Step-Audio-R1.5、Post-Train 视频框架、Evaluator VLM 盲点），再加一篇合成数据驱动的安全护栏（BARRED）。  摘要  HF Dai">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[论文·2026-04-29]">
+<meta property="og:url" content="https://tcoherence.github.io/reports/papers/2026-04-29/index.html">
+<meta property="og:site_name" content="Hanzhi&#39;s BLOG">
+<meta property="og:description" content="论文雷达日报｜2026-04-29 一句话结论：今日 HF 流量主导榜单，主线集中在 Agent 评测&#x2F;蒸馏（AutoResearchBench、TCOD、Recursive MAS、GoClick） 与 音频&#x2F;视觉模型对齐（Step-Audio-R1.5、Post-Train 视频框架、Evaluator VLM 盲点），再加一篇合成数据驱动的安全护栏（BARRED）。  摘要  HF Dai">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-04-29T19:00:00.000Z">
+<meta property="article:modified_time" content="2026-05-05T16:36:54.335Z">
+<meta property="article:author" content="年轻的C同学">
+<meta property="article:tag" content="Hanzhi, 博客, blog, hexo, next, 软件工程, 生活">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://tcoherence.github.io/reports/papers/2026-04-29/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>[论文·2026-04-29] | Hanzhi's BLOG</title><meta name="robots" content="noindex">
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hanzhi's BLOG</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录、思考、生活</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-reports">
+
+    <a href="/reports/" rel="section"><i class="fa fa-newspaper fa-fw"></i>AI 报告</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tcoherence.github.io/reports/papers/2026-04-29/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="年轻的C同学">
+      <meta itemprop="description" content="年轻的C同学的个人博客 — 关于工程、生活与一些碎片思考">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hanzhi's BLOG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [论文·2026-04-29]
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2026-04-29 12:00:00" itemprop="dateCreated datePublished" datetime="2026-04-29T12:00:00-07:00">2026-04-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-05-05 09:36:54" itemprop="dateModified" datetime="2026-05-05T09:36:54-07:00">2026-05-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AI%E6%8A%A5%E5%91%8A/" itemprop="url" rel="index"><span itemprop="name">AI报告</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AI%E6%8A%A5%E5%91%8A/%E8%AE%BA%E6%96%87/" itemprop="url" rel="index"><span itemprop="name">论文</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="论文雷达日报2026-04-29"><a class="markdownIt-Anchor" href="#论文雷达日报2026-04-29"></a> 论文雷达日报｜2026-04-29</h1>
+<p>一句话结论：今日 HF 流量主导榜单，主线集中在 <strong>Agent 评测/蒸馏（AutoResearchBench、TCOD、Recursive MAS、GoClick）</strong> 与 <strong>音频/视觉模型对齐（Step-Audio-R1.5、Post-Train 视频框架、Evaluator VLM 盲点）</strong>，再加一篇合成数据驱动的安全护栏（BARRED）。</p>
+<h2 id="摘要"><a class="markdownIt-Anchor" href="#摘要"></a> 摘要</h2>
+<ul>
+<li>HF Daily 与 arXiv 双源对齐，Top 8 全部来自 HF trending（rank 3-20）+ S2 元数据交叉，今日没有命中 tracked_authors / tracked_affiliations 的明显新机构信号。</li>
+<li>Agent 方向今日最活跃：<strong>RecursiveMAS（latent-space 递归多智能体）</strong>、<strong>AutoResearchBench（科研文献发现 benchmark）</strong>、<strong>TCOD（多轮 OPD 时序课程）</strong>、<strong>GoClick（230M GUI grounding VLM）</strong> 集体上榜，呼应昨日 paper-digest 提到的 “agent 评测过拟合” 主题。</li>
+<li>音频/视觉对齐：<strong>Step-Audio-R1.5</strong> 把音频推理从 RLVR 切到 RLHF；视频生成有一篇系统化 post-training 框架；VLM 评测可靠性被 <em>Seeing Isn’t Believing</em> 系统性踢盘。</li>
+<li>安全：<strong>BARRED</strong> 用「反思 + 对抗 debate」合成边界样本来训练自定义 guardrail，是少见的合成数据走 boundary alignment 路线的工作。</li>
+<li>候选 JSON 共 136 条，全部 <code>seen_before=false</code>，无需降级；S2 <code>similar_papers</code> 字段全部缺省，延伸阅读今日无高置信度增量信号。</li>
+</ul>
+<h2 id="top-picks-交叉命中"><a class="markdownIt-Anchor" href="#top-picks-交叉命中"></a> 📌 Top picks (交叉命中)</h2>
+<ol>
+<li>
+<p><strong>BARRED: Synthetic Training of Custom Policy Guardrails via Asymmetric Debate</strong> — 中文速读：用反思+不对称辩论合成边界样本训自定义 guardrail。</p>
+<ul>
+<li>入选理由：<code>hf_trending_rank:11</code> + watchlist_keyword <code>reasoning,agent,inference</code>，并命中 <code>nice_to_have:fine-tuning</code>。是今日唯一明确的 safety/guardrail synthetic-data 工作。</li>
+<li>作者：Arnon Mazza, Elad Levi</li>
+<li>证据链接：https://arxiv.org/abs/2604.25203 ｜ https://huggingface.co/papers/2604.25203 ｜ https://www.semanticscholar.org/paper/06ac37d1f3436c6cd5f6b4ecc58266f0639fa214</li>
+</ul>
+</li>
+<li>
+<p><strong>Step-Audio-R1.5 Technical Report</strong> — 中文速读：阶跃星辰把音频推理从 RLVR 切换到 RLHF。</p>
+<ul>
+<li>入选理由：<code>hf_trending_rank:3</code>（HF 12 赞、列表前列）+ watchlist <code>reasoning,rlhf</code> + <code>benchmark,evaluation</code>，明确给出 long-turn 对话方向的对齐范式转变。</li>
+<li>作者：Yuxin Zhang, Xiangyu Tony Zhang, Daijiao Liu, Fei Tian, Yayue Deng, Jun Chen, …, Daxin Jiang（StepFun 大队）</li>
+<li>证据链接：https://arxiv.org/abs/2604.25719 ｜ https://huggingface.co/papers/2604.25719 ｜ https://www.semanticscholar.org/paper/0369a5befb51700bd14c4ef2a29efcd8a0646537</li>
+</ul>
+</li>
+<li>
+<p><strong>Recursive Multi-Agent Systems (RecursiveMAS)</strong> — 中文速读：把多智能体协作改写为统一 latent 递归计算。</p>
+<ul>
+<li>入选理由：<code>hf_trending_rank:20</code>（HF 62 赞，本日第二高）+ arXiv cs.AI/CL/LG 三栏命中 + watchlist <code>reasoning,agent,inference</code>。Loop-LM scaling 思路被推到 MAS 维度。</li>
+<li>作者：Xiyuan Yang, Jiaru Zou, Rui Pan, Ruizhong Qiu, Pan Lu, Shizhe Diao, …, Markus J. Buehler, James Zou</li>
+<li>证据链接：http://arxiv.org/abs/2604.25917v1 ｜ https://huggingface.co/papers/2604.25917 ｜ https://www.semanticscholar.org/paper/797777f63417da747628cc3891f88ef7360d7b6f</li>
+</ul>
+</li>
+<li>
+<p><strong>AutoResearchBench: Benchmarking AI Agents on Complex Scientific Literature Discovery</strong> — 中文速读：评测 agent 做科研文献发现的开放式基准。</p>
+<ul>
+<li>入选理由：<code>hf_trending_rank:5</code>（HF 23 赞）+ watchlist <code>reasoning,agent</code> + <code>benchmark,evaluation</code>，定位「research-oriented / literature-focused / open-ended」三性，与 paper-digest 自身定位高度对齐。</li>
+<li>作者：Lei Xiong, Kun Luo, Ziyi Xia, Wenbo Zhang, Jin-Ge Yao, Zheng Liu, …, Zhicheng Dou</li>
+<li>证据链接：https://arxiv.org/abs/2604.25256 ｜ https://huggingface.co/papers/2604.25256 ｜ https://www.semanticscholar.org/paper/86f82b41dab50da936b9454d169a633e9051d361</li>
+</ul>
+</li>
+<li>
+<p><strong>TCOD: Temporal Curriculum in On-Policy Distillation for Multi-turn Autonomous Agents</strong> — 中文速读：用 trajectory 长度课程稳住多轮 OPD 蒸馏。</p>
+<ul>
+<li>入选理由：<code>hf_trending_rank:8</code> + watchlist <code>reasoning,agent</code> + <code>benchmark,evaluation</code>。明确指出 vanilla OPD 在多轮 agent 上的 KL 不稳定问题，是少见的多轮蒸馏方法学论文。</li>
+<li>作者：Jiaqi Wang, Wenhao Zhang, Weijie Shi, Yaliang Li, James Cheng</li>
+<li>证据链接：https://arxiv.org/abs/2604.24005 ｜ https://huggingface.co/papers/2604.24005 ｜ https://www.semanticscholar.org/paper/9a7aeb4c4cddd5386f2b6caecc99bef920324475</li>
+</ul>
+</li>
+<li>
+<p><strong>GoClick: Lightweight Element Grounding Model for Autonomous GUI Interaction</strong> — 中文速读：230M 参数 VLM 做端侧 GUI 元素定位。</p>
+<ul>
+<li>入选理由：<code>hf_trending_rank:9</code> + watchlist <code>agent,inference</code>。论文宣称在 GUI 视觉定位上与更大 VLM 持平，端侧 latency 友好——对 GUI agent 部署链有直接价值。</li>
+<li>作者：Hongxin Li, Yuntao Chen, Zhaoxiang Zhang</li>
+<li>证据链接：https://arxiv.org/abs/2604.23941 ｜ https://huggingface.co/papers/2604.23941 ｜ https://www.semanticscholar.org/paper/46846256efa89d0449797cb87f4b62b329d1287b</li>
+</ul>
+</li>
+<li>
+<p><strong>A Systematic Post-Train Framework for Video Generation</strong> — 中文速读：四阶段对齐流水线给视频扩散模型做 post-training。</p>
+<ul>
+<li>入选理由：<code>hf_trending_rank:16</code> + watchlist <code>inference,rlhf</code> + <code>sft,fine-tuning</code>。明确 prompt sensitivity / temporal inconsistency / inference cost 三条工业落地痛点，给出系统化解法。</li>
+<li>作者：Zeyue Xue, Siming Fu, Jie Huang, Shuai Lu, Haoran Li, Yijun Liu, …, Nan Duan, Ping Luo</li>
+<li>证据链接：https://arxiv.org/abs/2604.25427 ｜ https://huggingface.co/papers/2604.25427 ｜ https://www.semanticscholar.org/paper/79860bc258aa4c80c92781ae1351710835a389bd</li>
+</ul>
+</li>
+<li>
+<p><strong>Seeing Isn’t Believing: Uncovering Blind Spots in Evaluator Vision-Language Models</strong> — 中文速读：系统性揭示 VLM 当 evaluator 时的偏差与盲点。</p>
+<ul>
+<li>入选理由：<code>hf_trending_rank:7</code> + watchlist <code>reasoning</code> + <code>benchmark,evaluation</code>。在「LLM-as-judge」往 VLM 扩展的当口，给出可复用的扰动化评测框架，用于揭示 object hallucination / spatial / factual / visual fidelity 四类失效。</li>
+<li>作者：Mohammed Safi Ur Rahman Khan, Sanjay Suryanarayanan, Tushar Anand, Mitesh M. Khapra</li>
+<li>证据链接：https://arxiv.org/abs/2604.21523 ｜ https://huggingface.co/papers/2604.21523 ｜ https://www.semanticscholar.org/paper/eaf832eea8a78afafab697370a0535237983ade8</li>
+</ul>
+</li>
+</ol>
+<h2 id="watchlist-分类命中"><a class="markdownIt-Anchor" href="#watchlist-分类命中"></a> 🏷 Watchlist 分类命中</h2>
+<ul>
+<li><strong>Agents / 多智能体（cs.AI / cs.CL / cs.LG）</strong>：
+<ul>
+<li><em>OxyGent</em> — 模块化 / 可观测 / 可演化的 Multi-Agent 框架（Oxy 抽象） · https://arxiv.org/abs/2604.25602</li>
+<li><em>Think Before You Act — Neurocognitive Governance Model for Autonomous AI Agents</em> · https://arxiv.org/abs/2604.25684</li>
+<li><em>Toward Scalable Terminal Task Synthesis via Skill Graphs</em> · https://arxiv.org/abs/2604.25727</li>
+<li><em>DV-World: Benchmarking Data Visualization Agents in Real-World Scenarios</em>（cs.CL）· https://arxiv.org/abs/2604.25914</li>
+<li><em>AutoGUI-v2: A Comprehensive Multi-Modal GUI Functionality Understanding Benchmark</em> · https://arxiv.org/abs/2604.24441</li>
+</ul>
+</li>
+<li><strong>推理/对齐（reasoning, dpo, rlhf）</strong>：
+<ul>
+<li><em>Backtranslation Augmented DPO for Neural Machine Translation</em>（cs.CL）— DPO 在 NMT 的回译增强 · https://arxiv.org/abs/2604.25702</li>
+<li><em>Walking Through Uncertainty: Empirical Study of Uncertainty Estimation for Audio-Aware LLMs</em>（eess.AS / cs.CL / cs.LG）· https://arxiv.org/abs/2604.25591</li>
+<li><em>How Fast Should a Model Commit to Supervision?</em>（cs.LG / cs.AI）— SFT 时机 / curriculum 视角 · https://arxiv.org/abs/2604.25907</li>
+</ul>
+</li>
+<li><strong>Inference / 量化 / 投机解码</strong>：
+<ul>
+<li><em>SpecFed: Accelerating Federated LLM Inference with Speculative Decoding and Compression</em>（eess.SP, cs.DC）· https://arxiv.org/abs/2604.25777</li>
+<li><em>QB-LIF: Learnable-Scale Quantized Burst Neurons for Efficient SNNs</em>（cs.CV）· https://arxiv.org/abs/2604.25688</li>
+<li><em>Scalable Inference Architectures for Compound AI Systems: A Production Deployment Study</em>（cs.AI）· https://arxiv.org/abs/2604.25724</li>
+</ul>
+</li>
+<li><strong>Robotics / Embodied</strong>：
+<ul>
+<li><em>KinDER: A Physical Reasoning Benchmark for Robot Learning and Planning</em>（cs.RO）· https://arxiv.org/abs/2604.25788</li>
+<li><em>IndustryAssetEQA: Neurosymbolic Operational Intelligence System for Embodied QA</em> · https://arxiv.org/abs/2604.23446</li>
+</ul>
+</li>
+</ul>
+<h2 id="延伸阅读-semantic-scholar-相似论文"><a class="markdownIt-Anchor" href="#延伸阅读-semantic-scholar-相似论文"></a> 🔗 延伸阅读 (Semantic Scholar 相似论文)</h2>
+<p>本段今日无高置信度增量信号（S2 相似论文未返回，本批 136 条候选 <code>similar_papers</code> 字段全部缺省）。详见「📉 覆盖缺口与不确定性」中的 <code>s2_similar_unavailable</code>。</p>
+<h2 id="新出现的作者-团队"><a class="markdownIt-Anchor" href="#新出现的作者-团队"></a> 🧑‍🔬 新出现的作者 / 团队</h2>
+<p>本日发现扫描未发现达标候选——候选 JSON 的 <code>affiliations</code> 字段全部为空，无法可靠判定 tracked_affiliations 命中；按 discovery_rules 的「宁缺毋滥」原则不强行罗列。值得人工后续观察的作者锚点：</p>
+<ul>
+<li><strong>Yuxin Zhang / Daxin Jiang 等（StepFun 阶跃星辰，Step-Audio 系列继续迭代）</strong> — 待人工确认机构归属后再考虑加入 tracked_affiliations。</li>
+<li><strong>Hongxin Li, Yuntao Chen, Zhaoxiang Zhang（GUI agent 双投：GoClick + AutoGUI-v2）</strong> — 同一作者群一日内贡献两篇 GUI 方向论文，建议下次扫描时加入观察池。</li>
+</ul>
+<h2 id="覆盖缺口与不确定性"><a class="markdownIt-Anchor" href="#覆盖缺口与不确定性"></a> 📉 覆盖缺口与不确定性</h2>
+<ul>
+<li><code>s2_similar_unavailable</code> — 全部 136 条候选 <code>similar_papers</code> 字段缺失，延伸阅读段落今日无 S2 增量；不去外部 fetch（遵守 step-3 硬性约束）。</li>
+<li><code>affiliations_empty</code> — 候选 JSON <code>affiliations</code> 数组全部为空，导致 tracked_affiliations 命中数为 0、<code>new_authors</code> 段无法做机构级裁判，仅能按作者名给软提示。</li>
+<li><code>confidence_flags</code>：HF Daily trending 信号占主导（Top 8 中 7 条带 <code>hf_trending_rank</code>），arXiv-only 候选普遍 <code>ranking_score ≤ 4.0</code>；今日的 ranking 抽样偏向社区 hype，建议消费方在 AI daily 引用 <code>top_picks[0:3]</code> 时同时核对 abstract。</li>
+</ul>
+<h2 id="来源与交叉验证说明"><a class="markdownIt-Anchor" href="#来源与交叉验证说明"></a> 来源与交叉验证说明</h2>
+<ul>
+<li>三源全部到位：arXiv（primary）+ HuggingFace Daily（curated）+ Semantic Scholar（metadata）。<code>paper_fetch.py</code> 无 WARN，<code>/tmp/paper_fetch.err</code> 为空。</li>
+<li>来源分布（共 136 条）：<code>arxiv+s2</code> 94，<code>hf+s2</code> 36，<code>arxiv+hf+s2</code> 6——HF×arXiv 双命中只有 6 条，Top picks 主要靠 HF trending 提权。</li>
+<li>结论锚定遵循 <code>primary &gt; metadata &gt; curated &gt; other</code>：每条 Top pick 均给出 arxiv_url 作为主要证据，hf_url / s2_url 作为补充。</li>
+<li>与 market-briefing AI daily 的契约：<code>top_picks[0:3]</code>（BARRED / Step-Audio-R1.5 / RecursiveMAS）可被 AI daily 在「关键人物与社区信号」段引用。</li>
+</ul>
+<!-- flag of hidden posts -->
+    </div>
+
+    
+    
+    
+<div class="comments" id="comments">
+  <script src="https://giscus.app/client.js"
+          data-repo="TCoherence/TCoherence.github.io"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkxMzE0MDY3MTA="
+          data-category="General"
+          data-category-id="DIC_kwDOB9Ubds4C8BCw"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="preferred_color_scheme"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>年轻的C同学
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://tcoherence.github.io/reports/papers/2026-04-29/" title="[论文·2026-04-29]">https://tcoherence.github.io/reports/papers/2026-04-29/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BA%E6%96%87%E9%9B%B7%E8%BE%BE%E6%97%A5%E6%8A%A52026-04-29"><span class="nav-text"> 论文雷达日报｜2026-04-29</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-text"> 摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#top-picks-%E4%BA%A4%E5%8F%89%E5%91%BD%E4%B8%AD"><span class="nav-text"> 📌 Top picks (交叉命中)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#watchlist-%E5%88%86%E7%B1%BB%E5%91%BD%E4%B8%AD"><span class="nav-text"> 🏷 Watchlist 分类命中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%B6%E4%BC%B8%E9%98%85%E8%AF%BB-semantic-scholar-%E7%9B%B8%E4%BC%BC%E8%AE%BA%E6%96%87"><span class="nav-text"> 🔗 延伸阅读 (Semantic Scholar 相似论文)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%87%BA%E7%8E%B0%E7%9A%84%E4%BD%9C%E8%80%85-%E5%9B%A2%E9%98%9F"><span class="nav-text"> 🧑‍🔬 新出现的作者 &#x2F; 团队</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A6%86%E7%9B%96%E7%BC%BA%E5%8F%A3%E4%B8%8E%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7"><span class="nav-text"> 📉 覆盖缺口与不确定性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A5%E6%BA%90%E4%B8%8E%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81%E8%AF%B4%E6%98%8E"><span class="nav-text"> 来源与交叉验证说明</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="年轻的C同学"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">年轻的C同学</p>
+  <div class="site-description" itemprop="description">年轻的C同学的个人博客 — 关于工程、生活与一些碎片思考</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/TCoherence" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;TCoherence" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:hanzhiyang2019@u.northwestern.edu" title="E-Mail → mailto:hanzhiyang2019@u.northwestern.edu" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/yang_hanzhi" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;yang_hanzhi" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/profile.php?id=100025563873836" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id&#x3D;100025563873836" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">年轻的C同学</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js', () => {
+    var darkMQ = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+    var mermaidTheme = (darkMQ && darkMQ.matches) ? 'dark' : 'forest';
+    mermaid.initialize({
+      startOnLoad: false,
+      theme    : mermaidTheme,
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+    mermaid.run({ querySelector: 'pre.mermaid' });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+</body>
+</html>

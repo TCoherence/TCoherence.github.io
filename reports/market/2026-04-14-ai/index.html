@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 8.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/images/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tcoherence.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":2,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="AI 日报｜2026-04-14 一句话结论：Anthropic Claude Mythos Preview 因自主发现数千个零日漏洞而限制公开发布，成为 frontier model 安全治理的标志性事件；OpenAI-Anthropic-Google 联合反模型复制、Qwen 3 系列密集开源、DeepSeek V4 即将发布构成本日多层信号交汇。  摘要 本日 AI 领域呈现三条主线交织：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[市场·2026-04-14] AI">
+<meta property="og:url" content="https://tcoherence.github.io/reports/market/2026-04-14-ai/index.html">
+<meta property="og:site_name" content="Hanzhi&#39;s BLOG">
+<meta property="og:description" content="AI 日报｜2026-04-14 一句话结论：Anthropic Claude Mythos Preview 因自主发现数千个零日漏洞而限制公开发布，成为 frontier model 安全治理的标志性事件；OpenAI-Anthropic-Google 联合反模型复制、Qwen 3 系列密集开源、DeepSeek V4 即将发布构成本日多层信号交汇。  摘要 本日 AI 领域呈现三条主线交织：">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-04-14T19:00:00.000Z">
+<meta property="article:modified_time" content="2026-05-05T16:36:54.327Z">
+<meta property="article:author" content="年轻的C同学">
+<meta property="article:tag" content="Hanzhi, 博客, blog, hexo, next, 软件工程, 生活">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://tcoherence.github.io/reports/market/2026-04-14-ai/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>[市场·2026-04-14] AI | Hanzhi's BLOG</title><meta name="robots" content="noindex">
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hanzhi's BLOG</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录、思考、生活</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-reports">
+
+    <a href="/reports/" rel="section"><i class="fa fa-newspaper fa-fw"></i>AI 报告</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tcoherence.github.io/reports/market/2026-04-14-ai/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="年轻的C同学">
+      <meta itemprop="description" content="年轻的C同学的个人博客 — 关于工程、生活与一些碎片思考">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hanzhi's BLOG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [市场·2026-04-14] AI
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2026-04-14 12:00:00" itemprop="dateCreated datePublished" datetime="2026-04-14T12:00:00-07:00">2026-04-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-05-05 09:36:54" itemprop="dateModified" datetime="2026-05-05T09:36:54-07:00">2026-05-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AI%E6%8A%A5%E5%91%8A/" itemprop="url" rel="index"><span itemprop="name">AI报告</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AI%E6%8A%A5%E5%91%8A/%E5%B8%82%E5%9C%BA/" itemprop="url" rel="index"><span itemprop="name">市场</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="ai-日报2026-04-14"><a class="markdownIt-Anchor" href="#ai-日报2026-04-14"></a> AI 日报｜2026-04-14</h1>
+<p>一句话结论：Anthropic Claude Mythos Preview 因自主发现数千个零日漏洞而限制公开发布，成为 frontier model 安全治理的标志性事件；OpenAI-Anthropic-Google 联合反模型复制、Qwen 3 系列密集开源、DeepSeek V4 即将发布构成本日多层信号交汇。</p>
+<h2 id="摘要"><a class="markdownIt-Anchor" href="#摘要"></a> 摘要</h2>
+<p>本日 AI 领域呈现三条主线交织：(1) Anthropic Mythos Preview 的安全限制发布引发行业关于 frontier model 治理边界的深度讨论，Fortune 报道聚焦&quot;发现 vs. 修复&quot;的真正瓶颈；(2) OpenAI、Anthropic、Google 通过 Frontier Model Forum 联合应对中国模型复制，供应链安全升维；(3) 开源生态中 Qwen 3 系列（72B dense + 235B MoE）密集发布，GLM-5.1 在 SWE-Bench Pro 登顶，开源与闭源的能力差距持续收窄。chips 层 NVIDIA Vera Rubin 平台七颗芯片全面量产，energy 层数据中心电力需求预测上调至 1,100 TWh/年。</p>
+<h2 id="frontier-labs-frontier-model-radar"><a class="markdownIt-Anchor" href="#frontier-labs-frontier-model-radar"></a> Frontier Labs / Frontier Model Radar</h2>
+<h3 id="anthropic-claude-mythos-previewproject-glasswing"><a class="markdownIt-Anchor" href="#anthropic-claude-mythos-previewproject-glasswing"></a> Anthropic — Claude Mythos Preview（Project Glasswing）</h3>
+<ul>
+<li><strong>核心事件</strong>：Anthropic 于 4 月 7 日发布其最强模型 Claude Mythos Preview（内部代号 Capybara），但仅通过 Project Glasswing 向约 50 家合作组织开放，不进行公开发布。这是近七年来首次有头部 AI 实验室以安全为由公开扣留模型。(<a href="https://www.infoq.com/news/2026/04/anthropic-claude-mythos/">InfoQ</a>, <a href="https://www.nbcnews.com/tech/security/anthropic-project-glasswing-mythos-preview-claude-gets-limited-release-rcna267234">NBC News</a>)</li>
+<li><strong>能力跃升</strong>：SWE-bench Verified 93.9%（Claude Opus 4.6 为 80.8%），GPQA Diamond 94.6%；自主发现数千个零日漏洞，包括一个存在 17 年的 FreeBSD NFS 远程代码执行漏洞（CVE-2026-4747）。(<a href="https://red.anthropic.com/2026/mythos-preview/">red.anthropic.com</a>, <a href="https://www.helpnetsecurity.com/2026/04/08/anthropic-claude-mythos-preview-identify-vulnerabilities/">Help Net Security</a>)</li>
+<li><strong>Glasswing 合作方</strong>：AWS、Apple、Cisco、CrowdStrike、Google、JPMorgan Chase、Linux Foundation、Microsoft、NVIDIA、Palo Alto Networks。(<a href="https://www.anthropic.com/glasswing">Anthropic</a>)</li>
+<li><strong>治理信号</strong>：Fortune 4/13 报道引述安全行业老兵观点——真正的瓶颈不是发现漏洞而是修复漏洞，Mythos 的发现能力远超当前修复管线的吞吐。(<a href="https://fortune.com/2026/04/13/cybersecurity-anthropic-claude-mythos-dario-amodei-tech-ceo/">Fortune</a>)</li>
+</ul>
+<h3 id="openai-gpt-54-持续部署"><a class="markdownIt-Anchor" href="#openai-gpt-54-持续部署"></a> OpenAI — GPT-5.4 持续部署</h3>
+<ul>
+<li>GPT-5.4（3/5 发布）持续铺开，100 万 token 上下文窗口、原生 computer use、SWE-bench Pro 57.7%、OSWorld 75%。mini/nano 变体已覆盖 free tier 和 API-only 场景。(<a href="https://openai.com/index/introducing-gpt-5-4/">OpenAI</a>, <a href="https://techcrunch.com/2026/03/05/openai-launches-gpt-5-4-with-pro-and-thinking-versions/">TechCrunch</a>)</li>
+<li>营收信号波动：ARR 从 $25B 回落至 $24B，但仍在推进 IPO 准备。</li>
+</ul>
+<h3 id="google-deepmind-gemini-31-ultra"><a class="markdownIt-Anchor" href="#google-deepmind-gemini-31-ultra"></a> Google DeepMind — Gemini 3.1 Ultra</h3>
+<ul>
+<li>Gemini 3.1 Ultra 以原生多模态推理为卖点，与 GPT-5.4、Grok 4.20 同月密集发布。(<a href="https://applyingai.com/2026/04/anthropics-mythos-vs-google-gemini-3-1-startup-ai-model-releases-news-april-2026/">Applying AI</a>)</li>
+</ul>
+<h3 id="三巨头联合反模型复制"><a class="markdownIt-Anchor" href="#三巨头联合反模型复制"></a> 三巨头联合反模型复制</h3>
+<ul>
+<li>Bloomberg 4/6 报道：OpenAI、Anthropic、Google 通过 Frontier Model Forum 共享情报，联合应对中国竞争对手从美国 frontier model 中提取结果的行为。(<a href="https://www.bloomberg.com/news/articles/2026-04-06/openai-anthropic-google-unite-to-combat-model-copying-in-china">Bloomberg</a>, <a href="https://www.japantimes.co.jp/business/2026/04/07/tech/openai-anthropic-google-china-copy/">Japan Times</a>)</li>
+</ul>
+<h3 id="未验证-frontier-信号"><a class="markdownIt-Anchor" href="#未验证-frontier-信号"></a> 未验证 frontier 信号</h3>
+<ul>
+<li>Anthropic Mythos 公开发布时间表仍未确认，市场预期与实际节奏存在不确定性。</li>
+<li>DeepSeek V4 Reuters 确认&quot;数周内&quot;发布，将运行于华为昇腾 950PR 芯片，但具体日期未定。</li>
+</ul>
+<h2 id="关键人物与社区信号"><a class="markdownIt-Anchor" href="#关键人物与社区信号"></a> 关键人物与社区信号</h2>
+<ul>
+<li><strong>Dario Amodei（Anthropic CEO）</strong>：Fortune 4/13 专访中就 Mythos 安全限制发布做出公开解释，强调&quot;能力与责任的平衡&quot;。</li>
+<li><strong>Sam Altman（OpenAI CEO）</strong>：出现在关于 AI 恐惧的 Oscar 获奖导演纪录片采访中，与 Amodei、Hassabis 并列。(<a href="https://www.cnbc.com/2026/04/10/ai-fear-openai-anthropic-google-deepmind-documentary-film.html">CNBC</a>)</li>
+<li><strong>Andrej Karpathy / Simon Willison / Shawn Wang</strong>：社区对 Mythos 安全限制发布的讨论活跃，但缺乏可独立验证的一手新增硬信号。</li>
+<li><strong>人物池增量判断</strong>：本日无需提名新候选人；现有 tracked people 的主要增量来自对 Mythos 事件的评论性信号，非结构性变动。</li>
+</ul>
+<h2 id="energy"><a class="markdownIt-Anchor" href="#energy"></a> Energy</h2>
+<ul>
+<li><strong>IEA 预测上调</strong>：全球数据中心电力消耗 2026 年预计达 1,100 TWh，等同日本全国用电量，较 2025 年 12 月预测上调 18%。(<a href="https://tech-insider.org/ai-data-center-power-crisis-2026/">Tech Insider</a>)</li>
+<li><strong>自建电厂加速</strong>：微软与 Constellation Energy 签署至 2040 年的 2 GW 核电协议（史上最大企业核电协议）；Google 与 Crusoe 确认在北德州建设 933 MW 天然气电厂。(<a href="https://techcrunch.com/2026/04/03/ai-companies-are-building-huge-natural-gas-plants-to-power-data-centers-what-could-go-wrong/">TechCrunch</a>)</li>
+<li><strong>电价传导</strong>：弗吉尼亚、德州、佐治亚数据中心集群周边居民电价已上涨 8–15%。</li>
+<li><strong>供应链隐患</strong>：Bloomberg 4/1 报道美国 AI 数据中心扩建依赖中国电气设备进口。(<a href="https://www.bloomberg.com/news/features/2026-04-01/us-ai-data-center-expansion-relies-on-chinese-electrical-equipment-imports">Bloomberg</a>)</li>
+</ul>
+<h2 id="chips"><a class="markdownIt-Anchor" href="#chips"></a> Chips</h2>
+<ul>
+<li><strong>NVIDIA Vera Rubin 量产</strong>：七颗新芯片全面量产——Vera CPU、Rubin GPU、NVLink 6 Switch、ConnectX-9 SuperNIC、BlueField-4 DPU、Spectrum-6 Ethernet Switch，以及新集成的 Groq 3 LPU。(<a href="https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer">NVIDIA Newsroom</a>)</li>
+<li><strong>BlueField-4 推理存储</strong>：NVIDIA Inference Context Memory Storage Platform 发布，为 gigascale 推理加速，上下文高带宽跨集群共享，token/s 和能效提升最高 5x。(<a href="https://nvidianews.nvidia.com/news/nvidia-bluefield-4-powers-new-class-of-ai-native-storage-infrastructure-for-the-next-frontier-of-ai">NVIDIA Newsroom</a>)</li>
+<li><strong>Meta 多年战略合作</strong>：NVIDIA 与 Meta 签署多年多代战略合作，涵盖本地、云和 AI 基础设施，部署百万级 Blackwell 和 Rubin GPU。(<a href="https://nvidianews.nvidia.com/news/meta-builds-ai-infrastructure-with-nvidia">NVIDIA Newsroom</a>)</li>
+<li><strong>DeepSeek V4 走华为路线</strong>：DeepSeek V4 将运行于华为昇腾 950PR，标志中国 AI 芯片自主化的实质性进展。</li>
+</ul>
+<h2 id="infra"><a class="markdownIt-Anchor" href="#infra"></a> Infra</h2>
+<ul>
+<li><strong>Google Cloud 率先支持 Vera Rubin NVL72</strong>：计划 2026 下半年成为首批提供 Vera Rubin NVL72 rack-scale 系统的云服务商。(<a href="https://cloud.google.com/blog/products/compute/google-cloud-ai-infrastructure-at-nvidia-gtc-2026">Google Cloud Blog</a>)</li>
+<li><strong>Anthropic 基础设施营收拉动</strong>：Next Platform 4/7 分析 Broadcom 和 Google 因 Anthropic 增长（ARR 从 2 月 $14B 加速至 $30B）而显著受益。(<a href="https://www.nextplatform.com/ai/2026/04/07/broadcom-and-google-benefit-mightily-from-anthropics-meteoric-growth/5214732">Next Platform</a>)</li>
+<li><strong>AI coding 工具栈融合</strong>：Cursor、Claude Code、Codex 正在融合为统一的 AI coding 工具栈。(<a href="https://thenewstack.io/ai-coding-tool-stack/">The New Stack</a>)</li>
+</ul>
+<h2 id="model"><a class="markdownIt-Anchor" href="#model"></a> Model</h2>
+<ul>
+<li><strong>Qwen 3 密集发布</strong>：Qwen 3 72B（4/5，dense，reasoning 优化）+ Qwen 3 MoE 235B（4/8，Apache 2.0）+ Qwen 3.6 Plus（4/2，hybrid 线性注意力 + sparse MoE）。</li>
+<li><strong>GLM-5.1 开源登顶</strong>：智谱 AI GLM-5.1（4/7，MIT 协议）在 SWE-Bench Pro 上超越 Claude Opus 4.6 和 GPT-5.4。(<a href="https://whatllm.org/blog/new-ai-models-april-2026">What LLM</a>)</li>
+<li><strong>Mistral Small 4</strong>：119B/6.5B-active MoE，256K 上下文，统一推理/视觉/编码，Apache 2.0，API 价格 $0.15/M input tokens。Codestral 2 同步以 Apache 2.0 发布。</li>
+<li><strong>DeepSeek V3.2 性价比</strong>：约 GPT-5.4 90% 性能，价格仅 1/50。</li>
+<li><strong>xAI Grok 4.20</strong>：增强实时 web 访问的 flagship 模型；grok-code-fast-1 针对 agentic coding。</li>
+<li><strong>趋势判断</strong>：2026 年每个主要模型发布都强调 agentic 能力，纯文本 LLM 作为产品品类已终结，多模态为默认。</li>
+</ul>
+<h2 id="application"><a class="markdownIt-Anchor" href="#application"></a> Application</h2>
+<ul>
+<li><strong>AI coding 市场格局</strong>：Anthropic 占企业 LLM API 支出 40%（OpenAI 从 2023 年 50% 降至 27%）；Claude Code 以 46% “most loved” 评分居首。(<a href="https://www.faros.ai/blog/best-ai-coding-agents-2026">Faros</a>)</li>
+<li><strong>Agentic 工作流实质化</strong>：Cursor 发布重构后的并行 agent 编排界面；OpenAI 发布可在 Claude Code 内运行的官方插件；三工具联合使用的早期采用者涌现。(<a href="https://thenewstack.io/ai-coding-tool-stack/">The New Stack</a>)</li>
+<li><strong>行业焦点从&quot;AI coding assistant&quot;转向&quot;AI software developer&quot;</strong>：能够接受任务、分析代码库、规划、编写代码、运行测试并自我修复 bug 的完整工作流。</li>
+</ul>
+<h2 id="层间联动影响"><a class="markdownIt-Anchor" href="#层间联动影响"></a> 层间联动影响</h2>
+<ol>
+<li><strong>Model → Application 传导加速</strong>：Mythos 的 SWE-bench 93.9% 和 GPT-5.4 的 computer use 能力正在推动 agentic coding 从辅助走向自主执行，应用层市场份额重新洗牌。</li>
+<li><strong>Chips → Infra → Model 链式推进</strong>：Vera Rubin 量产 + BlueField-4 推理存储 → 云服务商 rack-scale 系统上线 → 支撑更大规模推理负载（直接利好 Mythos/GPT-5.4 级别模型的部署成本下降）。</li>
+<li><strong>Energy → Chips 供应链双向约束</strong>：数据中心电力需求上调叠加美国对中国电气设备进口依赖，形成 energy-chips 层间的地缘风险传导。自建电厂策略加速但仍无法覆盖 grid 缺口。</li>
+<li><strong>Model 开源竞争 → 商业模型定价压力</strong>：GLM-5.1 MIT 许可超越闭源 benchmark + DeepSeek V3.2 1/50 价格 → 闭源 frontier model 的定价和差异化空间持续被压缩。</li>
+<li><strong>安全治理 → 全行业结构性变量</strong>：Mythos 限制发布 + 三巨头联合反模型复制 → 安全治理从边缘议题升级为影响模型发布节奏和竞争格局的核心变量。</li>
+</ol>
+<h2 id="候选池变化与后续关注"><a class="markdownIt-Anchor" href="#候选池变化与后续关注"></a> 候选池变化与后续关注</h2>
+<h3 id="后续重点关注"><a class="markdownIt-Anchor" href="#后续重点关注"></a> 后续重点关注</h3>
+<ul>
+<li><strong>Anthropic Mythos 公开发布时间表</strong>：当前仅限 Glasswing 合作方，公开发布将重新定义 frontier model 的能力基准。</li>
+<li><strong>DeepSeek V4 发布与华为昇腾 950PR 实测</strong>：中国 AI 芯片自主化的里程碑验证。</li>
+<li><strong>Vera Rubin NVL72 云端上线</strong>：Google Cloud 等首批部署的实际性能和成本数据。</li>
+<li><strong>开源 benchmark 可信度</strong>：GLM-5.1 SWE-Bench Pro 登顶需要独立复现验证。</li>
+<li><strong>数据中心电力政策响应</strong>：8–15% 电价上涨引发的政策和监管反应。</li>
+</ul>
+<h3 id="候选池变化"><a class="markdownIt-Anchor" href="#候选池变化"></a> 候选池变化</h3>
+<ul>
+<li>本日无新增候选人提名。现有 tracked people 覆盖充分。</li>
+</ul>
+<h2 id="来源与交叉验证说明"><a class="markdownIt-Anchor" href="#来源与交叉验证说明"></a> 来源与交叉验证说明</h2>
+<p><strong>来源构成</strong>：以 company/filing（OpenAI、Anthropic、NVIDIA、Google 官方博客和公告）为主体，辅以 media/analysis（Bloomberg、Fortune、TechCrunch、InfoQ、Next Platform），少量 community/social（开发者社区讨论）。</p>
+<p><strong>交叉验证</strong>：</p>
+<ul>
+<li>Mythos 安全限制发布：Anthropic 官方页面 + InfoQ + NBC News + Fortune + Help Net Security 多源交叉确认。</li>
+<li>三巨头联合反模型复制：Bloomberg 首发 + Japan Times 独立报道确认。</li>
+<li>NVIDIA Vera Rubin 量产：NVIDIA Newsroom 官方 + Google Cloud Blog 合作方确认。</li>
+<li>Qwen 3 / GLM-5.1 发布：多个独立 LLM 追踪站点交叉确认。</li>
+<li>Energy 层数据：IEA 预测 + Bloomberg 供应链报道 + TechCrunch 具体项目报道交叉支撑。</li>
+</ul>
+<p><strong>coverage_gaps</strong>：</p>
+<ul>
+<li>人物/社区层缺乏可独立验证的一手新增硬信号，主要为对 Mythos 事件的评论性内容。</li>
+<li>xAI Grok 4.20 的详细技术参数和独立 benchmark 验证不足。</li>
+</ul>
+<!-- flag of hidden posts -->
+    </div>
+
+    
+    
+    
+<div class="comments" id="comments">
+  <script src="https://giscus.app/client.js"
+          data-repo="TCoherence/TCoherence.github.io"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkxMzE0MDY3MTA="
+          data-category="General"
+          data-category-id="DIC_kwDOB9Ubds4C8BCw"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="preferred_color_scheme"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>年轻的C同学
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://tcoherence.github.io/reports/market/2026-04-14-ai/" title="[市场·2026-04-14] AI">https://tcoherence.github.io/reports/market/2026-04-14-ai/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ai-%E6%97%A5%E6%8A%A52026-04-14"><span class="nav-text"> AI 日报｜2026-04-14</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-text"> 摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#frontier-labs-frontier-model-radar"><span class="nav-text"> Frontier Labs &#x2F; Frontier Model Radar</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#anthropic-claude-mythos-previewproject-glasswing"><span class="nav-text"> Anthropic — Claude Mythos Preview（Project Glasswing）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#openai-gpt-54-%E6%8C%81%E7%BB%AD%E9%83%A8%E7%BD%B2"><span class="nav-text"> OpenAI — GPT-5.4 持续部署</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#google-deepmind-gemini-31-ultra"><span class="nav-text"> Google DeepMind — Gemini 3.1 Ultra</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E5%B7%A8%E5%A4%B4%E8%81%94%E5%90%88%E5%8F%8D%E6%A8%A1%E5%9E%8B%E5%A4%8D%E5%88%B6"><span class="nav-text"> 三巨头联合反模型复制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AA%E9%AA%8C%E8%AF%81-frontier-%E4%BF%A1%E5%8F%B7"><span class="nav-text"> 未验证 frontier 信号</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E4%BA%BA%E7%89%A9%E4%B8%8E%E7%A4%BE%E5%8C%BA%E4%BF%A1%E5%8F%B7"><span class="nav-text"> 关键人物与社区信号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#energy"><span class="nav-text"> Energy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chips"><span class="nav-text"> Chips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#infra"><span class="nav-text"> Infra</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#model"><span class="nav-text"> Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#application"><span class="nav-text"> Application</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%82%E9%97%B4%E8%81%94%E5%8A%A8%E5%BD%B1%E5%93%8D"><span class="nav-text"> 层间联动影响</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%80%99%E9%80%89%E6%B1%A0%E5%8F%98%E5%8C%96%E4%B8%8E%E5%90%8E%E7%BB%AD%E5%85%B3%E6%B3%A8"><span class="nav-text"> 候选池变化与后续关注</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8E%E7%BB%AD%E9%87%8D%E7%82%B9%E5%85%B3%E6%B3%A8"><span class="nav-text"> 后续重点关注</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%80%99%E9%80%89%E6%B1%A0%E5%8F%98%E5%8C%96"><span class="nav-text"> 候选池变化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A5%E6%BA%90%E4%B8%8E%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81%E8%AF%B4%E6%98%8E"><span class="nav-text"> 来源与交叉验证说明</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="年轻的C同学"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">年轻的C同学</p>
+  <div class="site-description" itemprop="description">年轻的C同学的个人博客 — 关于工程、生活与一些碎片思考</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/TCoherence" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;TCoherence" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:hanzhiyang2019@u.northwestern.edu" title="E-Mail → mailto:hanzhiyang2019@u.northwestern.edu" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/yang_hanzhi" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;yang_hanzhi" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/profile.php?id=100025563873836" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id&#x3D;100025563873836" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">年轻的C同学</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js', () => {
+    var darkMQ = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+    var mermaidTheme = (darkMQ && darkMQ.matches) ? 'dark' : 'forest';
+    mermaid.initialize({
+      startOnLoad: false,
+      theme    : mermaidTheme,
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+    mermaid.run({ querySelector: 'pre.mermaid' });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+</body>
+</html>
