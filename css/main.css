@@ -1224,7 +1224,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #035801;
+  background: #7086ff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2750,12 +2750,21 @@ ul.breadcrumb li + li:last-child {
     background: #1a1d22;
     color: #d0d4d9;
   }
+  .highlight .code pre {
+    background: #1a1d22;
+    color: #d0d4d9;
+  }
   .highlight .gutter,
   figure.highlight .gutter {
     background: #14171c;
   }
   .highlight .gutter pre {
+    background: #14171c;
     color: #6b7280;
+  }
+  .highlight figcaption {
+    background: #14171c;
+    color: #b8bdc4;
   }
   pre.mermaid,
   pre.mermaid svg {
