@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 8.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/images/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tcoherence.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":2,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="AI 日报｜2026-05-06 一句话结论：5&#x2F;5 是企业级 agent 平台与默认旗舰双线收紧的一天 —— OpenAI GPT-5.5 Instant 装入 ChatGPT 默认槽位（幻觉 -52.5% &#x2F; 输出 -30%）、Anthropic 同日同时打开金融 + 创意双向部署面（10 个 agent 模板 + Microsoft 365 全家桶 + Blender &#x2F; Adobe &#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[市场·2026-05-06] AI">
+<meta property="og:url" content="https://tcoherence.github.io/reports/market/2026-05-06-ai/index.html">
+<meta property="og:site_name" content="Hanzhi&#39;s BLOG">
+<meta property="og:description" content="AI 日报｜2026-05-06 一句话结论：5&#x2F;5 是企业级 agent 平台与默认旗舰双线收紧的一天 —— OpenAI GPT-5.5 Instant 装入 ChatGPT 默认槽位（幻觉 -52.5% &#x2F; 输出 -30%）、Anthropic 同日同时打开金融 + 创意双向部署面（10 个 agent 模板 + Microsoft 365 全家桶 + Blender &#x2F; Adobe &#x2F;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-05-06T19:00:00.000Z">
+<meta property="article:modified_time" content="2026-05-06T19:20:31.512Z">
+<meta property="article:author" content="年轻的C同学">
+<meta property="article:tag" content="Hanzhi, 博客, blog, hexo, next, 软件工程, 生活">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://tcoherence.github.io/reports/market/2026-05-06-ai/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>[市场·2026-05-06] AI | Hanzhi's BLOG</title><meta name="robots" content="noindex">
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hanzhi's BLOG</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录、思考、生活</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-reports">
+
+    <a href="/reports/" rel="section"><i class="fa fa-newspaper fa-fw"></i>AI 报告</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tcoherence.github.io/reports/market/2026-05-06-ai/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="年轻的C同学">
+      <meta itemprop="description" content="年轻的C同学的个人博客 — 关于工程、生活与一些碎片思考">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hanzhi's BLOG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [市场·2026-05-06] AI
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2026-05-06 12:00:00 / 修改时间：12:20:31" itemprop="dateCreated datePublished" datetime="2026-05-06T12:00:00-07:00">2026-05-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AI%E6%8A%A5%E5%91%8A/" itemprop="url" rel="index"><span itemprop="name">AI报告</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AI%E6%8A%A5%E5%91%8A/%E5%B8%82%E5%9C%BA/" itemprop="url" rel="index"><span itemprop="name">市场</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="ai-日报2026-05-06"><a class="markdownIt-Anchor" href="#ai-日报2026-05-06"></a> AI 日报｜2026-05-06</h1>
+<p>一句话结论：5/5 是企业级 agent 平台与默认旗舰双线收紧的一天 —— OpenAI GPT-5.5 Instant 装入 ChatGPT 默认槽位（幻觉 -52.5% / 输出 -30%）、Anthropic 同日同时打开金融 + 创意双向部署面（10 个 agent 模板 + Microsoft 365 全家桶 + Blender / Adobe / Autodesk / Ableton / Splice）；前一日 Anthropic + OpenAI 把 Wall Street PE-led JV（$1.5B + $10B）作为新的企业渠道层固化；Microsoft Agent 365 / Salesforce Agentforce Operations / ServiceNow Action Fabric 三方完成 ‘enterprise agent OS’ 同周对位；芯片侧 NVIDIA Vera Rubin 平台 GA 进入 H2 2026 部署，能源侧 IEA 1,100 TWh 上修 + Microsoft 三里岛 + Amazon 萨斯奎汉纳 PPA 锁定继续放大。</p>
+<h2 id="摘要"><a class="markdownIt-Anchor" href="#摘要"></a> 摘要</h2>
+<p>OpenAI 把 GPT-5.5 Instant 直接装入 ChatGPT 默认槽位（52.5% 幻觉降幅 + 30% 篇幅压缩 + 减少 ‘gratuitous emojis’），同步上线 API <code>chat-latest</code>；Anthropic 5/5 三连发：10 个金融 services agent 模板（Cowork / Code 插件 + Managed Agents cookbook，连接 FactSet / S&amp;P Capital IQ / MSCI / PitchBook / Morningstar 等）+ Microsoft 365 Add-ins 全家桶 + Moody’s 数据合作 + Claude for Creative Work（Blender / Adobe / Autodesk / Ableton / Splice + Claude Design）。5/4 Anthropic / Blackstone / H&amp;F / Goldman Sachs $1.5B JV + OpenAI ‘The Development Company’ $10B JV 把企业 AI 部署外包给 alternative asset managers。Microsoft Agent 365 GA（$15/seat、Agent Isolation enclave）+ Salesforce Agentforce Operations GA + ServiceNow Knowledge 2026 Action Fabric + AI Control Tower 三方完成 ‘enterprise agent OS’ 对位。NVIDIA Vera Rubin 平台 GA（7 颗芯片满产）H2 2026 由 AWS / GCP / Microsoft / OCI 落地；HBM4 16-Hi 三方竞速 Q4 2026 交付。能源侧 IEA 数据中心 2026 用电从 935 → 1,100 TWh，Microsoft 三里岛 835 MW + Amazon 萨斯奎汉纳 1,920 MW 锁定。paper-digest 5/6 5 篇 agent benchmark（Workspace-Bench / WindowsWorld / iWorld-Bench / ESARBench / Healthcare AI GYM）正面对位 enterprise agent OS 商业化部署面。新候选 3 名：来新璐 / Logan Kilpatrick / Xuanhe Zhou。</p>
+<h2 id="frontier-labs-frontier-model-radar"><a class="markdownIt-Anchor" href="#frontier-labs-frontier-model-radar"></a> Frontier Labs / Frontier Model Radar</h2>
+<p>5/5 是企业级 agent 平台与默认旗舰双线收紧的一天：OpenAI 把 GPT-5.5 Instant 直接装入 ChatGPT 默认槽位（52.5% 幻觉降幅 + 30% 篇幅压缩），Anthropic 同日在金融 + 创意双向放大 Claude 部署面；前一日（5/4）Anthropic 与 OpenAI 同步公布 Wall Street 联合 venture，把企业部署外包给 alternative asset managers 的渠道战首次正式落地。Google Gemini Embedding 2 GA + I/O 静默期；xAI / Mistral / Meta / Qwen / DeepSeek 维持 4 月底节奏。</p>
+<h3 id="openai"><a class="markdownIt-Anchor" href="#openai"></a> OpenAI</h3>
+<ul>
+<li><strong>GPT-5.5 Instant 全量铺开为 ChatGPT 默认模型 + API <code>chat-latest</code></strong>（5/5）：高风险 prompt 幻觉降 52.5%、用户标记错误的难对话错误降 37.3%；输出 30.2% 更短 / 29.2% 更少行 / 显著减少 “gratuitous emojis”，记忆与 Gmail 个性化先 Plus/Pro，免费/Go/Business/Enterprise 数周内跟进；GPT-5.3 Instant 保留 3 个月。 (<a href="https://openai.com/index/gpt-5-5-instant/">OpenAI 官方介绍</a> / <a href="https://openai.com/index/gpt-5-5-instant-system-card/">System Card</a> / <a href="https://techcrunch.com/2026/05/05/openai-releases-gpt-5-5-instant-a-new-default-model-for-chatgpt/">TechCrunch</a>)</li>
+<li><strong>‘The Development Company’ $10B 联合 venture 最终化</strong>（5/4）：从 19 家 alternative asset managers 募 $4B，TPG / Brookfield / Advent / Bain Capital 等列名；与 Anthropic 同日 venture 同构。 (<a href="https://www.bloomberg.com/news/articles/2026-05-04/openai-finalizes-10-billion-joint-venture-with-pe-firms-to-deploy-ai">Bloomberg</a>)</li>
+</ul>
+<h3 id="anthropic"><a class="markdownIt-Anchor" href="#anthropic"></a> Anthropic</h3>
+<ul>
+<li><strong>Claude Financial Services Agents — 10 个 ready-to-run 模板</strong>（5/5）：pitchbook / KYC 筛查 / 月末关账等；分发为 Claude Cowork / Claude Code 插件 + Claude Managed Agents cookbook；连入 FactSet / S&amp;P Capital IQ / MSCI / PitchBook / Morningstar / Chronograph / LSEG / Daloopa + 新增 Verisk / Third Bridge / Fiscal AI / D&amp;B / Experian / GLG / Guidepoint / IBISWorld。 (<a href="https://www.anthropic.com/news/finance-agents">Anthropic 官 blog</a> / <a href="https://fortune.com/2026/05/05/anthropic-wall-street-financial-services-agents-jamie-dimon/">Fortune</a>)</li>
+<li><strong>Microsoft 365 Add-ins 全家桶</strong>（5/5）：Excel / PowerPoint / Word（Outlook 即将）；上下文跨应用自动接力。Moody’s 数据合作同日宣布。</li>
+<li><strong>Claude for Creative Work</strong>（5/5）：新增 Blender / Adobe / Autodesk / Ableton / Splice 等 connector；引入 Claude Design 做创意构思与导出；自然语言驱动跨工具交接。 (<a href="https://www.anthropic.com/news/claude-for-creative-work">Anthropic 官 blog</a>)</li>
+<li><strong>$1.5B 企业 AI 服务公司联合 venture</strong>（5/4）：Anthropic + Blackstone + Hellman &amp; Friedman + Goldman Sachs 三方各 $300M；Apollo / GA / GIC / Leonard Green / Sequoia 跟投。 (<a href="https://www.cnbc.com/2026/05/04/anthropic-goldman-blackstone-ai-venture.html">CNBC</a> / <a href="https://www.blackstone.com/news/press/anthropic-partners-with-blackstone-hellman-friedman-and-goldman-sachs-to-launch-enterprise-ai-services-firm/">Blackstone newsroom</a>)</li>
+</ul>
+<h3 id="google-deepmind"><a class="markdownIt-Anchor" href="#google-deepmind"></a> Google DeepMind</h3>
+<ul>
+<li><strong>Gemini Embedding 2 GA</strong>（5 月 Vertex AI + Gemini API）：首个原生多模态 embedding 模型，统一 text / image / video / audio / document。 (<a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-embedding-2-generally-available/">Google blog GA</a>)</li>
+<li><strong>Google I/O 2026 5/19-5/20 定档</strong>；本周 Pichai / Hassabis 无新公开发言（‘I/O 静默期’）。</li>
+</ul>
+<h3 id="meta"><a class="markdownIt-Anchor" href="#meta"></a> Meta</h3>
+<ul>
+<li>无新增独立信号。Llama 4 Scout / Maverick（4/5）维持已知公开旗舰状态；Llama 下一代权重时间表本日仍在传闻区。</li>
+</ul>
+<h3 id="xai"><a class="markdownIt-Anchor" href="#xai"></a> xAI</h3>
+<ul>
+<li><strong>Grok 4.20 Beta + Multi-agent Beta</strong>（Enterprise API）；Grok Speech-to-Text / Text-to-Speech 独立 API；Batch API 全用户、Grok Imagine API 端到端视频+音频生成。 (<a href="https://x.ai/news">xAI News</a>)</li>
+<li><strong>OpenAI vs Musk 庭审进度</strong>：4/30 Musk 作证承认 xAI 早期使用 OpenAI 模型训练 Grok；5/5 Brockman 反驳 Musk 创业史叙述。 (<a href="https://techcrunch.com/2026/04/30/elon-musk-testifies-that-xai-trained-grok-on-openai-models/">TechCrunch 4/30</a> / <a href="https://www.cnbc.com/2026/05/05/open-ai-altman-musk-trial-brockman-testimony.html">CNBC 5/5</a>)</li>
+</ul>
+<h3 id="mistral-qwen-deepseek"><a class="markdownIt-Anchor" href="#mistral-qwen-deepseek"></a> Mistral / Qwen / DeepSeek</h3>
+<ul>
+<li>维持 Mistral Medium 3.5（4/29，77.6% SWE-Bench Verified）+ Qwen 3.6-27B（77.2% SWE-bench）+ DeepSeek V4-Pro（1.6T/49B + 1M context）；本日均无新增独立信号。Simon Willison 5 月通讯把 GPT-5.5 / ChatGPT Images 2.0 / Qwen 3.6-27B 列为月度三主线。 (<a href="https://simonw.substack.com/p/gpt-55-chatgpt-images-20-qwen36-27b">Simon Willison Substack</a>)</li>
+</ul>
+<h3 id="未验证-旁线信号"><a class="markdownIt-Anchor" href="#未验证-旁线信号"></a> 未验证 / 旁线信号</h3>
+<ul>
+<li><strong>Microsoft Agent 365 GA（5/1）+ 5/5 战略博文</strong> — 不属 8 大 frontier-lab 但同期最直接对位企业 agent 的非 OEM 信号。 (<a href="https://www.microsoft.com/en-us/security/blog/2026/05/01/microsoft-agent-365-now-generally-available-expands-capabilities-and-integrations/">Microsoft Security blog</a>)</li>
+<li><strong>Mira Murati Thinking Machines Lab 据传 $50B 估值新一轮</strong>（Bloomberg 1 月报道，本日无新公告）。</li>
+</ul>
+<h2 id="关键人物与社区信号"><a class="markdownIt-Anchor" href="#关键人物与社区信号"></a> 关键人物与社区信号</h2>
+<p>5/5-5/6 关键人物围绕 GPT-5.5 默认化与 Anthropic 金融 + 创意双向放大形成密集发声。</p>
+<ul>
+<li><strong>Andrej Karpathy</strong> — 5/5 把 ‘autoresearch’ 项目打包成单 GPU + 单文件 ~630 行版本（nanochat 训练核心精简）发布；同日转发并向 Simon Willison 致敬其 23 年博客 + 推荐 GitHub 赞助。 (<a href="https://x.com/karpathy/status/2030371219518931079">autoresearch X 帖</a> / <a href="https://x.com/karpathy/status/1933582359347278246">Simon Willison 致敬帖</a>)</li>
+<li><strong>Simon Willison</strong> — 5/5-5/6 Substack 月报 <a href="https://simonw.substack.com/p/gpt-55-chatgpt-images-20-qwen36-27b">GPT 5.5, ChatGPT Images 2.0, Qwen3.6-27B</a>；4/23 用 Codex backdoor + 自制 llm-openai-via-codex 插件预跑 GPT-5.5 <a href="https://simonwillison.net/2026/Apr/23/gpt-5-5/">pelican 测试</a>。</li>
+<li><strong>Sebastian Raschka</strong> &amp; <strong>Nathan Lambert</strong> — Latent Space SAIL Live #6（4 月底）展开 Anthropic Distillation 与 SWE-Bench dead 议题深度讨论。 (<a href="https://www.latent.space/p/paid-anthropic-distillation-and-how">Latent Space 实录</a> / <a href="https://sebastianraschka.com/blog/2026/state-of-ai-interview.html">Sebastian Raschka 跟进 blog</a>)</li>
+<li><strong>Sam Altman</strong> — 5/5 GPT-5.5 Instant 默认化作为本月最重要 OpenAI 产品节点，维持低调；同日庭审 Brockman 反驳 Musk。</li>
+<li><strong>Greg Brockman</strong> — 5/5 庭审作证反驳 Musk 关于 OpenAI 起源叙述 + 复盘 Tesla 秘密合作项目。 (<a href="https://www.cnbc.com/2026/05/05/open-ai-altman-musk-trial-brockman-testimony.html">CNBC</a>)</li>
+</ul>
+<h2 id="energy"><a class="markdownIt-Anchor" href="#energy"></a> Energy</h2>
+<ul>
+<li><strong>IEA 4 月报告把全球数据中心 2026 年用电量从 935 TWh 上修至 1,100 TWh</strong>，AI 数据中心增速继续高于全球电力需求 3% 整体增速。 (<a href="https://www.iea.org/news/data-centre-electricity-use-surged-in-2025-even-with-tightening-bottlenecks-driving-a-scramble-for-solutions">IEA 4/15</a>)</li>
+<li><strong>数据中心 + SMR 离网 PPA 管道由 25 GW 扩到 45 GW</strong>；Microsoft Three Mile Island Crane Clean Energy Center（835 MW、20 年 PPA、2027 grid sync）+ Amazon Susquehanna Talen 1,920 MW PPA 至 2042。 (<a href="https://www.iaea.org/bulletin/data-centres-artificial-intelligence-and-cryptocurrencies-eye-advanced-nuclear-to-meet-growing-power-needs">IAEA</a> / <a href="https://www.datacenterdynamics.com/en/news/three-mile-island-nuclear-power-plant-to-return-as-microsoft-signs-20-year-835mw-ai-data-center-ppa/">Three Mile Island PPA</a>)</li>
+<li><strong>Big Tech 2026 capex 上修至 $725-900B 区间</strong>（Alphabet $185B、Amazon $200B、Microsoft $190B；75% AI 相关 ≈ $450B）。 (<a href="https://www.tomshardware.com/tech-industry/big-tech/big-techs-ai-spending-plans-reach-725-billion">Tom’s Hardware</a> / <a href="https://fortune.com/2026/04/30/big-tech-hyperscalers-will-spend-700-billion-on-ai-infrastructure-this-year-with-no-clear-end-in-sight-eye-on-ai/">Fortune 4/30</a>)</li>
+</ul>
+<h2 id="chips"><a class="markdownIt-Anchor" href="#chips"></a> Chips</h2>
+<ul>
+<li><strong>NVIDIA Vera Rubin 平台 GA</strong>：7 颗芯片满产（Vera CPU + Rubin GPU + NVLink 6 Switch + ConnectX-9 SuperNIC + BlueField-4 DPU + Spectrum-6 Ethernet + Groq 3 LPU）；H2 2026 partner 出货，首批 cloud：AWS / GCP / Microsoft / OCI / CoreWeave / Lambda / Nebius / Nscale。Huang 2027 收入预测从 $500B 提到 $1T。 (<a href="https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer">NVIDIA newsroom Rubin</a> / <a href="https://www.eweek.com/news/nvidia-gtc-2026-ai-inference-vera-rubin-neuron/">eWeek GTC 2026</a>)</li>
+<li><strong>HBM4 16-Hi 竞速</strong>：Samsung / SK Hynix / Micron 三方均已启动量产备货；NVIDIA Q4 2026 16-Hi 交付目标；SK Hynix 48GB HBM4 11.7 Gbps 已展示，初始约 70% 容量绑定 NVIDIA Rubin。SK Hynix M15X 5 月完成首个 clean room、6 月开始 pilot。 (<a href="https://www.tweaktown.com/news/109495/sk-hynix-samsung-and-micron-fighting-for-nvidia-supply-contracts-for-new-16-hi-hbm4-orders/index.html">TweakTown</a> / <a href="https://www.trendforce.com/news/2026/03/09/news-samsung-sk%E2%80%AFhynix-reportedly-tapped-as-nvidia-rubin-hbm4-suppliers-shipments-could-start-in-march/">TrendForce</a>)</li>
+<li><strong>TSMC A16 + CoWoS-L</strong> 与 HBM4 协同优化；NVIDIA Feynman 已被报道在 A16 上展开。</li>
+</ul>
+<h2 id="infra"><a class="markdownIt-Anchor" href="#infra"></a> Infra</h2>
+<ul>
+<li><strong>Microsoft Agent 365 GA（5/1）+ 5/5 Microsoft 365 Copilot ‘human agency’ 战略博文</strong>：$15/seat、Agent Isolation 机密计算 enclave、Entra 网络控制扩展到 Copilot Studio agent 与端点 agent；agent registry sync 与 AWS Bedrock / GCP 公测。 (<a href="https://www.microsoft.com/en-us/security/blog/2026/05/01/microsoft-agent-365-now-generally-available-expands-capabilities-and-integrations/">Microsoft Security</a> / <a href="https://www.microsoft.com/en-us/microsoft-365/blog/2026/05/05/microsoft-365-copilot-human-agency-and-the-opportunity-for-every-organization/">Microsoft 365 5/5</a>)</li>
+<li><strong>Anthropic + OpenAI Wall Street JV 同日落地</strong>（5/4）：Anthropic / Blackstone / H&amp;F / Goldman Sachs $1.5B + OpenAI ‘The Development Company’ $10B（TPG / Brookfield / Advent / Bain Capital）。 (<a href="https://www.cnbc.com/2026/05/04/anthropic-goldman-blackstone-ai-venture.html">CNBC</a> / <a href="https://www.bloomberg.com/news/articles/2026-05-04/openai-finalizes-10-billion-joint-venture-with-pe-firms-to-deploy-ai">Bloomberg</a>)</li>
+<li><strong>ServiceNow Knowledge 2026 5/5 Action Fabric + AI Control Tower</strong>：把 ServiceNow 全 system of action 开放给任何 AI agent（无论 ServiceNow 自家 / Claude / Copilot / 客户自研），与 <strong>Salesforce Agentforce Operations GA + Headless 360</strong> 形成 ‘enterprise agent OS’ 双线对位。 (<a href="https://newsroom.servicenow.com/press-releases/details/2026/ServiceNow-opens-its-full-system-of-action-to-every-AI-Agent-in-the-enterprise/default.aspx">ServiceNow newsroom</a> / <a href="https://www.salesforce.com/news/stories/agentforce-operations-announcement/">Salesforce Agentforce Operations</a>)</li>
+<li><strong>Google Workspace Intelligence + Gemini Embedding 2 GA</strong>：跨应用上下文层 + 原生多模态嵌入模型双管齐下。</li>
+</ul>
+<h2 id="model"><a class="markdownIt-Anchor" href="#model"></a> Model</h2>
+<ul>
+<li><strong>OpenAI GPT-5.5 Instant 5/5 默认化</strong>：幻觉 -52.5% / 输出 -30%；chat-latest API 同步上线。 (<a href="https://openai.com/index/gpt-5-5-instant/">OpenAI</a>)</li>
+<li><strong>Anthropic Claude Financial Services Agents（10 模板）+ Microsoft 365 Add-ins + Moody’s + Claude for Creative Work</strong>：模型不变但分发面 5/5 同时多向打开。 (<a href="https://www.anthropic.com/news/finance-agents">Anthropic Finance</a> / <a href="https://www.anthropic.com/news/claude-for-creative-work">Anthropic Creative</a>)</li>
+<li><strong>Google Gemini Embedding 2 GA</strong>：首个原生多模态嵌入模型。</li>
+<li><strong>5 月开源前沿基线</strong>：Mistral Medium 3.5 / Qwen 3.6-27B / DeepSeek V4-Pro / Llama 4 Scout &amp; Maverick；本日均无新增独立信号。</li>
+<li><strong>5/6 paper-digest 命中（折叠进 Model）</strong>：
+<ul>
+<li><a href="http://arxiv.org/abs/2605.03941v1">2605.03941</a> <strong>iWorld-Bench</strong> — 统一动作生成框架评测交互式世界模型。</li>
+<li><a href="https://arxiv.org/abs/2605.01371">2605.01371</a> <strong>ESARBench</strong> — MLLM 驱动 UAV 搜救 agentic benchmark。</li>
+<li><a href="https://arxiv.org/abs/2605.03596">2605.03596</a> <strong>Workspace-Bench 1.0</strong> — 工作区大规模文件依赖 agent 基准 + 100-task lite 子集。</li>
+<li><a href="https://arxiv.org/abs/2604.27776">2604.27776</a> <strong>WindowsWorld</strong> — 跨应用专业工作流 process-centric GUI agent 基准。</li>
+<li><a href="https://arxiv.org/abs/2605.02943">2605.02943</a> <strong>Healthcare AI GYM</strong> — 多轮临床 RL 训练环境 + TT-OPD 蒸馏。</li>
+<li><a href="https://arxiv.org/abs/2604.27488">2604.27488</a> <strong>Skills-Coach</strong> — 免训练 GRPO 让 LLM agent 技能自演化。</li>
+</ul>
+</li>
+</ul>
+<h2 id="application"><a class="markdownIt-Anchor" href="#application"></a> Application</h2>
+<ul>
+<li><strong>Anthropic Microsoft 365 全家桶 add-ins（Excel / PowerPoint / Word，Outlook 即将）+ Moody’s</strong>：Claude 主战场从 IDE/Coding 直接扩张到 enterprise back-office workflow；同时 ServiceNow Action Fabric 5/5 把全 system of action 开放给 Claude。 (<a href="https://fortune.com/2026/05/05/anthropic-wall-street-financial-services-agents-jamie-dimon/">Fortune</a> / <a href="https://newsroom.servicenow.com/press-releases/details/2026/ServiceNow-opens-its-full-system-of-action-to-every-AI-Agent-in-the-enterprise/default.aspx">ServiceNow</a>)</li>
+<li><strong>Anthropic Claude for Creative Work</strong>：Blender / Adobe / Autodesk / Ableton / Splice 自然语言入口 + Claude Design；与 Adobe Firefly Premium / Autodesk Forma AI 形成正面竞争。</li>
+<li><strong>Salesforce Agentforce Operations GA + 5 月 Beta + ServiceNow Knowledge 2026 Action Fabric + AI Control Tower</strong>：‘enterprise agent OS’ 之争从概念落地为 GA 产品。</li>
+<li><strong>OpenClaw 突破 250k GitHub stars</strong>（60 天超过 React），50+ 工具本地连接，无外部 API 路由，与 Microsoft Agent 365 形成 ‘enterprise vs consumer’ 路线对比。 (<a href="https://blogs.nvidia.com/blog/what-openclaw-agents-mean-for-every-organization/">NVIDIA blog</a>)</li>
+<li><strong>Application 层技术信号</strong>：Claude Code 5 月新版本 — /model picker 支持 Anthropic-compatible gateway /v1/models endpoint；ANTHROPIC_BEDROCK_SERVICE_TIER；/resume PR URL 反查 session；–plugin-dir 接受 .zip；Claude Code 1.x 系列首次正式接入企业 gateway 模式。 (<a href="https://releasebot.io/updates/anthropic/claude-code">Releasebot Claude Code</a>)</li>
+</ul>
+<h2 id="层间联动影响"><a class="markdownIt-Anchor" href="#层间联动影响"></a> 层间联动影响</h2>
+<ul>
+<li><strong>model → application</strong>：GPT-5.5 Instant 默认化 + 30% 篇幅压缩 + 52.5% 幻觉降幅，是同时减少端用户错误纠错成本和 token 消耗的双重产品-成本协同。直接降低 ChatGPT 5/5 起的 unit economics 与企业部署反对意见，配合 Anthropic 5/5 Wall Street agent 模板 + Microsoft 365 全家桶，模型层质量改进直接转化为 application-layer 部署面打开。</li>
+<li><strong>chips → energy</strong>：NVIDIA Vera Rubin 平台 GA + 7 颗芯片满产，部署一线由 AWS / GCP / Microsoft / OCI 接收 H2 2026 Rubin instance；推理 token 经济持续放大对应 IEA 1,100 TWh 数据中心电力上修；Microsoft Three Mile Island 835 MW + Amazon Susquehanna 1,920 MW 锁定提前到 2027 / 2042，是芯片层 capex 直接传导到能源 PPA 锁定的链。</li>
+<li><strong>infra → application</strong>：Microsoft Agent 365 + Salesforce Agentforce Operations + ServiceNow Action Fabric 三方各自把 ‘agent runtime + governed action + data fabric’ 做成同构对位层，5/5 同周完成 GA / 1.0 / Knowledge keynote 同步，预示企业 agent 互操作协议（A2A / agent registry / governed action API）进入定型期；Anthropic / OpenAI 借 PE-led JV 把渠道侧固化。</li>
+<li><strong>model + infra → application（论文 evaluator 反向耦合）</strong>：Workspace-Bench 1.0 / WindowsWorld 把 ‘GUI / 跨应用 / process-centric / 文件依赖’ 做成 evaluator，5/6 与 Anthropic 365 add-ins / OpenAI Workspace Agents / Google Workspace Intelligence 同步出现。学术侧明确画出 evaluator 边界，意味着下一阶段 frontier-lab 公关将从 leaderboard 跳到 process-centric SLA。</li>
+</ul>
+<h2 id="️-播客动态"><a class="markdownIt-Anchor" href="#️-播客动态"></a> 🎙️ 播客动态</h2>
+<ul>
+<li><strong><a href="https://www.xiaoyuzhoufm.com/episode/69f2e83fbb3ffa11e59dec82">十字路口 Crossing — 探秘 Claude Code，搞懂 Agent Harness｜对谈来新璐</a></strong>（2026-05-05）— 把 agent harness 拆为执行层 / 状态层 / 治理层三层框架（“会跑 → 跑久 → 跑稳”）；复盘 Claude Code 源代码泄露后值得借鉴的多个机制：更多 context / 更少 control 思路、&quot;零上下文管理&quot;哲学、长程任务接力交接、&quot;做梦&quot;式记忆维护与迭代。来新璐为 ShareAI 开源社区发起人 / Learn Claude Code GitHub 50k+ Stars / 一人公司刚完成数百万美金融资。</li>
+</ul>
+<h2 id="候选池变化与后续关注"><a class="markdownIt-Anchor" href="#候选池变化与后续关注"></a> 候选池变化与后续关注</h2>
+<p>本日新增 3 名达标候选：</p>
+<ol>
+<li><strong>来新璐 (Lai Xinlu)</strong> ｜ group: <code>oss-ai-builders</code> — 5/5 <a href="https://www.xiaoyuzhoufm.com/episode/69f2e83fbb3ffa11e59dec82">十字路口播客技术访谈嘉宾</a>；shareAI-lab GitHub 组织发起人，<a href="https://github.com/shareAI-lab/learn-claude-code">learn-claude-code</a> 50k+ Stars。</li>
+<li><strong>Logan Kilpatrick</strong> ｜ group: <code>ai-generalists</code> — Google AI Studio / Gemini API 产品 lead；I/O 静默期 Google 主要 spokesperson。 (<a href="https://blog.google/authors/logan-kilpatrick/">Google blog 作者页</a> / <a href="https://x.com/OfficialLoganK">X.com</a>)</li>
+<li><strong>Xuanhe Zhou (周煊赫)</strong> ｜ group: <code>oss-ai-builders</code> — SJTU + Shanghai AI Lab + Fourth Paradigm；5/6 paper-digest Top picks 命中的 <a href="https://arxiv.org/abs/2605.03596">Workspace-Bench 1.0</a> 核心作者之一。</li>
+</ol>
+<p>后续观察：Lai Xinlu 是否在 X/Twitter 有英文圈联动；Workspace-Bench 1.0 是否被 Anthropic / OpenAI / Microsoft 任一方采纳为评测面；Google I/O 2026 5/19-5/20 的 Gemini 4 / Veo 4 节奏。</p>
+<h2 id="来源与交叉验证说明"><a class="markdownIt-Anchor" href="#来源与交叉验证说明"></a> 来源与交叉验证说明</h2>
+<ul>
+<li><strong>primary/official</strong>：OpenAI（GPT-5.5 Instant blog + System Card）、Anthropic（finance-agents / claude-for-creative-work）、Google（Gemini Embedding 2 GA）、NVIDIA newsroom（Vera Rubin platform）、Microsoft Security blog + 365 战略博文、Salesforce / ServiceNow newsroom、Blackstone newsroom、IEA / IAEA。</li>
+<li><strong>company / filing</strong>：Microsoft 365 Copilot 战略博文、NVIDIA blog（OpenClaw 复盘）。</li>
+<li><strong>media / analysis</strong>：TechCrunch / Bloomberg / Fortune / CNBC / Axios / SiliconANGLE / VentureBeat / TweakTown / TrendForce / Tom’s Hardware / Futurum Group / Data Center Dynamics / eWeek / Statista / Releasebot。</li>
+<li><strong>community / social</strong>：Karpathy autoresearch X 帖、Simon Willison Substack + 个人站、Latent Space SAIL Live #6、十字路口 / 小宇宙、Sebastian Raschka 个人 blog、shareAI-lab GitHub。</li>
+<li><strong>GPT-5.5 Instant</strong> 由 OpenAI blog + System Card + TechCrunch + 9to5Mac + Axios + SiliconANGLE 多源对齐；<strong>Anthropic 5/5 三连发</strong> 由 Anthropic blog + Fortune + Bloomberg + The Register + How2Shout 多源；<strong>5/4 PE-led JV</strong> 由 CNBC + Bloomberg + TechCrunch + Axios + Blackstone newsroom + Fortune 多方互证；<strong>NVIDIA Vera Rubin GA</strong> 由 NVIDIA newsroom + Tom’s Hardware + DCK + DCD + eWeek 对齐。</li>
+</ul>
+<hr />
+<h2 id="相关细分报告"><a class="markdownIt-Anchor" href="#相关细分报告"></a> 相关细分报告</h2>
+<ul>
+<li><a href="/reports/market/2026-05-06-frontier_radar/">Frontier Radar</a></li>
+<li><a href="/reports/market/2026-05-06-macro_news/">Macro News</a></li>
+<li><a href="/reports/market/2026-05-06-paper_layer/">Paper Layer</a></li>
+<li><a href="/reports/market/2026-05-06-people_pool/">People Pool</a></li>
+</ul>
+<!-- flag of hidden posts -->
+    </div>
+
+    
+    
+    
+<div class="comments" id="comments">
+  <script src="https://giscus.app/client.js"
+          data-repo="TCoherence/TCoherence.github.io"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkxMzE0MDY3MTA="
+          data-category="General"
+          data-category-id="DIC_kwDOB9Ubds4C8BCw"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="preferred_color_scheme"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>年轻的C同学
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://tcoherence.github.io/reports/market/2026-05-06-ai/" title="[市场·2026-05-06] AI">https://tcoherence.github.io/reports/market/2026-05-06-ai/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ai-%E6%97%A5%E6%8A%A52026-05-06"><span class="nav-text"> AI 日报｜2026-05-06</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-text"> 摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#frontier-labs-frontier-model-radar"><span class="nav-text"> Frontier Labs &#x2F; Frontier Model Radar</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#openai"><span class="nav-text"> OpenAI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#anthropic"><span class="nav-text"> Anthropic</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#google-deepmind"><span class="nav-text"> Google DeepMind</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#meta"><span class="nav-text"> Meta</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#xai"><span class="nav-text"> xAI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mistral-qwen-deepseek"><span class="nav-text"> Mistral &#x2F; Qwen &#x2F; DeepSeek</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AA%E9%AA%8C%E8%AF%81-%E6%97%81%E7%BA%BF%E4%BF%A1%E5%8F%B7"><span class="nav-text"> 未验证 &#x2F; 旁线信号</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E4%BA%BA%E7%89%A9%E4%B8%8E%E7%A4%BE%E5%8C%BA%E4%BF%A1%E5%8F%B7"><span class="nav-text"> 关键人物与社区信号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#energy"><span class="nav-text"> Energy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chips"><span class="nav-text"> Chips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#infra"><span class="nav-text"> Infra</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#model"><span class="nav-text"> Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#application"><span class="nav-text"> Application</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%82%E9%97%B4%E8%81%94%E5%8A%A8%E5%BD%B1%E5%93%8D"><span class="nav-text"> 层间联动影响</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EF%B8%8F-%E6%92%AD%E5%AE%A2%E5%8A%A8%E6%80%81"><span class="nav-text"> 🎙️ 播客动态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%80%99%E9%80%89%E6%B1%A0%E5%8F%98%E5%8C%96%E4%B8%8E%E5%90%8E%E7%BB%AD%E5%85%B3%E6%B3%A8"><span class="nav-text"> 候选池变化与后续关注</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A5%E6%BA%90%E4%B8%8E%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81%E8%AF%B4%E6%98%8E"><span class="nav-text"> 来源与交叉验证说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E7%BB%86%E5%88%86%E6%8A%A5%E5%91%8A"><span class="nav-text"> 相关细分报告</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="年轻的C同学"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">年轻的C同学</p>
+  <div class="site-description" itemprop="description">年轻的C同学的个人博客 — 关于工程、生活与一些碎片思考</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/TCoherence" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;TCoherence" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:hanzhiyang2019@u.northwestern.edu" title="E-Mail → mailto:hanzhiyang2019@u.northwestern.edu" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/yang_hanzhi" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;yang_hanzhi" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/profile.php?id=100025563873836" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id&#x3D;100025563873836" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">年轻的C同学</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js', () => {
+    var darkMQ = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+    var mermaidTheme = (darkMQ && darkMQ.matches) ? 'dark' : 'forest';
+    mermaid.initialize({
+      startOnLoad: false,
+      theme    : mermaidTheme,
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+    mermaid.run({ querySelector: 'pre.mermaid' });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+</body>
+</html>
