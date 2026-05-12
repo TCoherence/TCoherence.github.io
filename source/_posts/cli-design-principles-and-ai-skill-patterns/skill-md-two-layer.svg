@@ -1,0 +1,80 @@
+<svg viewBox="0 0 680 320" xmlns="http://www.w3.org/2000/svg" font-family="'SF Mono', 'Fira Code', monospace">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f1117"/>
+      <stop offset="100%" stop-color="#1a1d2e"/>
+    </linearGradient>
+    <linearGradient id="yamlHeader" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#f97316"/>
+    </linearGradient>
+    <linearGradient id="mdHeader" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="680" height="320" fill="url(#bg)" rx="12"/>
+
+  <!-- File label top -->
+  <rect x="60" y="24" width="100" height="22" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="110" y="39" text-anchor="middle" fill="#94a3b8" font-size="10">SKILL.md</text>
+  <!-- "tab line" -->
+  <line x1="60" y1="46" x2="620" y2="46" stroke="#334155" stroke-width="1"/>
+
+  <!-- ── Layer 1: YAML Frontmatter ── -->
+  <rect x="60" y="56" width="560" height="112" rx="0" fill="#1a140a" stroke="none"/>
+  <!-- left accent bar -->
+  <rect x="60" y="56" width="4" height="112" fill="url(#yamlHeader)"/>
+
+  <!-- Layer badge -->
+  <rect x="74" y="64" width="210" height="22" rx="4" fill="url(#yamlHeader)" opacity="0.15"/>
+  <text x="84" y="79" fill="#fbbf24" font-size="10.5" font-weight="bold">YAML Frontmatter  ·  配置层</text>
+  <text x="470" y="79" fill="#f97316" font-size="10" font-weight="bold">← 控制 HOW</text>
+
+  <!-- Fields -->
+  <text x="84" y="101" fill="#64748b" font-size="10">name:</text>
+  <text x="140" y="101" fill="#fde68a" font-size="10">lark-im</text>
+  <text x="84" y="118" fill="#64748b" font-size="10">description:</text>
+  <text x="178" y="118" fill="#fde68a" font-size="10">"Browse, search, send messages. Use when user wants..."</text>
+  <text x="84" y="135" fill="#64748b" font-size="10">allowed-tools:</text>
+  <text x="190" y="135" fill="#fde68a" font-size="10">"Read, Grep, Bash"</text>
+  <text x="84" y="152" fill="#64748b" font-size="10">model:</text>
+  <text x="140" y="152" fill="#fde68a" font-size="10">claude-sonnet-4-5</text>
+  <text x="340" y="152" fill="#64748b" font-size="10">disable-model-invocation:</text>
+  <text x="548" y="152" fill="#fde68a" font-size="10">false</text>
+
+  <!-- divider between layers -->
+  <line x1="60" y1="168" x2="620" y2="168" stroke="#334155" stroke-width="1" stroke-dasharray="6,4"/>
+
+  <!-- ── Layer 2: Markdown Content ── -->
+  <rect x="60" y="168" width="560" height="116" rx="0" fill="#0d1424" stroke="none"/>
+  <!-- left accent bar -->
+  <rect x="60" y="168" width="4" height="116" fill="url(#mdHeader)"/>
+
+  <!-- Layer badge -->
+  <rect x="74" y="176" width="218" height="22" rx="4" fill="url(#mdHeader)" opacity="0.12"/>
+  <text x="84" y="191" fill="#93c5fd" font-size="10.5" font-weight="bold">Markdown Content  ·  指令层</text>
+  <text x="470" y="191" fill="#8b5cf6" font-size="10" font-weight="bold">← 控制 WHAT</text>
+
+  <!-- Content sections -->
+  <text x="84" y="213" fill="#475569" font-size="10">##</text>
+  <text x="105" y="213" fill="#bfdbfe" font-size="10">Overview        </text>
+  <text x="222" y="213" fill="#64748b" font-size="9.5">— Skill 做什么，适合什么场景</text>
+  <text x="84" y="230" fill="#475569" font-size="10">##</text>
+  <text x="105" y="230" fill="#bfdbfe" font-size="10">Instructions    </text>
+  <text x="222" y="230" fill="#64748b" font-size="9.5">— Step-by-step 操作流程</text>
+  <text x="84" y="247" fill="#475569" font-size="10">##</text>
+  <text x="105" y="247" fill="#bfdbfe" font-size="10">Output Format   </text>
+  <text x="222" y="247" fill="#64748b" font-size="9.5">— 期望的输出结构</text>
+  <text x="84" y="264" fill="#475569" font-size="10">##</text>
+  <text x="105" y="264" fill="#bfdbfe" font-size="10">Examples        </text>
+  <text x="222" y="264" fill="#64748b" font-size="9.5">— few-shot 示例</text>
+
+  <!-- Bottom border of file -->
+  <rect x="60" y="284" width="560" height="1" fill="#1e293b"/>
+
+  <!-- Caption -->
+  <text x="340" y="308" text-anchor="middle" fill="#475569" font-size="9">Skill 不执行操作 · 它注入指令模板，修改 Claude 的行为方式</text>
+</svg>
