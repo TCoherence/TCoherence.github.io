@@ -28,10 +28,11 @@
 <meta property="og:site_name" content="Hanzhi&#39;s BLOG">
 <meta property="og:description" content="CLI 设计原则 × 面向 Agent 的 Skill 设计，以 LarkSuite 三层架构为实践案例">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://tcoherence.github.io/2026/05/12/cli-design-principles-and-ai-skill-patterns/larksuite-three-layer.svg">
-<meta property="og:image" content="https://tcoherence.github.io/2026/05/12/cli-design-principles-and-ai-skill-patterns/skill-md-two-layer.svg">
+<meta property="og:image" content="https://tcoherence.github.io/2026/05/12/cli-design-principles-and-ai-skill-patterns/larksuite-three-layer.png">
+<meta property="og:image" content="https://tcoherence.github.io/2026/05/12/cli-design-principles-and-ai-skill-patterns/skill-md-two-layer.png">
+<meta property="og:image" content="https://tcoherence.github.io/2026/05/12/cli-design-principles-and-ai-skill-patterns/skill-md-architecture.png">
 <meta property="article:published_time" content="2026-05-12T00:30:00.000Z">
-<meta property="article:modified_time" content="2026-05-12T00:22:07.706Z">
+<meta property="article:modified_time" content="2026-05-12T00:54:08.343Z">
 <meta property="article:author" content="年轻的C同学">
 <meta property="article:tag" content="AI agent">
 <meta property="article:tag" content="CLI">
@@ -40,7 +41,7 @@
 <meta property="article:tag" content="Skill">
 <meta property="article:tag" content="工程实践">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://tcoherence.github.io/2026/05/12/cli-design-principles-and-ai-skill-patterns/larksuite-three-layer.svg">
+<meta name="twitter:image" content="https://tcoherence.github.io/2026/05/12/cli-design-principles-and-ai-skill-patterns/larksuite-three-layer.png">
 
 <link rel="canonical" href="https://tcoherence.github.io/2026/05/12/cli-design-principles-and-ai-skill-patterns/">
 
@@ -229,7 +230,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2026-05-11 17:30:00 / 修改时间：17:22:07" itemprop="dateCreated datePublished" datetime="2026-05-11T17:30:00-07:00">2026-05-11</time>
+              <time title="创建时间：2026-05-11 17:30:00 / 修改时间：17:54:08" itemprop="dateCreated datePublished" datetime="2026-05-11T17:30:00-07:00">2026-05-11</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -264,13 +265,13 @@
 <hr />
 <h2 id="引言你的-cli-真的是给人用的吗"><a class="markdownIt-Anchor" href="#引言你的-cli-真的是给人用的吗"></a> 引言：你的 CLI 真的是给人用的吗？</h2>
 <p>一个被低估的事实是：大多数人设计的平台 CLI，其实是把 API 穿了件外套——参数名复制 API 字段名，输出格式原样透传 JSON，帮助文档基本等于 API 文档的 Markdown 版。</p>
-<p>这不是在说某一家平台不好，这几乎是所有平台 CLI 的第一版的样子。问题在于，这条路的终点是 AWS CLI v1——2500 个命令，<code>aws ec2 describe-instances</code> 的输出是一坨 JSON，用户的第一反应通常是 “怎么又要查文档”? 这么下去何时是个头？</p>
-<p>然后 2024 年以来，事情变得更复杂了：Claude Code、Cursor、Copilot 开始直接调用 CLI。调用者不再只是人，还有会有&quot;幻觉&quot;的 LLM。“Agent call success rate”（Agent 调用成功率）成了一个新的质量指标。</p>
+<p>这不是在说某一家平台不好，这几乎是所有平台 CLI 第一版的样子。问题在于，这条路的终点是 AWS CLI v1——2500 个命令，<code>aws ec2 describe-instances</code> 的输出是一坨 JSON，用户的第一反应通常是&quot;怎么又要查文档&quot;？这么下去何时是个头？</p>
+<p>然后 2024 年以来，事情变得更复杂了：Claude Code、Cursor、Copilot 开始直接调用 CLI。调用者不再只是人，还有会犯&quot;幻觉&quot;的 LLM。“Agent call success rate”（Agent 调用成功率）成了一个新的质量指标。</p>
 <p>本文想梳理几件事：</p>
 <ol>
 <li>CLI 设计 40 年积累下来的核心原则是什么</li>
 <li>AI 时代的 Built-in Skill 设计范式是什么</li>
-<li>以及当你要同时服务人类和 Agent 时，有没有可以参考的架构</li>
+<li>当你要同时服务人类和 Agent 时，有没有可以参考的架构</li>
 </ol>
 <p>核心案例是 <strong>LarkSuite CLI</strong>：200+ 命令、19 个 AI Agent Skill、11 个业务域，目前我见过的最完整的&quot;人机共用 CLI&quot;实践。</p>
 <hr />
@@ -287,13 +288,13 @@
 </ul>
 <h3 id="cli-as-a-workflowpipeline-才是接口"><a class="markdownIt-Anchor" href="#cli-as-a-workflowpipeline-才是接口"></a> CLI as a workflow：Pipeline 才是接口</h3>
 <p>UNIX 哲学的精髓：小工具通过 pipe 组合成大系统。</p>
-<p><code>cat error.log | grep &quot;timeout&quot; | awk '{print $1}' | sort | uniq -c | sort -rn</code></p>
-<p>这一行命令用了 6 个工具，每个工具只做一件事，但组合起来完成了复杂的日志分析。这就是是UNIX给咱们几十年的最优秀的设计——<strong>stdout 是接口</strong>，pipe 是集成机制。</p>
-<p>但也同时意味着，要设计一个 CLI，其实要考虑好 CLI 的隐含合同：不要把无关的东西混进 stdout（那是给 pipe 下游的），进度、日志、警告都去 stderr；支持 <code>stdin</code> 输入（用 <code>-</code> 作为 stdin 别名）；<code>--json</code> 让输出可以被 <code>jq</code> 处理；exit code 的语义必须正确。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> error.log | grep <span class="string">&quot;timeout&quot;</span> | awk <span class="string">&#x27;&#123;print $1&#125;&#x27;</span> | <span class="built_in">sort</span> | <span class="built_in">uniq</span> -c | <span class="built_in">sort</span> -rn</span><br></pre></td></tr></table></figure>
+<p>这一行命令用了 6 个工具，每个工具只做一件事，但组合起来完成了复杂的日志分析。这就是 UNIX 几十年沉淀下来最优秀的设计——<strong>stdout 是接口</strong>，pipe 是集成机制。</p>
+<p>这也意味着设计 CLI 要考虑好隐含设定：不要把无关内容混进 stdout（那是给 pipe 下游的），进度、日志、警告都去 stderr；支持 <code>stdin</code> 输入（用 <code>-</code> 作为 stdin 别名）；<code>--json</code> 让输出可以被 <code>jq</code> 处理；exit code 语义必须正确。</p>
 <p>GitHub CLI 的 <code>gh api --paginate --jq '.[] | .name'</code> 是 pipeline 设计的好示范：REST/GraphQL API 访问、分页、JQ 过滤，一行串完。</p>
 <p>现在有了 AI Agent 之后，pipeline 的概念延伸了——Agent 也会把你的 CLI 当成 pipeline 里的一环，用 <code>--format ndjson</code> 流式消费输出，用 exit code 判断是否继续。</p>
 <blockquote>
-<p>顺便吐槽一下 AWS CLI：它几乎是 pipeline 反面教材的集大成者。<code>aws ec2 describe-instances</code> 默认输出是完整 JSON 树，字段嵌套四五层，没有 <code>--query</code> 或 <code>jq</code> 基本不可读；同一个资源在不同子命令里输出结构还不一样。这不是设计，这是 2500 个命令各自为政的结果。说实话，不知道这背后又有多少亚麻人被折磨得夜夜失眠。</p>
+<p>顺便吐槽一下 AWS CLI：它几乎是 pipeline 反面教材的集大成者。<code>aws ec2 describe-instances</code> 默认输出是完整 JSON 树，字段嵌套四五层，没有 <code>--query</code> 或 <code>jq</code> 基本不可读；同一个资源在不同子命令里输出结构还不一样。这不是设计，这是 2500 个命令各自为政的结果。说实话，不知道这背后有多少亚麻人被折磨得夜夜失眠。</p>
 </blockquote>
 <h3 id="一致性用完就会猜"><a class="markdownIt-Anchor" href="#一致性用完就会猜"></a> 一致性：用完就会猜</h3>
 <p>用终端多了，很多命令的 flag 完全是凭肌肉记忆打出来的——<code>-h</code> 是 help，<code>-v</code> 是 verbose，<code>-n</code> 是 dry-run，<code>--json</code> 输出 JSON，<code>-f</code> 是 force。</p>
@@ -306,13 +307,13 @@
 <h2 id="二-平台-cli-化以-larksuite-为例的三层架构"><a class="markdownIt-Anchor" href="#二-平台-cli-化以-larksuite-为例的三层架构"></a> 二、平台 CLI 化：以 LarkSuite 为例的三层架构</h2>
 <p>平台 CLI 化面临的核心张力：平台 API 可能有几百甚至上千个，但用户不可能记住这么多命令。怎么在完整覆盖和可用性之间找到平衡？</p>
 <p>LarkSuite CLI 的解法是三层架构：</p>
-<p><img src="larksuite-three-layer.svg" alt="LarkSuite CLI 三层架构 + AI Agent Skills" /></p>
+<p><img src="larksuite-three-layer.png" alt="LarkSuite CLI 三层架构 + AI Agent Skills" /></p>
 <p><strong>Layer 1 Shortcuts 是这套设计里最有意思的部分。</strong></p>
 <p><code>+</code> 前缀完全不在 POSIX 规范里，看起来很奇怪。但它解决了一个真实问题：高频操作需要一个与底层 API 命令完全隔离的命名空间，同时在视觉上清晰地标识&quot;这是快捷路径&quot;。</p>
 <p>Shortcut 对人类：<code>lark-cli calendar +agenda</code> 默认输出今天日程，表格格式，没有任何参数需要记忆。对 Agent：相同命令返回结构化 JSON，支持 <code>--dry-run</code> 预览，<code>--as user</code> 或 <code>--as bot</code> 切换身份。</p>
 <p><strong>关键洞察：Shortcuts 不是&quot;给 AI 的简化版&quot;，而是&quot;人和 Agent 都能高成功率完成任务的最优设计&quot;。</strong> 两者共享同一命令，不需要维护两套接口。</p>
 <p><strong>Layer 2 是策展（curation），不是机械映射。</strong></p>
-<p>“Auto-generated from Lark OAPI metadata, curated through evaluation and quality gates” — LarkSuite 的描述是有意义的。不是所有 2500 个 API 都值得有一个命名命令，只有高频、语义清晰、适合脚本化的 API 才进入 Layer 2。这是信息架构决策，不是技术决策。</p>
+<p>“Auto-generated from Lark OAPI metadata, curated through evaluation and quality gates” — LarkSuite 的描述是有意义的。不是所有 API 都值得有一个命名命令，只有高频、语义清晰、适合脚本化的 API 才进入 Layer 2。这是信息架构决策，不是技术决策。</p>
 <p><strong>Layer 3 是完整性保证，不是懒人出路。</strong></p>
 <p>平台 API 的更新速度通常比 CLI 版本快，Raw API 层让用户可以立即使用新 API，不必等 CLI 迭代。同时，它也是一种向前兼容保险：就算 Layer 2 没有覆盖某个场景，用户也不必切换到 SDK 或 curl。</p>
 <h3 id="agent-native-设计的新挑战"><a class="markdownIt-Anchor" href="#agent-native-设计的新挑战"></a> Agent-Native 设计的新挑战</h3>
@@ -337,7 +338,6 @@
 </ul>
 <p>正确定义：<strong>Skill = Prompt Template + Conversation Context Injection + Execution Context Modification</strong></p>
 <p>调用 Skill 时，Harness 主要在做两件事：把 SKILL.md 的内容注入对话 context；修改工具权限白名单和模型配置。Skill 不解决问题，它<strong>准备 Agent 的 Context 和 Action Space 去解决问题</strong>。</p>
-<p>传统 Tool 和 Skill 的对比：</p>
 <table>
 <thead>
 <tr>
@@ -365,29 +365,27 @@
 </tbody>
 </table>
 <h3 id="skillmd-的两层结构"><a class="markdownIt-Anchor" href="#skillmd-的两层结构"></a> SKILL.md 的两层结构</h3>
-<p><img src="skill-md-two-layer.svg" alt="SKILL.md 两层结构" /></p>
+<p><img src="skill-md-two-layer.png" alt="SKILL.md 两层结构" /></p>
 <p><strong><code>description</code> 是整个 Skill 里最重要的字段。</strong></p>
 <p>Skill 的选择机制是纯 LLM 推理——没有 embedding 匹配，没有分类器，没有正则。Claude 读到所有可用 Skill 的 name + description，用自然语言理解匹配用户意图。所以 description 写得好不好，直接决定 Skill 的&quot;召回率&quot;。</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ❌ 模糊 description，LLM 不知道什么时候调用</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">&quot;Email management&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ✅ 具体描述可以做什么，什么时候用</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">&quot;Browse, search, read emails, send, reply, forward, manage drafts, </span></span><br><span class="line"><span class="string">              watch new mail. Use when user wants to do anything with Lark email.&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ❌ 模糊 description，LLM 不知道什么时候调用</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">&quot;Email management&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ✅ 具体描述可以做什么，什么时候用</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">&quot;Browse, search, read emails, send, reply, forward, manage drafts,</span></span><br><span class="line"><span class="string">              watch new mail. Use when user wants to do anything with Lark email.&quot;</span></span><br></pre></td></tr></table></figure>
 <p>除此以外，SKILL.md 还有几个常用字段值得了解：</p>
 <p><strong><code>metadata</code> 是版本管理和依赖声明的标准位置。</strong> 它是一个 key-value map，有两类常见用途：</p>
 <p>版本追踪——官方推荐把版本信息放在这里，而不是混进 description 或正文：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">version:</span> <span class="string">&quot;1.2.0&quot;</span></span><br><span class="line">  <span class="attr">author:</span> <span class="string">&quot;platform-team&quot;</span></span><br><span class="line">  <span class="attr">changelog:</span> <span class="string">&quot;Added dry-run support&quot;</span></span><br></pre></td></tr></table></figure>
 <p>依赖声明——通过 <code>requires.bins</code> 声明 Skill 运行所依赖的外部命令行工具。Agent 在调用前会检查这些 binary 是否存在，避免因环境缺依赖导致调用失败：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">requires:</span></span><br><span class="line">    <span class="attr">bins:</span> [<span class="string">&quot;lark-cli&quot;</span>]</span><br></pre></td></tr></table></figure>
-<p>对于 LarkSuite 的 Skill 来说，所有 19 个 Skill 都应该声明 <code>bins: [&quot;lark-cli&quot;]</code>——这是 Skill 能正常工作的前提，而不是可选项。</p>
+<p>对于 LarkSuite 的 Skill 来说，所有 19 个 Skill 都应该声明 <code>bins: [&quot;lark-cli&quot;]</code>——这是 Skill 能正常工作的前提，不是可选项。</p>
 <p><strong><code>compatibility</code> 声明 Skill 的运行环境要求</strong>，包括目标平台（Claude Code / Copilot / Cursor）、依赖的系统包、是否需要网络访问。跨平台发布 Skill 时，这个字段是分发的基础元信息。</p>
-<p><strong><code>allowed-tools</code> 是权限边界，不是工具列表。</strong></p>
-<p>最小权限原则：只声明 Skill 实际需要的工具。一个只读日历的 Skill 不需要 <code>Bash</code> 权限。</p>
+<p><strong><code>allowed-tools</code> 是权限边界，不是工具列表。</strong> 最小权限原则：只声明 Skill 实际需要的工具，一个只读日历的 Skill 不需要 <code>Bash</code> 权限。</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ✅ 按需授权</span></span><br><span class="line"><span class="attr">allowed-tools:</span> <span class="string">&quot;Read, Grep&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ❌ 过度授权（安全风险 + 增加 Skill 的攻击面）</span></span><br><span class="line"><span class="attr">allowed-tools:</span> <span class="string">&quot;Bash, Read, Write, Edit, WebSearch, Task&quot;</span></span><br></pre></td></tr></table></figure>
-<p><strong><code>disable-model-invocation: true</code> 是安全保险。</strong></p>
-<p>设为 true 时，这个 Skill 从 LLM 的可用列表里消失，只能用户手动输入 <code>/skill-name</code> 触发。危险操作（清空数据、批量修改）应该用这个机制保护，不能让 LLM 自动触发。</p>
+<p><strong><code>disable-model-invocation: true</code> 是安全保险。</strong> 设为 true 时，这个 Skill 从 LLM 的可用列表里消失，只能用户手动输入 <code>/skill-name</code> 触发。危险操作（清空数据、批量修改）应该用这个机制保护，不能让 LLM 自动触发。</p>
 <h3 id="progressive-disclosure只加载需要的"><a class="markdownIt-Anchor" href="#progressive-disclosure只加载需要的"></a> Progressive Disclosure：只加载需要的</h3>
+<p><img src="skill-md-architecture.png" alt="SKILL.md 两层结构 × Progressive Disclosure 三阶段加载" /></p>
 <p>系统初始化时只加载每个 Skill 的 name + description（约 100 tokens/skill）。SKILL.md 完整内容（通常 &lt; 5,000 tokens）只在被选中时才加载。执行过程中，scripts/、references/、assets/ 里的资源按需加载。</p>
 <p>这三层按需加载解决了一个根本矛盾：平台想提供丰富能力（LarkSuite 有 19 个 Skill），但 context window 有限。</p>
 <p>系统对 Skills List 总量设了 15,000 chars 的上限，这个数字强迫 Skill 作者写简洁的 description。一个 description 超过 200 字，往往意味着 Skill 的职责不够聚焦，应该拆分。</p>
-<p><strong>资源目录的三分法：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">my-skill/</span><br><span class="line">├── SKILL.md          # 核心 prompt（控制 Claude 的行为）</span><br><span class="line">├── scripts/          # 确定性逻辑（Bash 运行，消耗 CPU 不消耗 tokens）</span><br><span class="line">├── references/       # 文档（Read 工具加载进 context，tokens消耗大）</span><br><span class="line">└── assets/           # 模板/二进制（仅路径引用，tokens消耗小）</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">my-skill/</span><br><span class="line">├── SKILL.md          # 核心 prompt（控制 Claude 的行为）</span><br><span class="line">├── scripts/          # 确定性逻辑（Bash 运行，消耗 CPU 不消耗 tokens）</span><br><span class="line">├── references/       # 文档（Read 工具加载进 context，token 消耗大）</span><br><span class="line">└── assets/           # 模板/二进制（仅路径引用，token 消耗小）</span><br></pre></td></tr></table></figure>
 <p><code>references/</code> 和 <code>assets/</code> 的区别只有一个：加载进 context 会不会消耗 token。把 10KB 的 HTML 模板放 references/ 每次都白白消耗 token；放 assets/ 只告诉 Claude 路径存在，Claude 按需引用。</p>
 <h3 id="四种基础-skill-模式"><a class="markdownIt-Anchor" href="#四种基础-skill-模式"></a> 四种基础 Skill 模式</h3>
 <table>
@@ -427,7 +425,6 @@
 <p>CLI 和 AI Skill 不是替代关系，是不同问题的不同解。</p>
 <p><strong>CLI 解决的问题</strong>：操作有明确的参数边界，输入是确定的，调用者知道要做什么。</p>
 <p><strong>Skill 解决的问题</strong>：操作由自然语言意图驱动，输入边界模糊，需要 LLM 推理才能确定具体参数。</p>
-<p><strong>主要设计张力对比：</strong></p>
 <table>
 <thead>
 <tr>
@@ -466,14 +463,14 @@
 </table>
 <p><strong>LarkSuite 的桥接策略：CLI 定义操作空间，Skill 封装使用知识。</strong></p>
 <p>三层 CLI 架构定义了所有可用操作（200+ 命令），19 个 SKILL.md 文件告诉 AI Agent 什么时候用哪个命令、参数怎么传、输出怎么解析。Skill 不替代 CLI，而是帮助 Agent 高成功率地使用 CLI。</p>
-<p><strong>给平台开发者的决策参考：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">操作有明确参数边界？</span><br><span class="line">  是 → 设计 CLI Command</span><br><span class="line">       高频操作？ → 加 Shortcut（+前缀），优化默认值</span><br><span class="line">       长尾需求？ → API Command 层，或 Raw API</span><br><span class="line">  否（自然语言驱动）→ 设计 Skill</span><br><span class="line">       需要确定性逻辑？ → Script Automation 模式</span><br><span class="line">       跨资源聚合？   → Search-Analyze-Report 模式</span><br><span class="line">       有高风险副作用？→ Wizard 模式 + disable-model-invocation</span><br><span class="line"></span><br><span class="line">主要用户是谁？</span><br><span class="line">  人类   → Human-first 原则优先</span><br><span class="line">  Agent  → 结构化输出 + Schema 自省 + 无交互提示</span><br><span class="line">  两者   → 三层架构（Shortcuts 作为跨介质抽象层）</span><br></pre></td></tr></table></figure>
+<p>给平台开发者的决策参考：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">操作有明确参数边界？</span><br><span class="line">  是 → 设计 CLI Command</span><br><span class="line">       高频操作？ → 加 Shortcut（+前缀），优化默认值</span><br><span class="line">       长尾需求？ → API Command 层，或 Raw API</span><br><span class="line">  否（自然语言驱动）→ 设计 Skill</span><br><span class="line">       需要确定性逻辑？ → Script Automation 模式</span><br><span class="line">       跨资源聚合？   → Search-Analyze-Report 模式</span><br><span class="line">       有高风险副作用？→ Wizard 模式 + disable-model-invocation</span><br><span class="line"></span><br><span class="line">主要用户是谁？</span><br><span class="line">  人类   → Human-first 原则优先</span><br><span class="line">  Agent  → 结构化输出 + Schema 自省 + 无交互提示</span><br><span class="line">  两者   → 三层架构(Shortcuts 作为跨介质抽象层)</span><br></pre></td></tr></table></figure>
 <hr />
 <h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
 <p>CLI 自诞生以来积累的三条原则（为人设计、pipeline 思维、一致性）在 AI 时代依然有效，甚至更重要——Agent 比人类更依赖接口的规范性。</p>
 <p>SKILL.md 开放标准的出现，让&quot;写一次 Skill，覆盖 7 个 AI 工具&quot;变成了现实。对平台开发者来说，这意味着 Skill description 的质量变成了新的分发竞争力——写得模糊，就在 AI 工具生态里&quot;消失&quot;了。</p>
-<p>最后也想重申一句：没有任何东西是万能的，都会有其对应的适应场景，LarkSuite CLI的三层架构也是一样的。它的代价是用户的认知负担——用户需要理解什么时候用 Shortcuts、什么时候用 API Commands、什么时候用 Raw API。这个架构适合业务域足够复杂（LarkSuite 有 11 个业务域）、同时服务人类和 Agent 的平台。如果你的平台 CLI 场景相对单一，过度分层只会增加维护成本。</p>
-<p>最后的最后，记住一句，在Agent时代，不要等架构完整了再动手。从一个 Shortcut 开始，从一个清晰的 Skill description 开始——这两件事做好了，比设计一套完整的三层体系更有价值。等你真的做大了，再考虑分层架构也不迟。<strong>别让完美的架构成为你交付的敌人。</strong></p>
+<p>最后重申一句：没有任何架构是万能的。LarkSuite CLI 的三层设计代价是认知负担——用户需要理解什么时候用 Shortcuts、什么时候用 API Commands、什么时候用 Raw API。这个架构适合业务域足够复杂、同时服务人类和 Agent 的平台。如果你的平台 CLI 场景相对单一，过度分层只会增加维护成本。</p>
+<p>在 Agent 时代，不要等架构完整了再动手。从一个 Shortcut 开始，从一个清晰的 Skill description 开始——这两件事做好了，比设计一套完整的三层体系更有价值。<strong>别让完美的架构成为你交付的敌人。</strong></p>
 <hr />
 <p><em>参考资料</em></p>
 <ul>
@@ -485,8 +482,6 @@
 <li><a href="https://code.claude.com/docs/en/skills">Extend Claude with skills - Claude Code Docs</a></li>
 <li><a href="https://agentskills.io/specification">SKILL.md Specification - agentskills.io</a></li>
 <li><a href="https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills">Equipping agents for the real world with Agent Skills - Anthropic Engineering</a></li>
-<li><a href="https://docs.claude.com/code/agents/skills/extend-claude">Extend Claude with skills - Claude Code Docs</a></li>
-<li><a href="https://aws.amazon.com/blogs/machine-learning/equipping-agents-for-the-real-world-with-agent-skills/">Equipping agents for the real world with Agent Skills</a></li>
 </ul>
 
     </div>
