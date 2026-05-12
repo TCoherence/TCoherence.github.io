@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 8.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/images/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tcoherence.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":2,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="AI 日报｜2026-05-08 一句话结论：5&#x2F;7 OpenAI 单日发出 6 条产品 &#x2F; 安全 &#x2F; 商业化公告（GPT-5.5 Instant 默认化、GPT-5.5-Cyber 限量预览、Trusted Contact 自伤防护、ChatGPT Free + Go 美区广告、ChatGPT Futures Class、API 新一代语音）+ Anthropic 5&#x2F;6 Code w&#x2F; Cl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[市场·2026-05-08] AI">
+<meta property="og:url" content="https://tcoherence.github.io/reports/market/2026-05-08-ai/index.html">
+<meta property="og:site_name" content="Hanzhi&#39;s BLOG">
+<meta property="og:description" content="AI 日报｜2026-05-08 一句话结论：5&#x2F;7 OpenAI 单日发出 6 条产品 &#x2F; 安全 &#x2F; 商业化公告（GPT-5.5 Instant 默认化、GPT-5.5-Cyber 限量预览、Trusted Contact 自伤防护、ChatGPT Free + Go 美区广告、ChatGPT Futures Class、API 新一代语音）+ Anthropic 5&#x2F;6 Code w&#x2F; Cl">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-05-08T19:00:00.000Z">
+<meta property="article:modified_time" content="2026-05-12T00:22:07.699Z">
+<meta property="article:author" content="年轻的C同学">
+<meta property="article:tag" content="Hanzhi, 博客, blog, hexo, next, 软件工程, 生活">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://tcoherence.github.io/reports/market/2026-05-08-ai/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>[市场·2026-05-08] AI | Hanzhi's BLOG</title><meta name="robots" content="noindex">
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hanzhi's BLOG</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录、思考、生活</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-reports">
+
+    <a href="/reports/" rel="section"><i class="fa fa-newspaper fa-fw"></i>AI 报告</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tcoherence.github.io/reports/market/2026-05-08-ai/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="年轻的C同学">
+      <meta itemprop="description" content="年轻的C同学的个人博客 — 关于工程、生活与一些碎片思考">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hanzhi's BLOG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [市场·2026-05-08] AI
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2026-05-08 12:00:00" itemprop="dateCreated datePublished" datetime="2026-05-08T12:00:00-07:00">2026-05-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-05-11 17:22:07" itemprop="dateModified" datetime="2026-05-11T17:22:07-07:00">2026-05-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AI%E6%8A%A5%E5%91%8A/" itemprop="url" rel="index"><span itemprop="name">AI报告</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AI%E6%8A%A5%E5%91%8A/%E5%B8%82%E5%9C%BA/" itemprop="url" rel="index"><span itemprop="name">市场</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="ai-日报2026-05-08"><a class="markdownIt-Anchor" href="#ai-日报2026-05-08"></a> AI 日报｜2026-05-08</h1>
+<p>一句话结论：5/7 OpenAI 单日发出 6 条产品 / 安全 / 商业化公告（GPT-5.5 Instant 默认化、GPT-5.5-Cyber 限量预览、Trusted Contact 自伤防护、ChatGPT Free + Go 美区广告、ChatGPT Futures Class、API 新一代语音）+ Anthropic 5/6 Code w/ Claude SF 公开整租 SpaceX Colossus 1（300+ MW / 220K+ GPU）并联合研究在轨 compute satellites + Google DeepMind 5/7 AlphaEvolve impact 复盘把 AI for Science 推到 Erdős/TSP/Ramsey 数下界与下一代 TPU 设计核心组件——三轴叠加，把 frontier 主线定调为 “distribution × compute × scientific discovery 三轴并行”，但能源 / 政府 procurement 仍是中期约束。</p>
+<h2 id="摘要"><a class="markdownIt-Anchor" href="#摘要"></a> 摘要</h2>
+<ul>
+<li><strong>frontier_radar</strong>：OpenAI 5/7 单日 6 条公告把 distribution × safety × monetization 推到正面；Anthropic 5/6 Code w/ Claude SF 同台宣布 Colossus 1 整租 + 双倍速率限额 + 17x API volume + 在轨 compute satellites 联合研究；Google DeepMind 5/7 AlphaEvolve impact 升级 Google 基础设施核心组件；Meta 5/8 报道 5/20 起 8K 裁员；xAI 把 Colossus 1 整体卖出，自留 Colossus 2；Mistral Vibe + Medium 3.5（128B / 77.6 SWE-Bench / open-weight）+ Voxtral TTS 完成欧洲收口；DeepSeek V4 introductory 折扣 5/7 到期、Huawei Ascend 950 supernode 全栈对接。</li>
+<li><strong>paper_layer</strong>：paper-digest 2026-05-08 全量消化，6 篇高分论文（Direct Corpus Interaction agentic search 范式 / CreativityBench / RemoteZero GRPO 自进化 / KernelBench-X Triton / BioTool / Video Reward CoT 解耦），外加 AlphaEvolve repository_of_problems 与 Mistral NGC NIM 入仓两条 paper-digest 不覆盖的技术信号。</li>
+<li><strong>people_pool</strong>：Karpathy / Simon Willison / Boris Cherny / Cat Wu / Ami Vora / Alex Albert / Sam Altman / Greg Brockman / Logan Kilpatrick 9 人有当周一手信号；新增 3 名候选——Pushmeet Kohli（DeepMind / AlphaEvolve）、Ami Vora（Anthropic CPO）、Cat Wu（Anthropic Claude Code Head of Product），均 ≥3 源交叉验证，全部建议 promote。</li>
+<li><strong>5-layer</strong>：energy（NANO-Supermicro MOU + SMR 45 GW pipeline）/ chips（IREN-NVIDIA $3.4B 5 GW + Jensen 中国封锁宣示 + Huawei Ascend 950 全栈 + TSMC HPC 占 61%）/ infra（Anthropic-SpaceX Colossus 1 + AMD-Meta 6 GW / $60B + 在轨 compute）/ model（OpenAI 5/7 6 公告 + Mistral Vibe / Medium 3.5 + DeepSeek V4 价格回稳 + AlphaEvolve）/ application（Anthropic 金融 10 件 agents + Microsoft 365 + Moody’s + FIS Financial Crimes + ServiceNow Autonomous Workforce + Code w/ Claude Routines）。</li>
+<li><strong>cross-layer</strong>：infra↔chips 多对手位拐点 / energy↔infra 陆地核电 vs 在轨太阳能 / model↔application Cyber-Finance-Coding 三轴垂直化 / chips↔model China stack 解耦加速。</li>
+</ul>
+<h2 id="frontier-labs-frontier-model-radar"><a class="markdownIt-Anchor" href="#frontier-labs-frontier-model-radar"></a> Frontier Labs / Frontier Model Radar</h2>
+<p>5/7-5/8 frontier 主线由两大主轴驱动：(1) OpenAI 5/7 单日发布 6 条产品 / 安全 / 合作公告；(2) Anthropic 5/6-7 与 SpaceX/xAI Colossus 1 完成 300+ MW / 220 K+ GPU 算力交易，并探索轨道算力卫星。Google DeepMind 5/7 AlphaEvolve impact 长篇复盘把 AI for Math/Science 推到 Erdős/TSP/Ramsey 三项新纪录与 TPU 设计核心位置；Meta 5/8 公告 5/20 起 8 K 层级裁员；Mistral 一周前的 Vibe + Medium 3.5 落地；DeepSeek V4 折扣到期、Huawei Ascend 950 supernode 全栈对接。</p>
+<h3 id="openai"><a class="markdownIt-Anchor" href="#openai"></a> OpenAI</h3>
+<ul>
+<li><strong>GPT-5.5 Instant 默认化 + memory 升级</strong>（5/7）：<a href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes">ChatGPT Release Notes</a>；GPT-5.5 Pro 同步覆盖 Pro / Business / Enterprise，API 推出新一代语音智能模型。</li>
+<li><strong>GPT-5.5-Cyber 限量预览</strong>（5/7）：<a href="https://openai.com/index/gpt-5-5-with-trusted-access-for-cyber/">OpenAI 官博</a> / <a href="https://openai.com/index/trusted-access-for-cyber/">Trusted Access for Cyber</a> / <a href="https://www.helpnetsecurity.com/2026/05/08/openai-gpt-5-5-cyber-model/">Help Net Security</a> / <a href="https://www.axios.com/2026/05/07/openai-gpt-55-cybersecurity-model">Axios</a>。</li>
+<li><strong>Trusted Contact 自伤防护</strong>（5/7）：<a href="https://techcrunch.com/2026/05/07/openai-introduces-new-trusted-contact-safeguard-for-cases-of-possible-self-harm/">TechCrunch</a> / <a href="https://www.businesstoday.in/technology/story/openai-expands-ai-safety-measures-with-trusted-contact-feature-530486-2026-05-08">BusinessToday</a>。</li>
+<li><strong>ChatGPT 测试广告</strong>（5/7）：<a href="https://openai.com/index/testing-ads-in-chatgpt/">OpenAI 官博</a> / <a href="https://www.distillintelligence.com/briefings/ai-leaders-2026-05-08">Distill 周报</a> — Free + Go 美区开始测试，Plus 以上无广告；Ads Manager beta 按 CPC 计价。</li>
+<li><strong>ChatGPT Futures: Class of 2026</strong>（5/7）：<a href="https://openai.com/index/introducing-chatgpt-futures-class-of-2026/">官博</a> — 26 名学生 innovator，每人 $10K + frontier 模型访问。</li>
+</ul>
+<h3 id="anthropic"><a class="markdownIt-Anchor" href="#anthropic"></a> Anthropic</h3>
+<ul>
+<li><strong>SpaceX/xAI Colossus 1 300+ MW / 220K+ GPU 全量算力</strong>（5/6-7）：<a href="https://x.ai/news/anthropic-compute-partnership">xAI 官博</a> / <a href="https://www.cnbc.com/2026/05/06/anthropic-spacex-data-center-capacity.html">CNBC</a> / <a href="https://www.datacenterdynamics.com/en/news/anthropic-to-use-all-of-spacex-xais-colossus-1-data-center-compute/">DCD</a> / <a href="https://simonwillison.net/2026/May/7/xai-anthropic/">Simon Willison</a> — Pro/Max/Team/Enterprise Claude Code 5h 速率限额翻倍，Pro/Max 高峰封顶移除；与 SpaceX 联合研究 GW 级在轨 compute satellites。</li>
+<li><strong>Financial Services Agents（10 件）+ Microsoft 365 + Moody’s + FIS Financial Crimes Agent</strong>（5/5）：<a href="https://www.anthropic.com/news/finance-agents">Anthropic 官博</a> / <a href="https://www.bloomberg.com/news/articles/2026-05-05/anthropic-unveils-ai-agents-to-field-financial-services-tasks">Bloomberg</a> / <a href="https://fortune.com/2026/05/05/anthropic-wall-street-financial-services-agents-jamie-dimon/">Fortune</a> / <a href="https://www.fisglobal.com/about-us/media-room/press-release/2026/fis-brings-agentic-ai-to-banking-with-anthropic-starting-with-financial-crimes">FIS PR</a>。</li>
+<li><strong>Mythos Project Glasswing 限量预览 + $900B 估值轮</strong>（持续）：<a href="https://red.anthropic.com/2026/mythos-preview/">Anthropic Mythos</a> / <a href="https://www.cnbc.com/2026/04/29/anthropic-weighs-raising-funds-at-900b-valuation-topping-openai.html">CNBC $900B</a> — capital × procurement decoupling。</li>
+</ul>
+<h3 id="google-deepmind"><a class="markdownIt-Anchor" href="#google-deepmind"></a> Google DeepMind</h3>
+<ul>
+<li><strong>AlphaEvolve impact 复盘</strong>（5/7）：<a href="https://deepmind.google/blog/alphaevolve-impact/">DeepMind 官博</a> / <a href="https://github.com/google-deepmind/alphaevolve_repository_of_problems">GitHub repository_of_problems</a> / <a href="https://decrypt.co/347586/google-deepmind-alphaevolve-ai-new-paths-unsolved-math-problems">Decrypt</a> / <a href="https://x.com/pushmeet/status/1986371193411150248">Pushmeet Kohli X</a> — 升级为 Google 基础设施核心组件 + 下一代 TPU 设计；Willow 量子分子模拟电路误差降 10x；Erdős / TSP / Ramsey 数下界。</li>
+<li><strong>CAISI Pre-release 政府评估协议</strong>（5/5）：<a href="https://www.cnbc.com/2026/05/05/ai-oversight-trump-google-microsoft-xai.html">CNBC</a> / <a href="https://www.cnn.com/2026/05/05/tech/microsoft-google-xai-government-test-ai-models">CNN</a>。</li>
+</ul>
+<h3 id="meta"><a class="markdownIt-Anchor" href="#meta"></a> Meta</h3>
+<ul>
+<li><strong>5/20 起 8K 裁员 + Superintelligence Labs Pods 重组 + Muse Spark 闭源旗舰多模态</strong>（5/8 报道）：<a href="https://thenextweb.com/news/meta-layoffs-may-2026-ai-restructuring-thousands">The Next Web</a> / <a href="https://about.fb.com/news/2026/04/introducing-muse-spark-meta-superintelligence-labs/">about.fb Muse Spark</a> / <a href="https://www.cnbc.com/2026/04/28/meta-muse-spark-has-promise-wall-street-wants-zuckerberg-ai-strategy.html">CNBC Wall Street 反馈</a>。</li>
+</ul>
+<h3 id="xai"><a class="markdownIt-Anchor" href="#xai"></a> xAI</h3>
+<ul>
+<li><strong>Anthropic Colossus 1 算力出售 + Grok Imagine Quality Mode API + Connectors</strong>（5/6-7）：<a href="https://x.ai/news/anthropic-compute-partnership">xAI 官博</a> / <a href="https://techcrunch.com/2026/05/06/is-xai-a-neocloud-now/">TechCrunch neocloud</a> — xAI 自留 Colossus 2。</li>
+<li><strong>Grok 4.1 Fast 等 deprecation 2 周通知 + 5/8 sentience-delusion 报道</strong>：<a href="https://www.techspot.com/news/112342-grok-convinced-man-sentient-xai-had-sent-assassins.html">TechSpot</a> / <a href="https://www.distillintelligence.com/briefings/ai-leaders-2026-05-08">Distill 周报</a>。</li>
+</ul>
+<h3 id="mistral"><a class="markdownIt-Anchor" href="#mistral"></a> Mistral</h3>
+<ul>
+<li><strong>Vibe + Medium 3.5（128B / 256K / 77.6 SWE-Bench）</strong>（5/2）：<a href="https://www.marktechpost.com/2026/05/02/mistral-ai-launches-remote-agents-in-vibe-and-mistral-medium-3-5-with-77-6-swe-bench-verified-score/">MarkTechPost</a> / <a href="https://docs.mistral.ai/models/model-cards/mistral-medium-3-5-26-04">Mistral docs</a> / <a href="https://thenewstack.io/mistral-vibe-cloud-agents/">The New Stack</a>。</li>
+<li><strong>Voxtral TTS</strong>（5/5）：<a href="https://www.marktechpost.com/2026/05/05/closing-the-expressivity-gap-how-mistrals-voxtral-tts-is-redefining-multilingual-voice-cloning-with-a-hybrid-autoregressive-and-flow-matching-architecture/">MarkTechPost</a>。</li>
+</ul>
+<h3 id="qwen"><a class="markdownIt-Anchor" href="#qwen"></a> Qwen</h3>
+<p>5/8 无新一手公开 frontier 公告：<a href="https://qwen.ai/research">Qwen Studio</a>。</p>
+<h3 id="deepseek"><a class="markdownIt-Anchor" href="#deepseek"></a> DeepSeek</h3>
+<ul>
+<li><strong>V4 introductory 折扣到期 + Huawei Ascend 950 supernode 全栈支持</strong>（5/7-8）：<a href="https://www.tradingview.com/news/reuters.com,2026:newsml_P8N3W402L:0-huawei-ascend-supernode-to-support-deepseek-v4/">Reuters/TradingView</a> / <a href="https://fortune.com/2026/04/24/deepseek-v4-ai-model-price-performance-china-open-source/">Fortune</a> / <a href="https://www.scmp.com/tech/big-tech/article/3352644/chinas-chipmakers-rush-embrace-deepseeks-v4-which-names-stand-out">SCMP</a>。</li>
+</ul>
+<h3 id="未验证-frontier-信号"><a class="markdownIt-Anchor" href="#未验证-frontier-信号"></a> 未验证 Frontier 信号</h3>
+<ul>
+<li><strong>GPT-6</strong>：<a href="https://lifearchitect.ai/gpt-6/">lifearchitect.ai/gpt-6</a> / <a href="https://polymarket.com/predictions/openai">Polymarket OpenAI</a>。</li>
+<li><strong>Grok 5</strong>：xAI Q2/Q3 2026 预期，5/8 无官方升级公告；<a href="https://www.mindstudio.ai/blog/grok-5-agi-xai-model-roadmap">MindStudio Grok 5 路线图</a>。</li>
+</ul>
+<h2 id="关键人物与社区信号"><a class="markdownIt-Anchor" href="#关键人物与社区信号"></a> 关键人物与社区信号</h2>
+<p>5/7-5/8 关键人物信号集中在三条线：(1) Anthropic 的 Boris Cherny + Cat Wu + Ami Vora 在 5/6 Code w/ Claude SF 第二届开发者大会上集体发声；(2) Andrej Karpathy 5/7 X 公开致敬 Simon Willison 23 年博客；(3) DeepMind Pushmeet Kohli 5/7 在 AlphaEvolve 影响复盘里把 Erdős / TSP / Ramsey 数突破和 TPU 设计核心地位推进社交媒体讨论。OpenAI 侧 Sam Altman 与 Greg Brockman 5/4-5/7 庭审证词主线持续。</p>
+<ul>
+<li><strong>Andrej Karpathy</strong> — 5/7 <a href="https://x.com/karpathy/status/1933582359347278246">X 致敬 Simon Willison</a>；其 4/29 Sequoia AI Ascent <a href="https://karpathy.bearblog.dev/sequoia-ascent-2026/">“From Vibe Coding to Agentic Engineering”</a> 主线持续在 <a href="https://sdtimes.com/ai/andrej-karpathy-has-renamed-vibe-coding-heres-what-engineering-leaders-need-to-do-about-it/">SD Times</a> / <a href="https://www.mindstudio.ai/blog/vibe-coding-vs-agentic-engineering-karpathy-framework">MindStudio</a> 二次报道。</li>
+<li><strong>Simon Willison</strong> — 5/6 <a href="https://simonwillison.net/2026/May/6/code-w-claude-2026/">现场 live-blog Code w/ Claude SF</a>；5/7 <a href="https://simonwillison.net/2026/May/7/xai-anthropic/">复盘 xAI/Anthropic Colossus 1 工程含义</a>。</li>
+<li><strong>Boris Cherny</strong> — 5/6 Code w/ Claude SF 主旨：‘Routines are higher-order prompts’，Claude Code 三层 surface（CLI/IDE/Desktop） + 共享 Claude Agent SDK (<a href="https://www.cnbc.com/video/2026/05/06/head-of-claude-code-on-the-future-of-work-and-productivity.html">CNBC video</a>、<a href="https://3quarksdaily.com/3quarksdaily/2026/05/boris-cherny-why-coding-is-solved-and-what-comes-next.html">3 Quarks Daily</a>)。</li>
+<li><strong>Alex Albert</strong> — 5/6-7 Code w/ Claude SF 同台传播 Claude Code Routines / Opus 4.7 默认 / xhigh-effort 更新（<a href="https://releasebot.io/updates/anthropic/claude-code">Releasebot</a>）。</li>
+<li><strong>Sam Altman</strong> — 5/7 <a href="https://www.aol.com/articles/sam-altmans-management-style-comes-022929540.html">Musk 庭审进入第二周</a>，多家媒体以 ‘management style under microscope’ 为核心叙事。</li>
+<li><strong>Greg Brockman</strong> — 5/5 <a href="https://www.cnbc.com/2026/05/05/open-ai-altman-musk-trial-brockman-testimony.html">CNBC</a> / <a href="https://www.bloomberg.com/news/articles/2026-05-05/brockman-says-musk-s-lack-of-ai-knowledge-was-concern-at-openai">Bloomberg</a> / <a href="https://localnewsmatters.org/2026/05/05/musk-v-altman-day-6-brockman-describes-conflict-with-musk-over-control-of-openai/">Local News Matters</a>：庭审证词，披露 ~$30B 股权 + Musk 索要 OpenAI 控制权用于 $80B Mars 城市。</li>
+<li><strong>Logan Kilpatrick</strong> — 5/8 转引 <a href="https://x.com/rohanpaul_ai/status/2046664772398317740">‘AGI 不会是单一模型’</a>，与 AlphaEvolve 5/7 impact 复盘同向。</li>
+</ul>
+<h2 id="energy"><a class="markdownIt-Anchor" href="#energy"></a> Energy</h2>
+<ul>
+<li><strong>NANO Nuclear × Supermicro MOU</strong>（5/6）：<a href="https://nanonuclearenergy.com/nano-nuclear-signs-strategic-mou-with-supermicro-to-power-the-next-generation-of-ai-data-centers-with-advanced-nuclear-energy/">NANO Nuclear PR</a>。</li>
+<li><strong>SMR offtake 升至 ~45 GW</strong>：<a href="https://www.iaea.org/bulletin/data-centres-artificial-intelligence-and-cryptocurrencies-eye-advanced-nuclear-to-meet-growing-power-needs">IAEA</a> / <a href="https://247wallst.com/investing/2026/04/18/nuclears-ai-moment-is-here-there-is-only-1-play-for-the-4x-data-center-demand-explosion/">24/7 Wall St</a> — Meta-Oklo / Idaho INL Clayco 仍在推进，受 NRC 审批节奏约束。</li>
+</ul>
+<h2 id="chips"><a class="markdownIt-Anchor" href="#chips"></a> Chips</h2>
+<ul>
+<li><strong>NVIDIA × IREN $3.4B / 5 GW 5 年合同</strong>（5/7）：<a href="https://www.globenewswire.com/news-release/2026/05/07/3290760/0/en/IREN-Secures-3-4bn-AI-Cloud-Contract-with-NVIDIA.html">GlobeNewswire</a> / <a href="https://siliconangle.com/2026/05/07/ai-data-center-firm-irens-stock-soars-strikes-2-1b-deal-nvidia/">SiliconANGLE</a>；NVIDIA 获 IREN 30 M 股 5 年内 $70 行权权（潜在 $2.1B 敞口）。</li>
+<li><strong>Jensen ‘No Blackwell, No Rubin for China’</strong>（5/5-7）：<a href="https://wccftech.com/nvidia-ceo-jensen-huang-draws-a-hard-line-on-china-no-blackwell-no-rubin/">wccftech</a> / <a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/nvidia-ceo-jensen-huang-says-china-should-not-have-blackwell-or-rubin-ai-gpus-firmly-states-us-should-have-the-first-the-most-and-the-best-when-it-comes-to-ai-hardware">Tom’s Hardware</a>；Vera Rubin NVL72 全量产，2H 2026 OEM/cloud 出货；NVIDIA Q1 FY2027 <a href="https://www.fool.com/investing/2026/05/05/prediction-nvidia-stock-going-to-soar-after-may-20/">5/20 财报</a> 共识 $78.8B。</li>
+<li><strong>Huawei Ascend 950 supernode + DeepSeek V4 全栈</strong>（5/8）：<a href="https://www.tradingview.com/news/reuters.com,2026:newsml_P8N3W402L:0-huawei-ascend-supernode-to-support-deepseek-v4/">Reuters/TradingView</a> / <a href="https://www.scmp.com/tech/big-tech/article/3352644/chinas-chipmakers-rush-embrace-deepseeks-v4-which-names-stand-out">SCMP</a>；BTAT 追加 Ascend 订单。</li>
+<li><strong>TSMC Q1 +40.6% / 净利 +58.3%</strong>：<a href="https://www.cnbc.com/2026/04/16/tsmc-q1-profit-58-percent-ai-chip-demand-record.html">CNBC TSMC</a> / <a href="https://247wallst.com/investing/2026/04/16/asml-and-tsmc-just-told-the-market-ai-spending-isnt-slowing-down/">24/7 Wall St</a> — HPC 占 Q1 营收 61%。</li>
+</ul>
+<h2 id="infra"><a class="markdownIt-Anchor" href="#infra"></a> Infra</h2>
+<ul>
+<li><strong>Anthropic × SpaceX/xAI Colossus 1 全量算力</strong>（5/6-7）：<a href="https://x.ai/news/anthropic-compute-partnership">xAI 官博</a> / <a href="https://www.cnbc.com/2026/05/06/anthropic-spacex-data-center-capacity.html">CNBC</a> / <a href="https://www.datacenterdynamics.com/en/news/anthropic-to-use-all-of-spacex-xais-colossus-1-data-center-compute/">DCD</a> — 300+ MW / 220K+ GPU；速率限额翻倍；联合 SpaceX 探索 GW 级在轨 compute satellites。</li>
+<li><strong>AMD × Meta 6 GW / $60B 5 年合同</strong>（2/24 公告，2H 2026 出货）：<a href="https://www.amd.com/en/newsroom/press-releases/2026-2-24-amd-and-meta-announce-expanded-strategic-partnersh.html">AMD PR</a> / <a href="https://www.engineering.com/amd-and-meta-sign-6-gw-deal-for-ai-infrastructure/">Engineering.com</a> — MI450 + 6th Gen EPYC Venice/Verano + Helios rack；160M 股 performance-based warrant；2H 2026 NVIDIA 单极 → 双极拐点。</li>
+</ul>
+<h2 id="model"><a class="markdownIt-Anchor" href="#model"></a> Model</h2>
+<ul>
+<li><strong>OpenAI 5/7 单日 6 条公告</strong>：见 frontier_radar OpenAI 节；GPT-5.5 / Cyber / Trusted Contact / 广告 / Futures / 语音 API 同步推进。</li>
+<li><strong>Mistral Vibe + Medium 3.5（open-weight 128B）</strong>：见 frontier_radar Mistral 节；同步进入 <a href="https://catalog.ngc.nvidia.com/orgs/nim/teams/mistralai/containers/mistral-medium-3.5-128b">NVIDIA NGC NIM</a>。</li>
+<li><strong>DeepSeek V4 价格回稳 + Huawei Ascend 950 全栈</strong>：见 chips 节；<a href="https://www.faf.ae/home/2026/5/3/beginners-101-guide-when-the-sequel-disappoints-the-story-of-deepseek-v4">FAF V4 复盘</a>。</li>
+<li><strong>Google DeepMind AlphaEvolve impact</strong>：<a href="https://deepmind.google/blog/alphaevolve-impact/">DeepMind 官博</a> — 升级为 Google 基础设施核心组件 + 下一代 TPU 设计；Erdős / TSP / Ramsey 数下界刷新。</li>
+</ul>
+<blockquote>
+<p><strong>paper-digest 2026-05-08 重点论文</strong>（folded into Model）：</p>
+<ul>
+<li><a href="https://arxiv.org/abs/2605.05242"><code>2605.05242</code></a> <strong>Beyond Semantic Similarity: Rethinking Retrieval for Agentic Search via Direct Corpus Interaction</strong> — Agent 用终端工具直查原语料，绕过 embedding 检索。</li>
+<li><a href="https://arxiv.org/abs/2605.02910"><code>2605.02910</code></a> <strong>CreativityBench: Evaluating Agent Creative Reasoning via Affordance-Based Tool Repurposing</strong> — 工具创造性重用基准，揭示当前模型短板。</li>
+<li><a href="https://arxiv.org/abs/2605.04451"><code>2605.04451</code></a> <strong>RemoteZero: Geospatial Reasoning with Zero Human Annotations</strong> — 无标注地理推理 + 语义自验证驱动 GRPO 自进化。</li>
+<li><a href="https://arxiv.org/abs/2605.04956"><code>2605.04956</code></a> <strong>KernelBench-X: A Comprehensive Benchmark for Evaluating LLM-Generated GPU Kernels</strong> — Triton 内核生成基准，15 类 176 任务。</li>
+<li><a href="https://arxiv.org/abs/2605.05922"><code>2605.05922</code></a> <strong>Think, then Score: Decoupled Reasoning and Scoring for Video Reward Modeling</strong> — 视频奖励模型解耦推理与打分。</li>
+</ul>
+</blockquote>
+<h2 id="application"><a class="markdownIt-Anchor" href="#application"></a> Application</h2>
+<ul>
+<li><strong>Anthropic 10 件金融 agents + Microsoft 365 + Moody’s + FIS Financial Crimes</strong>（5/5）：<a href="https://www.anthropic.com/news/finance-agents">Anthropic 官博</a> / <a href="https://www.bloomberg.com/news/articles/2026-05-05/anthropic-unveils-ai-agents-to-field-financial-services-tasks">Bloomberg</a> / <a href="https://fortune.com/2026/05/05/anthropic-wall-street-financial-services-agents-jamie-dimon/">Fortune</a> / <a href="https://www.fisglobal.com/about-us/media-room/press-release/2026/fis-brings-agentic-ai-to-banking-with-anthropic-starting-with-financial-crimes">FIS PR</a>。</li>
+<li><strong>ServiceNow Knowledge 2026 Autonomous Workforce + AI Control Tower + Accenture / NVIDIA / Cognizant</strong>（5/5-6）：<a href="https://newsroom.accenture.com/news/2026/servicenow-and-accenture-launch-forward-deployed-engineering-program-to-scale-agentic-ai-across-the-enterprise">Accenture FDE</a> / <a href="https://fortune.com/2026/05/05/servicenow-knowledge-2026-autonomous-workforce-microsoft-nvidia-ai-announcements/">Fortune</a> / <a href="https://blogs.nvidia.com/blog/servicenow-autonomous-ai-agents-enterprises/">NVIDIA blog</a>。</li>
+<li><strong>Anthropic Code w/ Claude SF Routines + 子代理 + Claude Agent SDK 三层 surface</strong>（5/6）：<a href="https://simonwillison.net/2026/May/6/code-w-claude-2026/">Simon Willison</a> / <a href="https://releasebot.io/updates/anthropic/claude-code">Releasebot</a> / <a href="https://siliconangle.com/2026/05/06/anthropic-letting-claude-agents-dream-dont-sleep-job/">SiliconANGLE ‘dream’ 子代理</a>。</li>
+</ul>
+<blockquote>
+<p><strong>paper-digest 应用层补充</strong>（folded into Application）：</p>
+<ul>
+<li><a href="https://arxiv.org/abs/2605.05758"><code>2605.05758</code></a> <strong>BioTool</strong> — 生物医学工具调用数据集，专家评测显著提升答题质量。</li>
+<li>技术信号：AlphaEvolve 5/7 公开 <a href="https://github.com/google-deepmind/alphaevolve_repository_of_problems">GitHub repository_of_problems</a>，把 AI for math discovery 推到 reproducible artifact 层。</li>
+<li>技术信号：Mistral Medium 3.5 进入 <a href="https://catalog.ngc.nvidia.com/orgs/nim/teams/mistralai/containers/mistral-medium-3.5-128b">NVIDIA NGC NIM Catalog</a>，是当周开源主权重落地最直接的信号。</li>
+</ul>
+</blockquote>
+<h2 id="层间联动影响"><a class="markdownIt-Anchor" href="#层间联动影响"></a> 层间联动影响</h2>
+<ul>
+<li><strong>infra ↔ chips</strong>：Anthropic-SpaceX Colossus 1 + AMD-Meta 6 GW + IREN-NVIDIA 5 GW + TSMC HPC 占 61% — 单极 NVIDIA → AMD MI450 + Huawei Ascend 950 + 私有 neocloud + 在轨 compute satellites 多路撕开，2H 2026 结构性拐点。</li>
+<li><strong>energy ↔ infra</strong>：SMR offtake 45 GW + NANO-Supermicro 5/6 + Anthropic-SpaceX 在轨 GW → ‘陆地核电 vs 在轨太阳能’ 双轨能源叙事，回应数据中心电力 4x 上行约束。</li>
+<li><strong>model ↔ application</strong>：OpenAI（Cyber Trusted Access） + Anthropic（金融 agents + Code Routines） + Mistral（Vibe）三家在同一周把 frontier 模型 productize 为垂直 vertical-agent 工具栈——Cyber / Finance / Coding 同步进入 ‘frontier + 行业 SDK + 一线企业’ 三阶段。</li>
+<li><strong>chips ↔ model（China stack）</strong>：Huawei Ascend 950 + DeepSeek V4 + BTAT 订单 + 国产 stack 与 5/5 美 CAISI 政府 pre-release 评估 / 5/7 Jensen ‘No Blackwell, No Rubin for China’ 形成镜像对立——CUDA 依赖剪除主线持续。</li>
+</ul>
+<h2 id="️-播客动态"><a class="markdownIt-Anchor" href="#️-播客动态"></a> 🎙️ 播客动态</h2>
+<ul>
+<li><strong><a href="https://www.xiaoyuzhoufm.com/episode/69fd9f99082bdcee39afe485">What’s Next｜科技早知道 — 探访 Hacker House：硅谷年轻人，正在搬进「AI 创业宿舍」| S10E10</a></strong>（5/8）：丁教 Diane 走访旧金山 Hacker House 孵化器 The Residency，复盘 AGI House / HF Zero / Accelr8 / Frontier Tower 等代表样本——Hacker House 已从 90 年代的合租房演化为 ‘床位 + 投资 + 人脉 + 融资通道’ 的超早期投资机构，AI 浪潮把其重新拉回硅谷创业生态心脏位置。</li>
+</ul>
+<h2 id="候选池变化与后续关注"><a class="markdownIt-Anchor" href="#候选池变化与后续关注"></a> 候选池变化与后续关注</h2>
+<ul>
+<li><strong>本日发现 3 名候选</strong>（≥3 源交叉验证、全部建议 promote）：
+<ul>
+<li><strong>Pushmeet Kohli</strong>（<a href="https://x.com/pushmeet"><code>@pushmeet</code></a>，<code>ai-generalists</code>）— VP / Chief Scientist for AI for Science, Google DeepMind；AlphaEvolve / AlphaProof / AlphaGenome lead；5/7 <a href="https://x.com/pushmeet/status/1986371193411150248">X 长帖</a> + <a href="https://deepmind.google/blog/alphaevolve-impact/">DeepMind impact 复盘</a> + <a href="https://github.com/google-deepmind/alphaevolve_repository_of_problems">GitHub repository_of_problems</a> 三源同步。</li>
+<li><strong>Ami Vora</strong>（<code>claude-code-builders</code>）— Anthropic CPO（继任 Mike Krieger）；5/6 Code w/ Claude SF 主旨开场公开 Anthropic 整租 SpaceX Colossus 1 + 速率限额翻倍 + API volume 17x（<a href="https://simonwillison.net/2026/May/6/code-w-claude-2026/">Simon Willison</a>、<a href="https://www.implicator.ai/anthropic-was-built-to-counter-musk-today-it-became-his-customer/">Implicator</a>、<a href="https://pasqualepillitteri.it/en/news/1727/code-with-claude-2026-anthropic-developer-conference">Pasquale</a>）。</li>
+<li><strong>Cat Wu</strong>（<code>claude-code-builders</code>）— Head of Product, Claude Code, Anthropic；5/6 Code w/ Claude SF 主线 PM 演讲（Routines / 三层 surface / 子代理路线）；<a href="https://www.lennysnewsletter.com/p/how-anthropics-product-team-moves">Lenny’s Newsletter 长访谈</a> / <a href="https://every.to/podcast/how-to-use-claude-code-like-the-people-who-built-it">Every podcast</a> / <a href="https://siliconangle.com/2026/05/06/anthropic-letting-claude-agents-dream-dont-sleep-job/">SiliconANGLE</a>。</li>
+</ul>
+</li>
+<li><strong>后续观察点</strong>：
+<ul>
+<li>5/20 NVIDIA Q1 FY2027 财报，Vera Rubin / &quot;$1T 订单&quot;故事复核窗口</li>
+<li>5/19 / 6/10 Code w/ Claude London / Tokyo 巡回，Claude Agent SDK 国际开发者生态扩散</li>
+<li>Meta 5/20 起 8K 裁员落地后，Muse Spark / Llama 5 产品节奏复核</li>
+<li>Mythos / Project Glasswing 限量预览扩面 + Anthropic $900B 估值轮交割窗口</li>
+<li>DeepSeek V4 价格回稳后，Huawei Ascend 950 出货节奏与 BTAT 订单兑现率</li>
+</ul>
+</li>
+</ul>
+<h2 id="来源与交叉验证说明"><a class="markdownIt-Anchor" href="#来源与交叉验证说明"></a> 来源与交叉验证说明</h2>
+<ul>
+<li><strong>源结构</strong>：本日报告以 OpenAI 官博 / Anthropic 官博 / xAI 官博 / DeepMind 官博 / Mistral docs / NVIDIA newsroom / AMD newsroom / about.fb / FIS PR / NANO Nuclear PR / Anthropic finance-agents 官博（primary / official）+ TSMC Q1 财报（company / filing）+ CNBC / Bloomberg / Fortune / TechCrunch / SiliconANGLE / SCMP / Reuters / The Register / Help Net Security / Axios / 24/7 Wall St / Engineering.com（media / analysis）+ Simon Willison / Distill / 3 Quarks Daily / Pasquale / Implicator / Karpathy bearblog / Simon Willison live-blog（community / social）+ paper-digest 2026-05-08 + arxiv（primary research）。</li>
+<li><strong>交叉验证</strong>：Anthropic-SpaceX Colossus 1 通过 xAI 官博 + CNBC + DCD + Simon Willison + TechCrunch + Al Jazeera 六源交叉；OpenAI 5/7 6 条公告通过 OpenAI 自家官博 + TechCrunch + Axios + Help Net Security + BusinessToday + Distill 周报多源；AlphaEvolve impact 通过 DeepMind 官博 + Decrypt + Pushmeet X + GitHub repo + DeepMind PDF 五源；IREN-NVIDIA 通过 GlobeNewswire + Yahoo Finance + Data Center Knowledge + SiliconANGLE 四源；Anthropic 金融 agents 通过 Anthropic 官博 + Bloomberg + Fortune + FIS PR + Investment News + PYMNTS 六源；Code w/ Claude SF 通过 Simon Willison live-blog + CNBC video + Implicator + 3 Quarks Daily + Pasquale + Anthropic ‘Code with Claude’ AP 报道多源；Huawei Ascend 950 + DeepSeek V4 通过 Reuters / TradingView + SCMP + Invezz + Fortune + The Deep Dive 五源；播客来自 podcast_fetch.py 5/8 抓取。</li>
+<li><strong>覆盖缺口</strong>：Qwen 5/7-5/8 无一手公开 frontier 公告；Reflection AI 5/1 后无新 follow-up；Cohere / 01.AI / Stability AI 等 expansion-only labs 本周末无新动作；Cat Wu / Ami Vora 二人 X handle 暂未稳定校验，下次 sweep 补；energy 层 5/8 当日缺一手 NRC 审批 / IEA 月度更新。</li>
+<li><strong>Confidence flags</strong>：openai-multi-product-shipment-day / anthropic-spacex-orbital-compute-narrative / alphaevolve-graduates-from-pilot-to-infra-core / deepseek-cuda-decoupling-in-progress / openai-trial-narrative-overhang / paper-digest-fully-consumed / agentic-search-paradigm-shift-pending-replication / code-with-claude-as-primary-source-day / china-stack-decoupling-ramp。</li>
+</ul>
+<hr />
+<h2 id="相关细分报告"><a class="markdownIt-Anchor" href="#相关细分报告"></a> 相关细分报告</h2>
+<ul>
+<li><a href="/reports/market/2026-05-08-frontier_radar/">Frontier Radar</a></li>
+<li><a href="/reports/market/2026-05-08-macro_news/">Macro News</a></li>
+<li><a href="/reports/market/2026-05-08-paper_layer/">Paper Layer</a></li>
+<li><a href="/reports/market/2026-05-08-people_pool/">People Pool</a></li>
+</ul>
+<!-- flag of hidden posts -->
+    </div>
+
+    
+    
+    
+<div class="comments" id="comments">
+  <script src="https://giscus.app/client.js"
+          data-repo="TCoherence/TCoherence.github.io"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkxMzE0MDY3MTA="
+          data-category="General"
+          data-category-id="DIC_kwDOB9Ubds4C8BCw"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="preferred_color_scheme"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>年轻的C同学
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://tcoherence.github.io/reports/market/2026-05-08-ai/" title="[市场·2026-05-08] AI">https://tcoherence.github.io/reports/market/2026-05-08-ai/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ai-%E6%97%A5%E6%8A%A52026-05-08"><span class="nav-text"> AI 日报｜2026-05-08</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-text"> 摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#frontier-labs-frontier-model-radar"><span class="nav-text"> Frontier Labs &#x2F; Frontier Model Radar</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#openai"><span class="nav-text"> OpenAI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#anthropic"><span class="nav-text"> Anthropic</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#google-deepmind"><span class="nav-text"> Google DeepMind</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#meta"><span class="nav-text"> Meta</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#xai"><span class="nav-text"> xAI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mistral"><span class="nav-text"> Mistral</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#qwen"><span class="nav-text"> Qwen</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#deepseek"><span class="nav-text"> DeepSeek</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AA%E9%AA%8C%E8%AF%81-frontier-%E4%BF%A1%E5%8F%B7"><span class="nav-text"> 未验证 Frontier 信号</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E4%BA%BA%E7%89%A9%E4%B8%8E%E7%A4%BE%E5%8C%BA%E4%BF%A1%E5%8F%B7"><span class="nav-text"> 关键人物与社区信号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#energy"><span class="nav-text"> Energy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chips"><span class="nav-text"> Chips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#infra"><span class="nav-text"> Infra</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#model"><span class="nav-text"> Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#application"><span class="nav-text"> Application</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%82%E9%97%B4%E8%81%94%E5%8A%A8%E5%BD%B1%E5%93%8D"><span class="nav-text"> 层间联动影响</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EF%B8%8F-%E6%92%AD%E5%AE%A2%E5%8A%A8%E6%80%81"><span class="nav-text"> 🎙️ 播客动态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%80%99%E9%80%89%E6%B1%A0%E5%8F%98%E5%8C%96%E4%B8%8E%E5%90%8E%E7%BB%AD%E5%85%B3%E6%B3%A8"><span class="nav-text"> 候选池变化与后续关注</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A5%E6%BA%90%E4%B8%8E%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81%E8%AF%B4%E6%98%8E"><span class="nav-text"> 来源与交叉验证说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E7%BB%86%E5%88%86%E6%8A%A5%E5%91%8A"><span class="nav-text"> 相关细分报告</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="年轻的C同学"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">年轻的C同学</p>
+  <div class="site-description" itemprop="description">年轻的C同学的个人博客 — 关于工程、生活与一些碎片思考</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/TCoherence" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;TCoherence" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:hanzhiyang2019@u.northwestern.edu" title="E-Mail → mailto:hanzhiyang2019@u.northwestern.edu" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/yang_hanzhi" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;yang_hanzhi" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/profile.php?id=100025563873836" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id&#x3D;100025563873836" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">年轻的C同学</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js', () => {
+    var darkMQ = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+    var mermaidTheme = (darkMQ && darkMQ.matches) ? 'dark' : 'forest';
+    mermaid.initialize({
+      startOnLoad: false,
+      theme    : mermaidTheme,
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+    mermaid.run({ querySelector: 'pre.mermaid' });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+</body>
+</html>

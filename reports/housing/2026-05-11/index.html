@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 8.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/images/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tcoherence.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":2,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="西雅图房市周脉搏｜2026-05-11 一句话结论：NWMLS 4 月数据释出确认&quot;库存放量 + 量价分化&quot;的方向（active 18,563 &#x2F; +28.4% YoY，closed 5,674 &#x2F; -3.7% YoY，median $650K 同比持平），Freddie Mac 30Y 利率连续两周反弹至 6.37%（+14bp 较两周前低点），上周 Beyond RE 7">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[房市·2026-05-11]">
+<meta property="og:url" content="https://tcoherence.github.io/reports/housing/2026-05-11/index.html">
+<meta property="og:site_name" content="Hanzhi&#39;s BLOG">
+<meta property="og:description" content="西雅图房市周脉搏｜2026-05-11 一句话结论：NWMLS 4 月数据释出确认&quot;库存放量 + 量价分化&quot;的方向（active 18,563 &#x2F; +28.4% YoY，closed 5,674 &#x2F; -3.7% YoY，median $650K 同比持平），Freddie Mac 30Y 利率连续两周反弹至 6.37%（+14bp 较两周前低点），上周 Beyond RE 7">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-05-11T19:00:00.000Z">
+<meta property="article:modified_time" content="2026-05-12T00:22:07.690Z">
+<meta property="article:author" content="年轻的C同学">
+<meta property="article:tag" content="Hanzhi, 博客, blog, hexo, next, 软件工程, 生活">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://tcoherence.github.io/reports/housing/2026-05-11/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>[房市·2026-05-11] | Hanzhi's BLOG</title><meta name="robots" content="noindex">
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hanzhi's BLOG</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录、思考、生活</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-reports">
+
+    <a href="/reports/" rel="section"><i class="fa fa-newspaper fa-fw"></i>AI 报告</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tcoherence.github.io/reports/housing/2026-05-11/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="年轻的C同学">
+      <meta itemprop="description" content="年轻的C同学的个人博客 — 关于工程、生活与一些碎片思考">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hanzhi's BLOG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [房市·2026-05-11]
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2026-05-11 12:00:00 / 修改时间：17:22:07" itemprop="dateCreated datePublished" datetime="2026-05-11T12:00:00-07:00">2026-05-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AI%E6%8A%A5%E5%91%8A/" itemprop="url" rel="index"><span itemprop="name">AI报告</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AI%E6%8A%A5%E5%91%8A/%E6%88%BF%E5%B8%82/" itemprop="url" rel="index"><span itemprop="name">房市</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="西雅图房市周脉搏2026-05-11"><a class="markdownIt-Anchor" href="#西雅图房市周脉搏2026-05-11"></a> 西雅图房市周脉搏｜2026-05-11</h1>
+<p>一句话结论：NWMLS 4 月数据释出确认&quot;库存放量 + 量价分化&quot;的方向（active 18,563 / +28.4% YoY，closed 5,674 / -3.7% YoY，median $650K 同比持平），Freddie Mac 30Y 利率连续两周反弹至 6.37%（+14bp 较两周前低点），上周 Beyond RE 7 城 sample mix 噪声本周回归正常区间——Bellevue 中位价由 $2.69M 回落至 $1.365M（-16.9% YoY 重新成为方向锚），Eastside 高端议价窗口本周更明确。</p>
+<h2 id="摘要"><a class="markdownIt-Anchor" href="#摘要"></a> 摘要</h2>
+<ul>
+<li>利率端连续两周温和反弹：<a href="https://www.freddiemac.com/pmms">Freddie Mac PMMS 5/7</a> 30Y 6.37%（前周 6.30%，+7bp）、15Y 5.72%（前周 5.64%，+8bp）；30Y YoY 仍低 39bp（去年同期 6.76%），15Y YoY 低 17bp（去年 5.89%）。30Y vs 15Y 利差 65bp，几乎与上周持平。</li>
+<li>NWMLS 4 月（<a href="https://www.nwmls.com/inventory-surges-while-sales-slow-and-prices-hold-steady/">5/5 release</a>）：active 18,563（+28.4% YoY，+23.4% MoM，由 3 月 15,049 跳升 3,514 套）、closed 5,674（-3.7% YoY 但 +4.7% MoM 季节回升）、median $650K（0% YoY，+1.6% MoM）。King County median $859K（地区第二），Snohomish median $750K + 58% YoY inventory（区内最大涨幅）。</li>
+<li>Beyond RE 7 城 5/11 城市快照本周回归正常区间：上周飙至 $2.69M / $1.60M / $1.85M / $1.05M 的 Bellevue / Kirkland / Issaquah / Bothell 中位价本周回到 $1.365M / $1.33M / $1.305M / $1.00M，验证上周判断&quot;sample mix 噪声&quot;。</li>
+<li>King County 5/11：active 6,724（vs 上周 6,498，+3.5% WoW），median $850K（-1.2% YoY，vs 上周 +0.6%），inventory 3.4 月维持，DOM 15（上周 13），sale-to-list 99.9%（上周 99.7%）—— 进入&quot;平衡市偏稳&quot;区间。</li>
+<li>Seattle 5/11：active 2,537（+3.2% WoW），median $876K（+1.3% YoY，相比上周 -4% YoY 同样属周口径效应回归），DOM 12，sale-to-list 100.9% —— Seattle 城市层依然 above-asking。</li>
+<li>Eastside 议价窗口本周更明确：Bellevue DOM 41 + sale-to-list 98.2%、Redmond sale-to-list 98.6% + DOM 21、Kirkland sale-to-list 98.5% + 4.9 月库存（metro 最高）。</li>
+</ul>
+<h2 id="数据新鲜度说明"><a class="markdownIt-Anchor" href="#数据新鲜度说明"></a> 数据新鲜度说明</h2>
+<ul>
+<li>利率：周频，截至 2026-05-07（<a href="https://www.freddiemac.com/pmms">Freddie Mac PMMS</a>），下次更新 5/14。</li>
+<li>NWMLS：月频，4 月数据于 5/5 release（<a href="https://www.nwmls.com/inventory-surges-while-sales-slow-and-prices-hold-steady/">NWMLS 4 月</a>）；5 月数据预计 6 月上旬释出。</li>
+<li>Beyond RE 城市快照：当日 5/11 更新；本周多城回归正常区间，week-over-week 比较恢复有效（与上周需以&quot;sample mix 校准&quot;形成对比）。</li>
+<li>Redfin / Zillow / Madrona 城市页与 listing 详情页本周直接抓取仍返回 403/受限，城市指标以 Beyond RE + NWMLS 为主，样本以城市级与子区域聚合入口为辅助。</li>
+</ul>
+<h2 id="利率与融资环境"><a class="markdownIt-Anchor" href="#利率与融资环境"></a> 利率与融资环境</h2>
+<p><a href="https://www.freddiemac.com/pmms">Freddie Mac PMMS 5/7</a>：30Y 6.37%（前 6.30%，+7bp），15Y 5.72%（前 5.64%，+8bp）。YoY：30Y -39bp（去年 6.76%）、15Y -17bp（去年 5.89%）。</p>
+<p>要点：</p>
+<ul>
+<li>连续两周反弹（4/23 6.23% → 4/30 6.30% → 5/7 6.37%），累计 +14bp，已显著回升至 Spring 偏中区间；但仍较去年同期低 39bp。</li>
+<li>Freddie Mac 评论：新房销售回升 + new-home median 价格降至 2021 年 7 月以来最低 + 高于近年的库存量 → “could modestly ease affordability pressures through the spring homebuying season”，需求端持续受益于供给改善。</li>
+<li>30Y vs 15Y 利差 65bp（vs 上周 66bp），duration 优势基本不变；能承担 15Y 月供的买家继续享受短端折扣。</li>
+<li>$750K 贷款（20% down）月供示例：6.37% vs 4/23 6.23% 月供约高 $60；vs 去年同期 6.76% 仍低约 $170 —— YoY 改善仍是 affordability 的主驱动。</li>
+<li>风险点：连续两周反弹是否进入 6.4-6.5% 通道，本周已接近 4 月初 6.46% 水位；如下周突破 6.40% 将削弱&quot;Spring 偏低区间&quot;叙事。</li>
+</ul>
+<h2 id="seattle-metro-核心市场脉搏"><a class="markdownIt-Anchor" href="#seattle-metro-核心市场脉搏"></a> Seattle Metro 核心市场脉搏</h2>
+<p><a href="https://www.nwmls.com/inventory-surges-while-sales-slow-and-prices-hold-steady/">NWMLS April 2026</a> 数据已发布（<a href="https://www.nwrealtor.com/2026/05/07/nwmls-april-2026-market-report/">Seattle King County REALTORS® 5/7</a>）：</p>
+<ul>
+<li>active 18,563（+28.4% YoY，+23.4% MoM）—— 库存连续放量趋势确立，4 月单月跳升 3,514 套</li>
+<li>closed 5,674（-3.7% YoY，+4.7% MoM）—— 同比降幅收窄但仍负</li>
+<li>median $650K（0% YoY，+1.6% MoM）—— 价格端守住基线</li>
+<li>King County median $859K（地区第二），Snohomish median $750K + 58% YoY inventory（区内最大涨幅）</li>
+<li>pending 7,584，new listings 12,155，keybox accesses 162,421（+5.5% YoY），showings 123,324（+6.0% YoY），DPR 合格挂牌 20,432（+21.4% YoY）</li>
+</ul>
+<p>Steven Bourassa（WCRER 主任）：<em>“We are continuing to see relatively weak demand…with listings substantially higher than a year earlier, transactions down almost 4%, and median prices unchanged.”</em></p>
+<p><a href="https://beyondwa.com/market-report/king-county/">Beyond RE King County 5/11</a>：active 6,724（vs 上周 6,498 +3.5% WoW，vs 4/26 的 6,333 +6.2% 两周累计），median $850K（-1.2% YoY），months of inventory 3.4，DOM 15，sale-to-list 99.9%。</p>
+<p><a href="https://beyondwa.com/market-report/seattle/">Beyond RE Seattle 5/11</a>：active 2,537（+3.2% WoW），median $876K（+1.3% YoY），inventory 3.3 月，DOM 12，sale-to-list 100.9%。</p>
+<p><a href="https://beyondwa.com/market-report/snohomish-county/">Beyond RE Snohomish 5/11</a>：active 2,145，median $722,500（-7.4% YoY），inventory 2.9 月（区内最紧），DOM 13，sale-to-list 99.1% —— 仍归类为 <em>seller’s market</em>。</p>
+<p>判断：</p>
+<ul>
+<li>NWMLS 4 月 active +28.4% YoY 与 Beyond RE King County 连续两周 +6.2% 两周累计放量方向一致：<strong>库存放量是本季度结构性主线</strong>。</li>
+<li>量价分化：closed -3.7% YoY + median 0% YoY = 卖方在守价，买方在等机会；spring 季节性回升（closed +4.7% MoM）已启动但同比仍负。</li>
+<li>King County 整体仍属 <em>balanced market 偏稳</em>（3.4 月库存），但内部分化显著：Seattle 城市层 above-asking + DOM 12，Snohomish 仍卖方市场，而 Eastside Bellevue / Redmond / Kirkland 进入更明显的议价区间。</li>
+<li>利率连续两周 +14bp 反弹是否压制 5 月需求是本周需要关注的边际变量。</li>
+</ul>
+<h2 id="区域-scoreboard"><a class="markdownIt-Anchor" href="#区域-scoreboard"></a> 区域 Scoreboard</h2>
+<table>
+<thead>
+<tr>
+<th>区域</th>
+<th>中位价</th>
+<th>YoY</th>
+<th>DOM</th>
+<th>Sale-to-List</th>
+<th>月份库存</th>
+<th>Active</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Seattle</td>
+<td>$876,000</td>
+<td>+1.3%</td>
+<td>12</td>
+<td>100.9%</td>
+<td>3.3</td>
+<td>2,537</td>
+<td>上周 -4% YoY 已校正，本周 +1.3% YoY 为正常区间；above-asking 维持；DOM 由 26 缩至 12 反映 spring 节奏延续</td>
+</tr>
+<tr>
+<td>Bellevue</td>
+<td>$1,365,000</td>
+<td><strong>-16.9%</strong></td>
+<td>41</td>
+<td>98.2%</td>
+<td>4.7</td>
+<td>553</td>
+<td>上周 $2.69M sample mix 已回归；中位 $1.365M &lt; 去年 $1.6425M；4.7 月库存为 metro 第二高，议价窗口明确</td>
+</tr>
+<tr>
+<td>Redmond</td>
+<td>$1,240,000</td>
+<td>-9.3%</td>
+<td>21</td>
+<td>98.6%</td>
+<td>3.7</td>
+<td>269</td>
+<td>上周 $887.9K 已回归；中位回到 $1.24M 反映科技带核心价位；sale-to-list 98.6% 表明可议 -1-2%</td>
+</tr>
+<tr>
+<td>Kirkland</td>
+<td>$1,332,500</td>
+<td>+1.3%</td>
+<td>15</td>
+<td>98.5%</td>
+<td><strong>4.9</strong></td>
+<td>512</td>
+<td>上周 $1.60M sample mix 已回归；4.9 月库存 metro 最高；DOM 由 11 升至 15；议价窗口持续</td>
+</tr>
+<tr>
+<td>Issaquah</td>
+<td>$1,305,000</td>
+<td>+8.8%</td>
+<td>18</td>
+<td><strong>99.9%</strong></td>
+<td>3.7</td>
+<td>207</td>
+<td>上周 $1.85M 已回归；+8.8% YoY 与 spring 节奏一致；sale-to-list 99.9% 表明定价合理无议价空间</td>
+</tr>
+<tr>
+<td>Bothell</td>
+<td>$1,000,000</td>
+<td>-2.0%</td>
+<td>14</td>
+<td>98.1%</td>
+<td>3.9</td>
+<td>441</td>
+<td>上周 $1.05M / DOM 5 已回归至 $1.00M / DOM 14；sale-to-list 98.1% 为 metro 最低（议价空间最大）</td>
+</tr>
+<tr>
+<td>Lynnwood</td>
+<td>$830,000</td>
+<td>+9.5%</td>
+<td>20</td>
+<td>99.6%</td>
+<td>3.6</td>
+<td>262</td>
+<td>上周 $860K / DOM 46 已回归至 $830K / DOM 20；轻轨溢价叙事维持；YoY +9.5% 为 metro 第二高</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Metro 排序观察</strong>：</p>
+<ul>
+<li>Sale-to-list 最低（议价空间最大）：Bothell 98.1% → Bellevue 98.2% → Kirkland 98.5% → Redmond 98.6%</li>
+<li>DOM 最长（成交速度最慢）：Bellevue 41 → Redmond 21 → Lynnwood 20 → Issaquah 18</li>
+<li>月份库存最高：Kirkland 4.9 → Bellevue 4.7 → Bothell 3.9 → Redmond 3.7 = Issaquah 3.7</li>
+<li>YoY 价跌：Bellevue -16.9% / Redmond -9.3% / Bothell -2.0%</li>
+<li>YoY 价升：Lynnwood +9.5% / Issaquah +8.8% / Kirkland +1.3% = Seattle +1.3%</li>
+</ul>
+<h2 id="分区域买方观察"><a class="markdownIt-Anchor" href="#分区域买方观察"></a> 分区域买方观察</h2>
+<ul>
+<li><strong>Seattle</strong>：城市层 above-asking 维持（100.9%），DOM 由 26 进一步缩至 12 —— 入门到中端单户 / Townhouse 仍是卖方节奏。$700-900K 价位带（West Seattle / Beacon Hill / Columbia City）继续是流转最快的甜蜜区；$1.0-1.3M 北区 4bd 单户需要更精细定价但 DOM &lt; 20 仍可达成。NWMLS 4 月数据显示 spring 需求季节性已启动（closed +4.7% MoM），Seattle 城市层是 metro 内 demand recovery 最明显的一城。</li>
+<li><strong>Bellevue</strong>：本周回归正常区间是关键事件。中位价 $1.365M vs 去年 $1.6425M（-16.9% YoY）是 metro 最大 YoY 跌幅；DOM 41 + 4.7 月库存 + sale-to-list 98.2% 三重信号一致 —— Eastside 中高端（$1.4-2.5M）议价窗口本周比上周更明确。Northeast / West Bellevue 单户、West Bellevue Lakeview 高端 $2.0M+ 段位均处于可议 -2-3% 区间。买家如果年初已观望 Eastside，本周是定价对话最有底气的窗口之一。</li>
+<li><strong>Redmond</strong>：中位 $1.24M（-9.3% YoY，但与城市长期均价 ~$1.25-1.35M 相符），sale-to-list 98.6%，DOM 21 —— 科技带 Education Hill / Overlake / Grass Lawn 单户 $1.3-1.5M 价位带是 Eastside 议价中确定性强的区间；入门带 $900K-1.1M Townhome 流转更快（DOM &lt; 14 常见）。本周可视为 Redmond “理性议价 -1-2%” 的标准期。</li>
+<li><strong>Kirkland</strong>：4.9 月库存为 metro 最高，sale-to-list 98.5%，DOM 由上周 11 升至 15 —— 高端 sub-market（Houghton / Bridle Trails $2.0M+）继续承担 metro 内议价深度最大的角色，但城市级数据本周相比上周 96.3% 已有所修复。Juanita / Totem Lake / Rose Hill $1.0-1.3M 价位带本周更接近 <em>“接近 list 但能砍 1-2%”</em> 而非上周 -3-4% 的强议价节奏。</li>
+<li><strong>Issaquah</strong>：sale-to-list 99.9%（metro 最高）+ DOM 18 —— 本周是 metro 内&quot;定价已接近合理、议价空间最小&quot;的城市。Highlands $1.0-1.4M 单户、Olde Town Townhome $600-700K 入门带是结构最稳定的两个梯度；想用价格博买点的买家本周不在此处。</li>
+<li><strong>Bothell</strong>：sale-to-list 98.1%（metro 最低）+ DOM 14 + 3.9 月库存 —— 本周是议价空间最大但成交速度并不慢的城市。East 微区 $1.2-1.5M 单户、Downtown $1.0-1.1M、West 微区 $830-900K 的三层梯度仍然清晰；微区分化是 Bothell 长期特征，但本周城市级也整体偏向买方。</li>
+<li><strong>Lynnwood</strong>：DOM 由上周 46 回落至 20，sale-to-list 99.6%，YoY +9.5% —— 上周标记的&quot;入门带温度边际转弱&quot;信号本周修正。轻轨溢价叙事继续支撑 $700-900K 单户 / Rambler 翻新 / Pioneer Park 步行带；spring 节奏在 Lynnwood 入门带本周明显回暖。</li>
+</ul>
+<h2 id="代表性挂牌样本"><a class="markdownIt-Anchor" href="#代表性挂牌样本"></a> 代表性挂牌样本</h2>
+<blockquote>
+<p>本周 18 条样本覆盖 7 区，额外 4 个名额给 Bellevue / Kirkland / Bothell / Redmond —— Bellevue 4.7 月库存 + sale-to-list 98.2% 提供高端议价样本观察空间，Kirkland 4.9 月库存（metro 最高）提供 sub-market 高端样本，Bothell sale-to-list 98.1% 为 metro 最低（议价空间最大）需双微区样本，Redmond 科技带核心价位 $1.2-1.5M 单户仍是 metro 长期样本锚。Redfin / Zillow listing 详情页本周直接抓取仍 403，样本以聚合入口 + 价位带描述为主。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>区域</th>
+<th>标识 / 子区域</th>
+<th>类型</th>
+<th>状态</th>
+<th>价位</th>
+<th>Beds/Sqft</th>
+<th>链接</th>
+<th>买方观察</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Seattle</td>
+<td>West Seattle Townhouse</td>
+<td>townhouse</td>
+<td>active</td>
+<td>$720K-$820K</td>
+<td>3bd/2.5ba</td>
+<td><a href="https://www.redfin.com/neighborhood/3040/WA/Seattle/West-Seattle/townhouses">Redfin West Seattle Townhouses</a></td>
+<td>Seattle 入门梯度核心；DOM 12 + sale-to-list 100.9% 表明此带仍是卖方节奏；低于城市 median $876K 适用 below-baseline 例外（已记入 coverage_gaps）</td>
+</tr>
+<tr>
+<td>Seattle</td>
+<td>North Seattle 4bd 单户</td>
+<td>single-family</td>
+<td>active</td>
+<td>$950K-$1.15M</td>
+<td>4bd/2ba</td>
+<td><a href="https://www.redfin.com/city/16163/WA/Seattle">Redfin Seattle 城市页</a></td>
+<td>接近 Seattle 单户 median 上限；sale-to-list 100.9% 表明定价合理仍偏卖方</td>
+</tr>
+<tr>
+<td>Bellevue</td>
+<td>Northeast Bellevue 新建独栋</td>
+<td>single-family</td>
+<td>active</td>
+<td>$1.65M-$1.95M</td>
+<td>4-5bd</td>
+<td><a href="https://www.redfin.com/neighborhood/185811/WA/Bellevue/Northeast-Bellevue">Redfin Northeast Bellevue</a></td>
+<td>Bellevue 中位 $1.365M 之上的&quot;高于基线&quot;样本；本周 sale-to-list 98.2% + DOM 41 议价窗口打开</td>
+</tr>
+<tr>
+<td>Bellevue</td>
+<td>West Bellevue Townhouse</td>
+<td>townhouse</td>
+<td>active</td>
+<td>$1.35M-$1.55M</td>
+<td>3bd/2.5ba</td>
+<td><a href="https://www.redfin.com/city/1387/WA/Bellevue/townhouses">Redfin Bellevue Townhouses</a></td>
+<td>Eastside Townhouse 高端带；高于城市 median；DOM 41 提供 -2% 议价空间</td>
+</tr>
+<tr>
+<td>Bellevue</td>
+<td>West Bellevue Lakeview 高端独栋（额外名额）</td>
+<td>single-family</td>
+<td>active</td>
+<td>$2.2M-$2.8M</td>
+<td>4bd</td>
+<td><a href="https://www.redfin.com/neighborhood/2578/WA/Bellevue/West-Bellevue">Redfin West Bellevue</a></td>
+<td>高端线观察样本；本周 sale-to-list 98.2% 较上周更清晰；中高端 $2.0M+ 是 Eastside 本周议价深度最大梯度</td>
+</tr>
+<tr>
+<td>Redmond</td>
+<td>Education Hill / Grass Lawn 单户</td>
+<td>single-family</td>
+<td>active</td>
+<td>$1.3M-$1.5M</td>
+<td>4bd</td>
+<td><a href="https://www.redfin.com/city/14913/WA/Redmond">Redfin Redmond 城市页</a></td>
+<td>接近本周中位 $1.24M 上方；Education Hill / Overlake 学区 + 科技通勤；sale-to-list 98.6% 可议 -1-2%</td>
+</tr>
+<tr>
+<td>Redmond</td>
+<td>Overlake 新建 Townhome</td>
+<td>townhouse</td>
+<td>active</td>
+<td>$1.05M-$1.25M</td>
+<td>4bd/3.5ba/2,100+ sqft</td>
+<td><a href="https://www.tripointehomes.com/wa/greater-seattle-area/willows-124">Tri Pointe Willows 124</a></td>
+<td>接近城市 median；IBC 商业级标准 + move-in ready；科技带新建偏好</td>
+</tr>
+<tr>
+<td>Redmond</td>
+<td>Education Hill 翻新独栋（额外名额）</td>
+<td>single-family</td>
+<td>active</td>
+<td>$1.45M-$1.65M</td>
+<td>4bd/3ba</td>
+<td><a href="https://www.redfin.com/neighborhood/2604/WA/Redmond/Education-Hill">Redfin Education Hill</a></td>
+<td>高于城市 median 适用 above-baseline 样本；DOM 21 表明此价位带成交节奏均衡</td>
+</tr>
+<tr>
+<td>Kirkland</td>
+<td>Rose Hill / Juanita 单户</td>
+<td>single-family</td>
+<td>active</td>
+<td>$1.35M-$1.55M</td>
+<td>4bd</td>
+<td><a href="https://www.redfin.com/city/9148/WA/Kirkland">Redfin Kirkland 城市页</a></td>
+<td>略高于城市 median $1.3325M；sale-to-list 98.5% 可议 -1-2%；4.9 月库存 metro 最高</td>
+</tr>
+<tr>
+<td>Kirkland</td>
+<td>Houghton 高端独栋（额外名额）</td>
+<td>single-family</td>
+<td>active</td>
+<td>$2.2M-$2.6M</td>
+<td>5bd</td>
+<td><a href="https://www.redfin.com/neighborhood/2603/WA/Kirkland/Houghton">Redfin Houghton</a></td>
+<td>远高于城市 median 的高端线 sub-market；DOM 普遍 50+ 天；本周仍是 metro 内 sub-market 议价幅度最深的高端梯度</td>
+</tr>
+<tr>
+<td>Kirkland</td>
+<td>Totem Lake Townhome</td>
+<td>townhouse</td>
+<td>active</td>
+<td>$850K-$950K</td>
+<td>3bd</td>
+<td><a href="https://www.redfin.com/city/9148/WA/Kirkland/townhouses">Redfin Kirkland Townhouses</a></td>
+<td>低于城市 median 适用 below-baseline 例外（≤ 1 条/区，已记入 coverage_gaps）；轻轨 + Totem Lake redevelopment 长期叙事</td>
+</tr>
+<tr>
+<td>Issaquah</td>
+<td>Issaquah Highlands 单户</td>
+<td>single-family</td>
+<td>active</td>
+<td>$1.35M-$1.55M</td>
+<td>4bd</td>
+<td><a href="https://www.redfin.com/neighborhood/35720/WA/Issaquah/Issaquah-Highlands">Redfin Issaquah Highlands</a></td>
+<td>略高于城市 median $1.305M；Highlands 学区 + 微社区结构；sale-to-list 99.9% 定价已合理</td>
+</tr>
+<tr>
+<td>Issaquah</td>
+<td>Olde Town Issaquah Townhouse</td>
+<td>townhouse</td>
+<td>active</td>
+<td>$620K-$720K</td>
+<td>3bd</td>
+<td><a href="https://www.redfin.com/city/8645/WA/Issaquah/townhouses">Redfin Issaquah Townhouses</a></td>
+<td>Eastside 价位最低的 starter；low-baseline 例外（≤ 1 条/区）；Highlands 之外的入门梯度选择</td>
+</tr>
+<tr>
+<td>Bothell</td>
+<td>East Bothell 单户</td>
+<td>single-family</td>
+<td>active</td>
+<td>$1.2M-$1.4M</td>
+<td>4bd / 2,600+ sqft</td>
+<td><a href="https://www.redfin.com/city/29439/WA/Bothell">Redfin Bothell 城市页</a></td>
+<td>远高于城市 median $1.0M；East 微区高端带；sale-to-list 98.1% 提供 -2% 议价空间</td>
+</tr>
+<tr>
+<td>Bothell</td>
+<td>Downtown Bothell 单户</td>
+<td>single-family</td>
+<td>active</td>
+<td>$1.0M-$1.15M</td>
+<td>3-4bd</td>
+<td><a href="https://www.redfin.com/city/29439/WA/Bothell">Redfin Bothell 城市页</a></td>
+<td>接近城市 median；Downtown 长期稳定带；微区分化下的中间梯度</td>
+</tr>
+<tr>
+<td>Bothell</td>
+<td>West Bothell Rambler（额外名额）</td>
+<td>single-family</td>
+<td>active</td>
+<td>$850K-$950K</td>
+<td>3bd / 1,800 sqft</td>
+<td><a href="https://www.redfin.com/city/29439/WA/Bothell">Redfin Bothell 城市页</a></td>
+<td>低于城市 median 适用 below-baseline 例外；West 微区议价幅度可达 -3%</td>
+</tr>
+<tr>
+<td>Lynnwood</td>
+<td>Pioneer Park / 轻轨步行带</td>
+<td>single-family</td>
+<td>active</td>
+<td>$780K-$880K</td>
+<td>3bd / ~2,000 sqft</td>
+<td><a href="https://www.redfin.com/city/10421/WA/Lynnwood">Redfin Lynnwood 城市页</a></td>
+<td>接近城市 median $830K；轻轨溢价 + 大地块；DOM 20 表明 spring 节奏回暖</td>
+</tr>
+<tr>
+<td>Lynnwood</td>
+<td>翻新 Rambler + 双车库</td>
+<td>single-family</td>
+<td>active</td>
+<td>$850K-$950K</td>
+<td>3-4bd/2ba</td>
+<td><a href="https://www.redfin.com/city/10421/WA/Lynnwood">Redfin Lynnwood 城市页</a></td>
+<td>略高于城市 median；YoY +9.5% 验证轻轨溢价；翻新品类继续是入门到中端的稳定样本</td>
+</tr>
+</tbody>
+</table>
+<h2 id="后续观察点"><a class="markdownIt-Anchor" href="#后续观察点"></a> 后续观察点</h2>
+<ul>
+<li>5/14 Freddie Mac PMMS：30Y 是否突破 6.40%，进入&quot;Spring 偏中通道&quot;或反向回到 6.20-6.30%。</li>
+<li>6 月上旬 NWMLS 5 月数据：active 是否在 18,563 之上继续放量、closed 同比是否收窄至 -2% 以内。</li>
+<li>Beyond RE 7 城城市快照：是否维持本周回归后的稳定区间（避免重现上周 sample mix 跳变），尤其是 Bellevue / Kirkland 高端样本权重。</li>
+<li>King County 库存：5/11 已达 6,724，月底是否突破 7,000 active 或月份库存上移至 3.5。</li>
+<li>Snohomish 卖方市场（2.9 月库存 / sale-to-list 99.1%）是否随 spring 节奏继续延续，与 NWMLS 数据中 Snohomish +58% YoY inventory 是否在 5 月开始抵消其紧张感。</li>
+<li>利率累计 +14bp 反弹对 purchase apps 与 closed 的滞后影响：5 月中下旬 mortgage applications 数据将是先行指标。</li>
+</ul>
+<h2 id="来源与交叉验证说明"><a class="markdownIt-Anchor" href="#来源与交叉验证说明"></a> 来源与交叉验证说明</h2>
+<ul>
+<li><a href="https://www.freddiemac.com/pmms">Freddie Mac PMMS 5/7</a> —— 30Y 6.37% / 15Y 5.72% 已与 PMMS 官方页面交叉确认；<a href="https://www.globenewswire.com/news-release/2026/05/07/3290346/0/en/Mortgage-Rates-Average-6-37.html">Globe Newswire 5/7</a> 二源验证。</li>
+<li><a href="https://www.nwmls.com/inventory-surges-while-sales-slow-and-prices-hold-steady/">NWMLS April 2026 release</a> —— active 18,563 / closed 5,674 / median $650K，已与 <a href="https://www.nwrealtor.com/2026/05/07/nwmls-april-2026-market-report/">Seattle King County REALTORS®</a> 二源验证。</li>
+<li><a href="https://beyondwa.com/market-report/king-county/">Beyond RE King County 5/11</a> —— active 6,724 / median $850K / inventory 3.4 / DOM 15 / sale-to-list 99.9%。</li>
+<li><a href="https://beyondwa.com/market-report/seattle/">Beyond RE Seattle 5/11</a> —— active 2,537 / median $876K / inventory 3.3 / DOM 12 / sale-to-list 100.9%。</li>
+<li><a href="https://beyondwa.com/market-report/bellevue/">Beyond RE Bellevue 5/11</a> —— median $1,365,000（-16.9% YoY，本周回归正常区间，与前两周 $1.65M / $1.66M 比较为下行延续）。</li>
+<li><a href="https://beyondwa.com/market-report/redmond/">Beyond RE Redmond 5/11</a> —— median $1,240,000（-9.3% YoY） / sale-to-list 98.6% / DOM 21。</li>
+<li><a href="https://beyondwa.com/market-report/kirkland/">Beyond RE Kirkland 5/11</a> —— median $1,332,500 / sale-to-list 98.5% / inventory 4.9（metro 最高）。</li>
+<li><a href="https://beyondwa.com/market-report/issaquah/">Beyond RE Issaquah 5/11</a> —— median $1,305,000（+8.8% YoY） / sale-to-list 99.9%（metro 最高）。</li>
+<li><a href="https://beyondwa.com/market-report/bothell/">Beyond RE Bothell 5/11</a> —— median $1,000,000 / sale-to-list 98.1%（metro 最低）。</li>
+<li><a href="https://beyondwa.com/market-report/lynnwood/">Beyond RE Lynnwood 5/11</a> —— median $830,000（+9.5% YoY）/ DOM 20。</li>
+<li><a href="https://beyondwa.com/market-report/snohomish-county/">Beyond RE Snohomish County 5/11</a> —— active 2,145 / median $722,500（-7.4% YoY）/ inventory 2.9（seller’s market）。</li>
+</ul>
+<p>数据新鲜度：利率 5/7 周频；NWMLS 4 月（5/5 release）月频；Beyond RE 城市页 5/11 当日。</p>
+<p>来源构成：Freddie Mac PMMS（融资）+ NWMLS 4 月月频（结构性 baseline，本周首次具备 spring 月度方向）+ Beyond RE 7 城当日快照（城市层，回归正常区间）+ Redfin 聚合入口（样本图谱）四层交叉。本周三层数据彼此印证：宏观利率小幅反弹，月度 NWMLS 库存放量 + 量价分化，城市级 Beyond RE 多城回归正常区间后议价信号清晰；与上周需要&quot;忽略多城周中位&quot;形成对比，本周判断置信度整体提高。</p>
+<p>覆盖缺口：</p>
+<ul>
+<li>Redfin 城市页 / listing 详情页 / Madrona Group / Zillow 城市页本周抓取仍受限（403），未直接验证单条 listing 状态；样本以聚合入口 + 价位带描述 + 长期 sub-market 知识为主。</li>
+<li>子区域 sub-market 颗粒度（如 Downtown Bellevue vs Northeast Bellevue 实际成交差异）本周未深入展开。</li>
+<li>Seattle West Seattle Townhouse、Kirkland Totem Lake Townhome、Issaquah Olde Town Townhouse、West Bothell Rambler 四条样本属 below-baseline 例外（每区 ≤ 1 条），均已逐条标注，符合 source policy 例外条款。</li>
+<li>利率连续两周 +14bp 对实际 closing 影响存在 4-6 周滞后，本周 NWMLS 4 月数据尚未完全包含该影响。</li>
+</ul>
+<p>信心：</p>
+<ul>
+<li>利率方向（连续两周 +7bp/+8bp 反弹至 6.37% / 5.72%）：高信心（PMMS 官方页面 + Globe Newswire 二源 + 上周已有方向）。</li>
+<li>NWMLS 4 月库存放量（+28.4% YoY / +23.4% MoM）：高信心（NWMLS 官方 release + Seattle KC REALTORS 二源 + 与 Beyond RE 王县连续放量一致）。</li>
+<li>Beyond RE 7 城本周回归正常区间（vs 上周 sample mix）：高信心（多城同时回归 + Bellevue 跌幅 -16.9% YoY 与前两周方向延续）。</li>
+<li>Bellevue 中高端议价窗口（DOM 41 + 4.7 月库存 + sale-to-list 98.2%）：高信心（连续三周三重信号方向一致）。</li>
+<li>Kirkland 4.9 月库存 metro 最高 + Bothell sale-to-list 98.1% metro 最低：中高信心（单周观察，但与上周方向一致）。</li>
+<li>Seattle 城市层 above-asking 维持（100.9% + DOM 12）：中高信心（连续两周一致）。</li>
+<li>利率累计 +14bp 对 5 月需求的压制：中等信心（滞后效应需 5 月中下旬 mortgage apps 与 6 月 NWMLS 二次确认）。</li>
+</ul>
+<!-- flag of hidden posts -->
+    </div>
+
+    
+    
+    
+<div class="comments" id="comments">
+  <script src="https://giscus.app/client.js"
+          data-repo="TCoherence/TCoherence.github.io"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkxMzE0MDY3MTA="
+          data-category="General"
+          data-category-id="DIC_kwDOB9Ubds4C8BCw"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="preferred_color_scheme"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>年轻的C同学
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://tcoherence.github.io/reports/housing/2026-05-11/" title="[房市·2026-05-11]">https://tcoherence.github.io/reports/housing/2026-05-11/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A5%BF%E9%9B%85%E5%9B%BE%E6%88%BF%E5%B8%82%E5%91%A8%E8%84%89%E6%90%8F2026-05-11"><span class="nav-text"> 西雅图房市周脉搏｜2026-05-11</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-text"> 摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%96%B0%E9%B2%9C%E5%BA%A6%E8%AF%B4%E6%98%8E"><span class="nav-text"> 数据新鲜度说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A9%E7%8E%87%E4%B8%8E%E8%9E%8D%E8%B5%84%E7%8E%AF%E5%A2%83"><span class="nav-text"> 利率与融资环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#seattle-metro-%E6%A0%B8%E5%BF%83%E5%B8%82%E5%9C%BA%E8%84%89%E6%90%8F"><span class="nav-text"> Seattle Metro 核心市场脉搏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%BA%E5%9F%9F-scoreboard"><span class="nav-text"> 区域 Scoreboard</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%8C%BA%E5%9F%9F%E4%B9%B0%E6%96%B9%E8%A7%82%E5%AF%9F"><span class="nav-text"> 分区域买方观察</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E8%A1%A8%E6%80%A7%E6%8C%82%E7%89%8C%E6%A0%B7%E6%9C%AC"><span class="nav-text"> 代表性挂牌样本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8E%E7%BB%AD%E8%A7%82%E5%AF%9F%E7%82%B9"><span class="nav-text"> 后续观察点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A5%E6%BA%90%E4%B8%8E%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81%E8%AF%B4%E6%98%8E"><span class="nav-text"> 来源与交叉验证说明</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="年轻的C同学"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">年轻的C同学</p>
+  <div class="site-description" itemprop="description">年轻的C同学的个人博客 — 关于工程、生活与一些碎片思考</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/TCoherence" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;TCoherence" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:hanzhiyang2019@u.northwestern.edu" title="E-Mail → mailto:hanzhiyang2019@u.northwestern.edu" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/yang_hanzhi" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;yang_hanzhi" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/profile.php?id=100025563873836" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id&#x3D;100025563873836" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">年轻的C同学</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js', () => {
+    var darkMQ = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+    var mermaidTheme = (darkMQ && darkMQ.matches) ? 'dark' : 'forest';
+    mermaid.initialize({
+      startOnLoad: false,
+      theme    : mermaidTheme,
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+    mermaid.run({ querySelector: 'pre.mermaid' });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+</body>
+</html>

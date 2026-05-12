@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 8.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/images/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tcoherence.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":2,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="论文雷达日报｜2026-05-11 一句话结论：今日 Agent × Multimodal Search × Inference 加速三路同时高密度命中——DTap 红队平台 (Percy Liang 署名) 把代理安全&#x2F;评测推到榜首，SpecBlock 给出 vs EAGLE-3 +8-13% 的硬数字，ReasonMaxxer 则抛出 RL-free 反命题挑战 RLVR 范式。  摘要 今">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[论文·2026-05-11]">
+<meta property="og:url" content="https://tcoherence.github.io/reports/papers/2026-05-11/index.html">
+<meta property="og:site_name" content="Hanzhi&#39;s BLOG">
+<meta property="og:description" content="论文雷达日报｜2026-05-11 一句话结论：今日 Agent × Multimodal Search × Inference 加速三路同时高密度命中——DTap 红队平台 (Percy Liang 署名) 把代理安全&#x2F;评测推到榜首，SpecBlock 给出 vs EAGLE-3 +8-13% 的硬数字，ReasonMaxxer 则抛出 RL-free 反命题挑战 RLVR 范式。  摘要 今">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-05-11T19:00:00.000Z">
+<meta property="article:modified_time" content="2026-05-12T00:22:07.703Z">
+<meta property="article:author" content="年轻的C同学">
+<meta property="article:tag" content="Hanzhi, 博客, blog, hexo, next, 软件工程, 生活">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://tcoherence.github.io/reports/papers/2026-05-11/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>[论文·2026-05-11] | Hanzhi's BLOG</title><meta name="robots" content="noindex">
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hanzhi's BLOG</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录、思考、生活</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-reports">
+
+    <a href="/reports/" rel="section"><i class="fa fa-newspaper fa-fw"></i>AI 报告</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tcoherence.github.io/reports/papers/2026-05-11/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="年轻的C同学">
+      <meta itemprop="description" content="年轻的C同学的个人博客 — 关于工程、生活与一些碎片思考">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hanzhi's BLOG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [论文·2026-05-11]
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2026-05-11 12:00:00 / 修改时间：17:22:07" itemprop="dateCreated datePublished" datetime="2026-05-11T12:00:00-07:00">2026-05-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AI%E6%8A%A5%E5%91%8A/" itemprop="url" rel="index"><span itemprop="name">AI报告</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AI%E6%8A%A5%E5%91%8A/%E8%AE%BA%E6%96%87/" itemprop="url" rel="index"><span itemprop="name">论文</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="论文雷达日报2026-05-11"><a class="markdownIt-Anchor" href="#论文雷达日报2026-05-11"></a> 论文雷达日报｜2026-05-11</h1>
+<p>一句话结论：今日 Agent × Multimodal Search × Inference 加速三路同时高密度命中——DTap 红队平台 (Percy Liang 署名) 把代理安全/评测推到榜首，SpecBlock 给出 vs EAGLE-3 +8-13% 的硬数字，ReasonMaxxer 则抛出 RL-free 反命题挑战 RLVR 范式。</p>
+<h2 id="摘要"><a class="markdownIt-Anchor" href="#摘要"></a> 摘要</h2>
+<p>今日 47 条候选三源齐备（arXiv 47 / HF Daily 47 cross-listed / Semantic Scholar 32 命中），主线被 <strong>Agent × Multimodal Search × Inference 加速</strong> 三路撑住——DTap 红队平台 (Percy Liang 署名) 和 LLMs-Improving-LLMs 双榜首把代理评测和 TTS 自动化推到 Top；HyperEyes / InterLV-Search 同日交付多模态代理搜索的方法面与基准面双信号；SpecBlock 给出本日推理加速主线唯一硬 benchmark 数字（vs EAGLE-3 +8-13%）。ReasonMaxxer 抛出 RL-free 反命题挑战 RLVR 范式，方法面冲击较强。MoE 命中 2 篇（MACE-Dance 是首条具象应用），DPO/长上下文/推测解码命中各 1-2 篇。S2 相似论文链路全候选未返回，延伸阅读段为空；所有候选 affiliations 字段为空，无法做机构/团队层归属。</p>
+<h2 id="top-picks-交叉命中"><a class="markdownIt-Anchor" href="#top-picks-交叉命中"></a> 📌 Top picks (交叉命中)</h2>
+<ul>
+<li>
+<p><strong><a href="https://arxiv.org/abs/2605.04808">2605.04808</a> DecodingTrust-Agent Platform (DTap): A Controllable and Interactive Red-Teaming Platform for AI Agents</strong></p>
+<ul>
+<li>速读：DTap 红队平台覆盖 14 领域 50+ 环境压测 AI 代理。</li>
+<li>S2 TLDR：The DecodingTrust-Agent Platform (DTap) is introduced, the first controllable and interactive red-teaming platform for AI agents, spanning 14 real-world domains and over 50 simulation environments that replicate widely used systems such as Google Workspace, Paypal, and Slack.</li>
+<li>入选理由：hf_trending_rank:14 + watchlist:agent + tracked_author:Percy Liang，首个可控交互式代理红队平台，安全/评测主线双命中。（score=6.6, hf_upvotes=14, reasons=hf_trending_rank:14; watchlist_keyword:agent; nice_to_have:evaluation; tracked_author:percy liang）</li>
+<li>作者：Zhaorun Chen, Xun Liu, Haibo Tong, Chengquan Guo, Yuzhou Nie, Jiawei Zhang 等</li>
+<li>链接：https://arxiv.org/abs/2605.04808 / https://huggingface.co/papers/2605.04808 / https://www.semanticscholar.org/paper/8b2bd7e1a717663be85a78f1486a8f3f415c551c</li>
+</ul>
+</li>
+<li>
+<p><strong><a href="https://arxiv.org/abs/2605.08083">2605.08083</a> LLMs Improving LLMs: Agentic Discovery for Test-Time Scaling</strong></p>
+<ul>
+<li>速读：代理自动发现 TTS 策略，胜过人工启发式调度。</li>
+<li>入选理由：watchlist:reasoning,agent,inference 三重命中 + 51 HF upvotes（rank 外但热度第二），首次把 TTS 设计本身交给 LLM 代理迭代。（score=6.5, hf_upvotes=51, reasons=watchlist_keyword:reasoning,agent,inference; nice_to_have:benchmark）</li>
+<li>作者：Tong Zheng, Haolin Liu, Chengsong Huang, Huiwen Bao, Sheng Zhang, Rui Liu 等</li>
+<li>链接：https://arxiv.org/abs/2605.08083 / https://huggingface.co/papers/2605.08083</li>
+</ul>
+</li>
+<li>
+<p><strong><a href="https://arxiv.org/abs/2605.06716">2605.06716</a> From Storage to Experience: A Survey on the Evolution of LLM Agent Memory Mechanisms</strong></p>
+<ul>
+<li>速读：LLM 代理记忆综述提出 Storage→Reflection→Experience 三阶段框架。</li>
+<li>S2 TLDR：This survey proposes a novel evolutionary framework for LLM agent memory mechanisms, formalizing the development process into three stages: Storage (trajectory preservation), Reflection (trajectory refinement), and Experience (trajectory abstraction).</li>
+<li>入选理由：watchlist:agent + citation_velocity:4.0，将散乱记忆机制研究系统化，工程参考价值高。（score=6.0, hf_upvotes=5, reasons=watchlist_keyword:agent; citation_velocity:4.0）</li>
+<li>作者：Jinghao Luo, Yuchen Tian, Chuxue Cao, Ziyang Luo, Hongzhan Lin, Kaixin Li 等</li>
+<li>链接：https://arxiv.org/abs/2605.06716 / https://huggingface.co/papers/2605.06716 / https://www.semanticscholar.org/paper/ed20847a506473433843fe31f9024667c0f47325</li>
+</ul>
+</li>
+<li>
+<p><strong><a href="https://arxiv.org/abs/2512.18181">2512.18181</a> MACE-Dance: Motion-Appearance Cascaded Experts for Music-Driven Dance Video Generation</strong></p>
+<ul>
+<li>速读：级联 MoE：动作专家+外观专家合成音乐驱动舞蹈视频。</li>
+<li>S2 TLDR：MACE-Dance is presented, a music-driven dance video generation framework with cascaded Mixture-of-Experts (MoE), where the Motion Expert performs music-to-3D motion generation while enforcing kinematic plausibility and artistic expressiveness, whereas the Appearance Expert carries out motion- and reference-conditioned video synthesis.</li>
+<li>入选理由：hf_trending_rank:12 + 80 upvotes + watchlist:moe + benchmark/fine-tuning/evaluation 多重命中，MoE 主线本周内首条具象化应用。（score=5.596, hf_upvotes=80, reasons=hf_trending_rank:12; watchlist_keyword:moe; nice_to_have:benchmark,fine-tuning,evaluation; citation_velocity:0.296）</li>
+<li>作者：Kaixing Yang, Jiashu Zhu, Xulong Tang, Ziqiao Peng, Xiangyue Zhang, Puwei Wang 等</li>
+<li>链接：https://arxiv.org/abs/2512.18181 / https://huggingface.co/papers/2512.18181 / https://www.semanticscholar.org/paper/042c61783b406feb5ca8489f34213f837f8474a1</li>
+</ul>
+</li>
+<li>
+<p><strong><a href="https://arxiv.org/abs/2605.06241">2605.06241</a> Rethinking RL for LLM Reasoning: It’s Sparse Policy Selection, Not Capability Learning</strong></p>
+<ul>
+<li>速读：ReasonMaxxer：熵门控对比损失替代 RL，单卡分钟级训练。</li>
+<li>S2 TLDR：ReasonMaxxer, a minimal RL-free method that applies contrastive loss only at entropy-gated decision points, matches or exceeds full RL performance while requiring only tens of problems and minutes of single-GPU training, a reduction in training cost of roughly three orders of magnitude.</li>
+<li>入选理由：hf_trending_rank:4 + watchlist:reasoning，对当前 RLVR 范式提出 RL-free 反命题，训练成本下降约三量级，方法面冲击较强。（score=5.1, hf_upvotes=2, reasons=hf_trending_rank:4; watchlist_keyword:reasoning; nice_to_have:benchmark）</li>
+<li>作者：Ömer Faruk Akgül, Rajgopal Kannan, Willie Neiswanger, Viktor Prasanna</li>
+<li>链接：https://arxiv.org/abs/2605.06241 / https://huggingface.co/papers/2605.06241 / https://www.semanticscholar.org/paper/3fd6e403b398fa1ecf2618cce026272724ab6a5e</li>
+</ul>
+</li>
+<li>
+<p><strong><a href="https://arxiv.org/abs/2605.07177">2605.07177</a> HyperEyes: Dual-Grained Efficiency-Aware Reinforcement Learning for Parallel Multimodal Search Agents</strong></p>
+<ul>
+<li>速读：HyperEyes 把效率写进 RL 目标，多模态搜索改并行原子动作。</li>
+<li>S2 TLDR：This work presents HyperEyes, a parallel multimodal search agent that fuses visual grounding and retrieval into a single atomic action, enabling concurrent search across multiple entities while treating inference efficiency as a first-class training objective and introduces IMEB, a human-curated benchmark of 300 instances that jointly evaluates search capability and efficiency.</li>
+<li>入选理由：hf_trending_rank:24 + 54 upvotes + watchlist:agent,inference + benchmark，提出 IMEB 基准，与今日 InterLV-Search 形成多模态代理搜索双信号。（score=5.1, hf_upvotes=54, reasons=hf_trending_rank:24; watchlist_keyword:agent,inference; nice_to_have:benchmark）</li>
+<li>作者：Guankai Li, Jiabin Chen, Yi Xu, Xichen Zhang, Yuan Lu</li>
+<li>链接：https://arxiv.org/abs/2605.07177 / https://huggingface.co/papers/2605.07177 / https://www.semanticscholar.org/paper/21877966de98d8e37e7b5e0c7de4834ed2f9c8ad</li>
+</ul>
+</li>
+<li>
+<p><strong><a href="https://arxiv.org/abs/2605.07243">2605.07243</a> SpecBlock: Block-Iterative Speculative Decoding with Dynamic Tree Drafting</strong></p>
+<ul>
+<li>速读：SpecBlock 块迭代推测解码比 EAGLE-3 提速 8-13%。</li>
+<li>S2 TLDR：This paper proposes SpecBlock, a block-iterative drafter that combines path dependence with cheap drafting, and shows that SpecBlock improves mean speedup by 8-13% over EAGLE-3 at 44-52% of its drafting cost, and cost-aware adaptation extends this lead to 11-19%.</li>
+<li>入选理由：hf_trending_rank:20 + watchlist:inference,speculative decoding，本日推理加速主线唯一硬 benchmark 数字，相对 EAGLE-3 cost 仅 44-52%。（score=5.0, hf_upvotes=2, reasons=hf_trending_rank:20; watchlist_keyword:inference,speculative decoding）</li>
+<li>作者：Weijie Shi, Qiang Xu, Fan Deng, Yaguang Wu, Jiarun Liu, Yehong Xu 等</li>
+<li>链接：https://arxiv.org/abs/2605.07243 / https://huggingface.co/papers/2605.07243 / https://www.semanticscholar.org/paper/0a8c0922e16a6c1fd098dc663278c9a2acb13986</li>
+</ul>
+</li>
+<li>
+<p><strong><a href="https://arxiv.org/abs/2605.07510">2605.07510</a> InterLV-Search: Benchmarking Interleaved Multimodal Agentic Search</strong></p>
+<ul>
+<li>速读：InterLV-Search：首个交错多模态代理搜索基准。</li>
+<li>入选理由：watchlist:agent,dpo + benchmark/evaluation，把视觉证据纳入搜索轨迹，是今日代理评测面第二条信号。（score=5.0, hf_upvotes=5, reasons=watchlist_keyword:agent,dpo; nice_to_have:benchmark,evaluation）</li>
+<li>作者：Bohan Hou, Jiuning Gu, Jiayan Guo, Ronghao Dang, Sicong Leng, Xin Li 等</li>
+<li>链接：https://arxiv.org/abs/2605.07510 / https://huggingface.co/papers/2605.07510</li>
+</ul>
+</li>
+</ul>
+<h2 id="watchlist-分类命中"><a class="markdownIt-Anchor" href="#watchlist-分类命中"></a> 🏷 Watchlist 分类命中</h2>
+<p>已扣除 Top picks 中已列条目；每桶最多列 4 条 fallback 候选。</p>
+<h3 id="agent4-条-fallback"><a class="markdownIt-Anchor" href="#agent4-条-fallback"></a> <code>agent</code>（4 条 fallback）</h3>
+<ul>
+<li><a href="https://arxiv.org/abs/2605.03353">2605.03353</a> SkCC: Portable and Secure Skill Compilation for Cross-Framework LLM Agents — score=4.5, hf_upvotes=6; reasons: hf_trending_rank:5; watchlist_keyword:agent</li>
+<li><a href="https://arxiv.org/abs/2604.25325">2604.25325</a> R^3-SQL: Ranking Reward and Resampling for Text-to-SQL — score=4.5, hf_upvotes=1; reasons: hf_trending_rank:10; watchlist_keyword:agent; nice_to_have:benchmark</li>
+<li><a href="https://arxiv.org/abs/2605.06455">2605.06455</a> PrefixGuard: From LLM-Agent Traces to Online Failure-Warning Monitors — score=4.2, hf_upvotes=2; reasons: hf_trending_rank:8; watchlist_keyword:agent</li>
+<li><a href="https://arxiv.org/abs/2605.07447">2605.07447</a> Sparse Autoencoders as Plug-and-Play Firewalls for Adversarial Attack Detection in VLMs — score=4.1, hf_upvotes=1; reasons: hf_trending_rank:9; watchlist_keyword:agent</li>
+</ul>
+<h3 id="reasoning3-条-fallback"><a class="markdownIt-Anchor" href="#reasoning3-条-fallback"></a> <code>reasoning</code>（3 条 fallback）</h3>
+<ul>
+<li><a href="https://arxiv.org/abs/2605.05997">2605.05997</a> 4DThinker: Thinking with 4D Imagery for Dynamic Spatial Understanding — score=5.0, hf_upvotes=15; reasons: watchlist_keyword:reasoning,inference; nice_to_have:benchmark,fine-tuning</li>
+<li><a href="https://arxiv.org/abs/2605.08043">2605.08043</a> SCOPE: Structured Decomposition and Conditional Skill Orchestration for Complex Image Generation — score=3.6, hf_upvotes=7; reasons: hf_trending_rank:19; watchlist_keyword:reasoning; nice_to_have:benchmark</li>
+<li><a href="https://arxiv.org/abs/2605.06139">2605.06139</a> Listwise Policy Optimization: Group-based RLVR as Target-Projection on the LLM Response Simplex — score=2.0, hf_upvotes=57; reasons: watchlist_keyword:reasoning</li>
+</ul>
+<h3 id="inference4-条-fallback"><a class="markdownIt-Anchor" href="#inference4-条-fallback"></a> <code>inference</code>（4 条 fallback）</h3>
+<ul>
+<li><a href="https://arxiv.org/abs/2605.05997">2605.05997</a> 4DThinker: Thinking with 4D Imagery for Dynamic Spatial Understanding — score=5.0, hf_upvotes=15; reasons: watchlist_keyword:reasoning,inference; nice_to_have:benchmark,fine-tuning</li>
+<li><a href="https://arxiv.org/abs/2605.08044">2605.08044</a> Fast Byte Latent Transformer — score=4.0, hf_upvotes=5; reasons: watchlist_keyword:inference,speculative decoding</li>
+<li><a href="https://arxiv.org/abs/2605.07363">2605.07363</a> MISA: Mixture of Indexer Sparse Attention for Long-Context LLM Inference — score=4.0, hf_upvotes=11; reasons: watchlist_keyword:long context,inference</li>
+<li><a href="https://arxiv.org/abs/2605.06105">2605.06105</a> Shallow Prefill, Deep Decoding: Efficient Long-Context Inference via Layer-Asymmetric KV Visibility — score=3.9, hf_upvotes=1; reasons: hf_trending_rank:16; watchlist_keyword:inference; nice_to_have:benchmark</li>
+</ul>
+<h3 id="moe1-条-fallback"><a class="markdownIt-Anchor" href="#moe1-条-fallback"></a> <code>moe</code>（1 条 fallback）</h3>
+<ul>
+<li><a href="https://arxiv.org/abs/2602.03473">2602.03473</a> Scaling Continual Learning to 300+ Tasks with Bi-Level Routing Mixture-of-Experts — score=3.1, hf_upvotes=7; reasons: hf_trending_rank:29; watchlist_keyword:moe; nice_to_have:benchmark,evaluation</li>
+</ul>
+<h3 id="dpo1-条-fallback"><a class="markdownIt-Anchor" href="#dpo1-条-fallback"></a> <code>dpo</code>（1 条 fallback）</h3>
+<ul>
+<li><a href="https://arxiv.org/abs/2605.00933">2605.00933</a> CGM-JEPA: Learning Consistent Continuous Glucose Monitor Representations via Predictive Self-Supervised Pretraining — score=4.4, hf_upvotes=1; reasons: hf_trending_rank:6; watchlist_keyword:dpo</li>
+</ul>
+<h3 id="long-context1-条-fallback"><a class="markdownIt-Anchor" href="#long-context1-条-fallback"></a> <code>long context</code>（1 条 fallback）</h3>
+<ul>
+<li><a href="https://arxiv.org/abs/2605.07363">2605.07363</a> MISA: Mixture of Indexer Sparse Attention for Long-Context LLM Inference — score=4.0, hf_upvotes=11; reasons: watchlist_keyword:long context,inference</li>
+</ul>
+<h3 id="speculative-decoding1-条-fallback"><a class="markdownIt-Anchor" href="#speculative-decoding1-条-fallback"></a> <code>speculative decoding</code>（1 条 fallback）</h3>
+<ul>
+<li><a href="https://arxiv.org/abs/2605.08044">2605.08044</a> Fast Byte Latent Transformer — score=4.0, hf_upvotes=5; reasons: watchlist_keyword:inference,speculative decoding</li>
+</ul>
+<h2 id="延伸阅读-semantic-scholar-相似论文"><a class="markdownIt-Anchor" href="#延伸阅读-semantic-scholar-相似论文"></a> 🔗 延伸阅读 (Semantic Scholar 相似论文)</h2>
+<p>本段今日无高置信度增量信号（S2 相似论文未返回）。Coverage gap：<code>s2_similar_unavailable</code>。</p>
+<h2 id="新出现的作者-团队"><a class="markdownIt-Anchor" href="#新出现的作者-团队"></a> 🧑‍🔬 新出现的作者 / 团队</h2>
+<p>在候选 affiliations / categories 全空的元数据约束下，本日仅靠 <code>ranking_reasons</code> 里的 <code>tracked_author</code> 标签做归属——DTap 红队论文（arxiv:2605.04808）联合署名 Percy Liang，是今日唯一可识别的 watchlist 已知作者活跃信号；其余候选未发现达标新作者 / 新团队。</p>
+<ul>
+<li><strong>Percy Liang</strong> — 在 <a href="https://arxiv.org/abs/2605.04808">2605.04808</a> 《DecodingTrust-Agent Platform (DTap)》联合署名。watchlist 已知 tracked_author 在今日署名，作为已跟踪人物的活跃信号记录；其余候选 affiliations 字段空，无法做新作者甄别。</li>
+</ul>
+<h2 id="覆盖缺口与不确定性"><a class="markdownIt-Anchor" href="#覆盖缺口与不确定性"></a> 📉 覆盖缺口与不确定性</h2>
+<ul>
+<li><code>s2_similar_unavailable</code>：S2 similar_papers 字段在所有候选上为 None，延伸阅读段为空。</li>
+<li><code>affiliations_unavailable</code>：47 条候选的 <code>affiliations[]</code> 全空，无法做机构 / 团队级新发现归属。</li>
+<li><code>s2_partial_coverage</code>：15/47 候选缺 s2_url（含 LLMs-Improving-LLMs / InterLV-Search 等热门条目），其 <code>tldr_en</code> 留空，未做替代翻译。</li>
+<li><code>confidence_flags</code>: ranking_relies_on_hf_upvotes_and_keyword_only / no_tracked_lab_attribution_today。</li>
+</ul>
+<h2 id="来源与交叉验证说明"><a class="markdownIt-Anchor" href="#来源与交叉验证说明"></a> 来源与交叉验证说明</h2>
+<ul>
+<li><strong>arXiv</strong> (primary) — 47 条，作为结论锚点，引用 <code>arxiv_url</code>。</li>
+<li><strong>HuggingFace Daily Papers</strong> (curated) — 47 条全部 cross-listed，<code>hf_upvotes</code> / <code>hf_trending_rank</code> 仅作注意力指标。</li>
+<li><strong>Semantic Scholar</strong> (metadata) — 32/47 命中，提供 <code>tldr_en</code> / <code>citation_velocity</code>；<code>similar_papers</code> 全候选未返回。</li>
+</ul>
+<p>Top picks 的 <code>tldr_cn</code> 由 <code>s2_tldr</code> 或 <code>abstract</code> 第一句浓缩，未触发外部 fetch / 翻译；<code>ranking_score</code> 由 <code>paper_fetch.py</code> 一次性给出，未二次重排。Source mix：arXiv 47 / HF 47 / S2 32（primary&gt;metadata&gt;curated&gt;other）。</p>
+<!-- flag of hidden posts -->
+    </div>
+
+    
+    
+    
+<div class="comments" id="comments">
+  <script src="https://giscus.app/client.js"
+          data-repo="TCoherence/TCoherence.github.io"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkxMzE0MDY3MTA="
+          data-category="General"
+          data-category-id="DIC_kwDOB9Ubds4C8BCw"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="preferred_color_scheme"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>年轻的C同学
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://tcoherence.github.io/reports/papers/2026-05-11/" title="[论文·2026-05-11]">https://tcoherence.github.io/reports/papers/2026-05-11/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BA%E6%96%87%E9%9B%B7%E8%BE%BE%E6%97%A5%E6%8A%A52026-05-11"><span class="nav-text"> 论文雷达日报｜2026-05-11</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-text"> 摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#top-picks-%E4%BA%A4%E5%8F%89%E5%91%BD%E4%B8%AD"><span class="nav-text"> 📌 Top picks (交叉命中)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#watchlist-%E5%88%86%E7%B1%BB%E5%91%BD%E4%B8%AD"><span class="nav-text"> 🏷 Watchlist 分类命中</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#agent4-%E6%9D%A1-fallback"><span class="nav-text"> agent（4 条 fallback）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reasoning3-%E6%9D%A1-fallback"><span class="nav-text"> reasoning（3 条 fallback）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inference4-%E6%9D%A1-fallback"><span class="nav-text"> inference（4 条 fallback）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#moe1-%E6%9D%A1-fallback"><span class="nav-text"> moe（1 条 fallback）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dpo1-%E6%9D%A1-fallback"><span class="nav-text"> dpo（1 条 fallback）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#long-context1-%E6%9D%A1-fallback"><span class="nav-text"> long context（1 条 fallback）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#speculative-decoding1-%E6%9D%A1-fallback"><span class="nav-text"> speculative decoding（1 条 fallback）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%B6%E4%BC%B8%E9%98%85%E8%AF%BB-semantic-scholar-%E7%9B%B8%E4%BC%BC%E8%AE%BA%E6%96%87"><span class="nav-text"> 🔗 延伸阅读 (Semantic Scholar 相似论文)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%87%BA%E7%8E%B0%E7%9A%84%E4%BD%9C%E8%80%85-%E5%9B%A2%E9%98%9F"><span class="nav-text"> 🧑‍🔬 新出现的作者 &#x2F; 团队</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A6%86%E7%9B%96%E7%BC%BA%E5%8F%A3%E4%B8%8E%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7"><span class="nav-text"> 📉 覆盖缺口与不确定性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A5%E6%BA%90%E4%B8%8E%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81%E8%AF%B4%E6%98%8E"><span class="nav-text"> 来源与交叉验证说明</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="年轻的C同学"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">年轻的C同学</p>
+  <div class="site-description" itemprop="description">年轻的C同学的个人博客 — 关于工程、生活与一些碎片思考</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/TCoherence" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;TCoherence" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:hanzhiyang2019@u.northwestern.edu" title="E-Mail → mailto:hanzhiyang2019@u.northwestern.edu" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/yang_hanzhi" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;yang_hanzhi" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/profile.php?id=100025563873836" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id&#x3D;100025563873836" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">年轻的C同学</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js', () => {
+    var darkMQ = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+    var mermaidTheme = (darkMQ && darkMQ.matches) ? 'dark' : 'forest';
+    mermaid.initialize({
+      startOnLoad: false,
+      theme    : mermaidTheme,
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+    mermaid.run({ querySelector: 'pre.mermaid' });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+</body>
+</html>

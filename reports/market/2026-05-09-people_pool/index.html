@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 8.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/images/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tcoherence.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":2,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="People Pool｜2026-05-09 5 月 8-9 两日的人物层余波仍由 5&#x2F;6 Anthropic Code w&#x2F; Claude 大会带动：Boris Cherny、Cat Wu、Ami Vora 持续输出&quot;AI 写代码、人审计交付&quot;的范式，并伴随 SpaceX Colossus 1 300MW 整租与 Claude Code 速率翻倍消化期。OpenAI 侧 S">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[市场·2026-05-09] People Pool">
+<meta property="og:url" content="https://tcoherence.github.io/reports/market/2026-05-09-people_pool/index.html">
+<meta property="og:site_name" content="Hanzhi&#39;s BLOG">
+<meta property="og:description" content="People Pool｜2026-05-09 5 月 8-9 两日的人物层余波仍由 5&#x2F;6 Anthropic Code w&#x2F; Claude 大会带动：Boris Cherny、Cat Wu、Ami Vora 持续输出&quot;AI 写代码、人审计交付&quot;的范式，并伴随 SpaceX Colossus 1 300MW 整租与 Claude Code 速率翻倍消化期。OpenAI 侧 S">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-05-09T19:00:00.000Z">
+<meta property="article:modified_time" content="2026-05-12T00:22:07.700Z">
+<meta property="article:author" content="年轻的C同学">
+<meta property="article:tag" content="Hanzhi, 博客, blog, hexo, next, 软件工程, 生活">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://tcoherence.github.io/reports/market/2026-05-09-people_pool/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>[市场·2026-05-09] People Pool | Hanzhi's BLOG</title><meta name="robots" content="noindex">
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hanzhi's BLOG</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录、思考、生活</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-reports">
+
+    <a href="/reports/" rel="section"><i class="fa fa-newspaper fa-fw"></i>AI 报告</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tcoherence.github.io/reports/market/2026-05-09-people_pool/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="年轻的C同学">
+      <meta itemprop="description" content="年轻的C同学的个人博客 — 关于工程、生活与一些碎片思考">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hanzhi's BLOG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [市场·2026-05-09] People Pool
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2026-05-09 12:00:00" itemprop="dateCreated datePublished" datetime="2026-05-09T12:00:00-07:00">2026-05-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-05-11 17:22:07" itemprop="dateModified" datetime="2026-05-11T17:22:07-07:00">2026-05-11</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="people-pool2026-05-09"><a class="markdownIt-Anchor" href="#people-pool2026-05-09"></a> People Pool｜2026-05-09</h1>
+<p>5 月 8-9 两日的人物层余波仍由 5/6 Anthropic Code w/ Claude 大会带动：Boris Cherny、Cat Wu、Ami Vora 持续输出&quot;AI 写代码、人审计交付&quot;的范式，并伴随 SpaceX Colossus 1 300MW 整租与 Claude Code 速率翻倍消化期。OpenAI 侧 Sam Altman / Greg Brockman 5/7-5/8 在 Musk v. Altman 庭审与 GPT-5.5-Cyber 限定预览之间双线作战。Simon Willison 在 5/8、5/9 连发两篇技术述评，分别引用 Anthropic 工程师 Thariq Shihipar 的 HTML over Markdown 主张以及前 Twitch/Discord WebRTC 工程师 Luke Curley 的 OpenAI 语音栈批评——构成本日两位非池内候选的主要发现路径；GitHub Trending 第二位则由独立开发者 Forrest Chang 的 andrej-karpathy-skills 仓库占据，作为补充候选。</p>
+<h2 id="跟踪人物动态"><a class="markdownIt-Anchor" href="#跟踪人物动态"></a> 跟踪人物动态</h2>
+<ul>
+<li><strong>Boris Cherny</strong>：在 Sequoia AI Ascent 2026 与 Lauren Reeder 对谈，自述 2026 年没写过一行代码、每天用手机 ship 数十个 PR，称编码&quot;对他个人已被解决&quot;，与 5/6 Code w/ Claude 上的 Routines 演示形成连续叙事 (<a href="https://www.threads.com/@bruceqburke/post/DX7_V_4jGW6/boris-cherny-creator-of-claude-code-at-anthropic-joins-sequoia-partner-lauren">source</a>)</li>
+<li><strong>Cat Wu</strong>：5 月 6 日 Code w/ Claude 主舞台演讲 + 同期 Lenny’s Newsletter 长文《Anthropic 产品团队为何动得更快》，把 Claude Code 三层 surface (CLI/IDE/Desktop) + Routines + 子代理路线整体交付社区 (<a href="https://www.lennysnewsletter.com/p/how-anthropics-product-team-moves">source</a>)</li>
+<li><strong>Ami Vora</strong>：作为 Anthropic CPO 于 Code w/ Claude 公开宣布与 SpaceX 签约整租 Colossus 1 全部 300MW 算力，并披露平台 API 用量同比 17 倍；5/8 周转报道继续延伸到&quot;Anthropic 反 Musk 起家、今天却成为他客户&quot;的叙事 (<a href="https://www.implicator.ai/anthropic-was-built-to-counter-musk-today-it-became-his-customer/">source</a>)</li>
+<li><strong>Simon Willison</strong>：5/8 发文《Using Claude Code: The Unreasonable Effectiveness of HTML》转向以 HTML 替代 Markdown 作为 LLM 输出格式；5/9 发文引用 Luke Curley 关于 WebRTC 不适合语音 AI 的技术评论，串联进 OpenAI Realtime API 讨论 (<a href="https://simonwillison.net/2026/May/8/unreasonable-effectiveness-of-html/">source</a>, <a href="https://simonwillison.net/2026/May/9/luke-curley/">source</a>)</li>
+<li><strong>Sam Altman</strong>：OpenAI 5/7-5/8 推送 GPT-5.5-Cyber 限定预览给受信任安全团队，与 Anthropic Mythos 形成正面对位；同周还披露&quot;内部目标 2026/9 自动化研究实习生、2028/3 真自动化研究员&quot; (<a href="https://www.cnbc.com/2026/05/07/openai-rolls-out-new-gpt-5point5-cyber-to-vetted-cybersecurity-teams.html">source</a>)</li>
+<li><strong>Greg Brockman</strong>：在 Musk v. Altman 庭审作证驳斥 Musk 早期叙事，对外披露 OpenAI 2026 年算力支出预计 500 亿美元，同时披露其 OpenAI 子公司股权约 300 亿美元 (<a href="https://www.bloomberg.com/news/articles/2026-05-05/openai-to-spend-50-billion-on-computing-in-2026-brockman-says">source</a>)</li>
+<li><strong>Logan Kilpatrick</strong>：5/7 宣布 Google AI Studio 在印度组建 DevX 团队招聘工程师，称印度是 AI Studio 最大用户市场，为 5/19-20 Google I/O 蓄势 (<a href="https://x.com/OfficialLoganK?lang=en">source</a>)</li>
+<li><strong>Pushmeet Kohli</strong>：在 India AI Impact Summit 2026 宣布 DeepMind 与印度高校 / 研究机构合作开放前沿能力，覆盖科学、教育、公共服务方向，并提供工程支持与基础设施 (<a href="https://www.linkedin.com/in/pushmeet-kohli-4838994">source</a>)</li>
+<li><strong>Andrej Karpathy</strong>：Sequoia AI Ascent 2026 fireside 视频与 bearblog 摘要持续传播，强调&quot;LLM 远不止加速既有流程&quot;，并自陈 menugen 已被 Gemini Nanobanana 直接覆盖，强化 Software 3.0 论 (<a href="https://karpathy.bearblog.dev/sequoia-ascent-2026/">source</a>)</li>
+<li><strong>Matt Pocock</strong>：mattpocock/skills 当周占据 GitHub Trending AI 类 #1（5.5 万 stars），把个人 .claude 目录开源化为 OSS 工程模板，含 TDD red-green-refactor、issue 拆分、PRD 生成三大 skill (<a href="https://github.com/mattpocock/skills">source</a>)</li>
+</ul>
+<h2 id="新候选人发现"><a class="markdownIt-Anchor" href="#新候选人发现"></a> 新候选人发现</h2>
+<ul>
+<li><strong>Thariq Shihipar</strong>（Anthropic Claude Code 工程师，X: @trq212）：发布并被 Simon Willison 5/8 专文引用的 HTML over Markdown 主张——让 Claude 输出 HTML 以承载 SVG 图、交互组件、规划文档；本人为 Claude Code “ask user question” 工具与 plan mode 的核心贡献者 (<a href="https://simonwillison.net/2026/May/8/unreasonable-effectiveness-of-html/">source</a>, <a href="https://www.thariq.io/">source</a>)</li>
+<li><strong>Luke Curley</strong>（前 Twitch / Discord WebRTC 工程师，moq.dev 作者）：在 moq.dev 发文《OpenAI’s WebRTC Problem》指出 WebRTC 为低延迟丢包设计与语音 AI 准确性诉求矛盾，建议改用 WebSockets，被 Simon Willison 5/9 博文引用进入主流讨论 (<a href="https://moq.dev/blog/webrtc-is-the-problem/">source</a>, <a href="https://simonwillison.net/2026/May/9/luke-curley/">source</a>)</li>
+<li><strong>Forrest Chang</strong>（独立开发者，andrej-karpathy-skills 作者）：将 Karpathy 关于 LLM 编程陷阱的观察凝结为单一 CLAUDE.md，5 月持续在 GitHub Trending AI 类第 2 位，星标 117k+，已成为社区&quot;Karpathy 风格 Claude Code 配置&quot;的事实模版 (<a href="https://github.com/forrestchang/andrej-karpathy-skills">source</a>, <a href="https://www.star-history.com/forrestchang/andrej-karpathy-skills/">source</a>)</li>
+</ul>
+<h2 id="候选池摘要"><a class="markdownIt-Anchor" href="#候选池摘要"></a> 候选池摘要</h2>
+<p>本日发现 3 名达标候选：Thariq Shihipar（Anthropic Claude Code 工程师，被 Simon Willison 直接引用）、Luke Curley（WebRTC × 语音 AI，被 Simon Willison 直接引用）、Forrest Chang（社区 OSS 模版作者，GitHub Trending #2 持续）；前两位建议优先 promote。</p>
+<!-- flag of hidden posts -->
+    </div>
+
+    
+    
+    
+<div class="comments" id="comments">
+  <script src="https://giscus.app/client.js"
+          data-repo="TCoherence/TCoherence.github.io"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkxMzE0MDY3MTA="
+          data-category="General"
+          data-category-id="DIC_kwDOB9Ubds4C8BCw"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="preferred_color_scheme"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>年轻的C同学
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://tcoherence.github.io/reports/market/2026-05-09-people_pool/" title="[市场·2026-05-09] People Pool">https://tcoherence.github.io/reports/market/2026-05-09-people_pool/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#people-pool2026-05-09"><span class="nav-text"> People Pool｜2026-05-09</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B7%9F%E8%B8%AA%E4%BA%BA%E7%89%A9%E5%8A%A8%E6%80%81"><span class="nav-text"> 跟踪人物动态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%80%99%E9%80%89%E4%BA%BA%E5%8F%91%E7%8E%B0"><span class="nav-text"> 新候选人发现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%80%99%E9%80%89%E6%B1%A0%E6%91%98%E8%A6%81"><span class="nav-text"> 候选池摘要</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="年轻的C同学"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">年轻的C同学</p>
+  <div class="site-description" itemprop="description">年轻的C同学的个人博客 — 关于工程、生活与一些碎片思考</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/TCoherence" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;TCoherence" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:hanzhiyang2019@u.northwestern.edu" title="E-Mail → mailto:hanzhiyang2019@u.northwestern.edu" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/yang_hanzhi" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;yang_hanzhi" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/profile.php?id=100025563873836" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id&#x3D;100025563873836" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">年轻的C同学</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js', () => {
+    var darkMQ = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+    var mermaidTheme = (darkMQ && darkMQ.matches) ? 'dark' : 'forest';
+    mermaid.initialize({
+      startOnLoad: false,
+      theme    : mermaidTheme,
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+    mermaid.run({ querySelector: 'pre.mermaid' });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+</body>
+</html>
